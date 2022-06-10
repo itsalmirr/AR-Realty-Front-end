@@ -15,10 +15,10 @@ const Navbar = () => {
             <div className='relative h-16 flex justify-between'>
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
-                  <Image
+                  <img
                     className='block h-8 w-auto'
-                    width={32}
-                    height={32}
+                    // width={32}
+                    // height={32}
                     src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
                     alt='Workflow'
                   />
@@ -46,10 +46,8 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              {/* Mobile menu button */}
               <MobileMenu open={open} />
               <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
-                {/* Profile dropdown */}
                 <Menu as='div' className='flex-shrink-0 relative ml-4'>
                   <div>
                     <Menu.Button className='bg-gray-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>

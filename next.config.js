@@ -5,6 +5,10 @@ const nextConfig = {
   images: {
     domains: ['tailwindui.com', 'images.unsplash.com'],
   },
+  rules: {
+    // Other rules
+    '@next/next/no-img-element': 'off',
+  },
 }
 
 module.exports = nextConfig
