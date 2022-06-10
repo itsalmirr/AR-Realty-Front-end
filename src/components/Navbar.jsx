@@ -17,8 +17,6 @@ const Navbar = () => {
                 <div className='flex-shrink-0 flex items-center'>
                   <img
                     className='block h-8 w-auto'
-                    // width={32}
-                    // height={32}
                     src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
                     alt='Workflow'
                   />
