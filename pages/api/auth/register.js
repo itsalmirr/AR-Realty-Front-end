@@ -7,7 +7,7 @@ const register = async (req, res) => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8000/api/user/register/`,
+        `${API_URL}/api/user/register/`,
         {
           email,
           user_name,
