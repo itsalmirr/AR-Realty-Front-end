@@ -11,14 +11,14 @@ const Navbar = () => {
   return (
     <Disclosure as='header' className='bg-gray-800'>
       {({ open }) => (
-        <>
+        <Fragment>
           <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8'>
             <div className='relative h-16 flex justify-between'>
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
                   <img
                     className='block h-8 w-auto'
-                    src='https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg'
+                    src='https://tailwindui.com/img/logos/workflow-mark-accentDark.svg'
                     alt='Workflow'
                   />
                 </div>
@@ -71,9 +71,9 @@ const Navbar = () => {
                   >
                     <Menu.Items className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none'>
                       {userNavigation.map((item) => (
-                        <Menu.Item key={item.name}>
-                          {({ active }) => (
-                            <Link href={item.href}>
+                        <Link key={item.name} href={item.href}>
+                          <Menu.Item key={item.name}>
+                            {({ active }) => (
                               <a
                                 href='#'
                                 className={classNames(
@@ -83,9 +83,9 @@ const Navbar = () => {
                               >
                                 {item.name}
                               </a>
-                            </Link>
-                          )}
-                        </Menu.Item>
+                            )}
+                          </Menu.Item>
+                        </Link>
                       ))}
                     </Menu.Items>
                   </Transition>
@@ -104,7 +104,7 @@ const Navbar = () => {
                       item.current
                         ? 'bg-gray-900 text-white'
                         : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
+                      'rounded-md py-2 px-q inline-flex items-center text-sm font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}
                   >
@@ -168,7 +168,7 @@ const Navbar = () => {
               </div>
             </div>
           </Disclosure.Panel>
-        </>
+        </Fragment>
       )}
     </Disclosure>
   )
