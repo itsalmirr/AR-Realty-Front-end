@@ -1,10 +1,9 @@
-import { Fragment, useState } from 'react'
-import axios from 'axios'
+import Layout from '@components/Layout'
 import RegisterForm from '@components/RegisterForm'
 
 const Register = () => {
   return (
-    <Fragment>
+    <Layout title='Register'>
       <div className='min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <img
@@ -96,7 +95,7 @@ const Register = () => {
           </div>
         </div>
       </div>
-    </Fragment>
+    </Layout>
   )
 }
 

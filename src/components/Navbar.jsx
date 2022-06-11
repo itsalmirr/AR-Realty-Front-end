@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { navigation, userNavigation, user } from '@lib/data'
 import { classNames } from '@lib/index'
 import MobileMenu from '@components/MobileMenu'
@@ -72,15 +73,17 @@ const Navbar = () => {
                       {userNavigation.map((item) => (
                         <Menu.Item key={item.name}>
                           {({ active }) => (
-                            <a
-                              href={item.href}
-                              className={classNames(
-                                active ? 'bg-gray-100' : '',
-                                'block py-2 px-4 text-sm text-gray-700'
-                              )}
-                            >
-                              {item.name}
-                            </a>
+                            <Link href={item.href}>
+                              <a
+                                href='#'
+                                className={classNames(
+                                  active ? 'bg-gray-100' : '',
+                                  'block py-2 px-4 text-sm text-gray-700'
+                                )}
+                              >
+                                {item.name}
+                              </a>
+                            </Link>
                           )}
                         </Menu.Item>
                       ))}
@@ -94,19 +97,20 @@ const Navbar = () => {
               aria-label='Global'
             >
               {navigation.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? 'bg-gray-900 text-white'
-                      : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                    'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
-                  )}
-                  aria-current={item.current ? 'page' : undefined}
-                >
-                  {item.name}
-                </a>
+                <Link href={item.href} key={item.name}>
+                  <a
+                    href='#'
+                    className={classNames(
+                      item.current
+                        ? 'bg-gray-900 text-white'
+                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                      'rounded-md py-2 px-3 inline-flex items-center text-sm font-medium'
+                    )}
+                    aria-current={item.current ? 'page' : undefined}
+                  >
+                    {item.name}
+                  </a>
+                </Link>
               ))}
             </nav>
           </div>
