@@ -14,7 +14,7 @@ const LoginForm = () => {
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <img
             className='mx-auto h-12 w-auto'
-            src='https://tailwindui.com/img/logos/workflow-mark-primaryLight.svg'
+            src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
             alt='Workflow'
           />
           <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>

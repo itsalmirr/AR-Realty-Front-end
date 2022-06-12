@@ -15,7 +15,7 @@ const Register = () => {
             className='mx-auto h-12 w-auto'
             height={48}
             width={48}
-            src='https://tailwindui.com/img/logos/workflow-mark-primaryLight.svg'
+            src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
             alt='Workflow'
           />
           <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
