@@ -28,7 +28,7 @@ const Navbar = () => {
                 <div className='flex-shrink-0 flex items-center'>
                   <img
                     className='block h-8 w-auto'
-                    src='https://tailwindui.com/img/logos/workflow-mark-accentDark.svg'
+                    src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
                     alt='Workflow'
                   />
                 </div>
