@@ -1,9 +1,5 @@
 import { useState } from 'react'
-import {
-  FormInput,
-  FormButton,
-  ContinueWithProvider,
-} from '@components/FormComponents'
+import { FormInput, FormButton } from '@components/FormComponents'
 import axios from 'axios'
 
 const RegisterForm = () => {
@@ -138,7 +134,6 @@ const RegisterForm = () => {
           </a>
         </div>
       </div>
-
       <FormButton type={'submit'} label='Register' />
     </form>
   )

@@ -1,15 +1,25 @@
 import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { navigation, userNavigation, user } from '@lib/data'
-import { classNames } from '@lib/index'
+import { classNames, handlePageChange } from '@lib/index'
 import MobileMenu from '@components/MobileMenu'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MdOutlineSearch } from 'react-icons/md'
 
 const Navbar = () => {
+  const router = useRouter()
+  const handlePageChange = (item) => {
+    if (item.href === router.pathname) {
+      item.current = true
+    } else {
+      item.current = false
+    }
+  }
+
   return (
-    <Disclosure as='header' className='bg-gray-800'>
+    <Disclosure as='header' className='bg-primaryDark'>
       {({ open }) => (
         <Fragment>
           <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8'>
@@ -31,14 +41,14 @@ const Navbar = () => {
                   <div className='relative'>
                     <div className='pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center'>
                       <MdOutlineSearch
-                        className='h-5 w-5 text-gray-400'
+                        className='h-5 w-5 text-gray-800'
                         aria-hidden='true'
                       />
                     </div>
                     <input
                       id='search'
                       name='search'
-                      className='block w-full bg-gray-700 border border-transparent rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-400 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 focus:placeholder-gray-500 sm:text-sm'
+                      className='block w-full bg-gray-100 border border-transparent rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-800 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 focus:placeholder-gray-500 sm:text-sm'
                       placeholder='Enter an address, city, state, or ZIP code'
                       type='search'
                     />
@@ -100,11 +110,12 @@ const Navbar = () => {
                 <Link href={item.href} key={item.name}>
                   <a
                     href='#'
+                    onClick={handlePageChange(item)}
                     className={classNames(
                       item.current
-                        ? 'bg-gray-900 text-white'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                      'rounded-md py-2 px-q inline-flex items-center text-sm font-medium'
+                        ? 'bg-gray-200 text-black'
+                        : 'text-gray-300 hover:bg-accentDark hover:text-white',
+                      'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}
                   >
