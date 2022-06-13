@@ -1,10 +1,8 @@
 import Layout from '@components/Layout'
 import Link from 'next/link'
-import Image from 'next/image'
 import { links } from '@lib/index'
 import RegisterForm from '@components/RegisterForm'
 import { ContinueWithProvider } from '@components/FormComponents'
-import { Fragment } from 'react'
 
 const Register = () => {
   return (
@@ -23,9 +21,9 @@ const Register = () => {
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             Already have an account?{' '}
-            <Link href={links.register}>
+            <Link href={links.login}>
               <a
-                href={links.register}
+                href='#'
                 className='font-medium text-primaryLight hover:text-accentDark'
               >
                 Log in

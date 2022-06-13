@@ -1,12 +1,12 @@
-import { Fragment } from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
+import Image from 'next/image'
+import { Fragment } from 'react'
 import { useRouter } from 'next/router'
-import { navigation, userNavigation, user } from '@lib/data'
 import { classNames } from '@lib/index'
 import MobileMenu from '@components/MobileMenu'
-import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { MdOutlineSearch } from 'react-icons/md'
+import { navigation, userNavigation, user } from '@lib/data'
+import { Disclosure, Menu, Transition } from '@headlessui/react'
 
 const Navbar = () => {
   const router = useRouter()

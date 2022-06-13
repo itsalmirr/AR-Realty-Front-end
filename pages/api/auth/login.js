@@ -8,7 +8,7 @@ const login = async (req, res) => {
 
     try {
       const response = await axios.post(
-        `${API_URL}/api/user/login/`,
+        `${API_URL}/api/token/`,
         {
           email,
           password,
@@ -22,7 +22,7 @@ const login = async (req, res) => {
       )
 
       //   Set the httpOnly cookie
-      if (response.data.success) {
+      if (response.data) {
         res.setHeader(
           'Set-Cookie',
           //   serialize the cookie and set it to the httpOnly cookie
@@ -45,11 +45,6 @@ const login = async (req, res) => {
         return res.status(200).json({
           success: true,
           message: 'Login Successful',
-        })
-      } else {
-        return res.status(401).json({
-          success: false,
-          message: 'Login Failed',
         })
       }
     } catch (err) {
