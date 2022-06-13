@@ -7,6 +7,7 @@ const LoginForm = () => {
   const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -19,7 +20,8 @@ const LoginForm = () => {
       router.push('/account/dashboard')
       console.log(res)
     } catch (err) {
-      alert('Error logging in')
+      setError(err.response.data.message)
+      setPassword('')
     }
   }
 
