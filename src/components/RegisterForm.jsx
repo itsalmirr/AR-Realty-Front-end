@@ -1,8 +1,11 @@
-import { useState } from 'react'
-import { FormInput, FormButton } from '@components/FormComponents'
 import axios from 'axios'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { toast } from 'react-toastify'
+import { FormInput, FormButton } from '@components/FormComponents'
 
 const RegisterForm = () => {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [full_name, setFullName] = useState('')
   const [user_name, setUserName] = useState('')
@@ -24,34 +27,39 @@ const RegisterForm = () => {
     }
 
     try {
-      const res = await axios.post(
-        'http://localhost:3000/api/auth/register',
-        body
-      )
+      const res = await axios.post('/api/auth/register', body)
       console.log(res)
+      if (res.data.success) {
+        toast.success('Nice! You are now registered.')
+        router.push('/account/dashboard')
+      }
     } catch (err) {
-      alert('Error registering')
+      toast.error(
+        'Registration failed - make sure you filled out all fields correctly'
+      )
     }
   }
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value)
-  }
-
-  const handleFullNameChange = (e) => {
-    setFullName(e.target.value)
-  }
-
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value)
-  }
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value)
-  }
-
-  const handlePasswordConfirmationChange = (e) => {
-    setPasswordConfirmation(e.target.value)
+  const handleChange = (e) => {
+    switch (e.target.name) {
+      case 'full_name':
+        setFullName(e.target.value)
+        break
+      case 'email':
+        setEmail(e.target.value)
+        break
+      case 'user_name':
+        setUserName(e.target.value)
+        break
+      case 'password':
+        setPassword(e.target.value)
+        break
+      case 'passwordConfirmation':
+        setPasswordConfirmation(e.target.value)
+        break
+      default:
+        break
+    }
   }
 
   const handlePasswordMatch = () => {
@@ -65,20 +73,20 @@ const RegisterForm = () => {
   return (
     <form className='space-y-6' onSubmit={handleSubmit}>
       <FormInput
-        name='email'
-        type='email'
-        label='Email address'
-        required
-        value={email}
-        onChange={handleEmailChange}
-      />
-      <FormInput
         name='full_name'
         type='text'
         label='Full name'
         required
         value={full_name}
-        onChange={handleFullNameChange}
+        onChange={handleChange}
+      />
+      <FormInput
+        name='email'
+        type='email'
+        label='Email address'
+        required
+        value={email}
+        onChange={handleChange}
       />
       <FormInput
         name='user_name'
@@ -86,7 +94,7 @@ const RegisterForm = () => {
         label='User name'
         required
         value={user_name}
-        onChange={handleUserNameChange}
+        onChange={handleChange}
       />
 
       <FormInput
@@ -95,7 +103,7 @@ const RegisterForm = () => {
         label='Password'
         required
         value={password}
-        onChange={handlePasswordChange}
+        onChange={handleChange}
       />
 
       <FormInput
@@ -104,7 +112,7 @@ const RegisterForm = () => {
         label='Confirm password'
         required
         value={passwordConfirmation}
-        onChange={handlePasswordConfirmationChange}
+        onChange={handleChange}
         passwordMatch={passwordMatch}
         {...{ passwordMatch, handlePasswordMatch }}
       />
