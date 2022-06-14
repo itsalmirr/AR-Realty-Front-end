@@ -12,6 +12,10 @@ const user = async (req, res) => {
 
     res.status(200).json({
       success: true,
+      user: {
+        id: cookies.access,
+      },
+      message: 'User logged in',
     })
   }
 }

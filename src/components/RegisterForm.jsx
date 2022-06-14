@@ -1,44 +1,16 @@
 import axios from 'axios'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
+import { useState, useContext } from 'react'
 import { FormInput, FormButton } from '@components/FormComponents'
+import AuthContext from 'src/context/AuthContext'
 
 const RegisterForm = () => {
-  const router = useRouter()
   const [email, setEmail] = useState('')
   const [full_name, setFullName] = useState('')
   const [user_name, setUserName] = useState('')
   const [password, setPassword] = useState('')
   const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const [passwordMatch, setPasswordMatch] = useState(true)
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (password !== passwordConfirmation) {
-      alert('Passwords do not match')
-      return
-    }
-    const body = {
-      email,
-      full_name,
-      user_name,
-      password,
-    }
-
-    try {
-      const res = await axios.post('/api/auth/register', body)
-      console.log(res)
-      if (res.data.success) {
-        toast.success('Nice! You are now registered.')
-        router.push('/account/dashboard')
-      }
-    } catch (err) {
-      toast.error(
-        'Registration failed - make sure you filled out all fields correctly'
-      )
-    }
-  }
+  const { registerUser } = useContext(AuthContext)
 
   const handleChange = (e) => {
     switch (e.target.name) {
@@ -71,7 +43,7 @@ const RegisterForm = () => {
   }
 
   return (
-    <form className='space-y-6' onSubmit={handleSubmit}>
+    <form className='space-y-6' onSubmit={registerUser}>
       <FormInput
         name='full_name'
         type='text'
