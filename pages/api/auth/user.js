@@ -2,6 +2,7 @@ import cookie from 'cookie'
 
 const user = async (req, res) => {
   if (req.method === 'GET') {
+    console.log("here")
     const cookies = cookie.parse(req.headers.cookie)
     if (!cookies.access) {
       res.status(403).json({

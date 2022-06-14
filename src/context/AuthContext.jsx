@@ -59,7 +59,6 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = async (e) => {
     e.preventDefault()
     const res = await axios.get('http://localhost:3000/api/auth/logout')
-    // console.log(res)
     if (res.data.success) {
       router.push('/')
       toast.success('Logout successful')
@@ -67,14 +66,21 @@ export const AuthProvider = ({ children }) => {
   }
 
   const getUser = async () => {
-    const res = await axios.get('/api/auth/user')
-    if (res.data.success) {
-      setUser(res.data.user)
+    // use fetch
+    const res = await axios.get("http://localhost:3000/api/auth/user")
+    if (res.data) {
+      // setUser(res.data)
       setIsLoggedIn(true)
-      return res.data
     }
-    return ''
+    return data
   }
+
+
+  useEffect(() => {
+    getUser()
+  }
+  , [])
+
 
   const contextData = {
     loginUser: loginUser,
