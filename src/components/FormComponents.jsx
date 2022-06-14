@@ -36,13 +36,12 @@ export const FormInput = ({
   )
 }
 
-export const FormButton = ({ label, type, ...rest }) => {
+export const FormButton = ({ label, type }) => {
   return (
     <div>
       <button
         type={type}
-        className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryLight hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'
-      >
+        className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryLight hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'>
         {label}
       </button>
     </div>
@@ -65,8 +64,7 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-          >
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'>
             <span className='sr-only'>Sign in with Google</span>
             <FaGoogle className='h-5 w-5' />
           </a>
@@ -75,8 +73,7 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-          >
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'>
             <span className='sr-only'>Sign in with Twitter</span>
             <FaTwitter className='h-5 w-5' />
           </a>
@@ -85,8 +82,7 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'
-          >
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50'>
             <span className='sr-only'>Sign in with GitHub</span>
             <FaGithub className='h-5 w-5' />
           </a>

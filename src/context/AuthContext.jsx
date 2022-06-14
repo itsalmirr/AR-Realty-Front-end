@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from 'react'
+import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
-import axios from 'axios'
+import { createContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext()
 

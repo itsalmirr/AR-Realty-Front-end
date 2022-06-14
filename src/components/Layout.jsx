@@ -1,6 +1,6 @@
+import Head from 'next/head'
 import { Fragment } from 'react'
 import Navbar from '@components/Navbar'
-import Head from 'next/head'
 
 const Layout = ({ title, children }) => {
   // Realty company selling homes keywords for meta tag

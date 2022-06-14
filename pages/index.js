@@ -1,5 +1,6 @@
-import Layout from '@components/Layout'
+import dynamic from 'next/dynamic'
 import { useContext } from 'react'
+import Layout from '@components/Layout'
 import AuthContext from '@context/AuthContext'
 
 const Home = () => {
