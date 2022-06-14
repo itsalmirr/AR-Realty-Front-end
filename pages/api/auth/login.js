@@ -1,6 +1,6 @@
+import axios from 'axios'
 import cookie from 'cookie'
 import { API_URL } from '@lib/index'
-import axios from 'axios'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {
@@ -26,7 +26,7 @@ const login = async (req, res) => {
         res.setHeader(
           'Set-Cookie',
           //   serialize the cookie and set it to the httpOnly cookie
-          cookie.serialize('access', response.data.token, {
+          cookie.serialize('access', response.data.access, {
             httpOnly: true,
             maxAge: 120 * 60 * 1000, // 120 minutes
             path: '/api/',

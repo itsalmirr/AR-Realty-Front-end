@@ -1,6 +1,6 @@
 import Layout from '@components/Layout'
 
-export default function Home() {
+const Home = () => {
   return (
     <Layout title={'Home'}>
       <section>
@@ -9,3 +9,5 @@ export default function Home() {
     </Layout>
   )
 }
+
+export default Home

@@ -1,31 +1,12 @@
-import axios from 'axios'
 import { useState } from 'react'
-import { toast } from 'react-toastify'
-import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import { FormInput, FormButton } from '@components/FormComponents'
+import AuthContext from 'src/context/AuthContext'
 
 const LoginForm = () => {
-  const router = useRouter()
+  const { loginUser } = useContext(AuthContext)
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const body = {
-      email,
-      password,
-    }
-    try {
-      const res = await axios.post('/api/auth/login', body)
-      if (res.data.success) {
-        router.push('/account/dashboard')
-        toast.success('Login successful')
-      }
-    } catch (err) {
-      setPassword('')
-      toast.error('Login failed - check your email and password')
-    }
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -37,7 +18,7 @@ const LoginForm = () => {
   }
 
   return (
-    <form className='space-y-6' onSubmit={handleSubmit}>
+    <form className='space-y-6' onSubmit={loginUser}>
       <FormInput
         name='email'
         type='email'

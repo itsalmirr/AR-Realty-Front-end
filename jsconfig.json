@@ -6,6 +6,7 @@
 
     "paths": {
       "@components/*": ["src/components/*"],
+      "@context/*": ["src/context/*"],
       "@lib/*": ["lib/*"]
     }
   },

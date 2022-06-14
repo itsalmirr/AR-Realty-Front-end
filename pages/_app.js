@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import 'react-toastify/dist/ReactToastify.css'
 import { Fragment } from 'react'
+import { AuthProvider } from '@context/AuthContext'
 import { ToastContainer, Flip } from 'react-toastify'
 
 function MyApp({ Component, pageProps }) {
@@ -20,7 +21,9 @@ function MyApp({ Component, pageProps }) {
         transition={Flip}
         theme='colored'
       />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Component {...pageProps} />
+      </AuthProvider>
     </Fragment>
   )
 }
