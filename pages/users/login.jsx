@@ -1,8 +1,7 @@
-import Layout from '@components/Layout'
 import Link from 'next/link'
 import { links } from '@lib/index'
+import { Layout, LoginForm } from '@components/index'
 import { ContinueWithProvider } from '@components/FormComponents'
-import LoginForm from '@components/LoginForm'
 
 const LoginPage = () => {
   return (
@@ -22,8 +21,7 @@ const LoginPage = () => {
             <Link href={links.register}>
               <a
                 href='#'
-                className='font-medium text-primaryLight hover:text-accentDark'
-              >
+                className='font-medium text-primaryLight hover:text-accentDark'>
                 register here
               </a>
             </Link>

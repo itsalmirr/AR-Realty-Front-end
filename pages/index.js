@@ -1,11 +1,6 @@
-import { useContext } from 'react'
-import MainSection from '@components/MainSection'
-import Layout from '@components/Layout'
-import AuthContext from '@context/AuthContext'
+import { Layout, MainSection } from '@components/index'
 
 const Home = () => {
-  const { isLoggedIn, logoutUser, isLoading } = useContext(AuthContext)
-
   return (
     <Layout title={'Home'}>
       <MainSection />

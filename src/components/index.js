@@ -1,0 +1,6 @@
+export { default as MainSection } from '@components/MainSection'
+export { default as Layout } from '@components/Layout'
+export { default as RegisterForm } from '@components/RegisterForm'
+export { default as LoginForm } from '@components/LoginForm'
+export { default as MobileMenu } from '@components/MobileMenu'
+export { default as UserMenu } from '@components/UserMenu'
