@@ -42,20 +42,18 @@ const login = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
           })
         )
-        return res.status(200).json({
-          success: true,
-          message: 'Login Successful',
-        })
       }
+
+      return res.status(200).json({
+        success: true,
+        message: 'Login Successful',
+      })
     } catch (err) {
       res.status(500).json({
         success: false,
         message: err,
       })
     }
-  } else {
-    res.setHeader('Allow', ['POST'])
-    return res.status(405).json(`Method ${req.method} Not Allowed`)
   }
 }
 

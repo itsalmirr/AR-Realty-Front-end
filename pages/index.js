@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import MainSection from '@components/MainSection'
 import Layout from '@components/Layout'
 import AuthContext from '@context/AuthContext'
 
@@ -7,15 +8,7 @@ const Home = () => {
 
   return (
     <Layout title={'Home'}>
-      <section>
-        <h1>Hello world!</h1>
-        {isLoading ? <p>Loading....</p> : null}
-        {!isLoading && isLoggedIn ? (
-          <button onClick={logoutUser}>Logout</button>
-        ) : (
-          <button>Login</button>
-        )}
-      </section>
+      <MainSection />
     </Layout>
   )
 }

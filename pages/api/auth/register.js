@@ -28,9 +28,6 @@ const register = async (req, res) => {
         message: err,
       })
     }
-  } else {
-    res.setHeader('Allow', ['POST'])
-    return res.status(405).json(`Method ${req.method} Not Allowed`)
   }
 }
 

@@ -4,7 +4,6 @@ const user = async (req, res) => {
   if (req.method === 'GET') {
     if (!req.headers.cookie) {
       res.status(401).json({ message: 'No cookie' })
-      return
     }
     try {
       const cookies = cookie.parse(req.headers.cookie)
