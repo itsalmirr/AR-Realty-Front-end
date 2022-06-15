@@ -14,9 +14,7 @@ export const AuthProvider = ({ children }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if (isLoggedIn) {
-      checkUserLoggedIn()
-    }
+    checkUserLoggedIn()
   }, [])
 
   const registerUser = async (e) => {
@@ -93,15 +91,12 @@ export const AuthProvider = ({ children }) => {
         setUser(res.data)
         setIsLoggedIn(true)
       }
-
-      if (res.data.error) {
-        setIsLoggedIn(false)
-      }
     } catch (err) {
       setIsLoggedIn(false)
       setUser(null)
     }
   }
+
   const contextData = {
     loginUser: loginUser,
     registerUser: registerUser,

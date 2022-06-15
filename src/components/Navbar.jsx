@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import { Fragment, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { classNames } from '@lib/index'
-import MobileMenu, { MobileMenuDropDown } from '@components/MobileMenu'
+import { MobileMenuDropDown } from '@components/MobileMenu'
+import { MdOutlineClose } from 'react-icons/md'
+import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { MdOutlineSearch } from 'react-icons/md'
-import { navigation, userNavigation, user, links } from '@lib/index'
+import { navigation, userNavigation, user, links, classNames } from '@lib/index'
 import { Disclosure } from '@headlessui/react'
 import UserMenu from '@components/UserMenu'
 import AuthContext from '@context/AuthContext'
@@ -58,7 +59,22 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
-              <MobileMenu open={open} />
+              <div className='relative z-10 flex items-center lg:hidden'>
+                <Disclosure.Button className='rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white'>
+                  <span className='sr-only'>Open menu</span>
+                  {open ? (
+                    <MdOutlineClose
+                      className='block h-6 w-6'
+                      aria-hidden='true'
+                    />
+                  ) : (
+                    <HiOutlineMenuAlt4
+                      className='block h-6 w-6'
+                      aria-hidden='true'
+                    />
+                  )}
+                </Disclosure.Button>
+              </div>
               <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
                 {isLoggedIn ? (
                   <UserMenu
@@ -97,6 +113,7 @@ const Navbar = () => {
             userNavigation={userNavigation}
             user={user}
             Link={Link}
+            logoutUser={logoutUser}
             isLoggedIn={isLoggedIn}
             classNames={classNames}
             links={links}

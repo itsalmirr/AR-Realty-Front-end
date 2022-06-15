@@ -34,7 +34,7 @@ const UserMenu = ({ userNavigation, user, classNames }) => {
                 {({ active }) => (
                   <a
                     href='#'
-                    onClick={isLoggedIn ? logoutUser : null}
+                    onClick={item.name === 'Sign out' ? logoutUser : null}
                     className={classNames(
                       active ? 'bg-gray-100' : '',
                       'block py-2 px-4 text-sm text-gray-700'

@@ -1,19 +1,21 @@
-import dynamic from 'next/dynamic'
 import { useContext } from 'react'
 import Layout from '@components/Layout'
 import AuthContext from '@context/AuthContext'
 
 const Home = () => {
-  const { user, logoutUser } = useContext(AuthContext)
+  const { isLoggedIn, logoutUser, isLoading } = useContext(AuthContext)
 
   return (
     <Layout title={'Home'}>
       <section>
         <h1>Hello world!</h1>
-        {user ? <p>You are logged in</p> : <p>You are not logged in</p>}
+        {isLoading ? <p>Loading....</p> : null}
+        {!isLoading && isLoggedIn ? (
+          <button onClick={logoutUser}>Logout</button>
+        ) : (
+          <button>Login</button>
+        )}
       </section>
-
-      <button onClick={logoutUser}>Logout</button>
     </Layout>
   )
 }
