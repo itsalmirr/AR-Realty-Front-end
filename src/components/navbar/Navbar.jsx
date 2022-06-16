@@ -1,13 +1,12 @@
 import Link from 'next/link'
 import { Fragment, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { MobileMenuDropDown } from '@components/MobileMenu'
-import { MdOutlineClose } from 'react-icons/md'
+import { MobileMenuDropDown } from '@components/navbar/MobileMenu'
+import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
-import { MdOutlineSearch } from 'react-icons/md'
 import { navigation, userNavigation, user, links, classNames } from '@lib/index'
 import { Disclosure } from '@headlessui/react'
-import UserMenu from '@components/UserMenu'
+import UserMenu from '@components/navbar/UserMenu'
 import AuthContext from '@context/AuthContext'
 
 const Navbar = () => {
