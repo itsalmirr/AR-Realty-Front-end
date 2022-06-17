@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
-import Navbar from '@components/Navbar'
+import { Navbar, Footer } from '@components/index'
 
 const Layout = ({ title, children }) => {
   // Realty company selling homes keywords for meta tag
@@ -28,6 +28,7 @@ const Layout = ({ title, children }) => {
       </Head>
       <Navbar />
       <main>{children}</main>
+      <Footer />
     </Fragment>
   )
 }

@@ -1,6 +1,20 @@
 import React from 'react'
 
 const MainSection = () => {
+  const metrics = [
+    {
+      id: 1,
+      stat: '3K+',
+      emphasis: 'Properties',
+      rest: 'has been sold and countinues to grow',
+    },
+    {
+      id: 2,
+      stat: '4K+',
+      emphasis: 'Properties listed',
+      rest: 'across the US and Canada',
+    },
+  ]
   return (
     <main className='lg:relative'>
       <div className='mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left'>
@@ -15,18 +29,33 @@ const MainSection = () => {
             Find your place with an immersive photo experience and the most
             listings, including things you won't find anywhere else.
           </p>
+          <div className='mt-4 grid grid-cols-1 gap-y-12 gap-x-6 border-t border-gray-200 sm:grid-cols-2'>
+            {metrics.map((item) => (
+              <p key={item.id}>
+                <span className='block mt-4 text-2xl font-bold text-primaryDark'>
+                  {item.stat}
+                </span>
+                <span className='mt-2 block text-base text-gray-500'>
+                  <span className='font-medium text-accentDark'>
+                    {item.emphasis}
+                  </span>{' '}
+                  {item.rest}
+                </span>
+              </p>
+            ))}
+          </div>
           <div className='mt-10 sm:flex sm:justify-center lg:justify-start'>
             <div className='rounded-md shadow'>
               <a
                 href='#'
-                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primaryDark hover:bg-blue-500 md:py-4 md:text-lg md:px-10'>
+                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primaryDark hover:bg-accentDark md:py-4 md:text-lg md:px-10'>
                 Explore
               </a>
             </div>
             <div className='mt-3 rounded-md shadow sm:mt-0 sm:ml-3'>
               <a
                 href='#'
-                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primaryDark bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10'>
+                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primaryDark bg-white hover:bg-gray-50 hover:text-accentDark md:py-4 md:text-lg md:px-10'>
                 Learn More
               </a>
             </div>
@@ -35,7 +64,7 @@ const MainSection = () => {
       </div>
       <div className='relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
         <img
-          className='absolute inset-0 w-full h-full object-cover'
+          className='absolute mt-8 inset-0 w-full h-4/5 object-cover'
           src='https://res.cloudinary.com/iamalmiir/image/upload/v1655271750/undraw_house_searching_re_stk8_h6khwo.svg'
           alt=''
         />

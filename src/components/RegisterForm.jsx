@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react'
-import { FormInput, FormButton } from '@components/FormComponents'
 import AuthContext from 'src/context/AuthContext'
+import { FormInput, FormButton } from '@components/FormComponents'
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('')

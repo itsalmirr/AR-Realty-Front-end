@@ -1,6 +1,8 @@
+export { default as Navbar } from '@components/navbar/Navbar'
 export { default as MainSection } from '@components/MainSection'
 export { default as Layout } from '@components/Layout'
 export { default as RegisterForm } from '@components/RegisterForm'
 export { default as LoginForm } from '@components/LoginForm'
 export { default as MobileMenu } from '@components/navbar/MobileMenu'
 export { default as UserMenu } from '@components/navbar/UserMenu'
+export { default as Footer } from '@components/Footer'
