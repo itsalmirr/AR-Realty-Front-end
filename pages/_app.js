@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import 'aos/dist/aos.css'
 import 'react-toastify/dist/ReactToastify.css'
 import { Fragment } from 'react'
 import { AuthProvider } from '@context/AuthContext'

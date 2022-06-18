@@ -1,4 +1,6 @@
 export { default as Navbar } from '@components/navbar/Navbar'
+export { default as FeaturedListings } from '@components/FeaturedListings'
+export { default as ListingCard } from '@components/ListingCard'
 export { default as MainSection } from '@components/MainSection'
 export { default as Layout } from '@components/Layout'
 export { default as RegisterForm } from '@components/RegisterForm'

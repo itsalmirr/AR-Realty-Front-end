@@ -1,9 +1,20 @@
-import { Layout, MainSection } from '@components/index'
+import {
+  Layout,
+  MainSection,
+  FeaturedListings,
+  ListingCard,
+} from '@components/index'
 
 const Home = () => {
   return (
     <Layout title={'Home'}>
-      <MainSection />
+      <main>
+        <MainSection />
+      </main>
+      <section>
+        <FeaturedListings />
+        <ListingCard />
+      </section>
     </Layout>
   )
 }
