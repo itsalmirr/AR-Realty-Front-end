@@ -11,9 +11,11 @@ const Home = () => {
       <main>
         <MainSection />
       </main>
-      <section>
+      <section className='lg:relative'>
         <FeaturedListings />
-        <ListingCard />
+        <div className='container mx-auto w-full sm:px-6 lg:px-8'>
+          <ListingCard />
+        </div>
       </section>
     </Layout>
   )

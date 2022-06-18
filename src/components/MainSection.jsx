@@ -36,7 +36,7 @@ const MainSection = () => {
                   {item.stat}
                 </span>
                 <span className='mt-2 block text-base text-gray-500'>
-                  <span className='font-medium text-accentDark'>
+                  <span className='fonwt-medium text-accentDark'>
                     {item.emphasis}
                   </span>{' '}
                   {item.rest}
