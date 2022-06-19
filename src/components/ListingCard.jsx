@@ -69,36 +69,36 @@ const products = [
 import { FaPhone } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 
-const ListingCard = () => {
+const ListingCard = ({ listings }) => {
   return (
     <ul
       role='list'
       className='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-      {products.map((person) => (
+      {listings.map((listing) => (
         <li
-          key={person.email}
+          key={listing.id}
           className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
           <div className='flex-1 flex flex-col py-4'>
             <img
               className=' flex-shrink-0 mx-auto rounded-sm'
-              src={person.imageUrl}
-              alt=''
+              src={listing.photo_main}
+              alt={listing.description}
             />
             <h3 className='mt-6 text-gray-900 text-sm font-medium'>
-              {person.name}
+              {listing.title}
             </h3>
             <dl className='mt-1 flex-grow flex flex-col justify-between'>
               <dt className='sr-only'>Title</dt>
-              <dd className='text-gray-500 text-sm'>{person.title}</dd>
-              <dt className='sr-only'>Role</dt>
+              <dd className='text-gray-500 text-sm'>{listing.address}</dd>
+              <dt className='sr-only'>Price</dt>
               <dd className='mt-3'>
                 <span className='px-2 py-1 text-green-800 text-xs font-medium bg-green-100 rounded-full'>
-                  {person.role}
+                  {listing.price}
                 </span>
               </dd>
             </dl>
           </div>
-          <div>
+          {/* <div>
             <div className='-mt-px flex divide-x divide-gray-200'>
               <div className='w-0 flex-1 flex'>
                 <a
@@ -123,7 +123,7 @@ const ListingCard = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </div> */}
         </li>
       ))}
     </ul>
