@@ -12,9 +12,8 @@ const Home = () => {
         <MainSection />
       </main>
       <section className='lg:relative'>
-        <FeaturedListings />
         <div className='container mx-auto w-full sm:px-6 lg:px-8'>
-          <ListingCard />
+          <FeaturedListings />
         </div>
       </section>
     </Layout>

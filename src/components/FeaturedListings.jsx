@@ -1,5 +1,6 @@
 import AOS from 'aos'
 import { useEffect } from 'react'
+import { ListingCard } from '@components/index'
 
 const FeaturedListings = () => {
   useEffect(() => {
@@ -13,8 +14,8 @@ const FeaturedListings = () => {
   }, [])
 
   return (
-    <div className='featured-listings'>
-      <h1>Listings</h1>
+    <div>
+      <ListingCard />
     </div>
   )
 }
