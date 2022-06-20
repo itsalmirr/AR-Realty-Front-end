@@ -13,6 +13,10 @@ const MainSection = () => {
       rest: 'across the US and Canada',
     },
   ]
+
+  const imgUrls = [
+    'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
+  ]
   return (
     <main className='lg:relative'>
       <div className='mx-auto max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left'>
@@ -64,7 +68,7 @@ const MainSection = () => {
         <img
           data-aos='fade-left'
           className='absolute mt-8 inset-0 w-full h-4/5 object-cover'
-          src='https://res.cloudinary.com/iamalmiir/image/upload/v1655271750/undraw_house_searching_re_stk8_h6khwo.svg'
+          src={imgUrls[0]}
           alt=''
         />
       </div>
