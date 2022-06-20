@@ -2,8 +2,8 @@
 <br/>
 <br/>
 
-#AR Realty
+<h1>AR Realty</h1>
 
 <!-- General description -->
 
-#####This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors about specific listings.
+<p>This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors about specific listings.</p>
