@@ -1,12 +1,13 @@
-import { API_URL } from '@lib/index'
 import axios from 'axios'
+
+import { API_URL, response } from '@lib/index'
 
 const register = async (req, res) => {
   if (req.method == 'POST') {
     const { email, user_name, full_name, password } = req.body
 
     try {
-      const response = await axios.post(
+      const axiosResponse = await axios.post(
         `${API_URL}/api/user/register/`,
         {
           email,
@@ -21,12 +22,9 @@ const register = async (req, res) => {
         }
       )
 
-      res.status(200).json(response.data)
+      res.status(200).json(axiosResponse.data)
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        message: err,
-      })
+      response(res, 500, false, 'Server error')
     }
   }
 }

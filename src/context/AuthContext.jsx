@@ -35,10 +35,10 @@ export const AuthProvider = ({ children }) => {
       }
       setIsLoading(false)
     } catch (err) {
-      setIsLoading(false)
       toast.error(
         'Registration failed - make sure you filled out all fields correctly'
       )
+      setIsLoading(false)
     }
   }
 
@@ -52,8 +52,8 @@ export const AuthProvider = ({ children }) => {
     try {
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        setUser(res.data)
         setIsLoggedIn(true)
+        setUser(res.data.user)
         router.push('/account/dashboard')
         toast.success('Login successful')
       }
@@ -76,23 +76,23 @@ export const AuthProvider = ({ children }) => {
       }
       setIsLoading(false)
     } catch (err) {
-      setIsLoading(false)
       toast.error('Logout failed')
+      setIsLoading(false)
     }
   }
 
   const checkUserLoggedIn = async () => {
     try {
-      setIsLoading(true)
       const res = await axios.get('/api/auth/user')
       if (res.data.success) {
-        setUser(res.data)
+        setUser(res.data.user)
         setIsLoggedIn(true)
       }
       setIsLoading(false)
     } catch (err) {
       setIsLoggedIn(false)
       setUser(null)
+      setIsLoading(false)
     }
   }
 

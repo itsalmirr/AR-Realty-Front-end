@@ -1,13 +1,12 @@
 import cookie from 'cookie'
 
+import { response } from '@lib/index'
+
 const logout = async (req, res) => {
   if (req.method === 'GET') {
     const cookies = cookie.parse(req.headers.cookie)
     if (!cookies.access) {
-      res.status(403).json({
-        success: false,
-        message: 'User not logged in',
-      })
+      response(res, 403, false, 'User not logged in')
     }
 
     res.setHeader(
@@ -27,14 +26,11 @@ const logout = async (req, res) => {
         secure: process.env.NODE_ENV === 'production',
       })
     )
-    res.status(200).json({
-      success: true,
-      message: 'Logout Successful',
-    })
+    response(res, 200, true, 'Logout Successful')
+  } else {
+    res.setHeader('Allow', ['GET'])
+    response(res, 405, false, `Method ${req.method} Not Allowed`)
   }
-
-  res.setHeader('Allow', ['GET'])
-  return res.status(405).json(`Method ${req.method} Not Allowed`)
 }
 
 export default logout

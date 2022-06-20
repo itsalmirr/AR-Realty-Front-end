@@ -1,13 +1,13 @@
 import axios from 'axios'
 import cookie from 'cookie'
-import { API_URL } from '@lib/index'
+import { API_URL, response } from '@lib/index'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {
     const { email, password } = req.body
 
     try {
-      const response = await axios.post(
+      const axiosResponse = await axios.post(
         `${API_URL}/api/token/`,
         {
           email,
@@ -22,11 +22,11 @@ const login = async (req, res) => {
       )
 
       //   Set the httpOnly cookie
-      if (response.data) {
+      if (axiosResponse.data) {
         res.setHeader(
           'Set-Cookie',
           //   serialize the cookie and set it to the httpOnly cookie
-          cookie.serialize('access', response.data.access, {
+          cookie.serialize('access', axiosResponse.data.access, {
             httpOnly: true,
             maxAge: 120 * 60 * 1000, // 120 minutes
             path: '/api/',
@@ -34,7 +34,7 @@ const login = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
           }),
 
-          cookie.serialize('refresh', response.data.refresh, {
+          cookie.serialize('refresh', axiosResponse.data.refresh, {
             httpOnly: true,
             maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
             path: '/api/',
@@ -42,17 +42,10 @@ const login = async (req, res) => {
             secure: process.env.NODE_ENV === 'production',
           })
         )
+        response(res, 200, true, 'Login Successful')
       }
-
-      return res.status(200).json({
-        success: true,
-        message: 'Login Successful',
-      })
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        message: err,
-      })
+      response(res, 500, false, 'Server error')
     }
   }
 }

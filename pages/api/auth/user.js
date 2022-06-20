@@ -1,12 +1,12 @@
 import cookie from 'cookie'
+import axios from 'axios'
 
-import { response } from '@lib/index'
+import { API_URL, response } from '@lib/index'
 
 const user = async (req, res) => {
   if (req.method === 'GET') {
     if (!req.headers.cookie) {
       response(res, 401, false, 'Not logged in')
-      return res.end()
     } else {
       const cookies = cookie.parse(req.headers.cookie)
       if (!cookies.access) {
@@ -16,19 +16,15 @@ const user = async (req, res) => {
     try {
       const cookies = cookie.parse(req.headers.cookie)
       if (cookies.access) {
-        res.status(200).json({
-          success: true,
-          user: {
-            id: cookies.access,
+        const currentUser = await axios.get(`${API_URL}/api/user/me/`, {
+          headers: {
+            Authorization: `Bearer ${cookies.access}`,
           },
-          message: 'User logged in',
         })
+        response(res, 200, true, 'User logged in', currentUser.data)
       }
     } catch (err) {
-      res.status(500).json({
-        success: false,
-        message: 'Server error',
-      })
+      response(res, 500, false, 'Server error')
     }
   }
 }

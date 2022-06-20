@@ -6,7 +6,7 @@ const MobileMenuDropDown = ({
   user,
   Link,
   links,
-  isLoggedIn,
+  isLoading,
   logoutUser,
   classNames,
 }) => {
@@ -30,7 +30,7 @@ const MobileMenuDropDown = ({
           </Link>
         ))}
       </div>
-      {isLoggedIn ? (
+      {!isLoading && user ? (
         <div className='border-t border-gray-700 pt-4 pb-3'>
           <div className='px-4 flex items-center'>
             <div className='flex-shrink-0'>
@@ -38,8 +38,8 @@ const MobileMenuDropDown = ({
                 className='h-10 w-10 rounded-full'
                 width={40}
                 height={40}
-                src={user.imageUrl}
-                alt=''
+                src={user.avatar}
+                alt={user.full_name}
               />
             </div>
             <div className='ml-3'>
