@@ -1,7 +1,8 @@
-import { formatPrice } from '@lib/index'
 import { IoMdPricetag } from 'react-icons/io'
-import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
 import { MdSquareFoot } from 'react-icons/md'
+import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
+
+import { formatPrice } from '@lib/index'
 
 const ListingCard = ({ listing }) => {
   const price = formatPrice(listing.price)
@@ -13,7 +14,7 @@ const ListingCard = ({ listing }) => {
         className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
           <img
-            className=' flex-shrink-0 mx-auto rounded-sm'
+            className=' flex-shrink-0 mx-auto rounded-t-lg'
             src={listing.photo_main}
             alt={listing.description}
           />

@@ -1,7 +1,6 @@
-import { useState } from 'react'
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
+import AuthContext from '@context/AuthContext'
 import { FormInput, FormButton } from '@components/FormComponents'
-import AuthContext from 'src/context/AuthContext'
 
 const LoginForm = () => {
   const { loginUser } = useContext(AuthContext)
@@ -45,8 +44,7 @@ const LoginForm = () => {
           />
           <label
             htmlFor='remember-me'
-            className='ml-2 block text-sm text-gray-900'
-          >
+            className='ml-2 block text-sm text-gray-900'>
             Remember me
           </label>
         </div>
@@ -54,8 +52,7 @@ const LoginForm = () => {
         <div className='text-sm'>
           <a
             href='#'
-            className='font-medium text-primaryLight hover:text-accentDark'
-          >
+            className='font-medium text-primaryLight hover:text-accentDark'>
             Forgot your password?
           </a>
         </div>

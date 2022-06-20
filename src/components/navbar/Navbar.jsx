@@ -1,13 +1,14 @@
 import Link from 'next/link'
-import { Fragment, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { MobileMenuDropDown } from '@components/index'
-import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
-import { HiOutlineMenuAlt4 } from 'react-icons/hi'
-import { navigation, userNavigation, user, links, classNames } from '@lib/index'
+import { Fragment, useContext } from 'react'
 import { Disclosure } from '@headlessui/react'
+import { HiOutlineMenuAlt4 } from 'react-icons/hi'
+import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
+
 import UserMenu from '@components/navbar/UserMenu'
 import AuthContext from '@context/AuthContext'
+import { MobileMenuDropDown } from '@components/index'
+import { navigation, userNavigation, user, links, classNames } from '@lib/index'
 
 const Navbar = () => {
   const router = useRouter()
@@ -79,6 +80,7 @@ const Navbar = () => {
                   <UserMenu
                     userNavigation={userNavigation}
                     user={user}
+                    logoutUser={logoutUser}
                     classNames={classNames}
                   />
                 ) : (

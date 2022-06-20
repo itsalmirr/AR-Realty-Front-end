@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import { socialMedia } from '@lib/index'
 
 const Footer = () => {

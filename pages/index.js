@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic'
-import { Layout, MainSection, FeaturedListings } from '@components/index'
 import axios from 'axios'
+
 import { API_URL } from '@lib/index'
+import { Layout, MainSection, FeaturedListings } from '@components/index'
 
 const Home = ({ listings }) => {
   return (

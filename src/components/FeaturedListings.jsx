@@ -1,6 +1,7 @@
 import AOS from 'aos'
-import { ListingCard } from '@components/index'
 import { useEffect } from 'react'
+
+import { ListingCard } from '@components/index'
 
 const FeaturedListings = ({ listings }) => {
   useEffect(() => {

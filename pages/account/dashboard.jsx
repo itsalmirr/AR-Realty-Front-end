@@ -1,9 +1,10 @@
 import Layout from '@components/Layout'
+import { UserDashboard } from '@components/index'
 
 const DashboardPage = () => {
   return (
     <Layout title='DashboardPage'>
-      <h1>DashboardPage</h1>
+      <UserDashboard />
     </Layout>
   )
 }

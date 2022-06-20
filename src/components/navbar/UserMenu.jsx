@@ -1,10 +1,8 @@
-import { Fragment, useContext } from 'react'
 import Link from 'next/link'
+import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import AuthContext from '@context/AuthContext'
 
-const UserMenu = ({ userNavigation, user, classNames }) => {
-  const { isLoggedIn, logoutUser } = useContext(AuthContext)
+const UserMenu = ({ userNavigation, user, classNames, logoutUser }) => {
   return (
     <Menu as='div' className='flex-shrink-0 relative ml-4'>
       <div>
