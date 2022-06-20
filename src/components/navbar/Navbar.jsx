@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Fragment, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { MobileMenuDropDown } from '@components/navbar/MobileMenu'
+import { MobileMenuDropDown } from '@components/index'
 import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { navigation, userNavigation, user, links, classNames } from '@lib/index'

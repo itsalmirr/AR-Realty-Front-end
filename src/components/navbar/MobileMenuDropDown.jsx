@@ -1,6 +1,6 @@
 import { Disclosure } from '@headlessui/react'
 
-export const MobileMenuDropDown = ({
+const MobileMenuDropDown = ({
   navigation,
   userNavigation,
   user,
@@ -79,3 +79,5 @@ export const MobileMenuDropDown = ({
     </Disclosure.Panel>
   )
 }
+
+export default MobileMenuDropDown

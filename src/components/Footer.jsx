@@ -14,7 +14,7 @@ const Footer = () => {
               <Link href={item.href} key={item.name}>
                 <a
                   href={item.href}
-                  className='text-gray-200 hover:text-accentDark'>
+                  className='text-gray-200 my-4 hover:text-accentDark'>
                   <span className='sr-only'>{item.name}</span>
                   {item.icon}
                 </a>
