@@ -1,5 +1,3 @@
-import React from 'react'
-
 const MainSection = () => {
   const metrics = [
     {
@@ -64,6 +62,7 @@ const MainSection = () => {
       </div>
       <div className='relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
         <img
+          data-aos='fade-left'
           className='absolute mt-8 inset-0 w-full h-4/5 object-cover'
           src='https://res.cloudinary.com/iamalmiir/image/upload/v1655271750/undraw_house_searching_re_stk8_h6khwo.svg'
           alt=''
