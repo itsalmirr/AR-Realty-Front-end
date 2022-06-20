@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-import { API_URL, response } from '@lib/index'
+import { API_URL } from '@lib/index'
+import { response } from '@lib/helpers'
 
 const register = async (req, res) => {
   if (req.method == 'POST') {

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import cookie from 'cookie'
-import { API_URL, response } from '@lib/index'
+
+import { API_URL } from '@lib/index'
+import { response } from '@lib/helpers'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {

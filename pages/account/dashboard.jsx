@@ -1,5 +1,4 @@
-import Layout from '@components/Layout'
-import { UserDashboard } from '@components/index'
+import { Layout, UserDashboard } from '@components/index'
 
 const DashboardPage = () => {
   return (
