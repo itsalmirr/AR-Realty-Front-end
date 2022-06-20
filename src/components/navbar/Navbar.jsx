@@ -12,7 +12,7 @@ import { navigation, userNavigation, user, links, classNames } from '@lib/index'
 
 const Navbar = () => {
   const router = useRouter()
-  const { isLoggedIn, logoutUser } = useContext(AuthContext)
+  const { isLoading, isLoggedIn, logoutUser } = useContext(AuthContext)
   const handlePageChange = (item) => {
     if (item.href === router.pathname) {
       item.current = true
@@ -75,18 +75,22 @@ const Navbar = () => {
                   )}
                 </Disclosure.Button>
               </div>
-              <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
-                {isLoggedIn ? (
-                  <UserMenu
-                    userNavigation={userNavigation}
-                    user={user}
-                    logoutUser={logoutUser}
-                    classNames={classNames}
-                  />
-                ) : (
-                  <LoginButton />
-                )}
-              </div>
+              {!isLoading ? (
+                <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
+                  {isLoggedIn ? (
+                    <UserMenu
+                      userNavigation={userNavigation}
+                      user={user}
+                      logoutUser={logoutUser}
+                      classNames={classNames}
+                    />
+                  ) : (
+                    <LoginButton />
+                  )}
+                </div>
+              ) : (
+                ''
+              )}
             </div>
             <nav
               className='hidden lg:py-2 lg:flex lg:space-x-8'

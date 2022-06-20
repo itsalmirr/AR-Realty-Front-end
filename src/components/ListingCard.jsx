@@ -70,7 +70,7 @@ const ListingCard = ({ listing }) => {
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
-        <button className='w-full h-10 mt-5 bg-primaryDark rounded-md text-white hover:bg-white hover:text-primaryDark'>
+        <button className='w-full h-10 mt-5 bg-primaryDark rounded-md text-white hover:bg-primaryLight'>
           More Info
         </button>
       </li>
