@@ -17,7 +17,7 @@ const Home = ({ listings }) => {
             <div className='w-full border-t border-gray-300' />
           </div>
           <div className='relative flex justify-center'>
-            <span className='px-2 bg-white text-5xl text-gray-500'>
+            <span className='px-2 bg-white text-5xl text-gray-500 font-bold'>
               Featured Listings
             </span>
           </div>

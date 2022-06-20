@@ -14,11 +14,11 @@ const ListingCard = ({ listing }) => {
         className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
           <img
-            className=' flex-shrink-0 mx-auto rounded-t-lg'
+            className='flex-shrink-0 mx-auto rounded-t-lg'
             src={listing.photo_main}
             alt={listing.description}
           />
-          <h3 className='mt-2 mb-2 text-gray-900 text-lg font-medium'>
+          <h3 className='mt-2 mb-2 text-gray-900 text-lg font-bold'>
             {listing.title}
           </h3>
           <div className='relative'>
