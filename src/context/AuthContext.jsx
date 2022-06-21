@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
+
 import { createContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext()
@@ -27,8 +28,8 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
+      setIsLoading(true)
       const res = await axios.post('/api/auth/register', body)
-
       if (res.data.success) {
         toast.success('Nice! You are now registered.')
         router.push('/user/login')
@@ -50,12 +51,13 @@ export const AuthProvider = ({ children }) => {
     }
 
     try {
+      setIsLoading(true)
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        setIsLoggedIn(true)
         setUser(res.data.user)
-        router.push('/account/dashboard')
-        toast.success('Login successful')
+        setIsLoggedIn(true)
+        toast.success(res.data.message)
+        router.push('/')
       }
       setIsLoading(false)
     } catch (err) {
@@ -67,11 +69,12 @@ export const AuthProvider = ({ children }) => {
   const logoutUser = async (e) => {
     e.preventDefault()
     try {
+      setIsLoading(true)
       const res = await axios.get('/api/auth/logout')
       if (res.data.success) {
+        router.push('/')
         setUser(null)
         setIsLoggedIn(false)
-        router.push('/')
         toast.success('Logout successful')
       }
       setIsLoading(false)
@@ -83,6 +86,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkUserLoggedIn = async () => {
     try {
+      setIsLoading(true)
       const res = await axios.get('/api/auth/user')
       if (res.data.success) {
         setUser(res.data.user)
@@ -90,9 +94,8 @@ export const AuthProvider = ({ children }) => {
       }
       setIsLoading(false)
     } catch (err) {
-      setIsLoggedIn(false)
       setUser(null)
-      setIsLoading(false)
+      setIsLoggedIn(false)
     }
   }
 

@@ -1,8 +1,7 @@
 import axios from 'axios'
-import cookie from 'cookie'
 
 import { API_URL } from '@lib/index'
-import { response } from '@lib/helpers'
+import { response, setCookies } from '@lib/helpers'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {
@@ -22,32 +21,19 @@ const login = async (req, res) => {
           },
         }
       )
-
       //   Set the httpOnly cookie
       if (axiosResponse.data) {
-        res.setHeader(
-          'Set-Cookie',
-          //   serialize the cookie and set it to the httpOnly cookie
-          cookie.serialize('access', axiosResponse.data.access, {
-            httpOnly: true,
-            maxAge: 120 * 60 * 1000, // 120 minutes
-            path: '/api/',
-            sameSite: 'strict',
-            secure: process.env.NODE_ENV === 'production',
-          }),
-
-          cookie.serialize('refresh', axiosResponse.data.refresh, {
-            httpOnly: true,
-            maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-            path: '/api/',
-            sameSite: 'strict',
-            secure: process.env.NODE_ENV === 'production',
-          })
+        setCookies(
+          res,
+          'access',
+          axiosResponse.data.access,
+          'refresh',
+          axiosResponse.data.refresh
         )
-        response(res, 200, true, 'Login Successful')
       }
+      await response(res, 200, true, 'Login Successful', axiosResponse.data)
     } catch (err) {
-      response(res, 500, false, 'Server error')
+      await response(res, 500, false, 'Server error')
     }
   }
 }
