@@ -99,7 +99,7 @@ const Navbar = () => {
                     onClick={handlePageChange(item)}
                     className={classNames(
                       item.current
-                        ? 'bg-gray-200 text-black'
+                        ? 'bg-gray-200'
                         : 'text-gray-300 hover:bg-accentDark hover:text-white',
                       'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                     )}

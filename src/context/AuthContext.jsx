@@ -10,8 +10,8 @@ export default AuthContext
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
   const router = useRouter()
 
   useEffect(() => {
@@ -54,10 +54,12 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        setUser(res.data.user)
-        setIsLoggedIn(true)
+        const res = await axios.get('/api/auth/user/')
+
+        setUser(res.data.user ? res.data.user : null)
+        setIsLoggedIn(res.data.success ? true : false)
         toast.success(res.data.message)
-        router.push('/')
+        router.push('/account/dashboard')
       }
       setIsLoading(false)
     } catch (err) {
@@ -87,7 +89,7 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setIsLoading(true)
-      const res = await axios.get('/api/auth/user')
+      const res = await axios.get('/api/auth/user/')
       if (res.data.success) {
         setUser(res.data.user)
         setIsLoggedIn(true)
