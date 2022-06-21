@@ -39,3 +39,15 @@ const LoginPage = () => {
 }
 
 export default LoginPage
+
+export const getServerSideProps = async (ctx) => {
+  // if user is logged in, redirect to dashboard
+  if (ctx.req.session.user) {
+    ctx.res.writeHead(302, { Location: '/dashboard' })
+    ctx.res.end()
+
+    return { props: {} }
+  }
+
+  return { props: {} }
+}

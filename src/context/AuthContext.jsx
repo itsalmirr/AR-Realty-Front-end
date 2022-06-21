@@ -11,7 +11,7 @@ export default AuthContext
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
