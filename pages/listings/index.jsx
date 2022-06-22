@@ -35,8 +35,6 @@ const ListingPage = ({ allData }) => {
       </header>
       <main className='container mx-auto mt-12 w-full'>
         <FeaturedListings listings={listings} />
-        {/* <button onClick={() => setPageIndex(page - 1)}>Previous</button>
-        <button onClick={() => setPageIndex(page + 1)}>Next</button> */}
       </main>
     </Layout>
   )
