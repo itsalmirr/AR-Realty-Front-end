@@ -11,3 +11,4 @@ export { default as MobileMenuDropDown } from '@components/navbar/MobileMenuDrop
 export { default as UserMenu } from '@components/navbar/UserMenu'
 export { default as Spinner } from '@components/Spinner'
 export { default as Footer } from '@components/Footer'
+export { default as Pagination } from '@components/Pagination'

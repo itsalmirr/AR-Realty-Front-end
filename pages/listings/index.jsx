@@ -5,23 +5,27 @@ import { GiFamilyHouse } from 'react-icons/gi'
 
 import { API_URL } from '@lib/index'
 import { fetcher, PER_PAGE } from '@lib/helpers'
-import { Layout, FeaturedListings } from '@components/index'
+import { Layout, FeaturedListings, Pagination } from '@components/index'
 
 const ListingPage = ({ allData }) => {
-  const [next, setNext] = useState(allData.url)
-  const [prev, setPrev] = useState('')
+  const [page, setPage] = useState(1)
+  const [toggle, setToggle] = useState(true)
+  const [total, setTotal] = useState(allData.total)
   const [listings, setListings] = useState(allData.listings)
-  const { data } = useSWR(next, fetcher, {
-    revalidate: true,
-  })
+  const { data } = useSWR(
+    toggle ? `${allData.url}/api/properties/?page=${page}` : null,
+    fetcher,
+    {
+      revalidate: true,
+    }
+  )
+  const lastPage = Math.ceil(total / PER_PAGE)
 
   useEffect(() => {
     if (data) {
-      setNext(data.next ? data.next : '')
-      setPrev(data.prev ? data.prev : '')
       setListings(data.results)
     }
-  }, [next])
+  }, [page])
 
   return (
     <Layout title='Listings'>
@@ -35,6 +39,21 @@ const ListingPage = ({ allData }) => {
       </header>
       <main className='container mx-auto mt-12 w-full'>
         <FeaturedListings listings={listings} />
+        <button
+          onClick={() => {
+            setToggle(!toggle)
+            setPage(page - 1)
+            setToggle(!toggle)
+          }}>
+          Previous
+        </button>
+        <button
+          onClick={() => {
+            setToggle(!toggle)
+            setPage(page + 1)
+          }}>
+          Next
+        </button>
       </main>
     </Layout>
   )
@@ -44,7 +63,7 @@ export default ListingPage
 
 export const getStaticProps = async () => {
   const listings = await axios.get(`${API_URL}/api/properties?limit=6`)
-  const url = `${API_URL}/api/properties?limit=${PER_PAGE}&offset=${PER_PAGE}`
+  const url = `${API_URL}`
 
   return {
     props: {
