@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
-
 import { createContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext()
@@ -84,7 +83,7 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setIsLoading(true)
-      const res = await axios.get('/api/auth/user/')
+      const res = await axios.get('/api/auth/user')
       if (res.data.success) {
         setUser(res.data.user)
         setIsLoggedIn(true)

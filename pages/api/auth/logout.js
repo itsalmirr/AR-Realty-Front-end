@@ -1,4 +1,4 @@
-import { setCookies, parseCookie, response } from '@lib/helpers'
+import { removeCookies, parseCookie, response } from '@lib/helpers'
 
 const logout = async (req, res) => {
   if (req.method === 'GET') {
