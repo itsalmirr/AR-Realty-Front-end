@@ -8,22 +8,14 @@ const register = async (req, res) => {
     const { email, user_name, full_name, password } = req.body
 
     try {
-      const axiosResponse = await axios.post(
-        `${API_URL}/api/user/register/`,
-        {
-          email,
-          user_name,
-          full_name,
-          password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        }
-      )
+      const axiosResponse = await axios.post(`${API_URL}/api/user/register/`, {
+        email,
+        user_name,
+        full_name,
+        password,
+      })
 
-      res.status(200).json(axiosResponse.data)
+      response(res, 200, true, 'Registration successful', axiosResponse.data)
     } catch (err) {
       response(res, 500, false, 'Server error')
     }

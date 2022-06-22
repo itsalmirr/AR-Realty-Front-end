@@ -8,20 +8,11 @@ const login = async (req, res) => {
     const { email, password } = req.body
 
     try {
-      const axiosResponse = await axios.post(
-        `${API_URL}/api/token/`,
-        {
-          email,
-          password,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        }
-      )
-      //   Set the httpOnly cookie
+      const axiosResponse = await axios.post(`${API_URL}/api/token/`, {
+        email,
+        password,
+      })
+      //   Set the cookies
       if (axiosResponse.data) {
         setCookies(
           res,
@@ -31,9 +22,9 @@ const login = async (req, res) => {
           axiosResponse.data.refresh
         )
       }
-      await response(res, 200, true, 'Login Successful', axiosResponse.data)
+      response(res, 200, true, 'Login Successful', axiosResponse.data)
     } catch (err) {
-      await response(res, 500, false, 'Server error')
+      response(res, 500, false, 'Server error')
     }
   }
 }

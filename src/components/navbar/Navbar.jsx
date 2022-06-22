@@ -12,13 +12,17 @@ import { navigation, userNavigation, links, classNames } from '@lib/index'
 
 const Navbar = () => {
   const router = useRouter()
+  const currentRoute = router.pathname
   const { isLoading, isLoggedIn, logoutUser, user } = useContext(AuthContext)
+
   const handlePageChange = (item) => {
-    if (item.href === router.pathname) {
+    if (item.href === currentRoute) {
       item.current = true
     } else {
       item.current = false
     }
+
+    return ''
   }
 
   return (
@@ -84,7 +88,7 @@ const Navbar = () => {
                       classNames={classNames}
                     />
                   ) : (
-                    <LoginButton />
+                    <LoginButton path={currentRoute} />
                   )}
                 </div>
               )}
@@ -128,16 +132,18 @@ const Navbar = () => {
 
 export default Navbar
 
-const LoginButton = () => {
+const LoginButton = ({ path }) => {
   return (
     <Fragment>
-      <Link href={links.login}>
-        <a className='mr-4'>
-          <button className='bg-gray-800 hover:bg-accentDark text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'>
-            Login
-          </button>
-        </a>
-      </Link>
+      {path !== '/users/login' ? (
+        <Link href={links.login}>
+          <a className='mr-4'>
+            <button className='bg-gray-800 hover:bg-accentDark text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'>
+              Login
+            </button>
+          </a>
+        </Link>
+      ) : null}
     </Fragment>
   )
 }

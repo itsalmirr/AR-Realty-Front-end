@@ -10,7 +10,7 @@ export default AuthContext
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const router = useRouter()
 
@@ -32,15 +32,14 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post('/api/auth/register', body)
       if (res.data.success) {
         toast.success('Nice! You are now registered.')
-        router.push('/user/login')
+        router.push('/users/login')
       }
-      setIsLoading(false)
     } catch (err) {
       toast.error(
         'Registration failed - make sure you filled out all fields correctly'
       )
-      setIsLoading(false)
     }
+    setIsLoading(false)
   }
 
   const loginUser = async (e) => {
@@ -54,18 +53,16 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        const res = await axios.get('/api/auth/user/')
-
-        setUser(res.data.user ? res.data.user : null)
-        setIsLoggedIn(res.data.success ? true : false)
-        toast.success(res.data.message)
+        const userData = await axios.get('/api/auth/user/')
+        setUser(userData.data.user ? userData.data.user : null)
+        setIsLoggedIn(userData.data.success ? true : false)
+        toast.success(userData.data.message)
         router.push('/account/dashboard')
       }
-      setIsLoading(false)
     } catch (err) {
-      setIsLoading(false)
       toast.error('Login failed - check your email and password')
     }
+    setIsLoading(false)
   }
 
   const logoutUser = async (e) => {
@@ -94,11 +91,10 @@ export const AuthProvider = ({ children }) => {
         setUser(res.data.user)
         setIsLoggedIn(true)
       }
-      setIsLoading(false)
     } catch (err) {
-      setUser(null)
-      setIsLoggedIn(false)
+      toast.error('Could not check if user is logged in')
     }
+    setIsLoading(false)
   }
 
   const contextData = {

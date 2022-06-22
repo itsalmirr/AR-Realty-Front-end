@@ -6,10 +6,10 @@ import { ContinueWithProvider } from '@components/FormComponents'
 const LoginPage = () => {
   return (
     <Layout title='Login'>
-      <div className='min-h-full flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
+      <div className='min-h-full flex flex-col justify-center py-4 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <img
-            className='mx-auto h-12 w-auto'
+            className='mx-auto h-12 w-15 rounded-lg bg-primaryDark'
             src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
             alt='Workflow'
           />
@@ -39,15 +39,3 @@ const LoginPage = () => {
 }
 
 export default LoginPage
-
-export const getServerSideProps = async (ctx) => {
-  // if user is logged in, redirect to dashboard
-  if (ctx.req.session.user) {
-    ctx.res.writeHead(302, { Location: '/dashboard' })
-    ctx.res.end()
-
-    return { props: {} }
-  }
-
-  return { props: {} }
-}
