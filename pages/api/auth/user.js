@@ -18,14 +18,12 @@ const user = async (req, res) => {
             Authorization: `Bearer ${access}`,
           },
         })
-        response(res, 200, true, 'Login successful', data)
+        response(res, 200, true, 'User is logged in', data)
       }
     } catch (err) {
       response(res, 401, false, 'Unauthorized')
     }
   }
-
-  response(res, 405, false, 'Method not allowed')
 }
 
 export default user

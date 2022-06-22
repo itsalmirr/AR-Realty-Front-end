@@ -53,10 +53,9 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        const userData = await axios.get('/api/auth/user/')
-        setUser(userData.data.user ? userData.data.user : null)
-        setIsLoggedIn(userData.data.success ? true : false)
-        toast.success(userData.data.message)
+        setUser(res.data.user ? res.data.user : null)
+        setIsLoggedIn(res.data.success ? true : false)
+        toast.success(res.data.message)
         router.push('/account/dashboard')
       }
     } catch (err) {
@@ -79,8 +78,8 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(false)
     } catch (err) {
       toast.error('Logout failed')
-      setIsLoading(false)
     }
+    setIsLoading(false)
   }
 
   const checkUserLoggedIn = async () => {

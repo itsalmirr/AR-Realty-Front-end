@@ -1,5 +1,4 @@
 import axios from 'axios'
-
 import { API_URL } from '@lib/index'
 import { response, setCookies } from '@lib/helpers'
 
@@ -22,7 +21,14 @@ const login = async (req, res) => {
           axiosResponse.data.refresh
         )
       }
-      response(res, 200, true, 'Login Successful', axiosResponse.data)
+
+      const user = await axios.get(`${API_URL}/api/user/me`, {
+        headers: {
+          Authorization: `Bearer ${axiosResponse.data.access}`,
+        },
+      })
+
+      response(res, 200, true, 'Login Successful', user.data)
     } catch (err) {
       response(res, 500, false, 'Server error')
     }
