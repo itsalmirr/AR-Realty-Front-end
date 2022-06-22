@@ -13,13 +13,7 @@ const login = async (req, res) => {
       })
       //   Set the cookies
       if (axiosResponse.data) {
-        setCookies(
-          res,
-          'access',
-          axiosResponse.data.access,
-          'refresh',
-          axiosResponse.data.refresh
-        )
+        setCookies(res, axiosResponse.data.refresh, axiosResponse.data.access)
       }
 
       const user = await axios.get(`${API_URL}/api/user/me`, {

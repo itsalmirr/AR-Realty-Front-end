@@ -1,4 +1,4 @@
-import { removeCookies, parseCookie, response } from '@lib/helpers'
+import { setCookies, parseCookie, response } from '@lib/helpers'
 
 const logout = async (req, res) => {
   if (req.method === 'GET') {
@@ -6,8 +6,7 @@ const logout = async (req, res) => {
     if (!cookies.access) {
       response(res, 403, false, 'User not logged in')
     }
-
-    removeCookies(res, 'access')
+    removeCookies(res)
     response(res, 200, true, 'Logout Successful')
   } else {
     res.setHeader('Allow', ['GET'])

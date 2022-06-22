@@ -75,7 +75,6 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false)
         toast.success('Logout successful')
       }
-      setIsLoading(false)
     } catch (err) {
       toast.error('Logout failed')
     }
