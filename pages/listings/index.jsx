@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
@@ -19,12 +20,13 @@ const ListingPage = ({ url }) => {
           page > 1 ? '&offset=6' : ''
         }`
       )
+
       setTotal(res.data.count)
       setListings(res.data.results)
       setNext(res.data.next ? res.data.next : null)
       setPrev(res.data.previous ? res.data.previous : null)
     } catch (err) {
-      console.log(err)
+      toast.error('Error fetching listings')
     }
   }
 
