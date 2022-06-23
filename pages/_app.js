@@ -2,11 +2,22 @@ import '../styles/globals.css'
 import '@fontsource/montserrat'
 import 'aos/dist/aos.css'
 import 'react-toastify/dist/ReactToastify.css'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
+import AOS from 'aos'
 import { AuthProvider } from '@context/AuthContext'
 import { ToastContainer, Flip } from 'react-toastify'
 
 function MyApp({ Component, pageProps }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 1500,
+      easing: 'ease-in-out',
+      mirror: true,
+      delay: 100,
+      offset: 100,
+    })
+  }, [])
+
   return (
     <Fragment>
       <ToastContainer
