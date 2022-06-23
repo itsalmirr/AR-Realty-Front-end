@@ -84,6 +84,8 @@ const Navbar = () => {
                 <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
                   {user ? (
                     <UserMenu
+                      Link={Link}
+                      Fragment={Fragment}
                       userNavigation={userNavigation}
                       user={user}
                       logoutUser={logoutUser}

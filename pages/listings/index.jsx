@@ -5,7 +5,7 @@ import { GiFamilyHouse } from 'react-icons/gi'
 import { API_URL } from '@lib/index'
 import { Layout, FeaturedListings, Pagination } from '@components/index'
 
-const ListingPage = ({ allData }) => {
+const ListingPage = ({ url }) => {
   const [listings, setListings] = useState([])
   const [next, setNext] = useState(null)
   const [prev, setPrev] = useState(null)
@@ -15,7 +15,7 @@ const ListingPage = ({ allData }) => {
   const getListings = async () => {
     try {
       const res = await axios.get(
-        `${allData.url}/api/properties/?limit=6&page=${page}${
+        `${url}/api/properties/?limit=6&page=${page}${
           page > 1 ? '&offset=6' : ''
         }`
       )
@@ -29,7 +29,6 @@ const ListingPage = ({ allData }) => {
   }
 
   useEffect(() => {
-    console.log('fired')
     getListings()
   }, [page])
 
@@ -64,9 +63,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      allData: {
-        url: url,
-      },
+      url: url,
     },
   }
 }

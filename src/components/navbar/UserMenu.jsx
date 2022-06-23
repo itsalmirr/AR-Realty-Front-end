@@ -1,9 +1,13 @@
-import Link from 'next/link'
-import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
-import Image from 'next/image'
 
-const UserMenu = ({ userNavigation, user, classNames, logoutUser }) => {
+const UserMenu = ({
+  userNavigation,
+  user,
+  classNames,
+  logoutUser,
+  Link,
+  Fragment,
+}) => {
   return (
     <Menu as='div' className='flex-shrink-0 relative ml-4'>
       <div>

@@ -3,7 +3,6 @@ import { Fragment } from 'react'
 import { Navbar, Footer } from '@components/index'
 
 const Layout = ({ title, children }) => {
-  // Realty company selling homes keywords for meta tag
   const keywords = [
     'realty',
     'company',

@@ -1,10 +1,6 @@
-import { useContext } from 'react'
-
 import { UserHeader, Spinner } from '@components/index'
-import AuthContext from '@context/AuthContext'
 
-const UserDashboard = () => {
-  const { isLoading, user } = useContext(AuthContext)
+const UserDashboard = ({ isLoading, user }) => {
   return (
     <div>
       <header>
