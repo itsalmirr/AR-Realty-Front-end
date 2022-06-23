@@ -89,7 +89,8 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true)
       }
     } catch (err) {
-      toast.error('Could not check if user is logged in')
+      // toast.error('Could not check if user is logged in')
+      logoutUser()
     }
     setIsLoading(false)
   }

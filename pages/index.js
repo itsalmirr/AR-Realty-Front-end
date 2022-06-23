@@ -1,12 +1,17 @@
 import axios from 'axios'
 
 import { API_URL } from '@lib/index'
-import { Layout, MainSection, FeaturedListings } from '@components/index'
+import {
+  Layout,
+  MainSection,
+  FeaturedListings,
+  NewsLetter,
+} from '@components/index'
 
 const Home = ({ listings }) => {
   return (
     <Layout title={'Home'}>
-      <main>
+      <main className='container mx-auto w-full sm:px-6 lg:px-8'>
         <MainSection />
       </main>
       <section className='lg-relative'>
@@ -17,7 +22,7 @@ const Home = ({ listings }) => {
             <div className='w-full border-t border-gray-300' />
           </div>
           <div className='relative flex justify-center'>
-            <span className='px-2 bg-white text-5xl text-gray-500 font-bold'>
+            <span className='px-2 bg-white text-3xl text-gray-500 font-bold'>
               Featured Listings
             </span>
           </div>
@@ -25,6 +30,9 @@ const Home = ({ listings }) => {
         <div className='container mx-auto w-full sm:px-6 lg:px-8'>
           <FeaturedListings listings={listings} />
         </div>
+      </section>
+      <section className='lg-relative mt-28'>
+        <NewsLetter />
       </section>
     </Layout>
   )

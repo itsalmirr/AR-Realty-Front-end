@@ -16,6 +16,14 @@ export const ListingsProvider = ({ children }) => {
   const [prev, setPrev] = useState('')
   const [next, setNext] = useState(next)
 
+  const getListings = async () => {
+    try {
+      const res = await axios.get(url)
+    } catch (err) {
+      toast.error(err.message)
+    }
+  }
+
   const contextData = {}
 
   return (

@@ -1,31 +1,12 @@
 import axios from 'axios'
-import useSWR from 'swr'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
 import { API_URL } from '@lib/index'
-import { fetcher, PER_PAGE } from '@lib/helpers'
-import { Layout, FeaturedListings, Pagination } from '@components/index'
+import { Layout, FeaturedListings } from '@components/index'
 
 const ListingPage = ({ allData }) => {
-  const [page, setPage] = useState(1)
-  const [toggle, setToggle] = useState(true)
-  const [total, setTotal] = useState(allData.total)
   const [listings, setListings] = useState(allData.listings)
-  const { data } = useSWR(
-    toggle ? `${allData.url}/api/properties/?page=${page}` : null,
-    fetcher,
-    {
-      revalidate: true,
-    }
-  )
-  const lastPage = Math.ceil(total / PER_PAGE)
-
-  useEffect(() => {
-    if (data) {
-      setListings(data.results)
-    }
-  }, [page])
 
   return (
     <Layout title='Listings'>
@@ -39,21 +20,6 @@ const ListingPage = ({ allData }) => {
       </header>
       <main className='container mx-auto mt-12 w-full'>
         <FeaturedListings listings={listings} />
-        <button
-          onClick={() => {
-            setToggle(!toggle)
-            setPage(page - 1)
-            setToggle(!toggle)
-          }}>
-          Previous
-        </button>
-        <button
-          onClick={() => {
-            setToggle(!toggle)
-            setPage(page + 1)
-          }}>
-          Next
-        </button>
       </main>
     </Layout>
   )
