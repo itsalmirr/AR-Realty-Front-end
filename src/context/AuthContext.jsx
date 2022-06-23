@@ -67,13 +67,11 @@ export const AuthProvider = ({ children }) => {
     e.preventDefault()
     try {
       setIsLoading(true)
-      const res = await axios.get('/api/auth/logout')
-      if (res.data.success) {
-        router.push('/')
-        setUser(null)
-        setIsLoggedIn(false)
-        toast.success('Logout successful')
-      }
+      await axios.get('/api/auth/logout')
+      setUser(null)
+      setIsLoggedIn(false)
+      router.pathname !== '/' && router.push('/')
+      toast.success('Logout successful')
     } catch (err) {
       toast.error('Logout failed')
     }
@@ -84,13 +82,10 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true)
       const res = await axios.get('/api/auth/user')
-      if (res.data.success) {
-        setUser(res.data.user)
-        setIsLoggedIn(true)
-      }
+      setUser(res.data.user)
+      setIsLoggedIn(true)
     } catch (err) {
-      // toast.error('Could not check if user is logged in')
-      logoutUser()
+      toast.error('Your session has expired')
     }
     setIsLoading(false)
   }

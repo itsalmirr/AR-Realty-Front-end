@@ -1,22 +1,4 @@
 const MainSection = () => {
-  const metrics = [
-    {
-      id: 1,
-      stat: '3K+',
-      emphasis: 'Properties',
-      rest: 'has been sold and countinues to grow',
-    },
-    {
-      id: 2,
-      stat: '4K+',
-      emphasis: 'Properties listed',
-      rest: 'across the US and Canada',
-    },
-  ]
-
-  const imgUrls = [
-    'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
-  ]
   return (
     <main className='lg:relative'>
       <div className='max-w-7xl w-full pt-16 pb-20 text-center lg:py-48 lg:text-left'>
@@ -67,9 +49,9 @@ const MainSection = () => {
       <div className='relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
         <img
           data-aos='fade-left'
-          className='absolute mt-8 inset-0 w-ull h-4/5 object-cover'
-          src={imgUrls[0]}
-          alt=''
+          className='absolute mt-8 inset-0 w-full h-4/5 object-cover'
+          src={imgUrls[0].url}
+          alt={imgUrls[0].alt}
         />
       </div>
     </main>
@@ -77,3 +59,25 @@ const MainSection = () => {
 }
 
 export default MainSection
+
+const metrics = [
+  {
+    id: 1,
+    stat: '3K+',
+    emphasis: 'Properties',
+    rest: 'has been sold and countinues to grow',
+  },
+  {
+    id: 2,
+    stat: '4K+',
+    emphasis: 'Properties listed',
+    rest: 'across the US and Canada',
+  },
+]
+
+const imgUrls = [
+  {
+    url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
+    alt: 'Searching for houses',
+  },
+]

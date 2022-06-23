@@ -2,7 +2,7 @@ import { IoMdPricetag } from 'react-icons/io'
 import { MdSquareFoot } from 'react-icons/md'
 import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
 
-import { formatPrice } from '@lib/index'
+import { formatPrice } from '@lib/helpers'
 
 const ListingCard = ({ listing }) => {
   const price = formatPrice(listing.price)

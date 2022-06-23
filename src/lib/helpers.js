@@ -54,3 +54,22 @@ export const removeCookies = (res) => {
     })
   )
 }
+
+const formatter = new Intl.NumberFormat('en-EN', {
+  maximumSignificantDigits: 3,
+  style: 'currency',
+  currency: 'USD',
+})
+
+const numFormater = new Intl.NumberFormat('en-EN', {
+  maximumSignificantDigits: 3,
+  style: 'decimal',
+})
+
+export const numberFormater = (num) => {
+  return numFormater.format(num)
+}
+
+export const formatPrice = (price) => {
+  return formatter.format(price)
+}

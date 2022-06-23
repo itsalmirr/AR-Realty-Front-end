@@ -2,25 +2,6 @@ import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa'
 
 export const API_URL = process.env.NEXT_BACKEND_API_URL
 
-const formatter = new Intl.NumberFormat('en-EN', {
-  maximumSignificantDigits: 3,
-  style: 'currency',
-  currency: 'USD',
-})
-
-const numFormater = new Intl.NumberFormat('en-EN', {
-  maximumSignificantDigits: 3,
-  style: 'decimal',
-})
-
-export const numberFormater = (num) => {
-  return numFormater.format(num)
-}
-
-export const formatPrice = (price) => {
-  return formatter.format(price)
-}
-
 export const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }

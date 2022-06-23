@@ -1,12 +1,37 @@
 import axios from 'axios'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
 import { API_URL } from '@lib/index'
-import { Layout, FeaturedListings } from '@components/index'
+import { Layout, FeaturedListings, Pagination } from '@components/index'
 
 const ListingPage = ({ allData }) => {
-  const [listings, setListings] = useState(allData.listings)
+  const [listings, setListings] = useState([])
+  const [next, setNext] = useState(null)
+  const [prev, setPrev] = useState(null)
+  const [total, setTotal] = useState(0)
+  const [page, setPage] = useState(1)
+
+  const getListings = async () => {
+    try {
+      const res = await axios.get(
+        `${allData.url}/api/properties/?limit=6&page=${page}${
+          page > 1 ? '&offset=6' : ''
+        }`
+      )
+      setTotal(res.data.count)
+      setListings(res.data.results)
+      setNext(res.data.next ? res.data.next : null)
+      setPrev(res.data.previous ? res.data.previous : null)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  useEffect(() => {
+    console.log('fired')
+    getListings()
+  }, [page])
 
   return (
     <Layout title='Listings'>
@@ -20,6 +45,13 @@ const ListingPage = ({ allData }) => {
       </header>
       <main className='container mx-auto mt-12 w-full'>
         <FeaturedListings listings={listings} />
+        <Pagination
+          currentPage={page}
+          nextPage={next}
+          prevPage={prev}
+          total={total}
+          setPage={setPage}
+        />
       </main>
     </Layout>
   )
@@ -28,16 +60,11 @@ const ListingPage = ({ allData }) => {
 export default ListingPage
 
 export const getStaticProps = async () => {
-  const listings = await axios.get(`${API_URL}/api/properties?limit=6`)
   const url = `${API_URL}`
 
   return {
     props: {
       allData: {
-        listings: await listings.data.results,
-        total: listings.data.count,
-        next: listings.data.next,
-        previous: listings.data.previous,
         url: url,
       },
     },

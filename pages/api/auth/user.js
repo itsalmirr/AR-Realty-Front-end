@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '@lib/index'
-import { response, parseCookie } from '@lib/helpers'
+import { response, parseCookie, removeCookies } from '@lib/helpers'
 
 const user = async (req, res) => {
   if (req.method === 'GET') {
@@ -20,6 +20,7 @@ const user = async (req, res) => {
 
       response(res, 200, true, 'User is logged in', data)
     } catch (err) {
+      removeCookies(res)
       response(res, 401, false, 'Unauthorized')
     }
   }
