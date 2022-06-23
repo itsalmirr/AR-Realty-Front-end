@@ -5,8 +5,8 @@ import { Disclosure } from '@headlessui/react'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
 
-import UserMenu from '@components/navbar/UserMenu'
 import AuthContext from '@context/AuthContext'
+import UserMenu from '@components/navbar/UserMenu'
 import { MobileMenuDropDown } from '@components/index'
 import { navigation, userNavigation, links, classNames } from '@lib/index'
 
@@ -33,11 +33,13 @@ const Navbar = () => {
             <div className='relative h-16 flex justify-between'>
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
-                  <img
-                    className='block h-8 w-auto'
-                    src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
-                    alt='AR Realty Logo'
-                  />
+                  <Link href='/'>
+                    <img
+                      className='block h-8 w-auto cursor-pointer'
+                      src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
+                      alt='AR Realty Logo'
+                    />
+                  </Link>
                 </div>
               </div>
               <div className='relative z-0 flex-1 px-2 flex items-center justify-center sm:absolute sm:inset-0'>
