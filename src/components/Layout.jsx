@@ -26,7 +26,9 @@ const Layout = ({ title, children }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Navbar />
-      <section>{children}</section>
+      <section className='container mx-auto max-w-7xl sm:px-6 lg:px-8'>
+        {children}
+      </section>
       <Footer />
     </Fragment>
   )

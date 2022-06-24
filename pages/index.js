@@ -11,7 +11,7 @@ import {
 const Home = ({ listings }) => {
   return (
     <Layout title={'Home'}>
-      <main className='container mx-auto w-full sm:px-6 lg:px-8'>
+      <main className='container mx-auto sm:px-6 lg:px-8'>
         <MainSection />
       </main>
       <section className='lg-relative'>
@@ -27,7 +27,7 @@ const Home = ({ listings }) => {
             </span>
           </div>
         </div>
-        <div className='container mx-auto w-full sm:px-6 lg:px-8'>
+        <div className='container mx-auto sm:px-6 lg:px-8'>
           <FeaturedListings listings={listings} />
         </div>
       </section>

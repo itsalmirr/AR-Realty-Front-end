@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer className='bg-primaryDark mt-20' aria-labelledby='footer-heading'>
-      <div className='max-w-7xl mx-auto py-5 px-4 sm:px-6 lg:px-8'>
+      <div className='mx-auto py-5 px-4 sm:px-6 lg:px-8'>
         <div className='pt-5 pb-5 md:flex md:items-center md:justify-between'>
           <div className='flex space-x-6 md:order-2'>
             {socialMedia.map((item) => (

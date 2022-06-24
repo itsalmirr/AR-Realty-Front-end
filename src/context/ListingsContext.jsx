@@ -7,6 +7,7 @@ const ListingsContext = createContext()
 export default ListingsContext
 
 export const ListingsProvider = ({ children }) => {
+  const [loading, setLoading] = useState(false)
   const [listings, setListings] = useState([])
   const [next, setNext] = useState(null)
   const [prev, setPrev] = useState(null)
@@ -19,6 +20,7 @@ export const ListingsProvider = ({ children }) => {
 
   const getListings = async () => {
     try {
+      setLoading(true)
       const res = await axios.get(`/api/listings/?limit=6&page=${page}`)
 
       const { results, count, next: nextPage, previous } = res.data.resData
@@ -29,9 +31,11 @@ export const ListingsProvider = ({ children }) => {
     } catch (err) {
       toast.error('Error fetching listings')
     }
+    setLoading(false)
   }
 
   const contextData = {
+    loading: loading,
     listings: listings,
     next: next,
     prev: prev,
