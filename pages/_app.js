@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { Fragment, useEffect } from 'react'
 import AOS from 'aos'
 import { AuthProvider } from '@context/AuthContext'
+import { ListingsProvider } from '@context/ListingsContext'
 import { ToastContainer, Flip } from 'react-toastify'
 
 function MyApp({ Component, pageProps }) {
@@ -35,7 +36,9 @@ function MyApp({ Component, pageProps }) {
         theme='colored'
       />
       <AuthProvider>
-        <Component {...pageProps} />
+        <ListingsProvider>
+          <Component {...pageProps} />
+        </ListingsProvider>
       </AuthProvider>
     </Fragment>
   )

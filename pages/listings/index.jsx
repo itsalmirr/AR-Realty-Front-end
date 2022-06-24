@@ -1,38 +1,13 @@
-import axios from 'axios'
-import { toast } from 'react-toastify'
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
 import { API_URL } from '@lib/index'
+import ListingsContext from '@context/ListingsContext'
 import { Layout, FeaturedListings, Pagination } from '@components/index'
 
-const ListingPage = ({ url }) => {
-  const [listings, setListings] = useState([])
-  const [next, setNext] = useState(null)
-  const [prev, setPrev] = useState(null)
-  const [total, setTotal] = useState(0)
-  const [page, setPage] = useState(1)
-
-  const getListings = async () => {
-    try {
-      const res = await axios.get(
-        `${url}/api/properties/?limit=6&page=${page}${
-          page > 1 ? '&offset=6' : ''
-        }`
-      )
-
-      setTotal(res.data.count)
-      setListings(res.data.results)
-      setNext(res.data.next ? res.data.next : null)
-      setPrev(res.data.previous ? res.data.previous : null)
-    } catch (err) {
-      toast.error('Error fetching listings')
-    }
-  }
-
-  useEffect(() => {
-    getListings()
-  }, [page])
+const ListingPage = () => {
+  const { listings, next, prev, total, page, setPage } =
+    useContext(ListingsContext)
 
   return (
     <Layout title='Listings'>
@@ -59,13 +34,3 @@ const ListingPage = ({ url }) => {
 }
 
 export default ListingPage
-
-export const getStaticProps = async () => {
-  const url = `${API_URL}`
-
-  return {
-    props: {
-      url: url,
-    },
-  }
-}
