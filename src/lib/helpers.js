@@ -18,22 +18,38 @@ export const parseCookie = (req) => {
 export const setCookies = (res, access, refresh) => {
   res.setHeader(
     'Set-Cookie',
-    cookie.serialize('access', access ? access : '', {
+    cookie.serialize('access', access, {
       httpOnly: true,
-      maxAge: 120 * 60 * 1000, // 120 minutes
-      path: '/api/',
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
       sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
     }),
-    cookie.serialize('refresh', refresh ? refresh : '', {
+    cookie.serialize('refresh_token', refresh, {
       httpOnly: true,
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-      path: '/api/',
+      maxAge: 60 * 60 * 24 * 7,
+      path: '/',
       sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
     })
   )
+  console.log(refresh, access)
 }
+
+// cookie.serialize('refresh', refresh, {
+//   httpOnly: true,
+//   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+//   path: '/api/',
+//   sameSite: 'strict',
+//   secure: process.env.NODE_ENV === 'production',
+// }),
+// cookie.serialize('access', access, {
+//   httpOnly: true,
+//   maxAge: 120 * 60 * 1000, // 120 minutes
+//   path: '/api/',
+//   sameSite: 'strict',
+//   secure: process.env.NODE_ENV === 'production',
+// })
 
 export const removeCookies = (res) => {
   res.setHeader(
