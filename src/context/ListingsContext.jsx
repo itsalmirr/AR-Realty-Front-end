@@ -21,11 +21,11 @@ export const ListingsProvider = ({ children }) => {
     try {
       const res = await axios.get(`/api/listings/?limit=6&page=${page}`)
 
-      const { results, count, next: nextPage, previous } = res.data.user
+      const { results, count, next: nextPage, previous } = res.data.resData
       setTotal(count)
       setListings(results)
-      setNext(nextPage ? nextPage : null)
-      setPrev(previous ? previous : null)
+      setNext(nextPage)
+      setPrev(previous)
     } catch (err) {
       toast.error('Error fetching listings')
     }

@@ -3,9 +3,10 @@ import { removeCookies, parseCookie, response } from '@lib/helpers'
 const logout = async (req, res) => {
   if (req.method === 'GET') {
     const cookies = parseCookie(req)
-    if (!cookies.access) {
+    if (!cookies.access || !cookies.refresh) {
       response(res, 403, false, 'User not logged in')
     }
+
     removeCookies(res)
     response(res, 200, true, 'Logout Successful')
   } else {

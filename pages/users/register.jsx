@@ -1,4 +1,5 @@
 import Link from 'next/link'
+
 import { links } from '@lib/index'
 import { Layout, RegisterForm } from '@components/index'
 import { ContinueWithProvider } from '@components/FormComponents'

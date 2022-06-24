@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
-        setUser(res.data.user ? res.data.user : null)
+        setUser(res.data.resData)
         setIsLoggedIn(res.data.success ? true : false)
         toast.success(res.data.message)
         router.push('/account/dashboard')
@@ -67,7 +67,8 @@ export const AuthProvider = ({ children }) => {
     e.preventDefault()
     try {
       setIsLoading(true)
-      await axios.get('/api/auth/logout')
+      const res = await axios.get('/api/auth/logout')
+      console.log(res)
       setUser(null)
       setIsLoggedIn(false)
       router.pathname !== '/' && router.push('/')
@@ -82,7 +83,7 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true)
       const res = await axios.get('/api/auth/user')
-      setUser(res.data.user)
+      setUser(res.data.resData)
       setIsLoggedIn(true)
     } catch (err) {
       toast.error('Your session has expired')

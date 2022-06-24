@@ -34,7 +34,7 @@ const ListingCard = ({ listing }) => {
               <span className='text-gray-900 font-bold'>{price}</span>
             </h3>
             <button className='flex justify-start items-center mx-2 mt-3'>
-              <FaRegHeart className='w-5 h-5 mr-2 text-gray-300 hover:text-red-400' />
+              <FaRegHeart className='w-5 h-5 mr-2 text-gray-300 hover:text-blue-400' />
             </button>
           </div>
 

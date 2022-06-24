@@ -1,7 +1,6 @@
 import { useContext } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
-import { API_URL } from '@lib/index'
 import ListingsContext from '@context/ListingsContext'
 import { Layout, FeaturedListings, Pagination } from '@components/index'
 

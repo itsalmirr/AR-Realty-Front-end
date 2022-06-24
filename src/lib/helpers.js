@@ -3,11 +3,12 @@ import axios from 'axios'
 
 export const fetcher = async (url) => axios.get(url).then((res) => res.data)
 export const PER_PAGE = 6
-export const response = (res, code, status, message, userData) => {
+
+export const response = (res, code, status, message, resData) => {
   return res.status(code).json({
     success: status,
     message: message,
-    user: userData ? userData : null,
+    resData: resData,
   })
 }
 
@@ -16,59 +17,42 @@ export const parseCookie = (req) => {
 }
 
 export const setCookies = (res, access, refresh) => {
-  res.setHeader(
-    'Set-Cookie',
+  // Set cookies access expiry tg 1 day and refresh expiry to 7 days
+  const accessExpiry = new Date(Date.now() + 1000 * 60 * 60 * 24)
+  const refreshExpiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
+
+  res.setHeader('Set-Cookie', [
     cookie.serialize('access', access, {
       httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7,
-      path: '/',
-      sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
+      expires: accessExpiry,
+      path: '/',
     }),
-    cookie.serialize('refresh_token', refresh, {
+    cookie.serialize('refresh', refresh, {
       httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7,
-      path: '/',
-      sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
-    })
-  )
-  console.log(refresh, access)
+      expires: refreshExpiry,
+      path: '/',
+    }),
+  ])
 }
 
-// cookie.serialize('refresh', refresh, {
-//   httpOnly: true,
-//   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
-//   path: '/api/',
-//   sameSite: 'strict',
-//   secure: process.env.NODE_ENV === 'production',
-// }),
-// cookie.serialize('access', access, {
-//   httpOnly: true,
-//   maxAge: 120 * 60 * 1000, // 120 minutes
-//   path: '/api/',
-//   sameSite: 'strict',
-//   secure: process.env.NODE_ENV === 'production',
-// })
-
 export const removeCookies = (res) => {
-  res.setHeader(
-    'Set-Cookie',
+  // Remove cookies
+  res.setHeader('Set-Cookie', [
     cookie.serialize('access', '', {
       httpOnly: true,
-      expires: new Date(0),
-      path: '/api/',
-      sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
+      expires: new Date(0),
+      path: '/',
     }),
     cookie.serialize('refresh', '', {
       httpOnly: true,
-      expires: new Date(0),
-      path: '/api/',
-      sameSite: 'strict',
       secure: process.env.NODE_ENV === 'production',
-    })
-  )
+      expires: new Date(0),
+      path: '/',
+    }),
+  ])
 }
 
 const formatter = new Intl.NumberFormat('en-EN', {

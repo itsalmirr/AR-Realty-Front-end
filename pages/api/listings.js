@@ -10,6 +10,7 @@ const listings = async (req, res) => {
     const url = `${API_URL}/api/properties/?page=${page}${
       page > 1 ? `&offset=${offsetNum}` : ''
     }`
+
     try {
       const axiosResponse = await axios.get(url)
       response(

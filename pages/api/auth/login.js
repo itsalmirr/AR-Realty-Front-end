@@ -11,18 +11,15 @@ const login = async (req, res) => {
         email,
         password,
       })
-      //   Set the cookies
-      if (axiosResponse.data) {
-        setCookies(res, axiosResponse.data.access, axiosResponse.data.refresh)
-      }
 
-      const user = await axios.get(`${API_URL}/api/user/me`, {
+      setCookies(res, axiosResponse.data.access, axiosResponse.data.refresh)
+      const { data } = await axios.get(`${API_URL}/api/user/me`, {
         headers: {
           Authorization: `Bearer ${axiosResponse.data.access}`,
         },
       })
 
-      response(res, 200, true, 'Login Successful', user.data)
+      response(res, 200, true, 'Login Successful', data)
     } catch (err) {
       response(res, 500, false, 'Server error')
     }
