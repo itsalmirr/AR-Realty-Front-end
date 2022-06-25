@@ -7,7 +7,7 @@ const AboutPage = () => {
         <div className='mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8'>
           <div className='text-center mb-2'>
             <h2 className='mb-10 text-base font-semibold text-accent-600 tracking-wide uppercase'>
-              COMPANY
+              About
             </h2>
             <h2 className='mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl'>
               Honesty, Reliability and
@@ -15,10 +15,10 @@ const AboutPage = () => {
               Integrity
             </h2>
             <p className='max-w-xl mt-5 mx-auto text-xl text-gray-500'>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Aspernatur delectus repudiandae, ipsum numquam, enim doloremque
-              excepturi impedit rerum suscipit magni incidunt modi omnis dolore
-              maiores nemo repellendus. Quae, cumque aliquam.
+              At AR Realty, our values are our guiding light. They drive how we
+              work together and how we show up for our community, and they shape
+              what we aspire to be. They influence our business decisions and
+              how we ultimately serve our customers.
             </p>
           </div>
         </div>
@@ -36,17 +36,19 @@ const AboutPage = () => {
                 AR Realty, Inc.
               </h2>
               <p className='max-w-xl mt-5 mx-auto text-md text-gray-500'>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut
-                vitae assumenda ducimus voluptatum fuga. Velit dolores quo id
-                autem eaque. Placeat aliquid culpa iusto adipisci. Praesentium
-                voluptate reiciendis delectus minima. Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Architecto similique praesentium
-                error natus delectus illum inventore tempora eos iusto dolorum
-                cumque animi modi explicabo quasi debitis, eum non aspernatur.
-                Facere! Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Recusandae quis ullam suscipit iure doloribus, asperiores
-                amet omnis libero adipisci optio minus soluta! Asperiores modi
-                aspernatur maiores quia, sed labore reiciendis!
+                AR Realty's founders saw an opportunity to empower people with
+                knowledge and information and make it radically easier for
+                people to move. The introduction of the Zestimate, our
+                proprietary valuation algorithm, combined with advanced
+                technology, content and connections, has turned AR Realty into a
+                household name. This was phase one. Despite the transparency
+                that's empowered millions of people in their home journey, very
+                little innovation has happened around the transaction itself. We
+                now live in an always-on world, but real estate isn't always on.
+                In fact, it's off a lot of the time. Other industries have
+                ushered in a new era of convenience; the time for a seamless and
+                convenient real estate transaction experience is now. This is
+                phase two — and our next chapter as a company.
               </p>
             </div>
           </div>
@@ -58,12 +60,12 @@ const AboutPage = () => {
                 Our Philosophy
               </h2>
               <p className='max-w-xl mt-5 mx-auto text-xl text-gray-50'>
-                To be successful in the construction industry, a company must be
-                led by a respected and ethical contractor who has authentically
-                inspired superior craftsmanship, and dedication. A contractor is
-                only as good as his team — and Home Services Toskic, Inc. is
-                committed to hiring experienced professionals who share a deep
-                commitment to quality.
+                As the most-visited real estate website in the United States, AR
+                Realty and its affiliates offer customers an on-demand
+                experience for selling and buying with transparency and nearly
+                seamless end-to-end service. AR Realty Home Loans, our affiliate
+                lender, provides our customers with an easy option to get
+                pre-approved and secure financing for their next home purchase.
               </p>
               <p className='max-w-xl mt-5 mx-auto text-xl text-gray-50'>
                 The company must exemplify teamwork, integrity, honesty, and
