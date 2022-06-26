@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { IoMdPricetag } from 'react-icons/io'
 import { MdSquareFoot } from 'react-icons/md'
 import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
@@ -70,9 +71,11 @@ const ListingCard = ({ listing }) => {
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
-        <button className='w-full h-10 mt-5 bg-primaryDark rounded-md text-white hover:bg-primaryLight'>
-          More Info
-        </button>
+        <Link href={`/listings/${listing.slug}`}>
+          <button className='w-full h-10 mt-5 bg-primaryDark rounded-md text-white hover:bg-primaryLight'>
+            More Info
+          </button>
+        </Link>
       </li>
     </ul>
   )

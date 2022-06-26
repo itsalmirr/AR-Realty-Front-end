@@ -67,8 +67,7 @@ export const AuthProvider = ({ children }) => {
     e.preventDefault()
     try {
       setIsLoading(true)
-      const res = await axios.get('/api/auth/logout')
-      console.log(res)
+      await axios.get('/api/auth/logout')
       setUser(null)
       setIsLoggedIn(false)
       router.pathname !== '/' && router.push('/')

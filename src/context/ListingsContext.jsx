@@ -9,6 +9,7 @@ export default ListingsContext
 export const ListingsProvider = ({ children }) => {
   const [loading, setLoading] = useState(false)
   const [listings, setListings] = useState([])
+  const [listing, setListing] = useState({})
   const [next, setNext] = useState(null)
   const [prev, setPrev] = useState(null)
   const [total, setTotal] = useState(0)
@@ -34,6 +35,16 @@ export const ListingsProvider = ({ children }) => {
     setLoading(false)
   }
 
+  const singleListing = async (slug) => {
+    try {
+      const { data } = await axios.get(`/api/listing/?slug=${slug}`)
+      setListing(data.resData)
+      return data.resData
+    } catch (err) {
+      toast.error('Error fetching listing')
+    }
+  }
+
   const contextData = {
     loading: loading,
     listings: listings,
@@ -42,6 +53,8 @@ export const ListingsProvider = ({ children }) => {
     total: total,
     page: page,
     setPage: setPage,
+    singleListing: singleListing,
+    listing: listing,
   }
 
   return (
