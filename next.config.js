@@ -29,6 +29,15 @@ const headers = [
     key: 'Referrer-Policy',
     value: 'same-origin',
   },
+  {
+    key: 'X-Download-Options',
+    value: 'noopen',
+  },
+  {
+    key: 'X-Content-Security-Policy',
+    value:
+      "default-src 'none'; connect-src 'self' https:; font-src 'self' https: data:; img-src 'self' https: data:; script-src 'self' https:; style-src 'self' https: data:;",
+  },
 ]
 
 const nextConfig = {
