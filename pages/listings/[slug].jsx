@@ -1,12 +1,10 @@
 import { useRouter } from 'next/router'
 import { useEffect, useContext } from 'react'
-import { IoMdPricetag } from 'react-icons/io'
-import { MdSquareFoot } from 'react-icons/md'
-import { FaBed, FaBath, FaRegHeart, FaPlus, FaMinus } from 'react-icons/fa'
+import { FaPlus, FaMinus } from 'react-icons/fa'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Disclosure, RadioGroup, Tab } from '@headlessui/react'
+import { Disclosure, Tab } from '@headlessui/react'
 import { formatPrice } from '@lib/helpers'
 
 // Import Swiper styles
@@ -23,7 +21,7 @@ import ListingsContext from '@context/ListingsContext'
 const ListingById = () => {
   const router = useRouter()
   const { slug } = router.query
-  const { loading, listing, singleListing } = useContext(ListingsContext)
+  const { listing, singleListing } = useContext(ListingsContext)
 
   useEffect(() => {
     slug && singleListing(slug)
@@ -82,7 +80,9 @@ const ListingById = () => {
                 <h2 id='details-heading' className='sr-only'>
                   Additional details
                 </h2>
-                <ListingFeatures listing={listing} perSqft={pricePerSqft} />
+                <div className='border-t divide-y'>
+                  <ListingFeatures listing={listing} perSqft={pricePerSqft} />
+                </div>
 
                 <div className='border-t divide-y divide-gray-200'>
                   {product.details.map((detail) => (

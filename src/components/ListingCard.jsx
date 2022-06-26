@@ -4,9 +4,12 @@ import { MdSquareFoot } from 'react-icons/md'
 import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
 
 import { formatPrice } from '@lib/helpers'
+import { ListingFeatures } from '@components/index'
 
 const ListingCard = ({ listing }) => {
   const price = formatPrice(listing.price)
+  const pricePerSqft = formatPrice(listing.price / listing.sqft)
+
   return (
     <ul role='list'>
       <li
@@ -38,7 +41,10 @@ const ListingCard = ({ listing }) => {
               <FaRegHeart className='w-5 h-5 mr-2 text-gray-300 hover:text-red-500' />
             </button>
           </div>
-
+          <div className='border-b'>
+            <ListingFeatures listing={listing} />
+          </div>
+          {/* 
           <ul className='flex space-x-3 lg:mt-2'>
             <li>
               <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
@@ -66,7 +72,7 @@ const ListingCard = ({ listing }) => {
                 </span>
               </p>
             </li>
-          </ul>
+          </ul> */}
           <p className='text-gray-500 font-light text-sm p-2 break-normal justify text-justify'>
             {`${listing.description.slice(0, 100)}...`}
           </p>
