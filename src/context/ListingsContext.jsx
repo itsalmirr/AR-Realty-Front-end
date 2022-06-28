@@ -22,9 +22,8 @@ export const ListingsProvider = ({ children }) => {
   const getListings = async () => {
     try {
       setLoading(true)
-      const res = await axios.get(`/api/listings/?limit=6&page=${page}`)
-
-      const { results, count, next: nextPage, previous } = res.data.resData
+      const { data } = await axios.get(`/api/listings/?limit=6&page=${page}`)
+      const { results, count, next: nextPage, previous } = data.resData
       setTotal(count)
       setListings(results)
       setNext(nextPage)

@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import { IoMdPricetag } from 'react-icons/io'
-import { MdSquareFoot } from 'react-icons/md'
-import { FaBed, FaBath, FaRegHeart } from 'react-icons/fa'
+import { FaRegHeart } from 'react-icons/fa'
 
 import { formatPrice } from '@lib/helpers'
 import { ListingFeatures } from '@components/index'
 
 const ListingCard = ({ listing }) => {
   const price = formatPrice(listing.price)
-  const pricePerSqft = formatPrice(listing.price / listing.sqft)
 
   return (
     <ul role='list'>
@@ -44,35 +42,7 @@ const ListingCard = ({ listing }) => {
           <div className='border-b'>
             <ListingFeatures listing={listing} />
           </div>
-          {/* 
-          <ul className='flex space-x-3 lg:mt-2'>
-            <li>
-              <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
-                <FaBed className='w-4 h-4 text-gray-300' />
-                <span className='ml-2 mr-1 whitespace-nowrap'>
-                  {listing.bedrooms}
-                </span>
-                Bed
-              </p>
-            </li>
-            <li>
-              <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
-                <FaBath className='w-4 h-4 text-gray-300' />
-                <span className='ml-2 mr-1 whitespace-nowrap'>
-                  {listing.bathrooms}
-                </span>
-                Bed
-              </p>
-            </li>
-            <li>
-              <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
-                <MdSquareFoot className='w-4 h-4 text-gray-300' />
-                <span className='ml-2 mr-1 whitespace-nowrap'>
-                  {listing.sqft} ft<sup>2</sup>
-                </span>
-              </p>
-            </li>
-          </ul> */}
+
           <p className='text-gray-500 font-light text-sm p-2 break-normal justify text-justify'>
             {`${listing.description.slice(0, 100)}...`}
           </p>

@@ -12,7 +12,7 @@ const user = async (req, res) => {
 
     const cookie = parseCookie(req)
 
-    if (!cookie.access || !cookie.refresh) {
+    if (!cookie.access && !cookie.refresh) {
       return res.end()
     }
 

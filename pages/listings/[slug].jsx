@@ -1,11 +1,23 @@
 import { useRouter } from 'next/router'
-import { useEffect, useContext } from 'react'
-import { FaPlus, FaMinus } from 'react-icons/fa'
+import { useEffect, useContext, useState } from 'react'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Disclosure, Tab } from '@headlessui/react'
 import { formatPrice } from '@lib/helpers'
+import {
+  FaPlus,
+  FaMinus,
+  FaRegBuilding,
+  FaCalendar,
+  FaTemperatureHigh,
+  FaSnowflake,
+  FaParking,
+} from 'react-icons/fa'
+
+import { RiLandscapeFill } from 'react-icons/ri'
+import { GiHomeGarage } from 'react-icons/gi'
+import { MdPriceCheck } from 'react-icons/md'
 
 // Import Swiper styles
 import 'swiper/css'
@@ -16,12 +28,13 @@ import 'swiper/css/navigation'
 import { Pagination, Navigation } from 'swiper'
 
 import { Layout, Divider, ListingFeatures } from '@components/index'
+import { companyLogo } from '@lib/constants'
 import ListingsContext from '@context/ListingsContext'
 
 const ListingById = () => {
   const router = useRouter()
   const { slug } = router.query
-  const { listing, singleListing } = useContext(ListingsContext)
+  const { loading, listing, singleListing } = useContext(ListingsContext)
 
   useEffect(() => {
     slug && singleListing(slug)
@@ -38,6 +51,52 @@ const ListingById = () => {
 
   const price = formatPrice(listing.price)
   const pricePerSqft = formatPrice(listing.price / listing.sqft)
+
+  const listingOverview = [
+    {
+      title: 'Property Type',
+      value: `${listing.type_of_property} residence`,
+      icon: FaRegBuilding,
+      iconForeground: 'text-teal-700',
+      iconBackground: 'bg-gray-50',
+    },
+    {
+      title: 'Built in',
+      value: `Built in ${listing.year_built}`,
+      icon: FaCalendar,
+      iconForeground: 'text-purple-700',
+      iconBackground: 'bg-purple-50',
+    },
+    {
+      title: 'Heat',
+      value: `${listing.heating}`,
+      icon: FaTemperatureHigh,
+      iconForeground: 'text-red-700',
+      iconBackground: 'bg-red-50',
+    },
+    {
+      title: 'Cooling',
+      value: `${listing.cooling}`,
+      icon: FaSnowflake,
+      iconForeground: 'text-sky-700',
+      iconBackground: 'bg-sky-50',
+    },
+    {
+      title: 'Land',
+      value: listing.lot_size,
+      icon: RiLandscapeFill,
+      iconForeground: 'text-green-700',
+      iconBackground: 'bg-green-50',
+    },
+    {
+      title: 'Garage / Parking',
+      value: listing.garage,
+      icon: FaParking,
+      iconForeground: 'text-blue-700',
+      iconBackground: 'bg-blue-50',
+    },
+  ]
+
   return (
     <Layout title='Yes'>
       <div className='bg-white'>
@@ -131,28 +190,73 @@ const ListingById = () => {
             </div>
           </div>
           <Divider text={'About the House'} />
-          <div className='flow-root mt-6 max-w-md'>
-            <ul role='list' className='-my-5 divide-y divide-gray-200'>
-              {announcements.map((announcement) => (
-                <li key={announcement.id} className='py-5'>
-                  <div className='relative focus-within:ring-2 focus-within:ring-indigo-500'>
-                    <h3 className='text-sm font-semibold text-gray-800'>
-                      <a
-                        href='#'
-                        className='hover:underline focus:outline-none'>
-                        {/* Extend touch target to entire panel */}
-                        <span className='absolute inset-0' aria-hidden='true' />
-                        {announcement.title}
-                      </a>
-                    </h3>
-                    <p className='mt-1 text-sm text-gray-600 line-clamp-2'>
-                      {announcement.preview}
-                    </p>
-                  </div>
-                </li>
-              ))}
-            </ul>
+          <div className='rounded-lg mb-12 bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
+            {listingOverview.map((action, actionIdx) => (
+              <div
+                key={action.title}
+                className={classNames(
+                  actionIdx === 0
+                    ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
+                    : '',
+                  actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
+                  actionIdx === listingOverview.length - 2
+                    ? 'sm:rounded-bl-lg'
+                    : '',
+                  actionIdx === listingOverview.length - 1
+                    ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
+                    : '',
+                  'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
+                )}>
+                <div className='flex items-center'>
+                  <span
+                    className={classNames(
+                      action.iconBackground,
+                      action.iconForeground,
+                      'rounded-lg inline-flex p-3 ring-4 ring-white'
+                    )}>
+                    <action.icon className='h-6 w-6' aria-hidden='true' />
+                  </span>
+                  <span className='ml-4 text-gray-900 font-bold'>
+                    {action.value}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
+          <blockquote className='relative bg-white rounded-lg shadow-lg'>
+            <div className='rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8'>
+              <img
+                src={companyLogo}
+                alt='Workcation'
+                className='h-8 bg-primaryDark rounded-md'
+              />
+              <div className='relative text-lg text-gray-700 font-medium mt-8'>
+                <svg
+                  className='absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-gray-200'
+                  fill='currentColor'
+                  viewBox='0 0 32 32'
+                  aria-hidden='true'>
+                  <path d='M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z' />
+                </svg>
+                <p className='ml-5 relative'>{listing.description}</p>
+              </div>
+            </div>
+            <cite className='relative flex items-center sm:items-start bg-primaryDark rounded-b-lg not-italic py-5 px-6 sm:py-5 sm:pl-12 sm:pr-10 sm:mt-10'>
+              <span className='relative rounded-full border-2 border-white sm:absolute sm:top-0 sm:transform sm:-translate-y-1/2'>
+                <img
+                  className='w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-indigo-300'
+                  src={listing.realtor && listing.realtor.photo}
+                  alt=''
+                />
+              </span>
+              <span className='relative ml-4 text-accentDark font-semibold leading-6 sm:ml-24 sm:pl-1'>
+                <span className='text-white font-semibold sm:inline'>
+                  {listing.realtor && listing.realtor.full_name}
+                </span>{' '}
+                <span className='sm:inline'>Realtor</span>
+              </span>
+            </cite>
+          </blockquote>
         </div>
       </div>
     </Layout>
