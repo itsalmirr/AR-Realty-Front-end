@@ -20,9 +20,11 @@ const ListingCard = ({ listing }) => {
             src={listing.photo_main}
             alt={listing.description}
           />
-          <h3 className='mt-2 mb-2 text-gray-900 text-lg font-bold'>
-            {listing.title}
-          </h3>
+          <Link href={`/listings/${listing.slug}`}>
+            <h3 className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
+              {listing.title}
+            </h3>
+          </Link>
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
@@ -47,11 +49,31 @@ const ListingCard = ({ listing }) => {
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
-        <Link href={`/listings/${listing.slug}`}>
-          <button className='w-full h-10 mt-5 bg-primaryDark rounded-md text-white hover:bg-primaryLight'>
-            More Info
-          </button>
-        </Link>
+        <div className='flex-1 bg-white p-6 flex flex-col justify-between'>
+          <div className='mt-6 flex items-center'>
+            <div className='flex-shrink-0'>
+              <a href='#'>
+                <span className='sr-only'>{listing.realtor.full_name}</span>
+                <img
+                  className='h-10 w-10 rounded-full'
+                  src={listing.realtor.photo}
+                  alt=''
+                />
+              </a>
+            </div>
+            <div className='ml-3'>
+              <p className='flex space-x-1 text-sm font-medium text-gray-900'>
+                <a href='#' className='hover:underline'>
+                  {listing.realtor.full_name}
+                </a>
+              </p>
+              <div className='flex space-x-1 text-sm text-gray-500'>
+                <time dateTime={listing.pub_date}>{listing.pub_date}</time>
+                <span aria-hidden='true'>&middot;</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   )

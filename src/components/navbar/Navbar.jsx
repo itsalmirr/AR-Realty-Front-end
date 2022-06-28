@@ -26,7 +26,7 @@ const Navbar = () => {
   }
 
   return (
-    <Disclosure as='header' className='bg-primaryDark'>
+    <Disclosure as='header' className='bg-primaryDark' id='navbar'>
       {({ open }) => (
         <Fragment>
           <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8'>

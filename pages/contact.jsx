@@ -73,7 +73,7 @@ const ContactPage = () => {
                     width={4}
                     height={4}
                     className='text-warm-gray-200'
-                    fill='currentColor'
+                    fill='#0077b6'
                   />
                 </pattern>
               </defs>
