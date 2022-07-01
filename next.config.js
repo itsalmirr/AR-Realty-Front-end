@@ -53,7 +53,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['tailwindui.com', 'images.unsplash.com'],
+    domains: ['tailwindui.com', 'images.unsplash.com', 'res.cloudinary.com'],
   },
 }
 

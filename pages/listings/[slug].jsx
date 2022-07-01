@@ -5,6 +5,7 @@ import 'swiper/css/navigation'
 
 import { useRouter } from 'next/router'
 import { useEffect, useContext } from 'react'
+import Image from 'next/image'
 
 // Import Swiper React components
 import { Tab } from '@headlessui/react'
@@ -69,7 +70,12 @@ const ListingById = () => {
                       (photo, index) =>
                         photo && (
                           <SwiperSlide key={index}>
-                            <img src={photo !== null && photo} alt='' />
+                            <Image
+                              width={568}
+                              height={378.66}
+                              src={photo !== null && photo}
+                              alt=''
+                            />
                           </SwiperSlide>
                         )
                     )}

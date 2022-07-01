@@ -18,8 +18,11 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  border-radius: 2rem;
 }
 
 .our-philosophy-section {
   background-color: rgba(0, 0, 0, 0.8);
+  /* Round the corners */
+  border-radius: 1rem;
 }

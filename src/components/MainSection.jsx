@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const MainSection = () => {
   return (
@@ -35,7 +36,7 @@ const MainSection = () => {
               <Link href='/listings'>
                 <a
                   href='#'
-                  className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primaryDark hover:bg-accentDark md:py-4 md:text-lg md:px-10'>
+                  className='w-full flex items-center justify-center px-2 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primaryDark hover:bg-accentDark md:py-4 md:text-lg md:px-10'>
                   Explore
                 </a>
               </Link>
@@ -52,10 +53,12 @@ const MainSection = () => {
           </div>
         </div>
       </div>
-      <div className='relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
-        <img
+      <div className='relative w-full h-64 mt-8 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
+        <Image
+          width={576}
+          height={664.8}
           data-aos='fade-left'
-          className='absolute mt-8 inset-0 w-full h-4/5 object-cover'
+          className='absolute inset-0 w-full h-4/5 object-cover'
           src={imgUrls[0].url}
           alt={imgUrls[0].alt}
         />

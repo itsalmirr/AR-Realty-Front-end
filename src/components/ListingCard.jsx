@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaRegHeart } from 'react-icons/fa'
 
@@ -15,7 +16,9 @@ const ListingCard = ({ listing }) => {
         data-aos='fade-up'
         className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
-          <img
+          <Image
+            width={357.32}
+            height={238.28}
             className='flex-shrink-0 mx-auto rounded-t-lg'
             src={listing.photo_main}
             alt={listing.description}
@@ -54,7 +57,9 @@ const ListingCard = ({ listing }) => {
             <div className='flex-shrink-0'>
               <a href='#'>
                 <span className='sr-only'>{listing.realtor.full_name}</span>
-                <img
+                <Image
+                  width={40}
+                  height={40}
                   className='h-10 w-10 rounded-full'
                   src={listing.realtor.photo}
                   alt=''
