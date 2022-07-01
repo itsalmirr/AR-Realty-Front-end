@@ -20,7 +20,7 @@ const ListingCard = ({ listing }) => {
             src={listing.photo_main}
             alt={listing.description}
           />
-          <Link href={`/listings/${listing.slug}`}>
+          <Link href={`/listings/${listing.slug}`} passHref>
             <h3 className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
               {listing.title}
             </h3>

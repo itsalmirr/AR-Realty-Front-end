@@ -2,7 +2,12 @@ import cookie from 'cookie'
 import axios from 'axios'
 
 export const fetcher = async (url) => axios.get(url).then((res) => res.data)
+
 export const PER_PAGE = 6
+
+export const classNames = (...classes) => {
+  return classes.filter(Boolean).join(' ')
+}
 
 export const response = (res, code, status, message, resData) => {
   return res.status(code).json({

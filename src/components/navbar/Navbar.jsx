@@ -8,7 +8,8 @@ import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
 import AuthContext from '@context/AuthContext'
 import UserMenu from '@components/navbar/UserMenu'
 import { MobileMenuDropDown } from '@components/index'
-import { navigation, userNavigation, links, classNames } from '@lib/index'
+import { classNames } from '@lib/helpers'
+import { navigation, userNavigation, links } from '@lib/index'
 
 const Navbar = () => {
   const router = useRouter()
