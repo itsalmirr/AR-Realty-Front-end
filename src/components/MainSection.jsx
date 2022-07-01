@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 
 const MainSection = () => {
   return (
@@ -54,9 +53,7 @@ const MainSection = () => {
         </div>
       </div>
       <div className='relative w-full h-64 mt-8 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'>
-        <Image
-          width={576}
-          height={664.8}
+        <img
           data-aos='fade-left'
           className='absolute inset-0 w-full h-4/5 object-cover'
           src={imgUrls[0].url}
