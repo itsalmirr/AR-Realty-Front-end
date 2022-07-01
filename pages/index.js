@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { API_URL } from '@lib/index'
+import { API_URL } from '@lib/constants'
 import {
   Layout,
   MainSection,

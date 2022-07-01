@@ -1,6 +1,6 @@
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
-import { PER_PAGE } from '@lib/helpers'
+import { PER_PAGE } from '@lib/constants'
 
 const Pagination = ({ currentPage, nextPage, prevPage, total, setPage }) => {
   const lastPage = Math.ceil(total / PER_PAGE)

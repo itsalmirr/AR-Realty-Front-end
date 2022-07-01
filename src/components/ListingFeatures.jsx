@@ -1,11 +1,8 @@
 import React from 'react'
-import { IoMdPricetag } from 'react-icons/io'
 import { MdSquareFoot } from 'react-icons/md'
-import { FaBed, FaBath, FaRegHeart, FaPlus, FaMinus } from 'react-icons/fa'
+import { FaBed, FaBath } from 'react-icons/fa'
 
 const ListingFeatures = ({ listing, perSqft }) => {
-  // calculate the price per sqare foot
-
   return (
     <ul className='flex space-x-3 lg:mt-2 lg:mb-2'>
       <li>

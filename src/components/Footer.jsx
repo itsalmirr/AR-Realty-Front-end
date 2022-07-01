@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { socialMedia } from '@lib/index'
+import { socialMedia } from '@lib/constants'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()

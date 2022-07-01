@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+import { metrics } from '@lib/constants'
+
 const MainSection = () => {
   return (
     <main className='lg:relative'>
@@ -65,21 +67,6 @@ const MainSection = () => {
 }
 
 export default MainSection
-
-const metrics = [
-  {
-    id: 1,
-    stat: '3K+',
-    emphasis: 'Properties',
-    rest: 'has been sold and countinues to grow',
-  },
-  {
-    id: 2,
-    stat: '4K+',
-    emphasis: 'Properties listed',
-    rest: 'across the US and Canada',
-  },
-]
 
 const imgUrls = [
   {

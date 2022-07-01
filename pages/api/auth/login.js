@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_URL } from '@lib/index'
+import { API_URL } from '@lib/constants'
 import { response, setCookies } from '@lib/helpers'
 
 const login = async (req, res) => {
