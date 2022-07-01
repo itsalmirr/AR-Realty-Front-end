@@ -1,8 +1,16 @@
 {
   "extends": [
+    "airbnb",
     "next/core-web-vitals",
     "eslint:recommended",
     "plugin:react/recommended"
   ],
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true,
+      "impliedStrict": true
+    }
+  },
   "@next/next/no-img-element": "off"
 }
