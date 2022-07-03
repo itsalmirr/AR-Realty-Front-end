@@ -18,10 +18,10 @@ const ListingById = () => {
   const router = useRouter()
   const { slug } = router.query
   const [fullDescription, setFullDescription] = useState(false)
-  const { loading, listing, singleListing } = useContext(ListingsContext)
+  const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
 
   useEffect(() => {
-    !loading && singleListing(slug)
+    !loading && fetchListingBySlug(slug)
   }, [listing])
 
   return (
