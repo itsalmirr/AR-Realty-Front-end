@@ -66,10 +66,7 @@ const ListingCard = ({ listing }) => {
                 />
               </a>
             </div>
-            <button onClick={fetchListingBySlug(listing.slug)}>
-              more info
-            </button>
-            {/* <div className='ml-3'>
+            <div className='ml-3'>
               <p className='flex space-x-1 text-sm font-medium text-gray-900'>
                 <a href='#' className='hover:underline'>
                   {listing.realtor.full_name}
@@ -79,7 +76,7 @@ const ListingCard = ({ listing }) => {
                 <time dateTime={listing.pub_date}>{listing.pub_date}</time>
                 <span aria-hidden='true'>&middot;</span>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </li>

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import dynamic from 'next/dynamic'
 
 import { API_URL } from '@lib/constants'
 import {
