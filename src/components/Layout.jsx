@@ -16,6 +16,7 @@ const Layout = ({ title, children }) => {
     'home',
   ]
   const description = 'Realty company selling homes in the United States'
+
   return (
     <Fragment>
       <Head>

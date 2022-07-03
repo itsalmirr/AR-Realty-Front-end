@@ -1,25 +1,13 @@
-// Import Swiper styles
-import 'swiper/css'
-import 'swiper/css/pagination'
-import 'swiper/css/navigation'
-
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect, useContext } from 'react'
-import Image from 'next/image'
-
-// Import Swiper React components
 import { Tab } from '@headlessui/react'
-import { formatPrice } from '@lib/helpers'
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-// import required modules
-import { Pagination, Navigation } from 'swiper'
-
 import { MdPool } from 'react-icons/md'
+import { FaQuoteLeft } from 'react-icons/fa'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
 import { companyLogo } from '@lib/constants'
-import { classNames } from '@lib/helpers'
+import { formatPrice, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import {
   Layout,
@@ -27,6 +15,7 @@ import {
   ListingFeatures,
   ListingOverview,
 } from '@components/index'
+const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 
 const ListingById = () => {
   const router = useRouter()
@@ -36,15 +25,6 @@ const ListingById = () => {
   useEffect(() => {
     !loading && singleListing(slug)
   }, [listing])
-
-  const photos = [
-    listing.photo_main,
-    listing.photo_1,
-    listing.photo_2,
-    listing.photo_3,
-    listing.photo_4,
-    listing.photo_5,
-  ]
 
   const price = formatPrice(listing.price)
   const pricePerSqft = formatPrice(listing.price / listing.sqft)
@@ -59,27 +39,7 @@ const ListingById = () => {
               {/* Image gallery */}
               <Tab.Group as='div' className='flex flex-col-reverse'>
                 <Tab.Panels className='w-full aspect-w-1 aspect-h-1'>
-                  <Swiper
-                    pagination={{
-                      type: 'progressbar',
-                    }}
-                    navigation={true}
-                    modules={[Pagination, Navigation]}
-                    className='select-none w-full rounded-lg aspect-sq'>
-                    {photos.map(
-                      (photo, index) =>
-                        photo && (
-                          <SwiperSlide key={index}>
-                            <Image
-                              width={568}
-                              height={378.66}
-                              src={photo !== null && photo}
-                              alt=''
-                            />
-                          </SwiperSlide>
-                        )
-                    )}
-                  </Swiper>
+                  <ImageSwiper listing={listing} />
                 </Tab.Panels>
               </Tab.Group>
 
@@ -157,33 +117,57 @@ const ListingById = () => {
                   alt='Workcation'
                   className='h-8 bg-primaryDark rounded-md'
                 />
-                <div className='relative text-lg text-gray-700 font-medium mt-8'>
-                  <svg
-                    className='absolute top-0 left-0 transform -translate-x-3 -translate-y-2 h-8 w-8 text-gray-200'
-                    fill='currentColor'
-                    viewBox='0 0 32 32'
-                    aria-hidden='true'>
-                    <path d='M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z' />
-                  </svg>
-                  <p className='ml-5 relative'>{listing.description}</p>
+                <Divider text={'About the House'} />
+              </div>
+            </blockquote>
+            <div className='bg-white lg:py-24'>
+              <div className='pb-16 bg-primaryDark lg:pb-0 lg:z-10 lg:relative'>
+                <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8'>
+                  <div className='relative lg:-my-8'>
+                    <div
+                      aria-hidden='true'
+                      className='absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden'
+                    />
+                    <div className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full'>
+                      <div className='aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full'>
+                        <img
+                          className='object-cover lg:h-full lg:w-full'
+                          src={listing.realtor.photo}
+                          alt=''
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div className='mt-12 lg:m-0 lg:col-span-2 lg:pl-8'>
+                    <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none'>
+                      <blockquote>
+                        <div>
+                          <FaQuoteLeft className='h-12 w-12 text-white opacity-25' />
+                          <p className='mt-6 text-xl font-medium text-white'>
+                            {listing.realtor.description}
+                          </p>
+                        </div>
+                        <footer className='mt-6'>
+                          <p className='text-base font-medium text-white'>
+                            {listing.realtor.full_name}
+                          </p>
+                          <email className='text-base font-medium text-white'>
+                            {listing.realtor.email}
+                          </email>
+                          <p className='text-base font-medium text-white'>
+                            {listing.realtor.phone}
+                          </p>
+                          <br />
+                          <p className='text-base font-medium text-blue-100'>
+                            REALTOR at AR Realty
+                          </p>
+                        </footer>
+                      </blockquote>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <cite className='relative flex items-center sm:items-start bg-primaryDark rounded-b-lg not-italic py-5 px-6 sm:py-5 sm:pl-12 sm:pr-10 sm:mt-10'>
-                <span className='relative rounded-full border-2 border-white sm:absolute sm:top-0 sm:transform sm:-translate-y-1/2'>
-                  <img
-                    className='w-12 h-12 sm:w-20 sm:h-20 rounded-full bg-indigo-300'
-                    src={listing.realtor && listing.realtor.photo}
-                    alt=''
-                  />
-                </span>
-                <span className='relative ml-4 text-accentDark font-semibold leading-6 sm:ml-24 sm:pl-1'>
-                  <span className='text-white font-semibold sm:inline'>
-                    {listing.realtor && listing.realtor.full_name}
-                  </span>{' '}
-                  <span className='sm:inline'>Realtor</span>
-                </span>
-              </cite>
-            </blockquote>
+            </div>
           </div>
         </div>
       )}

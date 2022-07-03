@@ -2,6 +2,8 @@ import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa'
 
 export const API_URL = process.env.NEXT_BACKEND_API_URL
 
+export const PER_PAGE = 6
+
 export const companyLogo =
   'https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
 

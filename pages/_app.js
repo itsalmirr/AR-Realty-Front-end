@@ -2,13 +2,15 @@ import '../styles/globals.css'
 import '@fontsource/montserrat'
 import 'aos/dist/aos.css'
 import 'react-toastify/dist/ReactToastify.css'
+
 import { Fragment, useEffect } from 'react'
 import AOS from 'aos'
+
 import { AuthProvider } from '@context/AuthContext'
 import { ListingsProvider } from '@context/ListingsContext'
 import { ToastContainer, Flip } from 'react-toastify'
 
-function MyApp({ Component, pageProps }) {
+const MyApp = ({ Component, pageProps }) => {
   useEffect(() => {
     AOS.init({
       duration: 1500,
