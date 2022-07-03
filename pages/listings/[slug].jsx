@@ -8,15 +8,11 @@ import { FiMail } from 'react-icons/fi'
 import { BsInfoLg } from 'react-icons/bs'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
-import { formatPrice, classNames } from '@lib/helpers'
+import { formatPrice, formatPhoneNumber, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
-import {
-  Layout,
-  Divider,
-  ListingFeatures,
-  ListingOverview,
-} from '@components/index'
+import { Divider, ListingFeatures, ListingOverview } from '@components/index'
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
+const Layout = dynamic(() => import('@components/Layout'))
 
 const ListingById = () => {
   const router = useRouter()
@@ -27,17 +23,6 @@ const ListingById = () => {
   useEffect(() => {
     !loading && singleListing(slug)
   }, [listing])
-
-  const price = formatPrice(listing.price)
-  const pricePerSqft = formatPrice(listing.price / listing.sqft)
-  function formatPhoneNumber(phoneNumberString) {
-    var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
-    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
-    if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
-    }
-    return null
-  }
 
   return (
     <Layout title={listing.title}>
@@ -62,7 +47,7 @@ const ListingById = () => {
                 <div className='mt-3'>
                   <h2 className='sr-only'>Listing information</h2>
                   <p className='text-3xl font-extrabold text-gray-900'>
-                    {price}
+                    {formatPrice(listing.price)}
                   </p>
                 </div>
                 <section aria-labelledby='details-heading' className='mt-12'>
@@ -72,7 +57,7 @@ const ListingById = () => {
                   <div className='border-t divide-y'>
                     <ListingFeatures
                       listing={listing}
-                      perSqft={pricePerSqft}
+                      perSqft={formatPrice(listing.price / listing.sqft)}
                       show={true}
                     />
                   </div>
@@ -212,11 +197,3 @@ const ListingById = () => {
 }
 
 export default ListingById
-
-export const getServerSideProps = (ctx) => {
-  return {
-    props: {
-      query: ctx.query.slug,
-    },
-  }
-}

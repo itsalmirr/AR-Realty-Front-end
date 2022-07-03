@@ -34,11 +34,10 @@ export const ListingsProvider = ({ children }) => {
     setLoading(false)
   }
 
-  const singleListing = async (slug) => {
+  const fetchListingBySlug = async (slug) => {
     try {
       const { data } = await axios.get(`/api/listing/?slug=${slug}`)
       setListing(data.resData)
-      return data.resData
     } catch (err) {
       toast.error('Error fetching listing')
     }
@@ -52,8 +51,8 @@ export const ListingsProvider = ({ children }) => {
     total: total,
     page: page,
     setPage: setPage,
-    singleListing: singleListing,
     listing: listing,
+    fetchListingBySlug: fetchListingBySlug,
   }
 
   return (

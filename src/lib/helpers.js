@@ -58,21 +58,31 @@ export const removeCookies = (res) => {
   ])
 }
 
-const formatter = new Intl.NumberFormat('en-EN', {
-  maximumSignificantDigits: 3,
-  style: 'currency',
-  currency: 'USD',
-})
+export const formatPhoneNumber = (phoneNumberString) => {
+  const cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+  const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
 
-const numFormater = new Intl.NumberFormat('en-EN', {
-  maximumSignificantDigits: 3,
-  style: 'decimal',
-})
+  if (match) {
+    return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+  }
+  return null
+}
 
 export const numberFormater = (num) => {
+  const numFormater = new Intl.NumberFormat('en-EN', {
+    maximumSignificantDigits: 3,
+    style: 'decimal',
+  })
+
   return numFormater.format(num)
 }
 
 export const formatPrice = (price) => {
+  const formatter = new Intl.NumberFormat('en-EN', {
+    maximumSignificantDigits: 3,
+    style: 'currency',
+    currency: 'USD',
+  })
+
   return formatter.format(price)
 }

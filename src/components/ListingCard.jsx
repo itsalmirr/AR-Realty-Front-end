@@ -24,9 +24,9 @@ const ListingCard = ({ listing }) => {
             alt={listing.description}
           />
           <Link href={`/listings/${listing.slug}`} passHref>
-            <h3 className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
+            <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
               {listing.title}
-            </h3>
+            </a>
           </Link>
           <div className='relative'>
             <div
@@ -66,7 +66,10 @@ const ListingCard = ({ listing }) => {
                 />
               </a>
             </div>
-            <div className='ml-3'>
+            <button onClick={fetchListingBySlug(listing.slug)}>
+              more info
+            </button>
+            {/* <div className='ml-3'>
               <p className='flex space-x-1 text-sm font-medium text-gray-900'>
                 <a href='#' className='hover:underline'>
                   {listing.realtor.full_name}
@@ -76,7 +79,7 @@ const ListingCard = ({ listing }) => {
                 <time dateTime={listing.pub_date}>{listing.pub_date}</time>
                 <span aria-hidden='true'>&middot;</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </li>
