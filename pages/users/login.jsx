@@ -40,3 +40,22 @@ const LoginPage = () => {
 }
 
 export default LoginPage
+
+export const getServerSideProps = (ctx) => {
+  try {
+    const { access } = ctx.req.cookies
+
+    if (access) {
+      ctx.res.writeHead(302, {
+        Location: links.listings,
+      })
+      ctx.res.end()
+    }
+  } catch (error) {
+    console.error(err)
+  }
+
+  return {
+    props: {},
+  }
+}

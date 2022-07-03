@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import { useRouter } from 'next/router'
 import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
@@ -14,15 +13,14 @@ import { Divider, ListingFeatures, ListingOverview } from '@components/index'
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
-const ListingById = () => {
-  const router = useRouter()
-  const { slug } = router.query
+const ListingById = ({ slug }) => {
   const [fullDescription, setFullDescription] = useState(false)
   const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
 
   useEffect(() => {
+    console.log('fired!')
     !loading && fetchListingBySlug(slug)
-  }, [listing])
+  }, [slug])
 
   return (
     <Layout title={listing.title}>
@@ -197,3 +195,13 @@ const ListingById = () => {
 }
 
 export default ListingById
+
+export const getServerSideProps = (ctx) => {
+  const { slug } = ctx.params
+
+  return {
+    props: {
+      slug,
+    },
+  }
+}
