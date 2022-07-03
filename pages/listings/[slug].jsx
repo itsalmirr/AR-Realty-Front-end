@@ -1,12 +1,13 @@
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
-import { FaQuoteLeft } from 'react-icons/fa'
+import { FaPhone } from 'react-icons/fa'
+import { FiMail } from 'react-icons/fi'
+import { BsInfoLg } from 'react-icons/bs'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
-import { companyLogo } from '@lib/constants'
 import { formatPrice, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import {
@@ -20,6 +21,7 @@ const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const ListingById = () => {
   const router = useRouter()
   const { slug } = router.query
+  const [fullDescription, setFullDescription] = useState(false)
   const { loading, listing, singleListing } = useContext(ListingsContext)
 
   useEffect(() => {
@@ -28,6 +30,14 @@ const ListingById = () => {
 
   const price = formatPrice(listing.price)
   const pricePerSqft = formatPrice(listing.price / listing.sqft)
+  function formatPhoneNumber(phoneNumberString) {
+    var cleaned = ('' + phoneNumberString).replace(/\D/g, '')
+    var match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/)
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    }
+    return null
+  }
 
   return (
     <Layout title={listing.title}>
@@ -107,19 +117,27 @@ const ListingById = () => {
                 </section>
               </div>
             </div>
-            <Divider text={'About the House'} />
+            <Divider text={'About the Listing'} />
             <ListingOverview listing={listing} classNames={classNames} />
 
-            <blockquote className='relative bg-white rounded-lg shadow-lg'>
-              <div className='rounded-t-lg px-6 py-8 sm:px-10 sm:pt-10 sm:pb-8'>
-                <img
-                  src={companyLogo}
-                  alt='Workcation'
-                  className='h-8 bg-primaryDark rounded-md'
-                />
-                <Divider text={'About the House'} />
-              </div>
-            </blockquote>
+            <div>
+              <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
+                DESCRIPTION
+              </span>
+              <p className='mt-6 text-sm font-medium text-gray-600 max-w-lg'>
+                {fullDescription
+                  ? listing.description
+                  : `${listing.description.slice(0, 200)}...`}
+              </p>
+              <br />
+              <button
+                onClick={() => setFullDescription(!fullDescription)}
+                className='text-sm border p-1 font-semibold text-primaryDark hover:bg-gray-200'>
+                {fullDescription
+                  ? 'HIDE FULL DESCRIPTION'
+                  : 'READ FULL DESCRIPTION'}
+              </button>
+            </div>
             <div className='bg-white lg:py-24'>
               <div className='pb-16 bg-primaryDark lg:pb-0 lg:z-10 lg:relative'>
                 <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8'>
@@ -142,25 +160,43 @@ const ListingById = () => {
                     <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none'>
                       <blockquote>
                         <div>
-                          <FaQuoteLeft className='h-12 w-12 text-white opacity-25' />
-                          <p className='mt-6 text-xl font-medium text-white'>
+                          <BsInfoLg className='h-12 w-12 text-white opacity-25' />
+                          <p className='mt-6 text-lg font-medium text-white'>
                             {listing.realtor.description}
                           </p>
                         </div>
                         <footer className='mt-6'>
                           <p className='text-base font-medium text-white'>
-                            {listing.realtor.full_name}
-                          </p>
-                          <email className='text-base font-medium text-white'>
-                            {listing.realtor.email}
-                          </email>
-                          <p className='text-base font-medium text-white'>
-                            {listing.realtor.phone}
+                            {listing.realtor.full_name} |{' '}
+                            <em className='text-accentDark'>Realtor</em>
                           </p>
                           <br />
-                          <p className='text-base font-medium text-blue-100'>
-                            REALTOR at AR Realty
-                          </p>
+                          <div className='flex'>
+                            <div className='flex-shrink-0'>
+                              <FaPhone
+                                className='h-6 w-6 text-gray-200'
+                                aria-hidden='true'
+                              />
+                            </div>
+                            <div className='ml-3 text-base text-gray-300'>
+                              <p>
+                                +1 {formatPhoneNumber(listing.realtor.phone)}
+                              </p>
+                              <p className='mt-1'>Mon-Fri 8am to 6pm PST</p>
+                            </div>
+                          </div>
+                          <br />
+                          <div className='flex'>
+                            <div className='flex-shrink-0'>
+                              <FiMail
+                                className='h-6 w-6 text-gray-200'
+                                aria-hidden='true'
+                              />
+                            </div>
+                            <div className='ml-3 text-base text-gray-300'>
+                              <p>{listing.realtor.email}</p>
+                            </div>
+                          </div>
                         </footer>
                       </blockquote>
                     </div>
