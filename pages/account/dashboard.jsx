@@ -18,8 +18,8 @@ export default DashboardPage
 
 export const getServerSideProps = (ctx) => {
   try {
-    const { access } = ctx.req.cookies
-    if (!access) {
+    const { access, refresh } = ctx.req.cookies
+    if (!access || !refresh) {
       ctx.res.writeHead(302, {
         Location: links.login,
       })
