@@ -86,3 +86,14 @@ export const formatPrice = (price) => {
 
   return formatter.format(price)
 }
+
+// Convert date into a local date string
+export const formatDate = (date) => {
+  const formatter = new Intl.DateTimeFormat('en-EN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
+  return formatter.format(date)
+}

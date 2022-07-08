@@ -60,17 +60,19 @@ const ListingById = ({ slug }) => {
                     />
                   </div>
                   <div className='relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'>
-                    <div className='flex items-center'>
-                      <span
-                        className={classNames(
-                          'rounded-lg inline-flex p-3 ring-4 ring-white'
-                        )}>
-                        <MdPool className='h-6 w-6' aria-hidden='true' />
-                      </span>
-                      <span className='ml-4 text-gray-900 font-bold'>
-                        Pool 10 x 20
-                      </span>
-                    </div>
+                    {listing.pool && (
+                      <div className='flex items-center'>
+                        <span
+                          className={classNames(
+                            'rounded-lg inline-flex p-3 ring-4 ring-white'
+                          )}>
+                          <MdPool className='h-6 w-6' aria-hidden='true' />
+                        </span>
+                        <span className='ml-4 text-gray-900 font-bold'>
+                          Pool 10 x 20
+                        </span>
+                      </div>
+                    )}
                     <div className='flex items-center'>
                       <span
                         className={classNames(

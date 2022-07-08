@@ -3,8 +3,8 @@ import {
   FaCalendar,
   FaTemperatureHigh,
   FaSnowflake,
-  FaParking,
 } from 'react-icons/fa'
+import { MdGarage } from 'react-icons/md'
 
 import { RiLandscapeFill } from 'react-icons/ri'
 
@@ -48,7 +48,7 @@ const ListingOverview = ({ listing, classNames }) => {
     {
       title: 'Garage / Parking',
       value: listing.garage,
-      icon: FaParking,
+      icon: MdGarage,
       iconForeground: 'text-blue-700',
       iconBackground: 'bg-blue-50',
     },

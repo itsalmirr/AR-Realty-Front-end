@@ -6,7 +6,7 @@ import { API_URL } from '@lib/constants'
 const listing = async (req, res) => {
   if (req.method === 'GET' && req.query.slug) {
     const { slug } = req.query
-    const url = `${API_URL}/api/properties/${slug}`
+    const url = `${API_URL}/api/listings/${slug}`
 
     try {
       const axiosResponse = await axios.get(url)

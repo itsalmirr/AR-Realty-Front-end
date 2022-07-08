@@ -7,8 +7,6 @@ import { formatPrice } from '@lib/helpers'
 import { ListingFeatures } from '@components/index'
 
 const ListingCard = ({ listing }) => {
-  const price = formatPrice(listing.price)
-
   return (
     <ul role='list'>
       <li
@@ -38,7 +36,9 @@ const ListingCard = ({ listing }) => {
           <div className='flex justify-between'>
             <h3 className='flex justify-start items-center mx-2 mt-3'>
               <IoMdPricetag className='w-4 h-4 mr-2 text-gray-300' />
-              <span className='text-gray-900 font-bold'>{price}</span>
+              <span className='text-gray-900 font-bold'>
+                {formatPrice(listing.price)}
+              </span>
             </h3>
             <button className='flex justify-start items-center mx-2 mt-3'>
               <FaRegHeart className='w-5 h-5 mr-2 text-gray-300 hover:text-red-500' />
@@ -73,7 +73,7 @@ const ListingCard = ({ listing }) => {
                 </a>
               </p>
               <div className='flex space-x-1 text-sm text-gray-500'>
-                <time dateTime={listing.pub_date}>{listing.pub_date}</time>
+                <time dateTime={listing.pub_date}>{listing.publishedAt}</time>
                 <span aria-hidden='true'>&middot;</span>
               </div>
             </div>
