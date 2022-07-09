@@ -2,15 +2,14 @@ import dynamic from 'next/dynamic'
 import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
-import { FaPhone } from 'react-icons/fa'
-import { FiMail } from 'react-icons/fi'
-import { BsInfoLg } from 'react-icons/bs'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
-import { formatPrice, formatPhoneNumber, classNames } from '@lib/helpers'
+import { formatPrice, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import { Divider, ListingFeatures, ListingOverview } from '@components/index'
-import RealtorDescription from '@components/RealtorDescription'
+const RealtorDescription = dynamic(() =>
+  import('@components/RealtorDescription')
+)
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
@@ -19,7 +18,6 @@ const ListingById = ({ slug }) => {
   const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
 
   useEffect(() => {
-    console.log('fired!')
     !loading && fetchListingBySlug(slug)
   }, [slug])
 
