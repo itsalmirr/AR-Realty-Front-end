@@ -5,13 +5,13 @@ import { FormInput, FormButton } from '@components/FormComponents'
 
 const LoginForm = () => {
   const { loginUser } = useContext(AuthContext)
-  const [email, setEmail] = useState('')
+  const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    if (name === 'email') {
-      setEmail(value)
+    if (name === 'user_name') {
+      setUserName(value)
     } else if (name === 'password') {
       setPassword(value)
     }
@@ -20,12 +20,12 @@ const LoginForm = () => {
   return (
     <form className='space-y-6' onSubmit={loginUser}>
       <FormInput
-        name='email'
-        type='email'
-        label='Email address'
+        name='user_name'
+        type='text'
+        label='User Name'
         required
         onChange={handleChange}
-        value={email}
+        value={userName}
       />
       <FormInput
         name='password'

@@ -44,7 +44,7 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (e) => {
     e.preventDefault()
     const body = {
-      email: e.target.email.value,
+      user_name: e.target.user_name.value,
       password: e.target.password.value,
     }
 
@@ -58,7 +58,7 @@ export const AuthProvider = ({ children }) => {
         router.push('/account/dashboard')
       }
     } catch (err) {
-      toast.error('Login failed - check your email and password')
+      toast.error('Login failed - check your credentials')
     }
     setIsLoading(false)
   }

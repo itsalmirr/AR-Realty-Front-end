@@ -35,7 +35,7 @@ const ListingById = ({ slug }) => {
                 </Tab.Panels>
               </Tab.Group>
 
-              {/* Product info */}
+              {/* Listing info */}
               <div className='mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0'>
                 <h1 className='text-3xl font-extralight tracking-tight text-gray-900'>
                   {listing.title}
