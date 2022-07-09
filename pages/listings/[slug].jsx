@@ -10,6 +10,7 @@ import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { formatPrice, formatPhoneNumber, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import { Divider, ListingFeatures, ListingOverview } from '@components/index'
+import RealtorDescription from '@components/RealtorDescription'
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
@@ -104,7 +105,6 @@ const ListingById = ({ slug }) => {
             </div>
             <Divider text={'About the Listing'} />
             <ListingOverview listing={listing} classNames={classNames} />
-
             <div>
               <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
                 DESCRIPTION
@@ -123,71 +123,8 @@ const ListingById = ({ slug }) => {
                   : 'READ FULL DESCRIPTION'}
               </button>
             </div>
-            <div className='bg-white lg:py-24'>
-              <div className='pb-16 bg-primaryDark lg:pb-0 lg:z-10 lg:relative'>
-                <div className='lg:mx-auto lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-8'>
-                  <div className='relative lg:-my-8'>
-                    <div
-                      aria-hidden='true'
-                      className='absolute inset-x-0 top-0 h-1/2 bg-white lg:hidden'
-                    />
-                    <div className='mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:p-0 lg:h-full'>
-                      <div className='aspect-w-10 aspect-h-6 rounded-xl shadow-xl overflow-hidden sm:aspect-w-16 sm:aspect-h-7 lg:aspect-none lg:h-full'>
-                        <img
-                          className='object-cover lg:h-full lg:w-full'
-                          src={listing.realtor.photo}
-                          alt=''
-                        />
-                      </div>
-                    </div>
-                  </div>
-                  <div className='mt-12 lg:m-0 lg:col-span-2 lg:pl-8'>
-                    <div className='mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 lg:px-0 lg:py-20 lg:max-w-none'>
-                      <blockquote>
-                        <div>
-                          <BsInfoLg className='h-12 w-12 text-white opacity-25' />
-                          <p className='mt-6 text-lg font-medium text-white'>
-                            {listing.realtor.description}
-                          </p>
-                        </div>
-                        <footer className='mt-6'>
-                          <p className='text-base font-medium text-white'>
-                            {listing.realtor.full_name} |{' '}
-                            <em className='text-accentDark'>Realtor</em>
-                          </p>
-                          <br />
-                          <div className='flex'>
-                            <div className='flex-shrink-0'>
-                              <FaPhone
-                                className='h-6 w-6 text-gray-200'
-                                aria-hidden='true'
-                              />
-                            </div>
-                            <div className='ml-3 text-base text-gray-300'>
-                              <p>
-                                +1 {formatPhoneNumber(listing.realtor.phone)}
-                              </p>
-                              <p className='mt-1'>Mon-Fri 8am to 6pm PST</p>
-                            </div>
-                          </div>
-                          <br />
-                          <div className='flex'>
-                            <div className='flex-shrink-0'>
-                              <FiMail
-                                className='h-6 w-6 text-gray-200'
-                                aria-hidden='true'
-                              />
-                            </div>
-                            <div className='ml-3 text-base text-gray-300'>
-                              <p>{listing.realtor.email}</p>
-                            </div>
-                          </div>
-                        </footer>
-                      </blockquote>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className='bg-white lg:py-24 my-12'>
+              <RealtorDescription listing={listing} />
             </div>
           </div>
         </div>

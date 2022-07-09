@@ -7,7 +7,7 @@ const Pagination = ({ currentPage, nextPage, prevPage, total, setPage }) => {
   return (
     <nav
       data-aos='fade-up'
-      className='border-t mx-8 my-40 border-gray-200 px-4 flex items-center justify-between sm:px-0'>
+      className='border-t mx-8 my-32 border-gray-200 px-4 flex items-center justify-between sm:px-0'>
       <div className='-mt-px w-0 flex-1 flex'>
         {prevPage && (
           <a

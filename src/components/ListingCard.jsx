@@ -12,7 +12,7 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
+        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
           <Image
             width={357.32}

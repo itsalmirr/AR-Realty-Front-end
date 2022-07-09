@@ -12,17 +12,12 @@ import {
 const Home = ({ listings }) => {
   return (
     <Layout title={'Home'}>
-      <main className='container mx-auto sm:px-6 lg:px-8'>
+      <section className='container mx-auto sm:px-6 lg:px-8'>
         <MainSection />
-      </main>
-      <section className='lg-relative'>
-        <Divider text={'Featured Listings'} />
-        <div className='container mx-auto sm:px-6 lg:px-8'>
-          <FeaturedListings listings={listings} />
+        <div className='my-8'>
+          <Divider text={'Featured Listings'} />
         </div>
-      </section>
-      <section className='lg-relative mt-28'>
-        <NewsLetter />
+        <FeaturedListings listings={listings} />
       </section>
     </Layout>
   )
