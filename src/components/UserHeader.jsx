@@ -24,7 +24,7 @@ const UserHeader = ({ user }) => {
               <div className='flex'>
                 <img
                   className='h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32'
-                  src={user.avatar}
+                  src={user.avatar ? user.avatar : user.default_avatar}
                   alt=''
                 />
               </div>

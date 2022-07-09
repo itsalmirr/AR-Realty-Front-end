@@ -22,7 +22,7 @@ const LoginForm = () => {
       <FormInput
         name='user_name'
         type='text'
-        label='User Name'
+        label='Username'
         required
         onChange={handleChange}
         value={userName}
