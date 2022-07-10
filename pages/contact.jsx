@@ -1,8 +1,6 @@
-import {
-  Layout,
-  ContactFormDecor,
-  ContactFormDotDecor,
-} from '@components/index'
+import { Layout } from '@components/index'
+
+import { ContactFormDecor, ContactFormDotDecor } from '@components/PatternDecor'
 import { officesLocation } from '@lib/constants'
 
 const ContactPage = () => {
