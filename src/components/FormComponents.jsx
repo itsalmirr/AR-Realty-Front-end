@@ -36,14 +36,53 @@ export const FormInput = ({
   )
 }
 
-export const FormButton = ({ label, type }) => {
+export const FormBtn = ({ name, type, classes }) => {
   return (
-    <div>
-      <button
-        type={type}
-        className='w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'>
-        {label}
-      </button>
+    <button
+      type={type}
+      className={
+        classes
+          ? classes
+          : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'
+      }>
+      {name}
+    </button>
+  )
+}
+
+export const LongFormInput = ({
+  name,
+  label,
+  value,
+  onChange,
+  required,
+  rows,
+}) => {
+  return (
+    <div className='sm:col-span-2'>
+      <div className='flex justify-between'>
+        <label
+          htmlFor={name}
+          className='block text-sm font-medium text-warm-gray-900'>
+          {label}
+        </label>
+        <span id='message-max' className='text-sm text-warm-gray-500'>
+          Max. 300 characters
+        </span>
+      </div>
+      <div className='mt-1'>
+        <textarea
+          id={name}
+          name={name}
+          rows={rows}
+          value={value}
+          onChange={onChange}
+          required={required}
+          className='py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-accentDark focus:border-accentDark border border-warm-gray-300 rounded-md'
+          aria-describedby='message-max'
+          defaultValue={''}
+        />
+      </div>
     </div>
   )
 }

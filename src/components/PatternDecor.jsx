@@ -72,7 +72,7 @@ export const RelatorDescriptionDecor = () => {
   )
 }
 
-export const ContactFormDecor = () => {
+export const ContactFormInfo = () => {
   return (
     <div className='relative overflow-hidden py-10 px-6 bg-gradient-to-b from-primaryLight to-primaryDark sm:px-10 xl:p-12'>
       {/* Decorative angle backgrounds */}
