@@ -3,8 +3,8 @@ import '@fontsource/montserrat'
 import 'aos/dist/aos.css'
 import 'react-toastify/dist/ReactToastify.css'
 
-import { Fragment, useEffect } from 'react'
 import AOS from 'aos'
+import { Fragment, useEffect } from 'react'
 
 import { AuthProvider } from '@context/AuthContext'
 import { ListingsProvider } from '@context/ListingsContext'

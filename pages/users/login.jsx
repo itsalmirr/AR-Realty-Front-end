@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { toast } from 'react-toastify'
 
 import { links } from '@lib/constants'
 import { Layout, LoginForm } from '@components/index'
@@ -47,12 +48,12 @@ export const getServerSideProps = (ctx) => {
 
     if (access || refresh) {
       ctx.res.writeHead(302, {
-        Location: links.listings,
+        Location: links.dashboard,
       })
       ctx.res.end()
     }
   } catch (error) {
-    console.error(err)
+    toast.error('Something went wrong')
   }
 
   return {

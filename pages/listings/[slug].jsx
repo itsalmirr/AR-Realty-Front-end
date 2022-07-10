@@ -26,7 +26,6 @@ const ListingById = ({ slug }) => {
       {listing.heating && (
         <div className='bg-white'>
           <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
-            {/* Give first column more width */}
             <div className=' lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'>
               {/* Image gallery */}
               <Tab.Group as='div' className='flex flex-col-reverse'>
@@ -102,6 +101,7 @@ const ListingById = ({ slug }) => {
               </div>
             </div>
             <Divider text={'About the Listing'} />
+            {/* Details such as cooling, heating, built year etc...  */}
             <ListingOverview listing={listing} classNames={classNames} />
             <div>
               <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>

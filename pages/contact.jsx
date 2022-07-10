@@ -2,25 +2,7 @@ import { FaPhone, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 
 import { Layout } from '@components/index'
-
-const offices = [
-  {
-    id: 1,
-    city: 'Los Angeles',
-    address: ['4556 Brendan Ferry', 'Los Angeles, CA 90210'],
-  },
-  {
-    id: 2,
-    city: 'New York',
-    address: ['886 Walter Streets', 'New York, NY 12345'],
-  },
-  {
-    id: 3,
-    city: 'Toronto',
-    address: ['7363 Cynthia Pass', 'Toronto, ON N3Y 4H8'],
-  },
-  { id: 4, city: 'London', address: ['114 Cobble Lane', 'London N1 2EF'] },
-]
+import { officesLocation } from '@lib/constants'
 
 const ContactPage = () => {
   return (
@@ -395,7 +377,7 @@ const ContactPage = () => {
               fames.
             </p>
             <div className='mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4'>
-              {offices.map((office) => (
+              {officesLocation.map((office) => (
                 <div key={office.id}>
                   <h3 className='text-lg font-medium text-warm-gray-900'>
                     {office.city}
