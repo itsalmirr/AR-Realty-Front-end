@@ -9,7 +9,7 @@ import AuthContext from '@context/AuthContext'
 import UserMenu from '@components/navbar/UserMenu'
 import { MobileMenuDropDown } from '@components/index'
 import { classNames } from '@lib/helpers'
-import { navigation, userNavigation, links } from '@lib/constants'
+import { navigation, userNavigation, links, companyLogo } from '@lib/constants'
 
 const Navbar = () => {
   const router = useRouter()
@@ -37,7 +37,7 @@ const Navbar = () => {
                   <Link href='/'>
                     <img
                       className='block h-8 w-auto cursor-pointer'
-                      src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
+                      src={companyLogo}
                       alt='AR Realty Logo'
                     />
                   </Link>

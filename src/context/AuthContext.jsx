@@ -70,7 +70,7 @@ export const AuthProvider = ({ children }) => {
       await axios.get('/api/auth/logout')
       setUser(null)
       setIsLoggedIn(false)
-      router.pathname !== '/' && router.push('/')
+      router.pathname === '/account/dashboard' && router.push('/')
       toast.success('Logout successful')
     } catch (err) {
       toast.error('Logout failed')
