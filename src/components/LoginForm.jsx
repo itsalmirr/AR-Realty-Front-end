@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
 import AuthContext from '@context/AuthContext'
-import { FormInput, FormButton } from '@components/FormComponents'
+import { FormInput, FormBtn } from '@components/FormComponents'
 
 const LoginForm = () => {
   const { loginUser } = useContext(AuthContext)
@@ -59,7 +59,7 @@ const LoginForm = () => {
         </div>
       </div>
 
-      <FormButton type={'submit'} label='Log in' />
+      <FormBtn type={'submit'} label='Log in' />
     </form>
   )
 }

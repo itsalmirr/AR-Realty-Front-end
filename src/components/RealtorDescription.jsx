@@ -1,14 +1,14 @@
 import { FaPhone } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
 
-import { PatternDecor } from '@components/index'
+import { RelatorDescriptionDecor } from '@components/PatternDecor'
 import { formatPhoneNumber } from '@lib/helpers'
 
 const RealtorDescription = ({ listing }) => {
   return (
     <section className='bg-white overflow-hidden'>
       <div className='relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20'>
-        <PatternDecor />
+        <RelatorDescriptionDecor />
         <div className='relative lg:flex lg:items-center'>
           <div className='hidden lg:block lg:flex-shrink-0'>
             <img

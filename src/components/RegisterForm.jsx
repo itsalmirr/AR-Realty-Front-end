@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
 import AuthContext from 'src/context/AuthContext'
-import { FormInput, FormButton } from '@components/FormComponents'
+import { FormInput, FormBtn } from '@components/FormComponents'
 
 const RegisterForm = () => {
   const [email, setEmail] = useState('')
@@ -112,7 +112,7 @@ const RegisterForm = () => {
           </a>
         </div>
       </div>
-      <FormButton type={'submit'} label='Register' />
+      <FormBtn type={'submit'} label='Register' />
     </form>
   )
 }
