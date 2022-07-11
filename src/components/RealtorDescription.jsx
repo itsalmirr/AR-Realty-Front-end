@@ -1,8 +1,8 @@
 import { FaPhone } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
 
-import { RelatorDescriptionDecor } from '@components/PatternDecor'
 import { formatPhoneNumber } from '@lib/helpers'
+import { RelatorDescriptionDecor } from '@components/PatternDecor'
 
 const RealtorDescription = ({ listing }) => {
   return (

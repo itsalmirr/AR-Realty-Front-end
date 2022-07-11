@@ -24,6 +24,7 @@ export const FormInput = ({
           id={name}
           name={name}
           type={type}
+          disabled={rest.disabled}
           autoComplete={name}
           required={required}
           onChange={onChange}
@@ -36,7 +37,7 @@ export const FormInput = ({
   )
 }
 
-export const FormBtn = ({ name, type, classes }) => {
+export const FormBtn = ({ label, type, classes }) => {
   return (
     <button
       type={type}
@@ -45,7 +46,7 @@ export const FormBtn = ({ name, type, classes }) => {
           ? classes
           : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'
       }>
-      {name}
+      {label}
     </button>
   )
 }
@@ -80,7 +81,6 @@ export const LongFormInput = ({
           required={required}
           className='py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-accentDark focus:border-accentDark border border-warm-gray-300 rounded-md'
           aria-describedby='message-max'
-          defaultValue={''}
         />
       </div>
     </div>

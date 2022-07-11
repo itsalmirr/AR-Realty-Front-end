@@ -1,10 +1,27 @@
-import { Layout } from '@components/index'
+import { useState } from 'react'
+import axios from 'axios'
 
+import { Layout } from '@components/index'
+import { officesLocation, API_URL } from '@lib/constants'
 import { FormInput, LongFormInput, FormBtn } from '@components/FormComponents'
 import { ContactFormInfo, ContactFormDotDecor } from '@components/PatternDecor'
-import { officesLocation } from '@lib/constants'
 
-const ContactPage = () => {
+const ContactPage = ({ user }) => {
+  const [formState, setFormState] = useState({
+    name: user.full_name,
+    email: user.email,
+    message: '',
+  })
+
+  const handleChange = (e) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(formState)
+  }
+
   return (
     <Layout title='Contact Page'>
       <main className='overflow-hidden'>
@@ -51,19 +68,22 @@ const ContactPage = () => {
                     Send us a message
                   </h3>
                   <form
-                    action='#'
-                    method='POST'
+                    onSubmit={handleSubmit}
                     className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
                     <FormInput
                       name='fullName'
                       label='Full name'
                       type='text'
+                      value={formState.full_name}
+                      onChange={handleChange}
                       required
                       placeholder='Full name'
                     />
                     <FormInput
                       name='listingTitle'
                       label='Listing title'
+                      value={formState.listingTitle}
+                      onChange={handleChange}
                       type='text'
                       required
                       placeholder='Listing title'
@@ -71,6 +91,8 @@ const ContactPage = () => {
                     <FormInput
                       name='email'
                       label='Email'
+                      value={formState.email}
+                      onChange={handleChange}
                       type='email'
                       required
                       placeholder='Email'
@@ -78,6 +100,8 @@ const ContactPage = () => {
                     <FormInput
                       name='phone'
                       label='Phone'
+                      value={formState.phone}
+                      onChange={handleChange}
                       type='tel'
                       required
                       placeholder='Phone'
@@ -85,6 +109,8 @@ const ContactPage = () => {
                     <LongFormInput
                       name='message'
                       label='Message'
+                      value={formState.message}
+                      onChange={handleChange}
                       required
                       placeholder='Message'
                       rows={4}
@@ -92,7 +118,7 @@ const ContactPage = () => {
                     <div className='sm:col-span-2 sm:flex sm:justify-end'>
                       <FormBtn
                         type='submit'
-                        name='Send'
+                        label='Send'
                         classes={
                           'mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 sm:w-auto'
                         }
@@ -139,6 +165,22 @@ const ContactPage = () => {
       </main>
     </Layout>
   )
+}
+
+export const getServerSideProps = async (ctx) => {
+  const { access } = ctx.req.cookies
+
+  const { data } = await axios.get(`${API_URL}/api/user/me/`, {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+  })
+
+  return {
+    props: {
+      user: data,
+    },
+  }
 }
 
 export default ContactPage

@@ -1,19 +1,26 @@
 import dynamic from 'next/dynamic'
+import axios from 'axios'
 import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
 import { formatPrice, classNames } from '@lib/helpers'
+import { API_URL } from '@lib/constants'
 import ListingsContext from '@context/ListingsContext'
-import { Divider, ListingFeatures, ListingOverview } from '@components/index'
+import {
+  Divider,
+  ListingFeatures,
+  ListingOverview,
+  InquiryForm,
+} from '@components/index'
 const RealtorDescription = dynamic(() =>
   import('@components/RealtorDescription')
 )
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
-const ListingById = ({ slug }) => {
+const ListingById = ({ slug, user }) => {
   const [fullDescription, setFullDescription] = useState(false)
   const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
 
@@ -124,6 +131,8 @@ const ListingById = ({ slug }) => {
             <div className='bg-white lg:py-24 my-12'>
               <RealtorDescription listing={listing} />
             </div>
+            <Divider text={'Inquire about this listing'} />
+            <InquiryForm listing={listing} user={user ? user : ''} />
           </div>
         </div>
       )}
@@ -133,12 +142,29 @@ const ListingById = ({ slug }) => {
 
 export default ListingById
 
-export const getServerSideProps = (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const { slug } = ctx.params
 
-  return {
-    props: {
-      slug,
-    },
+  try {
+    const { access } = ctx.req.cookies
+    const { data } = await axios.get(`${API_URL}/api/user/me/`, {
+      headers: {
+        Authorization: `Bearer ${access}`,
+      },
+    })
+
+    return {
+      props: {
+        user: data,
+        slug,
+      },
+    }
+  } catch (err) {
+    return {
+      props: {
+        user: null,
+        slug,
+      },
+    }
   }
 }
