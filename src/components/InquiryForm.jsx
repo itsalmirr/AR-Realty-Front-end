@@ -28,8 +28,10 @@ const InquiryForm = ({ user, listing }) => {
     })
     if (data.success) {
       router.push('/account/dashboard')
+      toast.success('Your inquiry has been sent!')
+    } else {
+      toast.error(data.message)
     }
-    toast.success('Your inquiry has been sent!')
   }
 
   return (
