@@ -13,19 +13,19 @@ const MobileMenuDropDown = ({
   return (
     <Disclosure.Panel as='nav' className='lg:hidden' aria-label='Global'>
       <div className='pt-2 pb-3 px-2 space-y-1'>
-        {navigation.map((item) => (
-          <Link key={item.name} href={item.href}>
+        {navigation.map((path) => (
+          <Link key={path.name} href={path.href}>
             <Disclosure.Button
               as='a'
               href='#'
               className={classNames(
-                item.current
+                path.current
                   ? 'bg-gray-900 text-white'
                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                 'block rounded-md py-2 px-3 text-base font-medium'
               )}
-              aria-current={item.current ? 'page' : undefined}>
-              {item.name}
+              aria-current={path.current ? 'page' : undefined}>
+              {path.name}
             </Disclosure.Button>
           </Link>
         ))}
@@ -52,15 +52,17 @@ const MobileMenuDropDown = ({
             </div>
           </div>
           <div className='mt-3 px-2 space-y-1'>
-            {userNavigation.map((item) => (
-              <Disclosure.Button
-                key={item.name}
-                onClick={item.name === 'Sign out' ? logoutUser : null}
-                as='a'
-                href={item.href}
-                className='block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'>
-                {item.name}
-              </Disclosure.Button>
+            {userNavigation.map((path) => (
+              <Link key={path.name} href={path.href}>
+                <Disclosure.Button
+                  key={path.name}
+                  onClick={path.name === 'Sign out' ? logoutUser : null}
+                  as='a'
+                  href={path.href}
+                  className='block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'>
+                  {path.name}
+                </Disclosure.Button>
+              </Link>
             ))}
           </div>
         </div>

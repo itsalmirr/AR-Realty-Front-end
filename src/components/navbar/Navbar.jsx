@@ -16,11 +16,11 @@ const Navbar = () => {
   const currentRoute = router.pathname
   const { isLoading, isLoggedIn, logoutUser, user } = useContext(AuthContext)
 
-  const handlePageChange = (item) => {
-    if (item.href === currentRoute) {
-      item.current = true
+  const handlePageChange = (path) => {
+    if (path.href === currentRoute) {
+      path.current = true
     } else {
-      item.current = false
+      path.current = false
     }
 
     return ''
@@ -101,19 +101,19 @@ const Navbar = () => {
             <nav
               className='hidden lg:py-2 lg:flex lg:space-x-8'
               aria-label='Global'>
-              {navigation.map((item) => (
-                <Link href={item.href} key={item.name}>
+              {navigation.map((path) => (
+                <Link href={path.href} key={path.name}>
                   <a
                     href='#'
-                    onClick={handlePageChange(item)}
+                    onClick={handlePageChange(path)}
                     className={classNames(
-                      item.current
+                      path.current
                         ? 'bg-gray-200'
                         : 'text-gray-300 hover:bg-accentDark hover:text-white',
                       'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                     )}
-                    aria-current={item.current ? 'page' : undefined}>
-                    {item.name}
+                    aria-current={path.current ? 'page' : undefined}>
+                    {path.name}
                   </a>
                 </Link>
               ))}
