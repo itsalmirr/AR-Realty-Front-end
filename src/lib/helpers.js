@@ -1,5 +1,5 @@
-import cookie from 'cookie'
 import axios from 'axios'
+import cookie from 'cookie'
 
 export const fetcher = async (url) => axios.get(url).then((res) => res.data)
 
