@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react'
 
 import { FormInput, LongFormInput, FormBtn } from '@components/FormComponents'
-import { ContactFormInfo, ContactFormDotDecor } from '@components/PatternDecor'
+import { ContactFormInfo } from '@components/PatternDecor'
 import { toast } from 'react-toastify'
 
 const InquiryForm = ({ user, listing }) => {
@@ -53,10 +53,6 @@ const InquiryForm = ({ user, listing }) => {
         className='absolute w-full h-1/2 bg-warm-gray-50'
         aria-hidden='true'
       />
-      {/* Decorative dot pattern */}
-      <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <ContactFormDotDecor />
-      </div>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='relative bg-white shadow-xl'>
           <h2 id='contact-heading' className='sr-only'>
