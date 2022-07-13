@@ -29,6 +29,14 @@ const InquiryForm = ({ user, listing }) => {
     } else {
       toast.error(data.message)
     }
+
+    setFormState({
+      listing: '',
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
+    })
   }
 
   useEffect(() => {
@@ -71,7 +79,7 @@ const InquiryForm = ({ user, listing }) => {
                   label='Full name'
                   type='text'
                   required
-                  disabled={user.name}
+                  disabled={user.full_name}
                   placeholder='Full name'
                   value={formState.name}
                   onChange={handleChange}

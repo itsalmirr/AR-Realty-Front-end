@@ -131,7 +131,7 @@ const ListingById = ({ slug, user }) => {
             <div className='bg-white lg:py-24 my-12'>
               <RealtorDescription listing={listing} />
             </div>
-            <Divider text={'Inquire about this listing'} />
+            <Divider text={'Make an inquiry'} />
             <InquiryForm listing={listing} user={user ? user : ''} />
           </div>
         </div>

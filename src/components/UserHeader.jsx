@@ -14,7 +14,7 @@ const UserHeader = ({ user }) => {
         <div>
           <div>
             <img
-              className='h-32 w-full object-cover lg:h-48'
+              className='h-32 bg-teal-500 w-full object-cover lg:h-48'
               src={cover.backgroundImage}
               alt=''
             />
