@@ -1,18 +1,16 @@
 import axios from 'axios'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import { useState, useEffect } from 'react'
 
 import { FormInput, LongFormInput, FormBtn } from '@components/FormComponents'
 import { ContactFormInfo, ContactFormDotDecor } from '@components/PatternDecor'
 import { toast } from 'react-toastify'
 
 const InquiryForm = ({ user, listing }) => {
-  const router = useRouter()
   const [formState, setFormState] = useState({
-    listing_id: listing.id,
+    listing: listing.title,
+    listing_id: '',
     name: user.full_name,
     email: user.email,
-    listing: listing.title,
     phone: '',
     message: '',
   })
@@ -27,12 +25,19 @@ const InquiryForm = ({ user, listing }) => {
       ...formState,
     })
     if (data.success) {
-      router.push('/account/dashboard')
       toast.success('Your inquiry has been sent!')
     } else {
       toast.error(data.message)
     }
   }
+
+  useEffect(() => {
+    setFormState({
+      ...formState,
+      listing_id: listing.id,
+      listing: listing.title,
+    })
+  }, [listing])
 
   return (
     <section className='relative bg-white' aria-labelledby='contact-heading'>
