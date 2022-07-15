@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GiFamilyHouse } from 'react-icons/gi'
 
-import {
-  Layout,
-  FeaturedListings,
-  Pagination,
-  Spinner,
-} from '@components/index'
+import { Layout, FeaturedListings } from '@components/index'
 import { quickSearch } from '@lib/helpers'
 
 const SearchPage = () => {
@@ -39,7 +35,24 @@ const SearchPage = () => {
         </div>
       </header>
       <main className='container mx-auto mt-12 w-full'>
-        {!results ? <Spinner /> : <FeaturedListings listings={results} />}
+        {results.length === 0 ? (
+          <div className='flex flex-col items-center justify-center'>
+            <h2 className='text-center text-2xl font-bold leading-7 text-gray-500'>
+              No results found
+            </h2>
+            <p className='text-center text-gray-500'>
+              Try a different search term or visit the{' '}
+              <Link href='/listings'>
+                <a className='text-accentDark hover:text-accentDark'>
+                  listings page
+                </a>
+              </Link>
+              .
+            </p>
+          </div>
+        ) : (
+          <FeaturedListings listings={results} />
+        )}
         {/* <Pagination
           currentPage={page}
           nextPage={next}
