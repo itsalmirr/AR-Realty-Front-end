@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Fragment, useContext } from 'react'
+import { Fragment, useContext, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
@@ -14,6 +14,7 @@ import { navigation, userNavigation, links, companyLogo } from '@lib/constants'
 const Navbar = () => {
   const router = useRouter()
   const currentRoute = router.pathname
+  const [search, setSearch] = useState('')
   const { isLoading, isLoggedIn, logoutUser, user } = useContext(AuthContext)
 
   const handlePageChange = (path) => {
@@ -24,6 +25,11 @@ const Navbar = () => {
     }
 
     return ''
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault()
+    router.push(`/listings/search?q=${search}`)
   }
 
   return (
@@ -58,6 +64,13 @@ const Navbar = () => {
                     <input
                       id='search'
                       name='search'
+                      value={search}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          handleSearch(e)
+                        }
+                      }}
+                      onChange={(e) => setSearch(e.target.value)}
                       className='block w-full bg-gray-100 border border-transparent rounded-md py-2 pl-10 pr-3 text-sm placeholder-gray-800 focus:outline-none focus:bg-white focus:border-white focus:ring-white focus:text-gray-900 focus:placeholder-gray-500 sm:text-sm'
                       placeholder='Enter an address, city, state, or ZIP code'
                       type='search'

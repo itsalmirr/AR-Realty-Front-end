@@ -97,3 +97,9 @@ export const formatDate = (date) => {
 
   return formatter.format(date)
 }
+
+export const quickSearch = async (q) => {
+  const url = `/api/qucksearch?q=${q}`
+  const { data } = await axios.get(url)
+  return data.resData
+}

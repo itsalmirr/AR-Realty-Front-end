@@ -11,6 +11,9 @@ module.exports = {
         accentDark: '#f77f00',
         accentLight: '#0A0A0A',
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],

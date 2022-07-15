@@ -5,7 +5,6 @@ import {
   FaSnowflake,
 } from 'react-icons/fa'
 import { MdGarage } from 'react-icons/md'
-
 import { RiLandscapeFill } from 'react-icons/ri'
 
 const ListingOverview = ({ listing, classNames }) => {

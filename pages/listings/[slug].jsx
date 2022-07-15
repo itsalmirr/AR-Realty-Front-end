@@ -4,6 +4,7 @@ import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
+import { GrLocationPin } from 'react-icons/gr'
 
 import { formatPrice, classNames } from '@lib/helpers'
 import { API_URL } from '@lib/constants'
@@ -65,6 +66,18 @@ const ListingById = ({ slug, user }) => {
                     />
                   </div>
                   <div className='relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'>
+                    <div className='flex items-center'>
+                      <span
+                        className={classNames(
+                          'rounded-lg inline-flex p-3 ring-4 ring-white'
+                        )}>
+                        <GrLocationPin className='h-6 w-6' aria-hidden='true' />
+                      </span>
+                      <span className='ml-4 text-gray-900 font-bold'>
+                        {listing.address}, {listing.city}, {listing.state},{' '}
+                        {listing.zipcode}
+                      </span>
+                    </div>
                     {listing.pool && (
                       <div className='flex items-center'>
                         <span
