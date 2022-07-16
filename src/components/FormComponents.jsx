@@ -11,7 +11,9 @@ export const FormInput = ({
 }) => {
   return (
     <div>
-      <label htmlFor={name} className='block text-sm font-medium text-gray-700'>
+      <label
+        htmlFor={name}
+        className={'block text-sm font-medium text-gray-700'}>
         {label}{' '}
         {!rest.passwordMatch &&
           name === 'passwordConfirmation' &&
@@ -30,7 +32,52 @@ export const FormInput = ({
           onChange={onChange}
           onKeyUp={rest.handlePasswordMatch}
           value={value}
-          className='appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-accentDark focus:border-accentDark sm:text-sm'
+          className={
+            'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-accentDark focus:border-accentDark sm:text-sm'
+          }
+        />
+      </div>
+    </div>
+  )
+}
+
+export const PhoneInput = ({
+  name,
+  label,
+  value,
+  type,
+  onChange,
+  required,
+}) => {
+  return (
+    <div>
+      <label htmlFor={name} className='block text-sm font-medium text-gray-700'>
+        {label}{' '}
+      </label>
+      <div className='mt-1 relative rounded-md shadow-sm'>
+        <div className='absolute inset-y-0 left-0 flex items-center'>
+          <label htmlFor='country' className='sr-only'>
+            Country
+          </label>
+          <select
+            id='country'
+            name='country'
+            className='h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-gray-500 focus:ring-accentDark focus:border-accentDark rounded-md'>
+            <option>US</option>
+            <option>CA</option>
+            <option>EU</option>
+          </select>
+        </div>
+        <input
+          type={type}
+          name={name}
+          value={value}
+          onChange={onChange}
+          id={name}
+          autoComplete='tel'
+          required={required}
+          className='py-2 px-4 block w-full pl-20 focus:ring-accentDark focus:border-accentDark border-gray-300 rounded-md'
+          placeholder='+1 (555) 987-6543'
         />
       </div>
     </div>
@@ -44,7 +91,7 @@ export const FormBtn = ({ label, type, classes }) => {
       className={
         classes
           ? classes
-          : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accentDark'
+          : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight'
       }>
       {label}
     </button>

@@ -1,18 +1,28 @@
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
+import { Switch } from '@headlessui/react'
+import { MdEmail, MdLocalPhone } from 'react-icons/md'
 import axios from 'axios'
 
 import { Layout } from '@components/index'
-import { officesLocation, API_URL } from '@lib/constants'
-import { FormInput, LongFormInput, FormBtn } from '@components/FormComponents'
-import { ContactFormInfo, ContactFormDotDecor } from '@components/PatternDecor'
+import { API_URL } from '@lib/constants'
+import { classNames } from '@lib/helpers'
+import {
+  FormInput,
+  LongFormInput,
+  FormBtn,
+  PhoneInput,
+} from '@components/FormComponents'
 
-const ContactPage = ({ user }) => {
+const ContactPage = () => {
   const [formState, setFormState] = useState({
-    name: user.full_name,
-    email: user.email,
+    first_name: '',
+    last_name: '',
+    company: '',
+    email: '',
     message: '',
   })
 
+  const [agreed, setAgreed] = useState(false)
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
   }
@@ -24,145 +34,208 @@ const ContactPage = ({ user }) => {
 
   return (
     <Layout title='Contact Page'>
-      <main className='overflow-hidden'>
-        {/* Header */}
-        <div className='bg-warm-gray-50'>
-          <div className='py-24 lg:py-32'>
-            <div className='relative z-10 max-w-7xl mx-auto pl-4 pr-8 sm:px-6 lg:px-8'>
-              <h1 className='text-4xl font-extrabold tracking-tight text-warm-gray-900 sm:text-5xl lg:text-6xl'>
-                Get in touch
-              </h1>
-              <p className='mt-6 text-xl text-warm-gray-500 max-w-3xl'>
-                Vel nunc non ut montes, viverra tempor. Proin lectus nibh
-                phasellus morbi non morbi. In elementum urna ut volutpat.
-                Sagittis et vel et fermentum amet consequat.
-              </p>
-            </div>
+      <div className='bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24'>
+        <div className='relative max-w-xl mx-auto'>
+          <SvgDecorator />
+          <div className='text-center'>
+            <h2 className='text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
+              Contact sales
+            </h2>
+            <p className='mt-4 text-lg leading-6 text-gray-500'>
+              Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat
+              massa dictumst amet. Sapien tortor lacus arcu.
+            </p>
+          </div>
+          <div className='mt-12'>
+            <form
+              onSubmit={handleSubmit}
+              className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
+              <FormInput
+                name={'name'}
+                label={'First name'}
+                type={'text'}
+                value={formState.first_name}
+                onChange={handleChange}
+                required={true}
+              />
+              <FormInput
+                name={'last-name'}
+                label={'Last name'}
+                type={'text'}
+                value={formState.last_name}
+                onChange={handleChange}
+                required={true}
+              />
+              <div className='sm:col-span-2'>
+                <FormInput
+                  name={'company'}
+                  label={'Company'}
+                  type={'text'}
+                  value={formState.company}
+                  onChange={handleChange}
+                  autoComplete='organization'
+                  required={true}
+                />
+              </div>
+              <div className='sm:col-span-2'>
+                <FormInput
+                  name={'email'}
+                  label={'Email'}
+                  type={'email'}
+                  value={formState.email}
+                  onChange={handleChange}
+                  autoComplete='email'
+                  required={true}
+                />
+              </div>
+              <div className='sm:col-span-2'>
+                <PhoneInput
+                  name={'phone-number'}
+                  label={'Phone number'}
+                  value={formState.phone_number}
+                  onChange={handleChange}
+                  required={true}
+                />
+              </div>
+              <div className='sm:col-span-2'>
+                <LongFormInput
+                  name={'message'}
+                  label={'Message'}
+                  value={formState.message}
+                  onChange={handleChange}
+                  rows={4}
+                  required={true}
+                />
+              </div>
+              <div className='sm:col-span-2'>
+                <div className='flex items-start'>
+                  <div className='flex-shrink-0'>
+                    <Switch
+                      checked={agreed}
+                      onChange={setAgreed}
+                      className={classNames(
+                        agreed ? 'bg-primaryDark' : 'bg-gray-200',
+                        'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
+                      )}>
+                      <span className='sr-only'>Agree to policies</span>
+                      <span
+                        aria-hidden='true'
+                        className={classNames(
+                          agreed ? 'translate-x-5' : 'translate-x-0',
+                          'inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200'
+                        )}
+                      />
+                    </Switch>
+                  </div>
+                  <div className='ml-3'>
+                    <p className='text-base text-gray-500'>
+                      By selecting this, you agree to the{' '}
+                      <a
+                        href='#'
+                        className='font-medium text-gray-700 underline'>
+                        Privacy Policy
+                      </a>{' '}
+                      and{' '}
+                      <a
+                        href='#'
+                        className='font-medium text-gray-700 underline'>
+                        Cookie Policy
+                      </a>
+                      .
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div className='sm:col-span-2'>
+                <FormBtn
+                  type='submit'
+                  className='w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white'
+                  label={"Let's talk"}
+                />
+              </div>
+            </form>
           </div>
         </div>
-
-        {/* Contact section */}
-        <section
-          className='relative bg-white'
-          aria-labelledby='contact-heading'>
-          <div
-            className='absolute w-full h-1/2 bg-warm-gray-50'
-            aria-hidden='true'
-          />
-          {/* Decorative dot pattern */}
-          <div className='relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <ContactFormDotDecor />
-          </div>
-          <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-            <div className='relative bg-white shadow-xl'>
-              <h2 id='contact-heading' className='sr-only'>
-                Contact us
-              </h2>
-
-              <div className='grid grid-cols-1 lg:grid-cols-3'>
-                {/* Contact information & decoration*/}
-                <ContactFormInfo />
-                {/* Contact form */}
-                <div className='py-10 px-6 sm:px-10 lg:col-span-2 xl:p-12'>
-                  <h3 className='text-lg font-medium text-warm-gray-900'>
-                    Send us a message
-                  </h3>
-                  <form
-                    onSubmit={handleSubmit}
-                    className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
-                    <FormInput
-                      name='fullName'
-                      label='Full name'
-                      type='text'
-                      value={formState.full_name}
-                      onChange={handleChange}
-                      required
-                      placeholder='Full name'
-                    />
-                    <FormInput
-                      name='listingTitle'
-                      label='Listing title'
-                      value={formState.listingTitle}
-                      onChange={handleChange}
-                      type='text'
-                      required
-                      placeholder='Listing title'
-                    />
-                    <FormInput
-                      name='email'
-                      label='Email'
-                      value={formState.email}
-                      onChange={handleChange}
-                      type='email'
-                      required
-                      placeholder='Email'
-                    />
-                    <FormInput
-                      name='phone'
-                      label='Phone'
-                      value={formState.phone}
-                      onChange={handleChange}
-                      type='tel'
-                      required
-                      placeholder='Phone'
-                    />
-                    <LongFormInput
-                      name='message'
-                      label='Message'
-                      value={formState.message}
-                      onChange={handleChange}
-                      required
-                      placeholder='Message'
-                      rows={4}
-                    />
-                    <div className='sm:col-span-2 sm:flex sm:justify-end'>
-                      <FormBtn
-                        type='submit'
-                        label='Send'
-                        classes={
-                          'mt-2 w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primaryDark hover:bg-primaryLight focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 sm:w-auto'
-                        }
+        <div className='bg-white'>
+          <div className='max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8'>
+            <div className='max-w-lg mx-auto md:max-w-none md:grid md:grid-cols-2 md:gap-8'>
+              <div>
+                <h2 className='text-2xl font-extrabold text-gray-900 sm:text-3xl'>
+                  Sales Support
+                </h2>
+                <div className='mt-3'>
+                  <p className='text-lg text-gray-500'>
+                    Nullam risus blandit ac aliquam justo ipsum. Quam mauris
+                    volutpat massa dictumst amet. Sapien tortor lacus arcu.
+                  </p>
+                </div>
+                <div className='mt-9'>
+                  <div className='flex'>
+                    <div className='flex-shrink-0'>
+                      <MdLocalPhone
+                        className='h-6 w-6 text-gray-400'
+                        aria-hidden='true'
                       />
                     </div>
-                  </form>
+                    <div className='ml-3 text-base text-gray-500'>
+                      <p>+1 (555) 123 4567</p>
+                      <p className='mt-1'>Mon-Fri 8am to 6pm PST</p>
+                    </div>
+                  </div>
+                  <div className='mt-6 flex'>
+                    <div className='flex-shrink-0'>
+                      <MdEmail
+                        className='h-6 w-6 text-gray-400'
+                        aria-hidden='true'
+                      />
+                    </div>
+                    <div className='ml-3 text-base text-gray-500'>
+                      <p>sales@ar.com</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className='mt-12 sm:mt-16 md:mt-0'>
+                <h2 className='text-2xl font-extrabold text-gray-900 sm:text-3xl'>
+                  Technical Support
+                </h2>
+                <div className='mt-3'>
+                  <p className='text-lg text-gray-500'>
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Magni, repellat error corporis doloribus similique,
+                    voluptatibus numquam quam, quae officiis facilis.
+                  </p>
+                </div>
+                <div className='mt-9'>
+                  <div className='flex'>
+                    <div className='flex-shrink-0'>
+                      <MdLocalPhone
+                        className='h-6 w-6 text-gray-400'
+                        aria-hidden='true'
+                      />
+                    </div>
+                    <div className='ml-3 text-base text-gray-500'>
+                      <p>+1 (555) 123 4567</p>
+                      <p className='mt-1'>Mon-Fri 8am to 6pm PST</p>
+                    </div>
+                  </div>
+                  <div className='mt-6 flex'>
+                    <div className='flex-shrink-0'>
+                      <MdEmail
+                        className='h-6 w-6 text-gray-400'
+                        aria-hidden='true'
+                      />
+                    </div>
+                    <div className='ml-3 text-base text-gray-500'>
+                      <p>techsupport@ar.com</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Contact grid */}
-        <section aria-labelledby='offices-heading'>
-          <div className='max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8'>
-            <h2
-              id='offices-heading'
-              className='text-3xl font-extrabold text-warm-gray-900'>
-              Our offices
-            </h2>
-            <p className='mt-6 text-lg text-warm-gray-500 max-w-3xl'>
-              Varius facilisi mauris sed sit. Non sed et duis dui leo, vulputate
-              id malesuada non. Cras aliquet purus dui laoreet diam sed lacus,
-              fames.
-            </p>
-            <div className='mt-10 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4'>
-              {officesLocation.map((office) => (
-                <div key={office.id}>
-                  <h3 className='text-lg font-medium text-warm-gray-900'>
-                    {office.city}
-                  </h3>
-                  <p className='mt-2 text-base text-warm-gray-500'>
-                    {office.address.map((line) => (
-                      <span key={line} className='block'>
-                        {line}
-                      </span>
-                    ))}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -184,3 +257,72 @@ export const getServerSideProps = async (ctx) => {
 }
 
 export default ContactPage
+
+export const SvgDecorator = () => {
+  return (
+    <Fragment>
+      <svg
+        className='absolute left-full transform translate-x-1/2'
+        width={404}
+        height={404}
+        fill='none'
+        viewBox='0 0 404 404'
+        aria-hidden='true'>
+        <defs>
+          <pattern
+            id='85737c0e-0916-41d7-917f-596dc7edfa27'
+            x={0}
+            y={0}
+            width={20}
+            height={20}
+            patternUnits='userSpaceOnUse'>
+            <rect
+              x={0}
+              y={0}
+              width={4}
+              height={4}
+              className='text-gray-200'
+              fill='currentColor'
+            />
+          </pattern>
+        </defs>
+        <rect
+          width={404}
+          height={404}
+          fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
+        />
+      </svg>
+      <svg
+        className='absolute right-full bottom-0 transform -translate-x-1/2'
+        width={404}
+        height={404}
+        fill='none'
+        viewBox='0 0 404 404'
+        aria-hidden='true'>
+        <defs>
+          <pattern
+            id='85737c0e-0916-41d7-917f-596dc7edfa27'
+            x={0}
+            y={0}
+            width={20}
+            height={20}
+            patternUnits='userSpaceOnUse'>
+            <rect
+              x={0}
+              y={0}
+              width={4}
+              height={4}
+              className='text-gray-200'
+              fill='currentColor'
+            />
+          </pattern>
+        </defs>
+        <rect
+          width={404}
+          height={404}
+          fill='url(#85737c0e-0916-41d7-917f-596dc7edfa27)'
+        />
+      </svg>
+    </Fragment>
+  )
+}
