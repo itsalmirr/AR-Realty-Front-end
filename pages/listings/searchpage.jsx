@@ -11,9 +11,9 @@ const SearchPage = () => {
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(results.length === 0)
 
-  const handlePageChange = async (q) => {
+  const handleListingChange = async (query) => {
     try {
-      const { results: data } = await quickSearch(q)
+      const { results: data } = await quickSearch(query)
       setResults(data)
     } catch (err) {
       toast.error(err.message)
@@ -22,7 +22,8 @@ const SearchPage = () => {
   }
 
   useEffect(() => {
-    handlePageChange(router.query.q)
+    // q = query
+    handleListingChange(router.query.q)
   }, [router.query.q])
 
   const renderResults = () => {
