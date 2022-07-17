@@ -4,12 +4,13 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GiFamilyHouse } from 'react-icons/gi'
 
-import { Layout, FeaturedListings } from '@components/index'
+import { Layout, FeaturedListings, Spinner, NoResults } from '@components/index'
 import { quickSearch } from '@lib/helpers'
 
 const SearchPage = () => {
   const router = useRouter()
   const [results, setResults] = useState([])
+  const [loading, setLoading] = useState(results.length === 0)
 
   const handlePageChange = async (q) => {
     try {
@@ -18,11 +19,24 @@ const SearchPage = () => {
     } catch (err) {
       toast.error(err.message)
     }
+    setLoading(false)
   }
 
   useEffect(() => {
     handlePageChange(router.query.q)
   }, [router.query.q])
+
+  const renderResults = () => {
+    return (
+      <div>
+        {results.length === 0 ? (
+          <NoResults />
+        ) : (
+          <FeaturedListings listings={results} />
+        )}
+      </div>
+    )
+  }
 
   return (
     <Layout title='Search'>
@@ -35,31 +49,7 @@ const SearchPage = () => {
         </div>
       </header>
       <main className='container mx-auto mt-12 w-full'>
-        {results.length === 0 ? (
-          <div className='flex flex-col items-center justify-center'>
-            <h2 className='text-center text-2xl font-bold leading-7 text-gray-500'>
-              No results found
-            </h2>
-            <p className='text-center text-gray-500'>
-              Try a different search term or visit the{' '}
-              <Link href='/listings'>
-                <a className='text-accentDark hover:text-accentDark'>
-                  listings page
-                </a>
-              </Link>
-              .
-            </p>
-          </div>
-        ) : (
-          <FeaturedListings listings={results} />
-        )}
-        {/* <Pagination
-          currentPage={page}
-          nextPage={next}
-          prevPage={prev}
-          total={total}
-          setPage={setPage}
-        /> */}
+        {loading ? <Spinner /> : renderResults()}
       </main>
     </Layout>
   )
