@@ -15,7 +15,7 @@ const UserMenu = ({
           <span className='sr-only'>Open user menu</span>
           <img
             className='h-8 w-8 rounded-full'
-            src={user.avatar ? user.avatar : user.default_avatar}
+            src={user.avatar || user.default_avatar}
             alt=''
           />
         </Menu.Button>

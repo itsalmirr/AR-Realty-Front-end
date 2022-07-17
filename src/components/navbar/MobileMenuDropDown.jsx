@@ -1,6 +1,5 @@
-import { Disclosure } from '@headlessui/react'
-
 const MobileMenuDropDown = ({
+  Disclosure,
   navigation,
   userNavigation,
   user,
@@ -38,7 +37,7 @@ const MobileMenuDropDown = ({
                 className='h-10 w-10 rounded-full'
                 width={40}
                 height={40}
-                src={user.avatar ? user.avatar : user.default_avatar}
+                src={user.avatar || user.default_avatar}
                 alt={user.full_name}
               />
             </div>

@@ -133,6 +133,7 @@ const Navbar = () => {
             </nav>
           </div>
           <MobileMenuDropDown
+            Disclosure={Disclosure}
             navigation={navigation}
             userNavigation={userNavigation}
             user={user}

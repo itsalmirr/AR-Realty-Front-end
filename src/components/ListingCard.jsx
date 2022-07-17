@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
-import { FaRegHeart } from 'react-icons/fa'
+import { FaRegHeart, FaBed, FaBath } from 'react-icons/fa'
+import { MdSquareFoot } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
-import { ListingFeatures } from '@components/index'
 
 const ListingCard = ({ listing }) => {
   return (
@@ -45,7 +45,35 @@ const ListingCard = ({ listing }) => {
             </button>
           </div>
           <div className='border-b'>
-            <ListingFeatures listing={listing} />
+            {/* <ListingFeatures listing={listing} /> */}
+            <ul className='flex space-x-3 lg:mt-2 lg:mb-2'>
+              <li>
+                <p className='border-r flex text-gray-900 font-light text-sm items-center p-3 group'>
+                  <MdSquareFoot className='w-4 h-4 text-gray-300' />
+                  <span className='ml-2 mr-1 whitespace-nowrap'>
+                    {listing.sqft} ft<sup>2</sup>
+                  </span>
+                </p>
+              </li>
+              <li>
+                <p className='border-r flex text-gray-900 font-light text-sm items-center p-3 group'>
+                  <FaBed className='w-4 h-4 text-gray-300' />
+                  <span className='ml-2 mr-1 whitespace-nowrap'>
+                    {listing.bedrooms}
+                  </span>
+                  Bed
+                </p>
+              </li>
+              <li>
+                <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
+                  <FaBath className='w-4 h-4 text-gray-300' />
+                  <span className='ml-2 mr-1 whitespace-nowrap'>
+                    {listing.bathrooms}
+                  </span>
+                  Bath
+                </p>
+              </li>
+            </ul>
           </div>
 
           <p className='text-gray-500 font-light text-sm p-2 break-normal justify text-justify'>

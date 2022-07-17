@@ -4,38 +4,23 @@ import AuthContext from 'src/context/AuthContext'
 import { FormInput, FormBtn } from '@components/FormComponents'
 
 const RegisterForm = () => {
-  const [email, setEmail] = useState('')
-  const [full_name, setFullName] = useState('')
-  const [user_name, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordConfirmation, setPasswordConfirmation] = useState('')
   const [passwordMatch, setPasswordMatch] = useState(true)
   const { registerUser } = useContext(AuthContext)
 
+  const [formState, setFormState] = useState({
+    email: '',
+    full_name: '',
+    user_name: '',
+    password: '',
+    passwordConfirmation: '',
+  })
+
   const handleChange = (e) => {
-    switch (e.target.name) {
-      case 'full_name':
-        setFullName(e.target.value)
-        break
-      case 'email':
-        setEmail(e.target.value)
-        break
-      case 'user_name':
-        setUserName(e.target.value)
-        break
-      case 'password':
-        setPassword(e.target.value)
-        break
-      case 'passwordConfirmation':
-        setPasswordConfirmation(e.target.value)
-        break
-      default:
-        break
-    }
+    setFormState({ ...formState, [e.target.name]: e.target.value })
   }
 
   const handlePasswordMatch = () => {
-    if (password === passwordConfirmation) {
+    if (formState.password === formState.passwordConfirmation) {
       setPasswordMatch(true)
     } else {
       setPasswordMatch(false)
@@ -49,7 +34,7 @@ const RegisterForm = () => {
         type='text'
         label='Full name'
         required
-        value={full_name}
+        value={formState.full_name}
         onChange={handleChange}
       />
       <FormInput
@@ -57,7 +42,7 @@ const RegisterForm = () => {
         type='email'
         label='Email address'
         required
-        value={email}
+        value={formState.email}
         onChange={handleChange}
       />
       <FormInput
@@ -65,7 +50,7 @@ const RegisterForm = () => {
         type='text'
         label='User name'
         required
-        value={user_name}
+        value={formState.user_name}
         onChange={handleChange}
       />
 
@@ -74,7 +59,7 @@ const RegisterForm = () => {
         type='password'
         label='Password'
         required
-        value={password}
+        value={formState.password}
         onChange={handleChange}
       />
 
@@ -83,7 +68,7 @@ const RegisterForm = () => {
         type='password'
         label='Confirm password'
         required
-        value={passwordConfirmation}
+        value={formState.passwordConfirmation}
         onChange={handleChange}
         passwordMatch={passwordMatch}
         {...{ passwordMatch, handlePasswordMatch }}
