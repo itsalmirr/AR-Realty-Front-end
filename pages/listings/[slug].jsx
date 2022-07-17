@@ -1,33 +1,29 @@
-import dynamic from 'next/dynamic'
-import axios from 'axios'
 import { useEffect, useContext, useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
-import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { GrLocationPin } from 'react-icons/gr'
+import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
 import { formatPrice, classNames } from '@lib/helpers'
-import { API_URL } from '@lib/constants'
 import ListingsContext from '@context/ListingsContext'
-import {
-  Divider,
-  ListingFeatures,
-  ListingOverview,
-  InquiryForm,
-} from '@components/index'
+import AuthContext from '@context/AuthContext'
+import { Divider, ListingOverview, InquiryForm } from '@components/index'
 const RealtorDescription = dynamic(() =>
   import('@components/RealtorDescription')
 )
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
-const ListingById = ({ slug, user }) => {
+const ListingById = ({ slug }) => {
   const [fullDescription, setFullDescription] = useState(false)
-  const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
+  const { loading, listing, fetchListingBySlug, handleInquirySubmit } =
+    useContext(ListingsContext)
+  const { user: authUser } = useContext(AuthContext)
 
   useEffect(() => {
     !loading && fetchListingBySlug(slug)
-  }, [slug])
+  }, [slug, authUser])
 
   return (
     <Layout title={listing.title}>
@@ -58,13 +54,6 @@ const ListingById = ({ slug, user }) => {
                   <h2 id='details-heading' className='sr-only'>
                     Additional details
                   </h2>
-                  <div className='border-t divide-y'>
-                    <ListingFeatures
-                      listing={listing}
-                      perSqft={formatPrice(listing.price / listing.sqft)}
-                      show={true}
-                    />
-                  </div>
                   <div className='relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'>
                     <div className='flex items-center'>
                       <span
@@ -144,8 +133,14 @@ const ListingById = ({ slug, user }) => {
             <div className='bg-white lg:py-24 my-12'>
               <RealtorDescription listing={listing} />
             </div>
-            <Divider text={'Make an inquiry'} />
-            <InquiryForm listing={listing} user={user ? user : ''} />
+            {authUser && <Divider text={'Make an inquiry'} />}
+            {authUser && (
+              <InquiryForm
+                listing={listing}
+                user={authUser}
+                handleSubmit={handleInquirySubmit}
+              />
+            )}
           </div>
         </div>
       )}
@@ -158,26 +153,9 @@ export default ListingById
 export const getServerSideProps = async (ctx) => {
   const { slug } = ctx.params
 
-  try {
-    const { access } = ctx.req.cookies
-    const { data } = await axios.get(`${API_URL}/api/user/me/`, {
-      headers: {
-        Authorization: `Bearer ${access}`,
-      },
-    })
-
-    return {
-      props: {
-        user: data,
-        slug,
-      },
-    }
-  } catch (err) {
-    return {
-      props: {
-        user: null,
-        slug,
-      },
-    }
+  return {
+    props: {
+      slug,
+    },
   }
 }

@@ -1,16 +1,18 @@
 import { useContext } from 'react'
+import { toast } from 'react-toastify'
 
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
-import { Layout, UserDashboard } from '@components/index'
-import { toast } from 'react-toastify'
+import { Layout, UserHeader, Spinner } from '@components/index'
 
 const DashboardPage = () => {
   const { isLoading, user } = useContext(AuthContext)
 
   return (
     <Layout title='Dashboard'>
-      <UserDashboard isLoading={isLoading} user={user} />
+      <header>
+        {!isLoading && user ? <UserHeader user={user} /> : <Spinner />}
+      </header>
     </Layout>
   )
 }

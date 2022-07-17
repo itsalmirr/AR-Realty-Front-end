@@ -45,6 +45,17 @@ export const ListingsProvider = ({ children }) => {
     setLoading(false)
   }
 
+  const handleInquirySubmit = async (formData) => {
+    const { data } = await axios.post(`/api/inquiries`, {
+      ...formData,
+    })
+    if (data.success) {
+      toast.success('Your inquiry has been sent!')
+    } else {
+      toast.error(data.message)
+    }
+  }
+
   const contextData = {
     loading: loading,
     listings: listings,
@@ -55,6 +66,7 @@ export const ListingsProvider = ({ children }) => {
     setPage: setPage,
     listing: listing,
     fetchListingBySlug: fetchListingBySlug,
+    handleInquirySubmit: handleInquirySubmit,
   }
 
   return (
