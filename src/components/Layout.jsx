@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
+
 import { Navbar, Footer } from '@components/index'
 
 const Layout = ({ title, children }) => {

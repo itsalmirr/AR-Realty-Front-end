@@ -40,6 +40,10 @@ const headers = [
   },
 ]
 
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 const nextConfig = {
   async headers() {
     return [
@@ -57,4 +61,4 @@ const nextConfig = {
   },
 }
 
-module.exports = nextConfig
+module.exports = withBundleAnalyzer(nextConfig)

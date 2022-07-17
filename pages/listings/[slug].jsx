@@ -1,5 +1,5 @@
-import { useEffect, useContext, useState } from 'react'
 import dynamic from 'next/dynamic'
+import { useEffect, useContext, useState } from 'react'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GrLocationPin } from 'react-icons/gr'
@@ -8,10 +8,11 @@ import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { formatPrice, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import AuthContext from '@context/AuthContext'
-import { Divider, ListingOverview, InquiryForm } from '@components/index'
+import { Divider, ListingOverview } from '@components/index'
 const RealtorDescription = dynamic(() =>
   import('@components/RealtorDescription')
 )
+const InquiryForm = dynamic(() => import('@components/InquiryForm'))
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
 const Layout = dynamic(() => import('@components/Layout'))
 
