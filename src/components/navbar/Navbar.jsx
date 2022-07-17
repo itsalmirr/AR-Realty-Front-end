@@ -29,7 +29,7 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     e.preventDefault()
-    router.push(`/listings/quicksearch?q=${search}`)
+    router.push(`/listings/searchpage?q=${search}`)
   }
 
   return (

@@ -27,7 +27,6 @@ const ListingById = ({ slug, user }) => {
 
   useEffect(() => {
     !loading && fetchListingBySlug(slug)
-    console.log('fired')
   }, [slug])
 
   return (
