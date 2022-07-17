@@ -3,8 +3,8 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import { GiFamilyHouse } from 'react-icons/gi'
 
-import { Layout, FeaturedListings, Spinner, NoResults } from '@components/index'
 import { quickSearch } from '@lib/helpers'
+import { Layout, FeaturedListings, Spinner, NoResults } from '@components/index'
 
 const SearchPage = () => {
   const router = useRouter()
