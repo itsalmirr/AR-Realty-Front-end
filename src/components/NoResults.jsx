@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const NoResults = () => {
   return (
     <div className='flex flex-col items-center justify-center'>
