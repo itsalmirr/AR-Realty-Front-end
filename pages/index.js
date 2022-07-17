@@ -5,7 +5,6 @@ import {
   Layout,
   MainSection,
   FeaturedListings,
-  NewsLetter,
   Divider,
 } from '@components/index'
 

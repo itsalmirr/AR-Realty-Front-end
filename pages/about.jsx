@@ -41,19 +41,20 @@ const AboutPage = () => {
                 AR Realty, Inc.
               </h2>
               <p className='max-w-xl mt-5 mx-auto text-md text-gray-500'>
-                AR Realty's founders saw an opportunity to empower people with
-                knowledge and information and make it radically easier for
+                AR Realty&apos;s founders saw an opportunity to empower people
+                with knowledge and information and make it radically easier for
                 people to move. The introduction of the Zestimate, our
                 proprietary valuation algorithm, combined with advanced
                 technology, content and connections, has turned AR Realty into a
                 household name. This was phase one. Despite the transparency
-                that's empowered millions of people in their home journey, very
-                little innovation has happened around the transaction itself. We
-                now live in an always-on world, but real estate isn't always on.
-                In fact, it's off a lot of the time. Other industries have
-                ushered in a new era of convenience; the time for a seamless and
-                convenient real estate transaction experience is now. This is
-                phase two — and our next chapter as a company.
+                that&apos;s empowered millions of people in their home journey,
+                very little innovation has happened around the transaction
+                itself. We now live in an always-on world, but real estate
+                isn&apos;t always on. In fact, it&apos;s off a lot of the time.
+                Other industries have ushered in a new era of convenience; the
+                time for a seamless and convenient real estate transaction
+                experience is now. This is phase two — and our next chapter as a
+                company.
               </p>
             </div>
           </div>

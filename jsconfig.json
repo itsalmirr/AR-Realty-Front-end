@@ -10,5 +10,12 @@
       "@lib/*": ["src/lib/*"]
     }
   },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }

@@ -10,12 +10,12 @@ const MainSection = () => {
           <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl'>
             <span className='block xl:inline'>Discover a place</span>{' '}
             <span className='block text-primaryDark xl:inline'>
-              you'll love to live
+              you&apos;ll love to live
             </span>
           </h1>
           <p className='mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl'>
             Find your place with an immersive photo experience and the most
-            listings, including things you won't find anywhere else.
+            listings, including things you won&apos;t find anywhere else.
           </p>
           <div className='mt-4 grid grid-cols-1 gap-y-12 gap-x-6 border-t border-gray-200 sm:grid-cols-2'>
             {metrics.map((item) => (

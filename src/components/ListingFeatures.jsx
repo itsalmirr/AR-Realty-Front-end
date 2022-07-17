@@ -1,4 +1,3 @@
-import React from 'react'
 import { MdSquareFoot } from 'react-icons/md'
 import { FaBed, FaBath } from 'react-icons/fa'
 

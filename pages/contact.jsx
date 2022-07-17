@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react'
+import axios from 'axios'
 import { Switch } from '@headlessui/react'
 import { MdEmail, MdLocalPhone } from 'react-icons/md'
-import axios from 'axios'
 
 import { Layout } from '@components/index'
 import { API_URL } from '@lib/constants'
