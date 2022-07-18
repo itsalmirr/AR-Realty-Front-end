@@ -25,7 +25,9 @@ const Home = ({ listings }) => {
 export default Home
 
 export const getStaticProps = async () => {
-  const listings = await axios.get(`${API_URL}/api/listings?limit=3`)
+  const listings = await axios.get(
+    `${API_URL}/api/listings/?page=1&page_size=3`
+  )
 
   return {
     props: {

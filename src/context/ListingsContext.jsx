@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
 const ListingsContext = createContext()
@@ -7,6 +8,7 @@ const ListingsContext = createContext()
 export default ListingsContext
 
 export const ListingsProvider = ({ children }) => {
+  const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [listings, setListings] = useState([])
   const [listing, setListing] = useState({})
@@ -16,13 +18,17 @@ export const ListingsProvider = ({ children }) => {
   const [page, setPage] = useState(1)
 
   useEffect(() => {
-    getListings()
-  }, [page])
+    let currentPage = router.query.page ? parseInt(router.query.page) : 1
+    setPage(currentPage)
+    getListings(currentPage)
+  }, [router.query.page])
 
-  const getListings = async () => {
+  const getListings = async (currentPage) => {
     try {
       setLoading(true)
-      const { data } = await axios.get(`/api/listings/?limit=6&page=${page}`)
+      const { data } = await axios.get(
+        `/api/listings/?page_size=6&page=${currentPage}`
+      )
       const { results, count, next: nextPage, previous } = data.resData
       setTotal(count)
       setListings(results)
