@@ -1,10 +1,8 @@
 import { Fragment, useState } from 'react'
-import axios from 'axios'
 import { Switch } from '@headlessui/react'
 import { MdEmail, MdLocalPhone } from 'react-icons/md'
 
 import { Layout } from '@components/index'
-import { API_URL } from '@lib/constants'
 import { classNames } from '@lib/helpers'
 import {
   FormInput,
@@ -29,7 +27,6 @@ const ContactPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(formState)
   }
 
   return (
@@ -173,7 +170,7 @@ const ContactPage = () => {
                   <div className='flex'>
                     <div className='flex-shrink-0'>
                       <MdLocalPhone
-                        className='h-6 w-6 text-gray-400'
+                        className='h-6 w-6 text-primaryDark'
                         aria-hidden='true'
                       />
                     </div>
@@ -185,7 +182,7 @@ const ContactPage = () => {
                   <div className='mt-6 flex'>
                     <div className='flex-shrink-0'>
                       <MdEmail
-                        className='h-6 w-6 text-gray-400'
+                        className='h-6 w-6 text-primaryDark'
                         aria-hidden='true'
                       />
                     </div>
@@ -210,7 +207,7 @@ const ContactPage = () => {
                   <div className='flex'>
                     <div className='flex-shrink-0'>
                       <MdLocalPhone
-                        className='h-6 w-6 text-gray-400'
+                        className='h-6 w-6 text-primaryDark'
                         aria-hidden='true'
                       />
                     </div>
@@ -222,7 +219,7 @@ const ContactPage = () => {
                   <div className='mt-6 flex'>
                     <div className='flex-shrink-0'>
                       <MdEmail
-                        className='h-6 w-6 text-gray-400'
+                        className='h-6 w-6 text-primaryDark'
                         aria-hidden='true'
                       />
                     </div>
@@ -238,22 +235,6 @@ const ContactPage = () => {
       </div>
     </Layout>
   )
-}
-
-export const getServerSideProps = async (ctx) => {
-  const { access } = ctx.req.cookies
-
-  const { data } = await axios.get(`${API_URL}/api/user/me/`, {
-    headers: {
-      Authorization: `Bearer ${access}`,
-    },
-  })
-
-  return {
-    props: {
-      user: data,
-    },
-  }
 }
 
 export default ContactPage
@@ -281,7 +262,7 @@ export const SvgDecorator = () => {
               y={0}
               width={4}
               height={4}
-              className='text-gray-200'
+              className='text-primaryDark'
               fill='currentColor'
             />
           </pattern>
@@ -312,7 +293,7 @@ export const SvgDecorator = () => {
               y={0}
               width={4}
               height={4}
-              className='text-gray-200'
+              className='text-primaryDark'
               fill='currentColor'
             />
           </pattern>

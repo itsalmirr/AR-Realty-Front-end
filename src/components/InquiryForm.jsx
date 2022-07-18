@@ -1,10 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { FaPhone, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 import { HiMail } from 'react-icons/hi'
 
 import { FormInput, LongFormInput, FormBtn } from '@components/FormComponents'
+import ListingsContext from '@context/ListingsContext'
 
-const InquiryForm = ({ user, listing, handleSubmit }) => {
+const InquiryForm = ({ user, listing }) => {
+  const { handleInquirySubmit } = useContext(ListingsContext)
   const [formState, setFormState] = useState({
     listing: listing.title,
     listing_id: '',
@@ -22,7 +24,6 @@ const InquiryForm = ({ user, listing, handleSubmit }) => {
     setFormState({
       ...formState,
       listing_id: listing.id,
-      listing: listing.title,
     })
   }, [listing])
 
@@ -47,7 +48,10 @@ const InquiryForm = ({ user, listing, handleSubmit }) => {
                 Send us a message
               </h3>
               <form
-                onSubmit={handleSubmit}
+                onSubmit={(e) => {
+                  e.preventDefault()
+                  handleInquirySubmit(formState)
+                }}
                 className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
                 <FormInput
                   name='fullName'

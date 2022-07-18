@@ -18,8 +18,7 @@ const Layout = dynamic(() => import('@components/Layout'))
 
 const ListingById = ({ slug }) => {
   const [fullDescription, setFullDescription] = useState(false)
-  const { loading, listing, fetchListingBySlug, handleInquirySubmit } =
-    useContext(ListingsContext)
+  const { loading, listing, fetchListingBySlug } = useContext(ListingsContext)
   const { user: authUser } = useContext(AuthContext)
 
   useEffect(() => {
@@ -135,13 +134,7 @@ const ListingById = ({ slug }) => {
               <RealtorDescription listing={listing} />
             </div>
             {authUser && <Divider text={'Make an inquiry'} />}
-            {authUser && (
-              <InquiryForm
-                listing={listing}
-                user={authUser}
-                handleSubmit={handleInquirySubmit}
-              />
-            )}
+            {authUser && <InquiryForm listing={listing} user={authUser} />}
           </div>
         </div>
       )}
