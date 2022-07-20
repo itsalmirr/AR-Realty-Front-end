@@ -14,18 +14,20 @@ const ListingCard = ({ listing }) => {
         data-aos='fade-up'
         className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
-          <Image
-            width={357.32}
-            height={238.28}
-            className='flex-shrink-0 mx-auto rounded-t-lg'
-            src={listing.photo_main}
-            alt={listing.description}
-          />
-          <Link href={`/listings/${listing.slug}`} passHref>
-            <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
-              {listing.title}
+          <Link href={`/listings/${listing.slug}`}>
+            <a href='#'>
+              <Image
+                width={357.32}
+                height={238.28}
+                className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
+                src={listing.photo_main}
+                alt={listing.description}
+              />
             </a>
           </Link>
+          <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
+            {listing.title}
+          </a>
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
@@ -57,7 +59,7 @@ const ListingCard = ({ listing }) => {
               </li>
               <li>
                 <p className='border-r flex text-gray-900 font-light text-sm items-center p-3 group'>
-                  <FaBed className='w-4 h-4 text-gray-300' />
+                  <FaBed className='w-4 h-4 tesxt-gray-300' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.bedrooms}
                   </span>
