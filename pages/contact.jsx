@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { Fragment, useState } from 'react'
 import { Switch } from '@headlessui/react'
 import { MdEmail, MdLocalPhone } from 'react-icons/md'
@@ -10,13 +11,15 @@ import {
   FormBtn,
   PhoneInput,
 } from '@components/FormComponents'
+import { toast } from 'react-toastify'
 
 const ContactPage = () => {
   const [formState, setFormState] = useState({
     first_name: '',
     last_name: '',
-    company: '',
+    company_name: '',
     email: '',
+    phone: '',
     message: '',
   })
 
@@ -25,8 +28,23 @@ const ContactPage = () => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+
+    if (!agreed) {
+      toast.warning('Please agree to our Privacy Policy')
+      return
+    }
+    try {
+      const { data } = await axios.post('/api/businessinquiries/', {
+        ...formState,
+      })
+
+      data.success && toast.success('Successfully submited request!')
+    } catch (err) {
+      toast.error('Oops! Something went wrong!')
+      toast.info("You can't make two inquiries.")
+    }
   }
 
   return (
@@ -48,7 +66,7 @@ const ContactPage = () => {
               onSubmit={handleSubmit}
               className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
               <FormInput
-                name={'name'}
+                name={'first_name'}
                 label={'First name'}
                 type={'text'}
                 value={formState.first_name}
@@ -56,7 +74,7 @@ const ContactPage = () => {
                 required={true}
               />
               <FormInput
-                name={'last-name'}
+                name={'last_name'}
                 label={'Last name'}
                 type={'text'}
                 value={formState.last_name}
@@ -65,10 +83,10 @@ const ContactPage = () => {
               />
               <div className='sm:col-span-2'>
                 <FormInput
-                  name={'company'}
+                  name={'company_name'}
                   label={'Company'}
                   type={'text'}
-                  value={formState.company}
+                  value={formState.company_name}
                   onChange={handleChange}
                   autoComplete='organization'
                   required={true}
@@ -87,9 +105,9 @@ const ContactPage = () => {
               </div>
               <div className='sm:col-span-2'>
                 <PhoneInput
-                  name={'phone-number'}
+                  name={'phone'}
                   label={'Phone number'}
-                  value={formState.phone_number}
+                  value={formState.phone}
                   onChange={handleChange}
                   required={true}
                 />
