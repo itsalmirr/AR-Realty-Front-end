@@ -16,9 +16,7 @@ const ListingCard = ({ listing }) => {
           className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
           <div className='flex-1 flex flex-col'>
             <a href='#'>
-              <Image
-                width={357.32}
-                height={238.28}
+              <img
                 className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
                 src={listing.photo_main}
                 alt={listing.description}

@@ -24,8 +24,8 @@ const DashboardPage = () => {
 
   useEffect(() => {
     data && setListings(data.resData)
-    error && toast.error(error.message)
-  }, [data])
+    error && toast.error('Something went wrong')
+  }, [listings, data, error])
 
   return (
     <Layout title='Dashboard'>
