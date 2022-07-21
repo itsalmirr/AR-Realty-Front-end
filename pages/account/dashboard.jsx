@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect } from 'react'
-import { toast } from 'react-toastify'
 import useSWR from 'swr'
 import axios from 'axios'
+import { toast } from 'react-toastify'
+import { useContext, useState, useEffect } from 'react'
 
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'

@@ -2,6 +2,7 @@ import { FaPhone } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
+import Link from 'next/link'
 
 const RequestedInquiries = ({ listings }) => {
   return (
@@ -22,9 +23,11 @@ const RequestedInquiries = ({ listings }) => {
                   {'Realtor'}
                 </span>
               </div>
-              <p className='mt-1 text-gray-500 text-sm truncate'>
-                {listing.address} - {listing.city}, {listing.state}
-              </p>
+              <Link href={`/listings/${listing.slug}`}>
+                <p className='mt-1 text-gray-500 text-sm truncate underline underline-offset-1 cursor-pointer hover:text-accentDark'>
+                  {listing.address} - {listing.city}, {listing.state}
+                </p>
+              </Link>
               <p className='mt-1 text-primaryDark text-sm truncate'>
                 {formatPrice(listing.price)}
               </p>
