@@ -58,6 +58,7 @@ export const ListingsProvider = ({ children }) => {
       })
 
       data.success && toast.success(data.message)
+      data.error && toast.error(data.message)
     } catch (err) {
       toast.error(err.message)
     }
