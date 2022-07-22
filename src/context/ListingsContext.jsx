@@ -52,13 +52,14 @@ export const ListingsProvider = ({ children }) => {
   }
 
   const handleInquirySubmit = async (formData) => {
-    const { data } = await axios.post(`/api/inquiries`, {
-      ...formData,
-    })
-    if (data.success) {
-      toast.success('Your inquiry has been sent!')
-    } else {
-      toast.error(data.message)
+    try {
+      const { data } = await axios.post(`/api/inquiries`, {
+        ...formData,
+      })
+
+      data.success && toast.success(data.message)
+    } catch (err) {
+      toast.error(err.message)
     }
   }
 
