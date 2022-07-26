@@ -24,14 +24,13 @@ export const setCookies = (res, access, refresh) => {
     cookie.serialize('access', access, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      // expires in 2 minutes
-      expires: new Date(Date.now() + 2 * 60 * 1000),
+      maxAge: 120 * 60 * 1000,
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/',
     }),
   ])
