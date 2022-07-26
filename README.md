@@ -18,10 +18,10 @@
 
 ## Description
 
-<img src="https://res.cloudinary.com/iamalmiir/image/upload/v1658854725/overview_r8hxmg.gif" />
+<img src="https://res.cloudinary.com/iamalmiir/image/upload/v1658855272/Screen_Shot_2022-07-26_at_1.07.29_PM_yhhprb.png" />
 
 <br />
-This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors about specific listings.
+This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors for specific listings.
 
 ## Features
 
