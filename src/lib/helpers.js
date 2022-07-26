@@ -20,21 +20,18 @@ export const parseCookie = (req) => {
 }
 
 export const setCookies = (res, access, refresh) => {
-  // Set cookies access expiry tg 1 day and refresh expiry to 7 days
-  const accessExpiry = new Date(Date.now() + 1000 * 60 * 60 * 24)
-  const refreshExpiry = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7)
-
   res.setHeader('Set-Cookie', [
     cookie.serialize('access', access, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      expires: accessExpiry,
+      // expires in 2 minutes
+      expires: new Date(Date.now() + 2 * 60 * 1000),
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      expires: refreshExpiry,
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       path: '/',
     }),
   ])

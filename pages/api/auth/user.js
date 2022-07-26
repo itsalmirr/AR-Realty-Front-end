@@ -33,7 +33,6 @@ const user = async (req, res) => {
       const { data } = await axios.post(`${API_URL}/api/token/refresh/`, {
         refresh: refresh,
       })
-      setCookies(res, data.access, refresh)
 
       const { data: userData } = await axios.get(`${API_URL}/api/user/me`, {
         headers: {
@@ -41,11 +40,13 @@ const user = async (req, res) => {
         },
       })
 
-      // Return the user's data to the client if  the request was successful
-      // If the request failed, end the request
-      userData
-        ? response(res, 200, true, 'User is logged in', userData)
-        : response(res, 401, false, 'User is not logged in')
+      if (userData) {
+        setCookies(res, data.access, refresh)
+        response(res, 200, true, 'User is logged in', userData)
+      } else {
+        setCookies(res, '', '')
+        response(res, 401, false, 'User is not logged in')
+      }
     }
   }
 }

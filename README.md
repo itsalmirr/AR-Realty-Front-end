@@ -1,8 +1,12 @@
-<a href="https://www.linkedin.com/in/almir-redzematovic-05b734201/" style="outline: none;"><img src="https://res.cloudinary.com/iamalmiir/image/upload/v1655748669/Linkedin-logo-png_ufs32u.png" alt="linkedin logo" style="float: left; margin-top: 10px;width: 240px;"/></a>
+<a href="https://www.linkedin.com/in/almir-redzematovic-05b734201/" style="outline: none;"><img src="https://res.cloudinary.com/iamalmiir/image/upload/v1655748669/Linkedin-logo-png_ufs32u.png" alt="linkedin logo" style="float: left; margin-top: 10px;width: 180px;"/></a>
 <br/>
 <br/>
 
-<h1>AR Realty</h1>
+- Project Title: AR Realty
+- Language: JavaScript
+- Frameworks: ReactJS/NextJS
+- Backend: Django, Express JS
+- Deployment: Vercel
 
 <!-- General description -->
 
