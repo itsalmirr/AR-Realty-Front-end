@@ -22,7 +22,7 @@ const inquiries = async (req, res) => {
 
       response(res, 200, true, 'Inquiry sent successfully', data)
     } catch (err) {
-      response(res, 500, false, err.message)
+      response(res, 500, false, { message: 'Something went wrong.' })
     }
   }
 }
