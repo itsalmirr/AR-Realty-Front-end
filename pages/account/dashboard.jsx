@@ -28,6 +28,8 @@ const DashboardPage = () => {
       setIsLoading(false)
       toast.error('Something went wrong')
     }
+
+    data && data.resData && setIsLoading(false)
   }, [listings, data, error])
 
   return (
