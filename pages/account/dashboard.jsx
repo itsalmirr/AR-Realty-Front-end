@@ -14,7 +14,7 @@ import {
 } from '@components/index'
 
 const DashboardPage = () => {
-  const { isLoading, user } = useContext(AuthContext)
+  const { isLoading, user, setIsLoading } = useContext(AuthContext)
   const [listings, setListings] = useState([])
   const fetcher = (url) => axios.get(url).then((res) => res.data)
 
@@ -23,8 +23,7 @@ const DashboardPage = () => {
   })
 
   useEffect(() => {
-    data && setListings(data.resData)
-    error && toast.error('Something went wrong')
+    data === undefined ? setIsLoading(true) : setListings(data.resData)
   }, [listings, data, error])
 
   return (
@@ -34,7 +33,7 @@ const DashboardPage = () => {
       </header>
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
-        {listings.length > 0 ? (
+        {listings.length > 0 && !isLoading ? (
           <RequestedInquiries listings={listings} />
         ) : (
           <p className='text-center text-gray-500 text-sm'>
