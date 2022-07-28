@@ -24,6 +24,10 @@ const DashboardPage = () => {
 
   useEffect(() => {
     data === undefined ? setIsLoading(true) : setListings(data.resData)
+    if (error) {
+      setIsLoading(false)
+      toast.error('Something went wrong')
+    }
   }, [listings, data, error])
 
   return (
