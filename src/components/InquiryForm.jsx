@@ -22,8 +22,8 @@ const InquiryForm = ({ user, listing }) => {
 
   useEffect(() => {
     setFormState({
-      ...formState,
       listing_id: listing.id,
+      listing: listing.title,
     })
   }, [listing])
 
