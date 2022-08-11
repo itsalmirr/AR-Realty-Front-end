@@ -6,6 +6,7 @@ import {
   MainSection,
   FeaturedListings,
   Divider,
+  NewsLetter,
 } from '@components/index'
 
 const Home = ({ listings }) => {
@@ -17,6 +18,7 @@ const Home = ({ listings }) => {
           <Divider text={'Featured Listings'} />
         </div>
         <FeaturedListings listings={listings} />
+        <NewsLetter />
       </section>
     </Layout>
   )

@@ -1,6 +1,13 @@
+import { toast } from 'react-toastify'
+
 const NewsLetter = () => {
+  const onSubmit = (e) => {
+    e.preventDefault()
+    toast.info('Thank you for subscribing to our newsletter')
+  }
+
   return (
-    <div className='relative' data-aos='fade-left'>
+    <div className='relative' data-aos='fade-up'>
       <div
         className='absolute left-0 right-0 h-1/2 bg-warm-gray-50'
         aria-hidden='true'
@@ -17,7 +24,7 @@ const NewsLetter = () => {
             </p>
           </div>
           <div className='mt-12 sm:w-full sm:max-w-md lg:mt-0 lg:ml-8 lg:flex-1'>
-            <form className='sm:flex'>
+            <form className='sm:flex' onSubmit={onSubmit}>
               <label htmlFor='email-address' className='sr-only'>
                 Email address
               </label>
@@ -27,7 +34,7 @@ const NewsLetter = () => {
                 type='email'
                 autoComplete='email'
                 required
-                className='w-full border-white px-5 py-3 placeholder-warm-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-white rounded-md'
+                className='w-full border-white px-5 py-3 placeholder-warm-gray-500 rounded-md focus:outline-none'
                 placeholder='Enter your email'
               />
               <button
