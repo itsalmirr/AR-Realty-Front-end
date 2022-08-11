@@ -51,16 +51,23 @@ export const ListingsProvider = ({ children }) => {
     setLoading(false)
   }
 
-  const handleInquirySubmit = async (formData) => {
+  const handleInquirySubmit = async (formData, setFormState) => {
     try {
       const { data } = await axios.post(`/api/inquiries`, {
         ...formData,
       })
 
       data.success && toast.success(data.message)
-      data.error && toast.error(data.message)
+      setFormState({
+        listing: '',
+        listing_id: '',
+        name: '',
+        email: '',
+        phone: '',
+        message: '',
+      })
     } catch (err) {
-      toast.error(err.message)
+      toast.error('Opps! Something went wrong, please try again')
     }
   }
 

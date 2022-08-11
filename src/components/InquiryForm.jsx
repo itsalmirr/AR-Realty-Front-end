@@ -22,6 +22,7 @@ const InquiryForm = ({ user, listing }) => {
 
   useEffect(() => {
     setFormState({
+      ...formState,
       listing_id: listing.id,
       listing: listing.title,
     })
@@ -50,7 +51,7 @@ const InquiryForm = ({ user, listing }) => {
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
-                  handleInquirySubmit(formState)
+                  handleInquirySubmit(formState, setFormState)
                 }}
                 className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
                 <FormInput
