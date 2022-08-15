@@ -21,11 +21,6 @@ const SearchPage = () => {
     setLoading(false)
   }
 
-  useEffect(() => {
-    // q = query
-    handleListingChange(router.query.q)
-  }, [router.query.q])
-
   const renderResults = () => {
     return (
       <div>
@@ -37,6 +32,10 @@ const SearchPage = () => {
       </div>
     )
   }
+
+  useEffect(() => {
+    handleListingChange(router.query.q)
+  }, [router.query.q])
 
   return (
     <Layout title='Search'>

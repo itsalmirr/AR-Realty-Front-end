@@ -62,10 +62,10 @@ const ListingById = ({ slug }) => {
                         )}>
                         <GrLocationPin className='h-6 w-6' aria-hidden='true' />
                       </span>
-                      <span className='ml-4 text-gray-900 font-bold'>
+                      <address className='ml-4 text-gray-900 font-bold'>
                         {listing.address}, {listing.city}, {listing.state},{' '}
                         {listing.zipcode}
-                      </span>
+                      </address>
                     </div>
                     {listing.pool && (
                       <div className='flex items-center'>

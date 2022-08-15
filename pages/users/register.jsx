@@ -34,8 +34,6 @@ const Register = () => {
         <div className='mt-2 mb-12 sm:mx-auto sm:w-full sm:max-w-md'>
           <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <RegisterForm />
-
-            {/* Providers Google, Twitter, Github */}
             <ContinueWithProvider />
           </div>
         </div>
