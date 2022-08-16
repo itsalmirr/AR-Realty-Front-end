@@ -30,13 +30,11 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const res = await axios.post('/api/auth/register', body)
       if (res.data.success) {
-        toast.success('Nice! You are now registered.')
+        toast.success(res.data.message)
         router.push('/users/login')
       }
     } catch (err) {
-      toast.error(
-        'Registration failed - make sure you filled out all fields correctly'
-      )
+      toast.error(err.response.data.message)
     }
     setIsLoading(false)
   }

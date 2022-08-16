@@ -14,10 +14,9 @@ const register = async (req, res) => {
         full_name,
         password,
       })
-
-      response(res, 200, true, 'Registration successful', axiosResponse.data)
+      response(res, 200, true, axiosResponse.data.message, axiosResponse.data)
     } catch (err) {
-      response(res, 500, false, 'Server error')
+      response(res, 500, false, err.response.data.message)
     }
   }
 }
