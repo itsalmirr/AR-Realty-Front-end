@@ -100,7 +100,7 @@ const Navbar = () => {
               </div>
               {!isLoading && (
                 <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
-                  {user ? (
+                  {isLoggedIn && (
                     <UserMenu
                       Link={Link}
                       Fragment={Fragment}
@@ -109,9 +109,8 @@ const Navbar = () => {
                       logoutUser={logoutUser}
                       classNames={classNames}
                     />
-                  ) : (
-                    <LoginButton path={currentRoute} />
                   )}
+                  {!isLoggedIn && <LoginButton path={currentRoute} />}
                 </div>
               )}
             </div>

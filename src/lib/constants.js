@@ -45,12 +45,12 @@ export const userNavigation = [
 export const socialMedia = [
   {
     name: 'Twitter',
-    href: '#',
+    href: 'https://twitter.com/iamalmiir',
     icon: <FaTwitterSquare className='h-6 w-6' />,
   },
   {
     name: 'Instagram',
-    href: '#',
+    href: 'https://www.instagram.com/iamalmiir/',
     icon: <FaInstagramSquare className='h-6 w-6' />,
   },
 ]

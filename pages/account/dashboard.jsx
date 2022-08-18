@@ -19,14 +19,14 @@ const DashboardPage = () => {
   const fetcher = (url) => axios.get(url).then((res) => res.data)
 
   const { data, error } = useSWR('/api/auth/dashboard', fetcher, {
-    revalidate: true,
+    refreshInterval: 20000,
   })
 
   useEffect(() => {
     data === undefined ? setIsLoading(true) : setListings(data.resData)
     if (error) {
       setIsLoading(false)
-      toast.error('Something went wrong')
+      toast.error('Something went wrong. Please try refreshing the page.')
     }
 
     data && data.resData && setIsLoading(false)
@@ -39,9 +39,10 @@ const DashboardPage = () => {
       </header>
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
-        {listings.length > 0 && !isLoading ? (
+        {listings.length > 0 && !isLoading && (
           <RequestedInquiries listings={listings} />
-        ) : (
+        )}
+        {listings.length === 0 && !isLoading && (
           <p className='text-center text-gray-500 text-sm'>
             You have no inquiries.
           </p>
