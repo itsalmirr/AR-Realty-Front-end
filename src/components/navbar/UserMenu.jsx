@@ -8,17 +8,16 @@ const UserMenu = ({
   Link,
   Fragment,
 }) => {
-  console.log(user)
   return (
     <Menu as='div' className='flex-shrink-0 relative ml-4'>
       <div>
         <Menu.Button className='bg-gray-800 rounded-full flex text-sm text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white'>
           <span className='sr-only'>Open user menu</span>
-          {/* <img
+          <img
             className='h-8 w-8 rounded-full'
             src={user.avatar || user.default_avatar}
             alt=''
-          /> */}
+          />
         </Menu.Button>
       </div>
       <Transition

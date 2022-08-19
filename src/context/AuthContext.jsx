@@ -80,8 +80,10 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true)
       const res = await axios.get('/api/auth/user')
-      setUser(res.data.resData)
-      setIsLoggedIn(true)
+      if (res.data.resData.id) {
+        setUser(res.data.resData)
+        setIsLoggedIn(true)
+      }
     } catch (err) {
       toast.error('Your session has expired')
     }
