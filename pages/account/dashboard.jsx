@@ -19,6 +19,7 @@ const DashboardPage = () => {
   const fetcher = (url) => axios.get(url).then((res) => res.data)
 
   const { data, error } = useSWR('/api/auth/dashboard', fetcher, {
+    revalidateOnFocus: true,
     refreshInterval: 20000,
   })
 
