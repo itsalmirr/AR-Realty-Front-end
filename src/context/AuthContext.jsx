@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(true)
       }
     } catch (err) {
-      toast.error('Your session has expired')
+      setIsLoggedIn(false)
     }
     setIsLoading(false)
   }
