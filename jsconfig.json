@@ -5,15 +5,15 @@
     "baseUrl": "./",
 
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@context/*": ["src/context/*"],
-      "@lib/*": ["src/lib/*"]
+      "@components/*": ["src/common/components/*"],
+      "@context/*": ["src/common/context/*"],
+      "@lib/*": ["src/common/lib/*"]
     }
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        "extensions": [".js", ".jsx"]
       }
     }
   },

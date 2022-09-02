@@ -1,5 +1,4 @@
 import Link from 'next/link'
-
 import { AiTwotoneSetting } from 'react-icons/ai'
 
 const cover = {
