@@ -6,8 +6,8 @@ import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 import { MdOutlineClose, MdOutlineSearch } from 'react-icons/md'
 
 import AuthContext from '@context/AuthContext'
-import UserMenu from '@components/navbar/UserMenu'
-import { MobileMenuDropDown } from '@components/index'
+import UserMenu from './UserMenu'
+import MobileMenuDropDown from './MobileMenuDropDown'
 import { classNames } from '@lib/helpers'
 import { navigation, userNavigation, links, companyLogo } from '@lib/constants'
 
@@ -116,7 +116,8 @@ const Navbar = () => {
             </div>
             <nav
               className='hidden lg:py-2 lg:flex lg:space-x-8'
-              aria-label='Global'>
+              aria-label='Global'
+            >
               {navigation.map((path) => (
                 <Link href={path.href} key={path.name}>
                   <a
@@ -128,7 +129,8 @@ const Navbar = () => {
                         : 'text-gray-300 hover:bg-accentDark hover:text-white',
                       'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                     )}
-                    aria-current={path.current ? 'page' : undefined}>
+                    aria-current={path.current ? 'page' : undefined}
+                  >
                     {path.name}
                   </a>
                 </Link>

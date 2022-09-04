@@ -1,30 +1,18 @@
 import axios from 'axios'
 
 import { API_URL } from '@lib/constants'
-import {
-  Layout,
-  MainSection,
-  FeaturedListings,
-  Divider,
-  NewsLetter,
-} from '@components/index'
+import { Layout } from '@components/app/Layout/index'
+import { Home } from '@modules/home/index'
 
-const Home = ({ listings }) => {
+const HomePage = ({ listings }) => {
   return (
     <Layout title={'Home'}>
-      <section className='container mx-auto sm:px-6 lg:px-8'>
-        <MainSection />
-        <div className='my-8'>
-          <Divider text={'Featured Listings'} />
-        </div>
-        <FeaturedListings listings={listings} />
-        <NewsLetter />
-      </section>
+      <Home listings={listings} />
     </Layout>
   )
 }
 
-export default Home
+export default HomePage
 
 export const getStaticProps = async () => {
   const listings = await axios.get(

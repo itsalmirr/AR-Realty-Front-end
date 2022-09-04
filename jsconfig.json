@@ -6,7 +6,9 @@
 
     "paths": {
       "@components/*": ["src/common/components/*"],
+      "@hooks/*": ["src/common/hooks/*"],
       "@context/*": ["src/common/context/*"],
+      "@modules/*": ["src/modules/*"],
       "@lib/*": ["src/common/lib/*"]
     }
   },

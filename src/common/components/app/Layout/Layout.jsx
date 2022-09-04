@@ -1,7 +1,8 @@
 import Head from 'next/head'
 import { Fragment } from 'react'
 
-import { Navbar, Footer } from '@components/index'
+import { Navbar } from '@components/app/Navbar'
+import { Footer } from '@components/marketing/Footer'
 
 const Layout = ({ title, children }) => {
   const keywords = [

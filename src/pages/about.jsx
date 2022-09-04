@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import dynamic from 'next/dynamic'
 
-const Layout = dynamic(() => import('@components/Layout'))
+const Layout = dynamic(() => import('@components/app/Layout/Layout'))
 
 const AboutPage = () => {
   return (
