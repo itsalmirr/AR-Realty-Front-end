@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '@lib/constants'
-import { Layout } from '@components/app/Layout/index'
+import { Layout } from '@components/layouts'
 import { Home } from '@modules/home/index'
 
 const HomePage = ({ listings }) => {

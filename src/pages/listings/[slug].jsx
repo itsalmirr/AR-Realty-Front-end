@@ -14,7 +14,7 @@ const RealtorDescription = dynamic(() =>
 )
 const InquiryForm = dynamic(() => import('@components/InquiryForm'))
 const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
-const Layout = dynamic(() => import('@components/app/Layout/Layout'))
+const Layout = dynamic(() => import('@components/layouts'))
 
 const ListingById = ({ slug }) => {
   const [fullDescription, setFullDescription] = useState(false)
@@ -59,8 +59,7 @@ const ListingById = ({ slug }) => {
                       <span
                         className={classNames(
                           'rounded-lg inline-flex p-3 ring-4 ring-white'
-                        )}
-                      >
+                        )}>
                         <GrLocationPin className='h-6 w-6' aria-hidden='true' />
                       </span>
                       <address className='ml-4 text-gray-900 font-bold'>
@@ -73,8 +72,7 @@ const ListingById = ({ slug }) => {
                         <span
                           className={classNames(
                             'rounded-lg inline-flex p-3 ring-4 ring-white'
-                          )}
-                        >
+                          )}>
                           <MdPool className='h-6 w-6' aria-hidden='true' />
                         </span>
                         <span className='ml-4 text-gray-900 font-bold'>
@@ -86,8 +84,7 @@ const ListingById = ({ slug }) => {
                       <span
                         className={classNames(
                           'rounded-lg inline-flex p-3 ring-4 ring-white'
-                        )}
-                      >
+                        )}>
                         <GiTennisCourt className='h-6 w-6' aria-hidden='true' />
                       </span>
                       <span className='ml-4 text-gray-900 font-bold'>
@@ -98,8 +95,7 @@ const ListingById = ({ slug }) => {
                       <span
                         className={classNames(
                           'rounded-lg inline-flex p-3 ring-4 ring-white'
-                        )}
-                      >
+                        )}>
                         <GiGardeningShears
                           className='h-6 w-6'
                           aria-hidden='true'
@@ -128,8 +124,7 @@ const ListingById = ({ slug }) => {
               <br />
               <button
                 onClick={() => setFullDescription(!fullDescription)}
-                className='text-sm border p-1 font-semibold text-primaryDark hover:bg-gray-200'
-              >
+                className='text-sm border p-1 font-semibold text-primaryDark hover:bg-gray-200'>
                 {fullDescription
                   ? 'HIDE FULL DESCRIPTION'
                   : 'READ FULL DESCRIPTION'}

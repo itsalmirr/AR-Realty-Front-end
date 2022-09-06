@@ -1,13 +1,11 @@
 import { useContext } from 'react'
 import { GiFamilyHouse } from 'react-icons/gi'
 
+import { Layout } from '@components/layouts'
+import { Spinner } from '@components/app/Spinner'
+import { Pagination } from '@components/app/Pagination'
+import { ListingsList } from '@components/app/ListingsList'
 import ListingsContext from '@context/ListingsContext'
-import {
-  Layout,
-  FeaturedListings,
-  Pagination,
-  Spinner,
-} from '@components/index'
 
 const ListingPage = () => {
   const { loading, listings, next, prev, total, page, setPage } =
@@ -24,7 +22,7 @@ const ListingPage = () => {
         </div>
       </header>
       <main className='container mx-auto mt-12 w-full'>
-        {loading ? <Spinner /> : <FeaturedListings listings={listings} />}
+        {loading ? <Spinner /> : <ListingsList listings={listings} />}
         <Pagination
           currentPage={page}
           nextPage={next}
