@@ -16,17 +16,13 @@ const DashboardPage = () => {
   const [listings, setListings] = useState([])
   const fetcher = (url) => axios.get(url).then((res) => res.data)
 
-  const { data, error } = useSWR('/api/auth/dashboard', fetcher, {
-    refreshInterval: 20000,
-  })
+  const { data, error } = useSWR('/api/auth/dashboard', fetcher)
 
   useEffect(() => {
     data === undefined ? setIsLoading(true) : setListings(data.resData)
-    console.log(error)
     if (error !== undefined) {
       setIsLoading(false)
       toast.error('Something went wrong. Please try refreshing the page.')
-      console.log(error)
     }
 
     data && data.resData && setIsLoading(false)

@@ -27,8 +27,8 @@ export const links = {
   listings: '/listings',
   about: '/about',
   contact: '/contact',
-  register: '/users/register',
-  login: '/users/login',
+  register: '/auth/register',
+  login: '/auth/login',
 }
 
 export const navigation = [

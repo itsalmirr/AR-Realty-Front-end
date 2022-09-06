@@ -11,7 +11,6 @@ const user = async (req, res) => {
     }
 
     const cookie = parseCookie(req)
-
     if (!cookie.access && !cookie.refresh) {
       return res.end()
     }
@@ -19,7 +18,7 @@ const user = async (req, res) => {
     try {
       const { access } = cookie
       // Get the user's data from the API with the access token
-      const { data } = await axios.get(`${API_URL}/api/user/me`, {
+      const { data } = await axios.get(`${API_URL}/api/user/me/`, {
         headers: {
           Authorization: `Bearer ${access}`,
         },
@@ -34,12 +33,12 @@ const user = async (req, res) => {
         refresh: refresh,
       })
 
-      const { data: userData } = await axios.get(`${API_URL}/api/user/me`, {
+      const { data: userData } = await axios.get(`${API_URL}/api/user/me/`, {
         headers: {
           Authorization: `Bearer ${data.access}`,
         },
       })
-
+      console.log(userData)
       if (userData) {
         setCookies(res, data.access, refresh)
         response(res, 200, true, 'User is logged in', userData)

@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     const body = {
       email: e.target.email.value,
       full_name: e.target.full_name.value,
-      user_name: e.target.user_name.value,
+      username: e.target.username.value,
       password: e.target.password.value,
     }
 
