@@ -4,7 +4,10 @@ import { toast } from 'react-toastify'
 import { GiFamilyHouse } from 'react-icons/gi'
 
 import { quickSearch } from '@lib/helpers'
-import { Layout, FeaturedListings, Spinner, NoResults } from '@components/index'
+import { Layout } from '@components/layouts'
+import { ListingsList } from '@components/app/ListingsList'
+import { Spinner } from '@components/app/Spinner'
+import NoResults from '@components/NoResults'
 
 const SearchPage = () => {
   const router = useRouter()
@@ -27,7 +30,7 @@ const SearchPage = () => {
         {results.length === 0 ? (
           <NoResults />
         ) : (
-          <FeaturedListings listings={results} />
+          <ListingsList listings={results} />
         )}
       </div>
     )

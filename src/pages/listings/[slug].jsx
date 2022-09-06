@@ -8,12 +8,14 @@ import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { formatPrice, classNames } from '@lib/helpers'
 import ListingsContext from '@context/ListingsContext'
 import AuthContext from '@context/AuthContext'
-import { Divider, ListingOverview } from '@components/index'
+import { Divider } from '@components/app/Divider'
+import { ListingOverview } from '@components/ListingOverview'
+import { InquiryForm } from '@components/app/Forms'
+
 const RealtorDescription = dynamic(() =>
   import('@components/RealtorDescription')
 )
-const InquiryForm = dynamic(() => import('@components/InquiryForm'))
-const ImageSwiper = dynamic(() => import('@components/ImageSwiper'))
+const ImageSwiper = dynamic(() => import('@hooks/ImageSwiper'))
 const Layout = dynamic(() => import('@components/layouts'))
 
 const ListingById = ({ slug }) => {

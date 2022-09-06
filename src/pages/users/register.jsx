@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
 import { links } from '@lib/constants'
-import { Layout, RegisterForm } from '@components/index'
-import { ContinueWithProvider } from '@components/FormComponents'
+import { Layout } from '@components/layouts'
+import { RegisterForm } from '@components/app/Forms'
 
 const Register = () => {
   return (
@@ -34,7 +34,6 @@ const Register = () => {
         <div className='mt-2 mb-12 sm:mx-auto sm:w-full sm:max-w-md'>
           <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <RegisterForm />
-            <ContinueWithProvider />
           </div>
         </div>
       </div>

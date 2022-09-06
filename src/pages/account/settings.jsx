@@ -1,4 +1,4 @@
-import { Layout } from '@components/index'
+import { Layout } from '@components/layouts'
 
 const Settings = () => {
   return (

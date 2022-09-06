@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { toast } from 'react-toastify'
 
 import { links } from '@lib/constants'
-import { Layout, LoginForm } from '@components/index'
-import { ContinueWithProvider } from '@components/FormComponents'
+import { Layout } from '@components/layouts'
+import { LoginForm } from '@components/app/Forms/LoginForm'
 
 const LoginPage = () => {
   return (
@@ -32,7 +32,6 @@ const LoginPage = () => {
         <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
           <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <LoginForm />
-            <ContinueWithProvider />
           </div>
         </div>
       </div>

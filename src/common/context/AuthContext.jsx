@@ -42,9 +42,11 @@ export const AuthProvider = ({ children }) => {
   const loginUser = async (e) => {
     e.preventDefault()
     const body = {
-      user_name: e.target.user_name.value,
+      username: e.target.username.value,
       password: e.target.password.value,
     }
+
+    console.log(body)
 
     try {
       setIsLoading(true)

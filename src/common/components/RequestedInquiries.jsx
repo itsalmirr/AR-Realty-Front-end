@@ -4,7 +4,7 @@ import { MdEmail } from 'react-icons/md'
 import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
-const RequestedInquiries = ({ listings }) => {
+export const RequestedInquiries = ({ listings }) => {
   return (
     <ul
       role='list'

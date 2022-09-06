@@ -1,7 +1,7 @@
 import { useState, useContext } from 'react'
 
 import AuthContext from '@context/AuthContext'
-import { FormInput, FormBtn } from '@components/FormComponents'
+import { FormBtn, FormInput } from './FormComponents'
 
 export const LoginForm = () => {
   const { loginUser } = useContext(AuthContext)
@@ -10,7 +10,7 @@ export const LoginForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target
-    if (name === 'user_name') {
+    if (name === 'username') {
       setUserName(value)
     } else if (name === 'password') {
       setPassword(value)
@@ -20,7 +20,7 @@ export const LoginForm = () => {
   return (
     <form className='space-y-6' onSubmit={loginUser}>
       <FormInput
-        name='user_name'
+        name='username'
         type='text'
         label='Username'
         required

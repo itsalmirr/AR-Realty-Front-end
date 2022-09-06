@@ -5,13 +5,11 @@ import { useContext, useState, useEffect } from 'react'
 
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
-import {
-  Layout,
-  UserHeader,
-  Spinner,
-  Divider,
-  RequestedInquiries,
-} from '@components/index'
+import { Layout } from '@components/layouts'
+import { Spinner } from '@components/app/Spinner'
+import { Divider } from '@components/app/Divider'
+import { RequestedInquiries } from '@components/RequestedInquiries'
+import { DashboardHeader } from '@components/app/Dashboard'
 
 const DashboardPage = () => {
   const { isLoading, user, setIsLoading } = useContext(AuthContext)
@@ -37,7 +35,7 @@ const DashboardPage = () => {
   return (
     <Layout title='Dashboard'>
       <header>
-        {!isLoading && user ? <UserHeader user={user} /> : <Spinner />}
+        {!isLoading && user ? <DashboardHeader user={user} /> : <Spinner />}
       </header>
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />

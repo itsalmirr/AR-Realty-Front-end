@@ -4,11 +4,11 @@ import { response, setCookies } from '@lib/helpers'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {
-    const { user_name, password } = req.body
+    const { username, password } = req.body
 
     try {
       const axiosResponse = await axios.post(`${API_URL}/api/token/`, {
-        user_name,
+        username,
         password,
       })
       setCookies(res, axiosResponse.data.access, axiosResponse.data.refresh)
