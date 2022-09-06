@@ -1,8 +1,9 @@
 import Head from 'next/head'
+import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
 
-import { Navbar } from '@components/app/Navbar'
-import { Footer } from '@components/marketing/Footer'
+const Navbar = dynamic(() => import('@components/app/Navbar/Navbar'))
+const Footer = dynamic(() => import('@components/marketing/Footer/Footer'))
 
 const Layout = ({ title, children }) => {
   const keywords = [

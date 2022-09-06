@@ -26,7 +26,7 @@ const DashboardPage = () => {
     }
 
     data && data.resData && setIsLoading(false)
-  }, [listings, data, error])
+  }, [data])
 
   return (
     <Layout title='Dashboard'>
