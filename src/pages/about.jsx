@@ -1,8 +1,12 @@
 import Image from 'next/image'
+import axios from 'axios'
 
 import { Layout } from '@components/layouts'
+import { OurTeam } from '@components/app/OurTeam'
 
-const AboutPage = () => {
+const AboutPage = ({ realtors }) => {
+  const realtorsList = realtors.results
+
   return (
     <Layout title='About'>
       <div className='bg-white'>
@@ -58,6 +62,7 @@ const AboutPage = () => {
             </div>
           </div>
         </div>
+        <OurTeam realtors={realtorsList} />
         <div className='our-philosophy'>
           <div className='our-philosophy-section mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8'>
             <div className='text-center'>
@@ -84,6 +89,19 @@ const AboutPage = () => {
       </div>
     </Layout>
   )
+}
+
+export const getStaticProps = async () => {
+  const res = await axios.get(
+    `${process.env.NEXT_BACKEND_API_URL}/api/realtors/`
+  )
+  const realtors = res.data
+
+  return {
+    props: {
+      realtors,
+    },
+  }
 }
 
 export default AboutPage
