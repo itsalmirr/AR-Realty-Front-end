@@ -11,7 +11,7 @@ import AuthContext from '@context/AuthContext'
 import { Layout } from '@components/layouts'
 import { Divider } from '@components/app/Divider'
 import ListingOverview from '@components/ListingOverview'
-import { InquiryForm } from '@components/app/Forms'
+import InquiryForm from '@components/app/Forms/InquiryForm'
 
 const RealtorDescription = dynamic(() =>
   import('@components/RealtorDescription')
