@@ -1,10 +1,17 @@
 import axios from 'axios'
 import cookie from 'cookie'
+import { API_URL } from '@lib/constants'
 
 export const fetcher = async (url) => axios.get(url).then((res) => res.data)
 
 export const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
+}
+
+export const fetchListings = async (slug) => {
+  const url = `${API_URL}/api/listings/${slug}`
+  const { data } = await axios.get(url)
+  return data
 }
 
 export const response = (res, code, status, message, resData) => {

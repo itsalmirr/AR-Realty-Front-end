@@ -7,7 +7,7 @@ import {
 import { MdGarage } from 'react-icons/md'
 import { RiLandscapeFill } from 'react-icons/ri'
 
-const ListingOverview = ({ listing, classNames }) => {
+const ListingPageDetails = ({ listing, classNames }) => {
   const listingOverview = [
     {
       title: 'Property Type',
@@ -67,14 +67,16 @@ const ListingOverview = ({ listing, classNames }) => {
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
             'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
-          )}>
+          )}
+        >
           <div className='flex items-center'>
             <span
               className={classNames(
                 action.iconBackground,
                 action.iconForeground,
                 'rounded-lg inline-flex p-3 ring-4 ring-white'
-              )}>
+              )}
+            >
               <action.icon className='h-6 w-6' aria-hidden='true' />
             </span>
             <span className='ml-4 text-gray-900 font-bold'>{action.value}</span>
@@ -85,4 +87,4 @@ const ListingOverview = ({ listing, classNames }) => {
   )
 }
 
-export default ListingOverview
+export default ListingPageDetails
