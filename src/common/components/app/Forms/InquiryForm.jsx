@@ -5,13 +5,14 @@ import {
   LongFormInput,
   FormBtn,
   ContactFormInfo,
-} from '@components/app/Forms'
+} from '@components/app/Forms/FormComponents'
+
 import ListingsContext from '@context/ListingsContext'
 
 export const InquiryForm = ({ user, listing }) => {
   const { handleInquirySubmit } = useContext(ListingsContext)
   const [formState, setFormState] = useState({
-    listing: listing.title,
+    listing: '',
     listing_id: '',
     name: user.full_name,
     email: user.email,

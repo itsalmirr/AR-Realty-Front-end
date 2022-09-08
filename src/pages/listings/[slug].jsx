@@ -11,11 +11,10 @@ import AuthContext from '@context/AuthContext'
 import { Layout } from '@components/layouts'
 import { Divider } from '@components/app/Divider'
 import ListingOverview from '@components/ListingOverview'
-import InquiryForm from '@components/app/Forms/InquiryForm'
+import { InquiryForm } from '@components/app/Forms'
+import RealtorDescription from '@components/RealtorDescription'
 
-const RealtorDescription = dynamic(() =>
-  import('@components/RealtorDescription')
-)
+
 const ImageSwiper = dynamic(() => import('@hooks/ImageSwiper'))
 
 const ListingById = ({ slug }) => {
@@ -26,6 +25,7 @@ const ListingById = ({ slug }) => {
   useEffect(() => {
     !loading && fetchListingBySlug(slug)
   }, [slug, authUser])
+
 
   return (
     <Layout title={listing.title}>
