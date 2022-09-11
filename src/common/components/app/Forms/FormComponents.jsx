@@ -91,10 +91,11 @@ export const PhoneInput = ({
   )
 }
 
-export const FormBtn = ({ label, type, classes }) => {
+export const FormBtn = ({ label, type, classes, onClick }) => {
   return (
     <button
       type={type}
+      onClick={onClick}
       className={
         classes
           ? classes

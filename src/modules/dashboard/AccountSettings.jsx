@@ -1,10 +1,9 @@
-import { Layout } from '@components/layouts'
-import axios from 'axios'
-import { FormBtn } from '@components/app/Forms/FormComponents'
+import { Fragment } from 'react'
+import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 
-const Settings = ({ user }) => {
+const AccountSettings = ({ user, settings, setSettings }) => {
   return (
-    <Layout title={'Settings'}>
+    <Fragment>
       <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10 px-4'>
         <div>
           <h3 className='text-lg font-medium leading-6 text-gray-900'>
@@ -21,15 +20,12 @@ const Settings = ({ user }) => {
               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
               Full name
             </label>
-            <div className='mt-1 sm:col-span-2 sm:mt-0'>
-              <input
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-sm'>
+              <FormInput
+                name='full_name'
                 type='text'
-                name='first-name'
-                id='first-name'
+                onChange={(e) => console.log(e.target.value)}
                 value={user.full_name}
-                onChange={() => {}}
-                autoComplete='given-name'
-                className='block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:max-w-xs sm:text-sm'
               />
             </div>
           </div>
@@ -40,15 +36,12 @@ const Settings = ({ user }) => {
               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
               Email address
             </label>
-            <div className='mt-1 sm:col-span-2 sm:mt-0'>
-              <input
-                id='email'
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
+              <FormInput
                 name='email'
-                value={user.email}
-                onChange={() => {}}
                 type='email'
-                autoComplete='email'
-                className='block w-full max-w-lg rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+                onChange={(e) => console.log(e.target.value)}
+                value={user.email}
               />
             </div>
           </div>
@@ -79,7 +72,7 @@ const Settings = ({ user }) => {
                 <div className='flex text-sm text-gray-600'>
                   <label
                     htmlFor='profilePhoto-upload'
-                    className='relative cursor-pointer rounded-md bg-white font-medium text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 hover:text-indigo-500'>
+                    className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'>
                     <span>Upload a file</span>
                     <input
                       id='profilePhoto-upload'
@@ -98,42 +91,11 @@ const Settings = ({ user }) => {
           </div>
         </div>
         <div className='flex max-w-xs m-auto md:float-right md:m-8'>
-          <FormBtn
-            onClick={() => {
-              console.log('clicked')
-            }}
-            label='Save'
-            type={'submit'}
-          />
+          <FormBtn onClick={() => setSettings(!settings)} label='Save' />
         </div>
       </div>
-    </Layout>
+    </Fragment>
   )
 }
 
-export default Settings
-
-export const getServerSideProps = async (ctx) => {
-  const url = `${process.env.NEXT_BACKEND_API_URL}/api/user/me`
-
-  try {
-    const { data } = await axios.get(url, {
-      headers: {
-        Authorization: `Bearer ${ctx.req.cookies.access}`,
-      },
-    })
-
-    return {
-      props: {
-        user: data,
-      },
-    }
-  } catch (err) {
-    console.log(err)
-    return {
-      props: {
-        user: {},
-      },
-    }
-  }
-}
+export default AccountSettings

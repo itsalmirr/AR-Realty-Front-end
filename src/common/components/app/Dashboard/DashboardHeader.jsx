@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { AiTwotoneSetting } from 'react-icons/ai'
 
 const cover = {
@@ -6,14 +5,14 @@ const cover = {
     'https://res.cloudinary.com/iamalmiir/image/upload/v1656028617/sean-pollock-PhYq704ffdA-unsplash_1_hfzoyk.jpg',
 }
 
-const UserHeader = ({ user }) => {
+const UserHeader = ({ user, settings, setSettings }) => {
   return (
     <div>
       <div>
         <div>
           <div>
             <img
-              className='h-32 bg-teal-500 w-full object-cover lg:h-48'
+              className='h-32 bg-primaryDark w-full object-cover lg:h-48'
               src={cover.backgroundImage}
               alt=''
             />
@@ -34,17 +33,16 @@ const UserHeader = ({ user }) => {
                   </h1>
                 </div>
                 <div className='mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4'>
-                  <Link href='/account/settings/'>
-                    <button
-                      type='button'
-                      className='inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50'>
-                      <AiTwotoneSetting
-                        className='-ml-1 mr-2 h-5 w-5 text-gray-400'
-                        aria-hidden='true'
-                      />
-                      <span>Settings</span>
-                    </button>
-                  </Link>
+                  <button
+                    type='button'
+                    onClick={() => setSettings(!settings)}
+                    className='inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 hover:text-accentDark'>
+                    <AiTwotoneSetting
+                      className='ml-1 mr-2 h-5 w-5 text-gray-400'
+                      aria-hidden='true'
+                    />
+                    <span className='hover:text-gray-00'>Settings</span>
+                  </button>
                 </div>
               </div>
             </div>

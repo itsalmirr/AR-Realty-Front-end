@@ -10,10 +10,12 @@ import { Spinner } from '@components/app/Spinner'
 import { Divider } from '@components/app/Divider'
 import { RequestedInquiries } from '@components/RequestedInquiries'
 import { DashboardHeader } from '@components/app/Dashboard'
+import { AccountSettings } from '@modules/dashboard'
 
 const DashboardPage = () => {
   const { isLoading, user, setIsLoading } = useContext(AuthContext)
   const [listings, setListings] = useState([])
+  const [settings, setSettings] = useState(false)
   const fetcher = (url) => axios.get(url).then((res) => res.data)
 
   const { data, error } = useSWR('/api/auth/dashboard', fetcher)
@@ -31,8 +33,23 @@ const DashboardPage = () => {
   return (
     <Layout title='Dashboard'>
       <header>
-        {!isLoading && user ? <DashboardHeader user={user} /> : <Spinner />}
+        {!isLoading && user ? (
+          <DashboardHeader
+            setSettings={setSettings}
+            settings={settings}
+            user={user}
+          />
+        ) : (
+          <Spinner />
+        )}
       </header>
+      {settings && (
+        <AccountSettings
+          user={user}
+          settings={settings}
+          setSettings={setSettings}
+        />
+      )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
         {listings.length > 0 && !isLoading && (
