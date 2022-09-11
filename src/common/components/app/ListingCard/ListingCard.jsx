@@ -12,8 +12,7 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'
-      >
+        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
             <a href='#'>
@@ -25,15 +24,14 @@ const ListingCard = ({ listing }) => {
             </a>
           </Link>
           <Link href={`/listings/${listing.slug}`}>
-            <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline'>
+            <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline hover:text-accentDark'>
               {listing.title}
             </a>
           </Link>
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
-              aria-hidden='true'
-            >
+              aria-hidden='true'>
               <div className='w-full border-t border-gray-300' />
             </div>
           </div>
