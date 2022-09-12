@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import { Layout } from '@components/layouts'
 import { Divider } from '@components/app/Divider'
 import { RealtorListings, RealtorDashboard } from '@modules/realtor'
