@@ -49,7 +49,9 @@ const ContactPage = () => {
           agreed={agreed}
           setAgreed={setAgreed}
         />
-        <ContactInfo />
+        <div className='mt-32'>
+          <ContactInfo />
+        </div>
       </div>
     </Layout>
   )

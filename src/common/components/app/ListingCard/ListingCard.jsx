@@ -12,7 +12,8 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
+        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'
+      >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
             <a href='#'>
@@ -31,7 +32,8 @@ const ListingCard = ({ listing }) => {
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
-              aria-hidden='true'>
+              aria-hidden='true'
+            >
               <div className='w-full border-t border-gray-300' />
             </div>
           </div>
@@ -98,9 +100,11 @@ const ListingCard = ({ listing }) => {
             </div>
             <div className='ml-3'>
               <p className='flex space-x-1 text-sm font-medium text-primaryDark'>
-                <a href='#' className='hover:underline'>
-                  {listing.realtor.full_name}
-                </a>
+                <Link href={`/realtors/${listing.realtor.slug}`}>
+                  <a href='#' className='hover:underline'>
+                    {listing.realtor.full_name}
+                  </a>
+                </Link>
               </p>
               <div className='flex space-x-1 text-sm text-gray-500'>
                 <time dateTime={listing.pub_date}>{listing.publishedAt}</time>

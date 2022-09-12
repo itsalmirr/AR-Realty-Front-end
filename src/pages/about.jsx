@@ -12,9 +12,6 @@ const AboutPage = ({ realtors }) => {
       <div className='bg-white'>
         <div className='mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8'>
           <div className='text-center mb-2'>
-            <h2 className='mb-10 text-base font-semibold text-accent-600 tracking-wide uppercase'>
-              About
-            </h2>
             <h2 className='mt-1 text-4xl font-extrabold text-gray-900 sm:text-5xl sm:tracking-tight lg:text-6xl'>
               Honesty, Reliability and
               <br />

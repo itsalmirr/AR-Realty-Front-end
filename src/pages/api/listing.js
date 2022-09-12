@@ -10,7 +10,6 @@ const listing = async (req, res) => {
 
     try {
       const axiosResponse = await axios.get(url)
-      console.log('axiosResponse', axiosResponse)
       response(
         res,
         200,

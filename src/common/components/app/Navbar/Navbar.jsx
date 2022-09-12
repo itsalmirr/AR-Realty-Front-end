@@ -162,8 +162,8 @@ const LoginButton = ({ path }) => {
       {path !== '/users/login' ? (
         <Link href={links.login}>
           <a className='mr-4'>
-            <button className='bg-gray-800 hover:bg-accentDark text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'>
-              Login
+            <button className='bg-accentDark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'>
+              Log in
             </button>
           </a>
         </Link>
