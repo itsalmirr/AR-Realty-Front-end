@@ -1,10 +1,30 @@
-import { Fragment } from 'react'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { Fragment, useState } from 'react'
 import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 
 const AccountSettings = ({ user, settings, setSettings }) => {
+  const [full_name, setFullName] = useState(user.full_name)
+  const [email, setEmail] = useState(user.email)
+  // const [password, setPassword] = useState('')
+  // const [passwordConfirm, setPasswordConfirm] = useState('')
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    await axios.put('/api/auth/user', {
+      full_name,
+      email,
+    })
+    toast.success('Account settings updated.')
+    setSettings(!settings)
+  }
+
   return (
     <Fragment>
-      <div className='space-y-6 pt-8 sm:space-y-5 sm:pt-10 px-4'>
+      <form
+        className='space-y-6 pt-8 sm:space-y-5 sm:pt-10 px-4'
+        onSubmit={onSubmit}
+      >
         <div>
           <h3 className='text-lg font-medium leading-6 text-gray-900'>
             Account Settings
@@ -17,15 +37,16 @@ const AccountSettings = ({ user, settings, setSettings }) => {
           <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='full_name'
-              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
+              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+            >
               Full name
             </label>
             <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-sm'>
               <FormInput
                 name='full_name'
                 type='text'
-                onChange={(e) => console.log(e.target.value)}
-                value={user.full_name}
+                onChange={(e) => setFullName(e.target.value)}
+                value={full_name}
               />
             </div>
           </div>
@@ -33,15 +54,16 @@ const AccountSettings = ({ user, settings, setSettings }) => {
           <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='email'
-              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
+              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+            >
               Email address
             </label>
             <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
               <FormInput
                 name='email'
                 type='email'
-                onChange={(e) => console.log(e.target.value)}
-                value={user.email}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </div>
           </div>
@@ -50,7 +72,8 @@ const AccountSettings = ({ user, settings, setSettings }) => {
         <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
           <label
             htmlFor='profilePhoto-upload'
-            className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'>
+            className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+          >
             Profile photo
           </label>
           <div className='mt-1 sm:col-span-2 sm:mt-0'>
@@ -61,7 +84,8 @@ const AccountSettings = ({ user, settings, setSettings }) => {
                   stroke='currentColor'
                   fill='none'
                   viewBox='0 0 48 48'
-                  aria-hidden='true'>
+                  aria-hidden='true'
+                >
                   <path
                     d='M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02'
                     strokeWidth={2}
@@ -72,7 +96,8 @@ const AccountSettings = ({ user, settings, setSettings }) => {
                 <div className='flex text-sm text-gray-600'>
                   <label
                     htmlFor='profilePhoto-upload'
-                    className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'>
+                    className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'
+                  >
                     <span>Upload a file</span>
                     <input
                       id='profilePhoto-upload'
@@ -91,9 +116,9 @@ const AccountSettings = ({ user, settings, setSettings }) => {
           </div>
         </div>
         <div className='flex max-w-xs m-auto md:float-right md:m-8'>
-          <FormBtn onClick={() => setSettings(!settings)} label='Save' />
+          <FormBtn type='submit' label='Save' />
         </div>
-      </div>
+      </form>
     </Fragment>
   )
 }
