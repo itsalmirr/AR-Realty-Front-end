@@ -1,18 +1,42 @@
+import useSWR from 'swr'
+import axios from 'axios'
+import { toast } from 'react-toastify'
+import { useEffect } from 'react'
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
-export const RequestedInquiries = ({ listings }) => {
+export const RequestedInquiriesCard = ({
+  listings,
+  setIsLoading,
+  setListings,
+}) => {
+  const fetcher = (url) => axios.get(url).then((res) => res.data)
+
+  const { data, error } = useSWR('/api/auth/dashboard', fetcher)
+
+  useEffect(() => {
+    data === undefined ? setIsLoading(true) : setListings(data.resData)
+    if (error !== undefined) {
+      setIsLoading(false)
+      toast.error('Something went wrong. Please try refreshing the page.')
+    }
+
+    data && data.resData && setIsLoading(false)
+  }, [data])
+
   return (
     <ul
       role='list'
-      className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+      className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
+    >
       {listings.map((listing) => (
         <li
           key={listing.id}
-          className='col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200'>
+          className='col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200'
+        >
           <div className='w-full flex items-center justify-between p-6 space-x-6'>
             <div className='flex-1 truncate'>
               <div className='flex items-center space-x-3'>
@@ -48,7 +72,8 @@ export const RequestedInquiries = ({ listings }) => {
               <div className='w-0 flex-1 flex'>
                 <a
                   href={`mailto:${listing.realtor.email}`}
-                  className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-primaryDark'>
+                  className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-primaryDark'
+                >
                   <MdEmail
                     className='w-5 h-5 text-primaryDark'
                     aria-hidden='true'
@@ -59,7 +84,8 @@ export const RequestedInquiries = ({ listings }) => {
               <div className='-ml-px w-0 flex-1 flex'>
                 <a
                   href={`tel:${listing.realtor.phone}`}
-                  className='relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-primaryDark'>
+                  className='relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-primaryDark'
+                >
                   <FaPhone
                     className='w-5 h-5 text-primaryDark'
                     aria-hidden='true'
@@ -75,4 +101,4 @@ export const RequestedInquiries = ({ listings }) => {
   )
 }
 
-export default RequestedInquiries
+export default RequestedInquiriesCard

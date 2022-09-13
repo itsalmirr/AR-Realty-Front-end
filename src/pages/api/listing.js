@@ -18,7 +18,6 @@ const listing = async (req, res) => {
         axiosResponse.data
       )
     } catch (err) {
-      console.log('err', err)
       response(res, 500, false, 'Server error')
     }
   }

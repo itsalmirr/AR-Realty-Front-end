@@ -12,7 +12,6 @@ const RealtorListings = ({ slug }) => {
   )
   useEffect(() => {
     data && setListings(data.resData)
-    console.log(data)
   }, [data])
 
   if (error || !data) {
