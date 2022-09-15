@@ -74,9 +74,15 @@ const user = async (req, res) => {
         },
       }
 
-      await axios(config)
+      const { data } = await axios(config)
 
-      response(res, 200, true, 'Account information successfully changed.')
+      response(
+        res,
+        200,
+        true,
+        'Account information successfully changed.',
+        data
+      )
     } catch (err) {
       // If the request failed, try to refresh the access token
       console.error(err)

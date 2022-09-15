@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
-import { FaRegHeart, FaBed, FaBath } from 'react-icons/fa'
+import { FaBed, FaBath } from 'react-icons/fa'
 import { MdSquareFoot } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
@@ -12,15 +12,14 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'
-      >
+        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
             <a href='#'>
               <img
                 className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
                 src={listing.photo_main}
-                alt={listing.description}
+                alt={listing.title + ' photo'}
               />
             </a>
           </Link>
@@ -32,8 +31,7 @@ const ListingCard = ({ listing }) => {
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
-              aria-hidden='true'
-            >
+              aria-hidden='true'>
               <div className='w-full border-t border-gray-300' />
             </div>
           </div>
@@ -44,9 +42,6 @@ const ListingCard = ({ listing }) => {
                 {formatPrice(listing.price)}
               </span>
             </h3>
-            <button className='flex justify-start items-center mx-2 mt-3'>
-              <FaRegHeart className='w-5 h-5 mr-2 text-gray-300 hover:text-red-500' />
-            </button>
           </div>
           <div className='border-b'>
             {/* <ListingFeatures listing={listing} /> */}
