@@ -55,8 +55,6 @@ const nextConfig = {
   },
 
   reactStrictMode: true,
-  locales: ['en'],
-  defaultLocale: 'en',
   swcMinify: true,
   images: {
     domains: ['tailwindui.com', 'images.unsplash.com', 'res.cloudinary.com'],

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import { toast } from 'react-toastify'
 
 import {
   FormInput,
@@ -22,6 +23,16 @@ export const InquiryForm = ({ user, listing }) => {
 
   const handleChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (formState.phone.length < 10 || formState.phone.length > 10) {
+      toast.error('Please enter a valid phone number')
+      return
+    }
+    handleInquirySubmit(formState, setFormState)
+    return
   }
 
   useEffect(() => {
@@ -53,10 +64,7 @@ export const InquiryForm = ({ user, listing }) => {
                 Send us a message
               </h3>
               <form
-                onSubmit={(e) => {
-                  e.preventDefault()
-                  handleInquirySubmit(formState, setFormState)
-                }}
+                onSubmit={handleSubmit}
                 className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
                 <FormInput
                   name='fullName'
