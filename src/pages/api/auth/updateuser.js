@@ -17,13 +17,6 @@ const updateuser = async (req, res) => {
     try {
       const { access } = cookie
       const { full_name, email } = req.body
-      // Get the user's data from the API with the access token
-      //   const { data } = await axios.put(`${API_URL}/api/user/me/`, {
-      //     headers: {
-      //       Authorization: `Bearer ${access}`,
-      //     },
-      //     data: body,
-      //   })
       const config = {
         method: 'put',
         url: `${API_URL}/api/user/me/`,
@@ -37,14 +30,13 @@ const updateuser = async (req, res) => {
         },
       }
 
-      await axios(config)
+      const { data } = await axios(config)
 
       // Return the user's data to the client if  the request was successful
-      response(res, 200, true, 'User is logged in')
+      response(res, 200, true, 'User is logged in', data)
     } catch (err) {
-      console.log(err.message)
       // If the request failed, try to refresh the access token
-      response(res, 401, false, 'User is not logged in')
+      response(res, 401, false, 'User is not logged in', err)
     }
   }
 }

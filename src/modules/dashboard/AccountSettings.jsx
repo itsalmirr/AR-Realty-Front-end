@@ -9,12 +9,19 @@ const AccountSettings = ({ user, settings, setSettings }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    await axios.put('/api/auth/updateuser/', {
+    const { data } = await axios.put('/api/auth/updateuser/', {
       full_name,
       email,
     })
 
-    toast.success('Account settings updated.')
+    console.log(data)
+    if (data.success) {
+      toast.success('Account settings updated')
+      setSettings({ ...settings, full_name, email })
+    } else {
+      toast.error("Couldn't update account settings")
+      toast.info('Please try again later or refresh the page')
+    }
     setSettings(!settings)
   }
 
