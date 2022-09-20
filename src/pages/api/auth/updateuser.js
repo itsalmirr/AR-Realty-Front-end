@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import { API_URL } from '@lib/constants'
-import { response, parseCookie, setCookies } from '@lib/helpers'
+import { response, parseCookie } from '@lib/helpers'
 
 const updateuser = async (req, res) => {
   if (req.method === 'PUT') {
