@@ -1,32 +1,10 @@
-import useSWR from 'swr'
-import axios from 'axios'
-import { toast } from 'react-toastify'
-import { useEffect } from 'react'
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
-export const RequestedInquiriesCard = ({
-  listings,
-  setIsLoading,
-  setListings,
-}) => {
-  const fetcher = (url) => axios.get(url).then((res) => res.data)
-
-  const { data, error } = useSWR('/api/auth/dashboard', fetcher)
-
-  useEffect(() => {
-    data === undefined ? setIsLoading(true) : setListings(data.resData)
-    if (error !== undefined) {
-      setIsLoading(false)
-      toast.error('Something went wrong. Please try refreshing the page.')
-    }
-
-    data && data.resData && setIsLoading(false)
-  }, [data])
-
+export const RequestedInquiriesCard = ({ listings }) => {
   return (
     <ul
       role='list'

@@ -6,11 +6,12 @@ const dashboard = async (req, res) => {
   if (req.method == 'GET') {
     const cookie = parseCookie(req)
     const { access } = cookie
+    const url = `${API_URL}/api/user/me/`
 
     try {
-      const { data } = await axios.get(`${API_URL}/api/user/me/`, {
+      const { data } = await axios.get(url, {
         headers: {
-          Dashboard: 'true',
+          Dashboard: req.headers.inquiries === 'true' ? 'true' : 'false',
           Authorization: `Bearer ${access}`,
         },
       })

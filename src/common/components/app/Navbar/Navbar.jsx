@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Fragment, useContext, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
@@ -44,13 +43,13 @@ const Navbar = () => {
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
                   <Link href='/'>
-                    <Image
-                      className='block h-8 w-auto cursor-pointer'
-                      src={companyLogo}
-                      alt='AR Realty Logo'
-                      width={60}
-                      height={45}
-                    />
+                    <a>
+                      <img
+                        className='block h-8 w-auto cursor-pointer'
+                        src={companyLogo}
+                        alt='AR Realty Logo'
+                      />
+                    </a>
                   </Link>
                 </div>
               </div>
@@ -119,7 +118,8 @@ const Navbar = () => {
             </div>
             <nav
               className='hidden lg:py-2 lg:flex lg:space-x-8'
-              aria-label='Global'>
+              aria-label='Global'
+            >
               {navigation.map((path) => (
                 <Link href={path.href} key={path.name}>
                   <a
@@ -131,7 +131,8 @@ const Navbar = () => {
                         : 'text-gray-300 hover:bg-accentDark hover:text-white',
                       'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                     )}
-                    aria-current={path.current ? 'page' : undefined}>
+                    aria-current={path.current ? 'page' : undefined}
+                  >
                     {path.name}
                   </a>
                 </Link>
