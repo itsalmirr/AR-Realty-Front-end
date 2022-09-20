@@ -47,47 +47,6 @@ const user = async (req, res) => {
       }
     }
   }
-
-  if (req.method === 'PUT') {
-    if (!req.headers.cookie) {
-      return res.end()
-    }
-
-    const cookie = parseCookie(req)
-    if (!cookie.access && !cookie.refresh) {
-      return res.end()
-    }
-
-    try {
-      const { access } = cookie
-      const { full_name, email } = req.body
-      let config = {
-        method: 'put',
-        url: 'http://localhost:8000/api/user/me/',
-        headers: {
-          Authorization: `Bearer ${access}`,
-          'Content-Type': 'application/json',
-        },
-        data: {
-          full_name: full_name,
-          email: email,
-        },
-      }
-
-      const { data } = await axios(config)
-
-      response(
-        res,
-        200,
-        true,
-        'Account information successfully changed.',
-        data
-      )
-    } catch (err) {
-      // If the request failed, try to refresh the access token
-      console.error(err)
-    }
-  }
 }
 
 export default user

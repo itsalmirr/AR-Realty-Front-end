@@ -6,15 +6,14 @@ import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 const AccountSettings = ({ user, settings, setSettings }) => {
   const [full_name, setFullName] = useState(user.full_name)
   const [email, setEmail] = useState(user.email)
-  // const [password, setPassword] = useState('')
-  // const [passwordConfirm, setPasswordConfirm] = useState('')
 
   const onSubmit = async (e) => {
     e.preventDefault()
-    await axios.put('/api/auth/user', {
+    await axios.put('/api/auth/updateuser/', {
       full_name,
       email,
     })
+
     toast.success('Account settings updated.')
     setSettings(!settings)
   }
