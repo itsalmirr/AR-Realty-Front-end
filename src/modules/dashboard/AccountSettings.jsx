@@ -1,12 +1,18 @@
 import axios from 'axios'
+import { Fragment, memo } from 'react'
 import { toast } from 'react-toastify'
-import { Fragment, useState } from 'react'
+
 import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 
-const AccountSettings = ({ user, settings, setSettings }) => {
-  const [full_name, setFullName] = useState(user.full_name)
-  const [email, setEmail] = useState(user.email)
-
+const AccountSettings = ({
+  email,
+  settings,
+  setSettings,
+  full_name,
+  setFullName,
+  setEmail,
+  updateAccount,
+}) => {
   const onSubmit = async (e) => {
     e.preventDefault()
     const { data } = await axios.put('/api/auth/updateuser/', {
@@ -14,7 +20,6 @@ const AccountSettings = ({ user, settings, setSettings }) => {
       email,
     })
 
-    console.log(data)
     if (data.success) {
       toast.success('Account settings updated')
       setSettings({ ...settings, full_name, email })
@@ -24,7 +29,6 @@ const AccountSettings = ({ user, settings, setSettings }) => {
     }
     setSettings(!settings)
   }
-
   return (
     <Fragment>
       <form
@@ -122,11 +126,11 @@ const AccountSettings = ({ user, settings, setSettings }) => {
           </div>
         </div>
         <div className='flex max-w-xs m-auto md:float-right md:m-8'>
-          <FormBtn type='submit' label='Save' />
+          <FormBtn type='submit' onClick={updateAccount} label='Save' />
         </div>
       </form>
     </Fragment>
   )
 }
 
-export default AccountSettings
+export default memo(AccountSettings)

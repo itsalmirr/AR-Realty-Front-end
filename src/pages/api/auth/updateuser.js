@@ -35,7 +35,7 @@ const updateuser = async (req, res) => {
       // Return the user's data to the client if  the request was successful
       response(res, 200, true, 'User is logged in', data)
     } catch (err) {
-      // If the request failed, try to refresh the access token
+      console.log('here')
       response(res, 401, false, 'User is not logged in', err)
     }
   }

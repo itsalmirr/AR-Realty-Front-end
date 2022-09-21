@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { AiTwotoneSetting } from 'react-icons/ai'
 
 const cover = {
@@ -36,7 +37,8 @@ const UserHeader = ({ user, settings, setSettings }) => {
                   <button
                     type='button'
                     onClick={() => setSettings(!settings)}
-                    className='inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 hover:text-accentDark'>
+                    className='inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 hover:text-accentDark'
+                  >
                     <AiTwotoneSetting
                       className='ml-1 mr-2 h-5 w-5 text-gray-400'
                       aria-hidden='true'
@@ -58,4 +60,4 @@ const UserHeader = ({ user, settings, setSettings }) => {
   )
 }
 
-export default UserHeader
+export default memo(UserHeader)

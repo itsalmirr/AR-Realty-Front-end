@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useCallback } from 'react'
 import useSWR from 'swr'
 import { toast } from 'react-toastify'
 
@@ -29,17 +29,26 @@ const DashboardPage = () => {
   const { isLoading, user, setIsLoading } = useContext(AuthContext)
   const [listings, setListings] = useState([])
   const [settings, setSettings] = useState(false)
+  const [full_name, setFullName] = useState('')
+  const [email, setEmail] = useState('')
 
   const { data, error } = useSWR('/api/auth/dashboard', usersListingsFetcher)
 
+  const updateAccount = useCallback(() => {
+    user.full_name = full_name
+    user.email = email
+  }, [full_name, email])
+
   useEffect(() => {
+    setEmail(user?.email)
+    setFullName(user?.full_name)
     data && setListings(data.resData)
     if (error !== undefined) {
       setIsLoading(false)
       toast.error('Something went wrong. Please try refreshing the page.')
     }
     setIsLoading(false)
-  }, [data])
+  }, [data, user])
 
   return (
     <Layout title='Dashboard'>
@@ -54,11 +63,15 @@ const DashboardPage = () => {
           <Spinner />
         )}
       </header>
-      {settings && (
+      {settings && user && (
         <AccountSettings
-          user={user}
+          email={email}
+          full_name={full_name}
           settings={settings}
           setSettings={setSettings}
+          setEmail={setEmail}
+          setFullName={setFullName}
+          updateAccount={updateAccount}
         />
       )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>

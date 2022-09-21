@@ -1,6 +1,6 @@
+import { Fragment } from 'react'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
-import { Fragment } from 'react'
 
 const Navbar = dynamic(() => import('@components/app/Navbar/Navbar'))
 const Footer = dynamic(() => import('@components/marketing/Footer/Footer'))
