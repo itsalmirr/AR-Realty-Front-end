@@ -6,11 +6,19 @@ import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 
 const AccountSettings = ({
   email,
+  full_name,
+  username,
+  current_password,
+  new_password,
+  confirm_password,
+  setEmail,
+  setFullName,
+  setUsername,
+  setCurrentPassword,
+  setNewPassword,
+  setConfirmPassword,
   settings,
   setSettings,
-  full_name,
-  setFullName,
-  setEmail,
   updateAccount,
 }) => {
   const onSubmit = async (e) => {
@@ -74,6 +82,23 @@ const AccountSettings = ({
                 type='email'
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
+              />
+            </div>
+          </div>
+
+          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+            <label
+              htmlFor='username'
+              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+            >
+              Username
+            </label>
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
+              <FormInput
+                name='username'
+                type='text'
+                onChange={(e) => setUsername(e.target.value)}
+                value={username}
               />
             </div>
           </div>
