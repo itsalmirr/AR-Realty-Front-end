@@ -8,9 +8,9 @@ const AccountSettings = ({
   email,
   full_name,
   username,
-  current_password,
-  new_password,
-  confirm_password,
+  currentPassword,
+  newPassword,
+  confirmPassword,
   setEmail,
   setFullName,
   setUsername,
@@ -99,6 +99,57 @@ const AccountSettings = ({
                 type='text'
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
+              />
+            </div>
+          </div>
+
+          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+            <label
+              htmlFor='current_password'
+              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+            >
+              Current Password
+            </label>
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
+              <FormInput
+                name='current_password'
+                type='password'
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                value={currentPassword}
+              />
+            </div>
+          </div>
+
+          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+            <label
+              htmlFor='newPassword'
+              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+            >
+              New Password
+            </label>
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
+              <FormInput
+                name='newPassword'
+                type='password'
+                onChange={(e) => setNewPassword(e.target.value)}
+                value={newPassword}
+              />
+            </div>
+          </div>
+
+          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+            <label
+              htmlFor='confirmPassword'
+              className='block text-sm font-medium text-gray-70 0 sm:mt-px sm:pt-2'
+            >
+             Confirm New Password
+            </label>
+            <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
+              <FormInput
+                name='confirmPassword'
+                type='password'
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
               />
             </div>
           </div>

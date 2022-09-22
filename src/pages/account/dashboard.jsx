@@ -31,6 +31,10 @@ const DashboardPage = () => {
   const [settings, setSettings] = useState(false)
   const [full_name, setFullName] = useState('')
   const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [currentPassword, setCurrentPassword] = useState('')
+  const [newPassword, setNewPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
   const { data, error } = useSWR('/api/auth/dashboard', usersListingsFetcher)
 
@@ -42,6 +46,7 @@ const DashboardPage = () => {
   useEffect(() => {
     setEmail(user?.email)
     setFullName(user?.full_name)
+    setUsername(user?.username)
     data && setListings(data.resData)
     if (error !== undefined) {
       setIsLoading(false)
@@ -67,10 +72,18 @@ const DashboardPage = () => {
         <AccountSettings
           email={email}
           full_name={full_name}
+          username={username}
           settings={settings}
+          currentPassword={currentPassword}
+          newPassword={newPassword}
+          confirmPassword={confirmPassword}
           setSettings={setSettings}
           setEmail={setEmail}
           setFullName={setFullName}
+          setUsername={setUsername}
+          setCurrentPassword={setCurrentPassword}
+          setNewPassword={setNewPassword}
+          setConfirmPassword={setConfirmPassword}
           updateAccount={updateAccount}
         />
       )}
