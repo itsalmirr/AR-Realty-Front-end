@@ -23,17 +23,20 @@ const AccountSettings = ({
 }) => {
   const onSubmit = async (e) => {
     e.preventDefault()
-    const { data } = await axios.put('/api/auth/updateuser/', {
-      full_name,
-      email,
-    })
-
-    if (data.success) {
-      toast.success('Account settings updated')
-      setSettings({ ...settings, full_name, email })
-    } else {
-      toast.error("Couldn't update account settings")
-      toast.info('Please try again later or refresh the page')
+    if (newPassword !== confirmPassword) {
+      toast.error('Passwords do not match')
+      return
+    }
+    try {
+      const { data } = await axios.put('/api/auth/updateuser/', {
+        full_name,
+        email,
+        username: username ? username.toLowerCase() : null,
+        // password: newPassword ? newPassword : currentPassword,
+      })
+      toast.success(data.message)
+    } catch (err) {
+      toast.error(err.response.data.message)
     }
     setSettings(!settings)
   }
@@ -103,7 +106,7 @@ const AccountSettings = ({
             </div>
           </div>
 
-          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+          {/* <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='current_password'
               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
@@ -118,9 +121,9 @@ const AccountSettings = ({
                 value={currentPassword}
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+          {/* <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='newPassword'
               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
@@ -135,14 +138,14 @@ const AccountSettings = ({
                 value={newPassword}
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
+          {/* <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='confirmPassword'
               className='block text-sm font-medium text-gray-70 0 sm:mt-px sm:pt-2'
             >
-             Confirm New Password
+              Confirm New Password
             </label>
             <div className='mt-1 sm:col-span-2 sm:mt-0 max-w-md'>
               <FormInput
@@ -152,7 +155,7 @@ const AccountSettings = ({
                 value={confirmPassword}
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>

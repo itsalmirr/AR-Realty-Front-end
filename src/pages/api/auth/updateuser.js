@@ -16,7 +16,7 @@ const updateuser = async (req, res) => {
     }
     try {
       const { access } = cookie
-      const { full_name, email } = req.body
+      const { full_name, email, username } = req.body
       const config = {
         method: 'put',
         url: `${API_URL}/api/user/me/`,
@@ -27,16 +27,18 @@ const updateuser = async (req, res) => {
         data: {
           full_name: full_name,
           email: email,
+          username: username,
+          // password: password,
         },
       }
 
       const { data } = await axios(config)
 
       // Return the user's data to the client if  the request was successful
-      response(res, 200, true, 'User is logged in', data)
+      response(res, 200, true, data.message, data)
     } catch (err) {
-      console.log('here')
-      response(res, 401, false, 'User is not logged in', err)
+      console.log(err)
+      response(res, 401, false, err.response.data.message)
     }
   }
 }
