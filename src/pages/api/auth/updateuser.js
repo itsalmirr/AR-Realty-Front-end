@@ -37,7 +37,6 @@ const updateuser = async (req, res) => {
       // Return the user's data to the client if  the request was successful
       response(res, 200, true, data.message, data)
     } catch (err) {
-      console.log(err)
       response(res, 401, false, err.response.data.message)
     }
   }

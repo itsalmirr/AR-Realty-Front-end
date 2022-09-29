@@ -12,7 +12,8 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'>
+        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'
+      >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
             <a href='#'>
@@ -31,7 +32,8 @@ const ListingCard = ({ listing }) => {
           <div className='relative'>
             <div
               className='absolute inset-0 flex items-center'
-              aria-hidden='true'>
+              aria-hidden='true'
+            >
               <div className='w-full border-t border-gray-300' />
             </div>
           </div>
@@ -79,8 +81,8 @@ const ListingCard = ({ listing }) => {
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
-        <div className='flex-1 bg-white p-6 flex flex-col justify-between'>
-          <div className='mt-6 flex items-center'>
+        <div className='flex-1 bg-white p-2 flex flex-col justify-between'>
+          <div className='ml-2 flex items-center'>
             <div className='flex-shrink-0'>
               <a href='#'>
                 <span className='sr-only'>{listing.realtor.full_name}</span>
