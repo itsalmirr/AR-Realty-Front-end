@@ -6,6 +6,7 @@ import { OurTeam } from '@components/app/OurTeam'
 
 const AboutPage = ({ realtors }) => {
   const realtorsList = realtors.results
+  // deeded
 
   return (
     <Layout title='About'>
