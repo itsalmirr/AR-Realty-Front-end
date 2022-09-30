@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const OurTeam = ({ realtors }) => {
   return (
     <div>
@@ -23,7 +25,9 @@ const OurTeam = ({ realtors }) => {
                     />
                     <div className='space-y-2'>
                       <div className='text-xs font-medium lg:text-sm'>
-                        <h3>{realtor.full_name}</h3>
+                        <Link href={`/realtors/${realtor.slug}`}>
+                          <a className='hover:underline'>{realtor.full_name}</a>
+                        </Link>
                         <p className='text-primaryDark'>Realtor</p>
                       </div>
                     </div>
