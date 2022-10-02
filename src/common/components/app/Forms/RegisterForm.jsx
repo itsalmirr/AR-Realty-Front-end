@@ -10,7 +10,7 @@ export const RegisterForm = () => {
   const [formState, setFormState] = useState({
     email: '',
     full_name: '',
-    user_name: '',
+    username: '',
     password: '',
     passwordConfirmation: '',
   })
@@ -46,11 +46,11 @@ export const RegisterForm = () => {
         onChange={handleChange}
       />
       <FormInput
-        name='user_name'
+        name='username'
         type='text'
         label='User name'
         required
-        value={formState.user_name}
+        value={formState.username}
         onChange={handleChange}
       />
 
