@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post('/api/auth/register', body)
       if (res.data.success) {
         toast.success(res.data.message)
-        router.push('/users/login')
+        router.push('/auth/login')
       }
     } catch (err) {
       toast.error(err.response.data.message)

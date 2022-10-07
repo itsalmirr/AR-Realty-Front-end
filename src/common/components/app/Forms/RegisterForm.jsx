@@ -10,7 +10,7 @@ export const RegisterForm = () => {
   const [formState, setFormState] = useState({
     email: '',
     full_name: '',
-    user_name: '',
+    username: '',
     password: '',
     passwordConfirmation: '',
   })
@@ -46,11 +46,11 @@ export const RegisterForm = () => {
         onChange={handleChange}
       />
       <FormInput
-        name='user_name'
+        name='username'
         type='text'
         label='User name'
         required
-        value={formState.user_name}
+        value={formState.username}
         onChange={handleChange}
       />
 
@@ -84,7 +84,8 @@ export const RegisterForm = () => {
           />
           <label
             htmlFor='remember-me'
-            className='ml-2 block text-sm text-gray-900'>
+            className='ml-2 block text-sm text-gray-900'
+          >
             Remember me
           </label>
         </div>
@@ -92,7 +93,8 @@ export const RegisterForm = () => {
         <div className='text-sm'>
           <a
             href='#'
-            className='font-medium text-primaryLight hover:text-accentDark'>
+            className='font-medium text-primaryLight hover:text-accentDark'
+          >
             Forgot your password?
           </a>
         </div>
