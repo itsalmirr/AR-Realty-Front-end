@@ -7,7 +7,7 @@ import { quickSearch } from '@lib/helpers'
 import { Layout } from '@components/layouts'
 import { ListingsList } from '@components/app/ListingsList'
 import { Spinner } from '@components/app/Spinner'
-import NoResults from '@components/NoResults'
+import { NoResults } from '@components/app/NoResults'
 
 const SearchPage = () => {
   const router = useRouter()
