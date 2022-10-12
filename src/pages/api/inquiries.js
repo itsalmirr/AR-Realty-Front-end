@@ -11,7 +11,7 @@ const inquiries = async (req, res) => {
       const { access } = cookie
 
       axios.defaults.headers.common['Authorization'] = `Bearer ${access}`
-      const { data } = await axios.post(`${API_URL}/api/inquiries/`, {
+      const { data } = await axios.post(`${API_URL}/api/inquiries-only/`, {
         listing_id,
         name,
         email,

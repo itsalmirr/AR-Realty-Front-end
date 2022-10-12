@@ -5,6 +5,17 @@ import { Layout } from '@components/layouts'
 import { ContactInfo, ContactForm } from '@modules/contact'
 import { toast } from 'react-toastify'
 
+const clearForm = (setFormState) => {
+  setFormState({
+    first_name: '',
+    last_name: '',
+    company_name: '',
+    email: '',
+    phone: '',
+    message: '',
+  })
+}
+
 const ContactPage = () => {
   const [formState, setFormState] = useState({
     first_name: '',
@@ -31,11 +42,12 @@ const ContactPage = () => {
       const { data } = await axios.post('/api/businessinquiries/', {
         ...formState,
       })
-
       data.success && toast.success('Successfully submited request!')
+      clearForm(setFormState)
     } catch (err) {
-      toast.error('Oops! Something went wrong!')
-      toast.info("You can't make two inquiries.")
+      // toast.error('Oops! Something went wrong!')
+      toast.warning("You can't make two inquiries.")
+      clearForm(setFormState)
     }
   }
 

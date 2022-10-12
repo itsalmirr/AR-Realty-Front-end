@@ -29,7 +29,10 @@ const UserHeader = ({ user, settings, setSettings }) => {
               </div>
               <div className='mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1'>
                 <div className='sm:hidden md:block mt-6 min-w-0 flex-1'>
-                  <h1 className='text-2xl font-bold text-gray-900 truncate'>
+                  <h1
+                    id='userFullname'
+                    className='text-2xl font-bold text-gray-900 truncate'
+                  >
                     {user.full_name}
                   </h1>
                 </div>
