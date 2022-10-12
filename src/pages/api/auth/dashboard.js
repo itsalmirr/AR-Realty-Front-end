@@ -18,7 +18,7 @@ const dashboard = async (req, res) => {
 
       response(res, 200, true, '', data)
     } catch (err) {
-      setCookies(res, '', '')
+      // setCookies(res, '', '')
       response(res, 500, false, 'Server error')
     }
   }
