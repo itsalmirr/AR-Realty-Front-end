@@ -1,7 +1,7 @@
-import dynamic from 'next/dynamic'
-import { useContext, useState, useEffect, useCallback } from 'react'
 import useSWR from 'swr'
+import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
+import { useContext, useState, useEffect, useCallback } from 'react'
 
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
