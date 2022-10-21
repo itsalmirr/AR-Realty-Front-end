@@ -50,7 +50,6 @@ const DashboardPage = () => {
     data && setListings(data.resData)
     if (error !== undefined) {
       setIsLoading(false)
-      toast.error('Something went wrong. Please try refreshing the page.')
     }
     setIsLoading(false)
   }, [data, user])

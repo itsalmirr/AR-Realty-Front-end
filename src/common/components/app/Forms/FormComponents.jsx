@@ -20,7 +20,8 @@ export const FormInput = ({
     <div>
       <label
         htmlFor={name}
-        className={'block text-sm font-medium text-gray-700'}>
+        className={'block text-sm font-medium text-gray-700'}
+      >
         {label}{' '}
         {!rest.passwordMatch &&
           name === 'passwordConfirmation' &&
@@ -69,7 +70,8 @@ export const PhoneInput = ({
           <select
             id='country'
             name='country'
-            className='h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-gray-500 focus:ring-accentDark focus:border-accentDark rounded-md'>
+            className='h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-gray-500 focus:ring-accentDark focus:border-accentDark rounded-md'
+          >
             <option>US</option>
             <option>CA</option>
             <option>EU</option>
@@ -94,13 +96,15 @@ export const PhoneInput = ({
 export const FormBtn = ({ label, type, classes, onClick }) => {
   return (
     <button
+      id='submit'
       type={type}
       onClick={onClick}
       className={
         classes
           ? classes
           : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight'
-      }>
+      }
+    >
       {label}
     </button>
   )
@@ -119,7 +123,8 @@ export const LongFormInput = ({
       <div className='flex justify-between'>
         <label
           htmlFor={name}
-          className='block text-sm font-medium text-warm-gray-900'>
+          className='block text-sm font-medium text-warm-gray-900'
+        >
           {label}
         </label>
         <span id='message-max' className='text-sm text-warm-gray-500'>
@@ -158,7 +163,8 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-red-500'>
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-red-500'
+          >
             <span className='sr-only'>Sign in with Google</span>
             <FaGoogle className='h-5 w-5' />
           </a>
@@ -167,7 +173,8 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-blue-500'>
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-blue-500'
+          >
             <span className='sr-only'>Sign in with Twitter</span>
             <FaTwitter className='h-5 w-5' />
           </a>
@@ -176,7 +183,8 @@ export const ContinueWithProvider = () => {
         <div>
           <a
             href='#'
-            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-black'>
+            className='w-full inline-flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-500 hover:bg-gray-50 hover:text-black'
+          >
             <span className='sr-only'>Sign in with GitHub</span>
             <FaGithub className='h-5 w-5' />
           </a>
@@ -192,7 +200,8 @@ export const ContactFormInfo = () => {
       {/* Decorative angle backgrounds */}
       <div
         className='absolute inset-0 pointer-events-none sm:hidden'
-        aria-hidden='true'>
+        aria-hidden='true'
+      >
         <svg
           className='absolute inset-0 w-full h-full'
           width={343}
@@ -200,7 +209,8 @@ export const ContactFormInfo = () => {
           viewBox='0 0 343 388'
           fill='none'
           preserveAspectRatio='xMidYMid slice'
-          xmlns='http://www.w3.org/2000/svg'>
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
             d='M-99 461.107L608.107-246l707.103 707.107-707.103 707.103L-99 461.107z'
             fill='url(#linear1)'
@@ -213,7 +223,8 @@ export const ContactFormInfo = () => {
               y1='107.554'
               x2='961.66'
               y2='814.66'
-              gradientUnits='userSpaceOnUse'>
+              gradientUnits='userSpaceOnUse'
+            >
               <stop stopColor='#fff' />
               <stop offset={1} stopColor='#fff' stopOpacity={0} />
             </linearGradient>
@@ -222,7 +233,8 @@ export const ContactFormInfo = () => {
       </div>
       <div
         className='hidden absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none sm:block lg:hidden'
-        aria-hidden='true'>
+        aria-hidden='true'
+      >
         <svg
           className='absolute inset-0 w-full h-full'
           width={359}
@@ -230,7 +242,8 @@ export const ContactFormInfo = () => {
           viewBox='0 0 359 339'
           fill='none'
           preserveAspectRatio='xMidYMid slice'
-          xmlns='http://www.w3.org/2000/svg'>
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
             d='M-161 382.107L546.107-325l707.103 707.107-707.103 707.103L-161 382.107z'
             fill='url(#linear2)'
@@ -243,7 +256,8 @@ export const ContactFormInfo = () => {
               y1='28.553'
               x2='899.66'
               y2='735.66'
-              gradientUnits='userSpaceOnUse'>
+              gradientUnits='userSpaceOnUse'
+            >
               <stop stopColor='#fff' />
               <stop offset={1} stopColor='#fff' stopOpacity={0} />
             </linearGradient>
@@ -252,7 +266,8 @@ export const ContactFormInfo = () => {
       </div>
       <div
         className='hidden absolute top-0 right-0 bottom-0 w-1/2 pointer-events-none lg:block'
-        aria-hidden='true'>
+        aria-hidden='true'
+      >
         <svg
           className='absolute inset-0 w-full h-full'
           width={160}
@@ -260,7 +275,8 @@ export const ContactFormInfo = () => {
           viewBox='0 0 160 678'
           fill='none'
           preserveAspectRatio='xMidYMid slice'
-          xmlns='http://www.w3.org/2000/svg'>
+          xmlns='http://www.w3.org/2000/svg'
+        >
           <path
             d='M-161 679.107L546.107-28l707.103 707.107-707.103 707.103L-161 679.107z'
             fill='url(#linear3)'
@@ -273,7 +289,8 @@ export const ContactFormInfo = () => {
               y1='325.553'
               x2='899.66'
               y2='1032.66'
-              gradientUnits='userSpaceOnUse'>
+              gradientUnits='userSpaceOnUse'
+            >
               <stop stopColor='#fff' />
               <stop offset={1} stopColor='#fff' stopOpacity={0} />
             </linearGradient>

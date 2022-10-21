@@ -45,7 +45,8 @@ export const LoginForm = () => {
           />
           <label
             htmlFor='remember-me'
-            className='ml-2 block text-sm text-gray-900'>
+            className='ml-2 block text-sm text-gray-900'
+          >
             Remember me
           </label>
         </div>
@@ -53,13 +54,14 @@ export const LoginForm = () => {
         <div className='text-sm'>
           <a
             href='#'
-            className='font-medium text-primaryLight hover:text-accentDark'>
+            className='font-medium text-primaryLight hover:text-accentDark'
+          >
             Forgot your password?
           </a>
         </div>
       </div>
 
-      <FormBtn type={'submit'} label='Log in' />
+      <FormBtn id='frm-login' type={'submit'} label='Log in' />
     </form>
   )
 }
