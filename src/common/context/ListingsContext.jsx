@@ -67,7 +67,10 @@ export const ListingsProvider = ({ children }) => {
         message: '',
       })
     } catch (err) {
-      toast.error('Opps! Something went wrong, please try again')
+      // toast.info("If you haven't, please try again later.")
+      toast.error(
+        'Opps! Something went wrong. Maybe you already made an inquiry?'
+      )
     }
   }
 

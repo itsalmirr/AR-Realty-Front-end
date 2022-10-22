@@ -8,7 +8,8 @@ import { ToastContainer, Flip } from 'react-toastify'
 const CustomAOS = () => {
   useEffect(() => {
     AOS.init({
-      duration: 1500,
+      once: true,
+      duration: 1000,
       easing: 'ease-in-out',
       mirror: true,
       delay: 100,
@@ -25,7 +26,7 @@ const CustomAOS = () => {
       rtl={false}
       draggable
       pauseOnHover={false}
-      limit={1}
+      limit={2}
       transition={Flip}
       theme='colored'
     />

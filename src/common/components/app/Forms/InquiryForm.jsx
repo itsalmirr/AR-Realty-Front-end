@@ -27,12 +27,7 @@ export const InquiryForm = ({ user, listing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (formState.phone.length < 10 || formState.phone.length > 10) {
-      toast.error('Please enter a valid phone number')
-      return
-    }
     handleInquirySubmit(formState, setFormState)
-    return
   }
 
   useEffect(() => {
@@ -40,6 +35,7 @@ export const InquiryForm = ({ user, listing }) => {
       ...formState,
       listing_id: listing.id,
       listing: listing.title,
+      message: `I'm interested in ${listing.title}.`,
     })
   }, [listing])
 
@@ -65,7 +61,8 @@ export const InquiryForm = ({ user, listing }) => {
               </h3>
               <form
                 onSubmit={handleSubmit}
-                className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
+                className='mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
+              >
                 <FormInput
                   name='fullName'
                   label='Full name'
@@ -102,8 +99,7 @@ export const InquiryForm = ({ user, listing }) => {
                   value={formState.phone}
                   onChange={handleChange}
                   type='tel'
-                  required
-                  placeholder='Phone'
+                  placeholder='Optional'
                 />
                 <LongFormInput
                   name='message'

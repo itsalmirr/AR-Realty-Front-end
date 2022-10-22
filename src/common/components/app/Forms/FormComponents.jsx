@@ -13,6 +13,7 @@ export const FormInput = ({
   value,
   type,
   onChange,
+  placeholder,
   required,
   ...rest
 }) => {
@@ -38,6 +39,7 @@ export const FormInput = ({
           autoComplete={name}
           required={required}
           onChange={onChange}
+          placeholder={placeholder}
           onKeyUp={rest.handlePasswordMatch}
           value={value}
           className={
