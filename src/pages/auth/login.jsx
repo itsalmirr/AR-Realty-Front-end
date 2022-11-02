@@ -20,12 +20,11 @@ const LoginPage = () => {
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             Or{' '}
-            <Link href={links.register}>
-              <a
-                href='#'
-                className='font-medium text-primaryLight hover:text-accentDark'>
-                register here
-              </a>
+            <Link
+              href={links.register}
+              className='font-medium text-primaryLight hover:text-accentDark'
+            >
+              register here
             </Link>
           </p>
         </div>

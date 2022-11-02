@@ -21,12 +21,11 @@ const Register = () => {
           </h2>
           <p className='mt-2 text-center text-sm text-gray-600'>
             Already have an account?{' '}
-            <Link href={links.login}>
-              <a
-                href='#'
-                className='font-medium text-primaryLight hover:text-accentDark'>
-                Log in
-              </a>
+            <Link
+              href={links.login}
+              className='font-medium text-primaryLight hover:text-accentDark'
+            >
+              Log in
             </Link>
           </p>
         </div>

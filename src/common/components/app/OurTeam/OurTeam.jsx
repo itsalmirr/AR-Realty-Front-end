@@ -25,8 +25,11 @@ const OurTeam = ({ realtors }) => {
                     />
                     <div className='space-y-2'>
                       <div className='text-xs font-medium lg:text-sm'>
-                        <Link href={`/realtors/${realtor.slug}`}>
-                          <a className='hover:underline'>{realtor.full_name}</a>
+                        <Link
+                          href={`/realtors/${realtor.slug}`}
+                          className='hover:underline'
+                        >
+                          {realtor.full_name}
                         </Link>
                         <p className='text-primaryDark'>Realtor</p>
                       </div>

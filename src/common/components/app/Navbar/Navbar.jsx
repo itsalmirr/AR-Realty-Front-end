@@ -43,13 +43,11 @@ const Navbar = () => {
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
                   <Link href='/'>
-                    <a>
-                      <img
-                        className='block h-8 w-auto cursor-pointer'
-                        src={companyLogo}
-                        alt='AR Realty Logo'
-                      />
-                    </a>
+                    <img
+                      className='block h-8 w-auto cursor-pointer'
+                      src={companyLogo}
+                      alt='AR Realty Logo'
+                    />
                   </Link>
                 </div>
               </div>
@@ -121,20 +119,19 @@ const Navbar = () => {
               aria-label='Global'
             >
               {navigation.map((path) => (
-                <Link href={path.href} key={path.name}>
-                  <a
-                    href='#'
-                    onClick={handlePageChange(path)}
-                    className={classNames(
-                      path.current
-                        ? 'bg-gray-200'
-                        : 'text-gray-300 hover:bg-accentDark hover:text-white',
-                      'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
-                    )}
-                    aria-current={path.current ? 'page' : undefined}
-                  >
-                    {path.name}
-                  </a>
+                <Link
+                  href={path.href}
+                  key={path.name}
+                  onClick={handlePageChange(path)}
+                  className={classNames(
+                    path.current
+                      ? 'bg-gray-200'
+                      : 'text-gray-300 hover:bg-accentDark hover:text-white',
+                    'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
+                  )}
+                  aria-current={path.current ? 'page' : undefined}
+                >
+                  {path.name}
                 </Link>
               ))}
             </nav>
@@ -162,15 +159,13 @@ const LoginButton = ({ path }) => {
   return (
     <Fragment>
       {path !== '/users/login' ? (
-        <Link href={links.login}>
-          <a className='mr-4'>
-            <button
-              id='login'
-              className='bg-accentDark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
-            >
-              Log in
-            </button>
-          </a>
+        <Link href={links.login} className='mr-4'>
+          <button
+            id='login'
+            className='bg-accentDark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
+          >
+            Log in
+          </button>
         </Link>
       ) : null}
     </Fragment>

@@ -23,7 +23,8 @@ const MobileMenuDropDown = ({
                   : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                 'block rounded-md py-2 px-3 text-base font-medium'
               )}
-              aria-current={path.current ? 'page' : undefined}>
+              aria-current={path.current ? 'page' : undefined}
+            >
               {path.name}
             </Disclosure.Button>
           </Link>
@@ -58,7 +59,8 @@ const MobileMenuDropDown = ({
                   onClick={path.name === 'Sign out' ? logoutUser : null}
                   as='a'
                   href={path.href}
-                  className='block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'>
+                  className='block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
+                >
                   {path.name}
                 </Disclosure.Button>
               </Link>
@@ -71,7 +73,8 @@ const MobileMenuDropDown = ({
             <Disclosure.Button
               as='a'
               href='#'
-              className='block rounded-md py-2 px-3 text-base font-medium text-accentDark hover:bg-gray-700 hover:text-white'>
+              className='block rounded-md py-2 px-3 text-base font-medium text-accentDark hover:bg-gray-700 hover:text-white'
+            >
               Login
             </Disclosure.Button>
           </Link>

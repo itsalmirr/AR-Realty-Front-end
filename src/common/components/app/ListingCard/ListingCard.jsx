@@ -16,18 +16,17 @@ const ListingCard = ({ listing }) => {
       >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
-            <a href='#'>
-              <img
-                className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
-                src={listing.photo_main}
-                alt={listing.title + ' photo'}
-              />
-            </a>
+            <img
+              className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
+              src={listing.photo_main}
+              alt={listing.title + ' photo'}
+            />
           </Link>
-          <Link href={`/listings/${listing.slug}`}>
-            <a className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline hover:text-accentDark'>
-              {listing.title}
-            </a>
+          <Link
+            href={`/listings/${listing.slug}`}
+            className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline hover:text-accentDark'
+          >
+            {listing.title}
           </Link>
           <div className='relative'>
             <div
@@ -97,10 +96,11 @@ const ListingCard = ({ listing }) => {
             </div>
             <div className='ml-3'>
               <p className='flex space-x-1 text-sm font-medium text-primaryDark'>
-                <Link href={`/realtors/${listing.realtor.slug}`}>
-                  <a href='#' className='hover:underline'>
-                    {listing.realtor.full_name}
-                  </a>
+                <Link
+                  href={`/realtors/${listing.realtor.slug}`}
+                  className='hover:underline'
+                >
+                  {listing.realtor.full_name}
                 </Link>
               </p>
               <div className='flex space-x-1 text-sm text-gray-500'>

@@ -8,8 +8,11 @@ const NoResults = () => {
       </h2>
       <p className='text-center text-gray-500'>
         Try a different search term or visit the{' '}
-        <Link href='/listings'>
-          <a className='text-accentDark hover:text-accentDark'>listings page</a>
+        <Link
+          href='/listings'
+          className='text-accentDark hover:text-accentDark'
+        >
+          listings page
         </Link>
         .
       </p>

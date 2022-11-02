@@ -144,9 +144,9 @@ const ListingPage = ({ slug, currentListing }) => {
           <main className='sm:flex'>
             <img
               src='https://res.cloudinary.com/iamalmiir/image/upload/v1667350951/undraw_awesome_rlvy_hfbadt.svg'
-              className='h-1/4 w-1/4 mx-auto'
+              className='h-1/5 w-1/5'
             />
-            <div className='sm:ml-6 lg:mt-24'>
+            <div className='sm:ml-6 lg:mt-18'>
               <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
                 <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
                   Inquiry sent!
@@ -156,21 +156,17 @@ const ListingPage = ({ slug, currentListing }) => {
                 </p>
               </div>
               <div className='mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6'>
-                <Link href='/listings'>
-                  <a
-                    href='#'
-                    className='inline-flex items-center rounded-md border border-transparent bg-primaryDark px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primaryLight'
-                  >
-                    Browse more listings
-                  </a>
+                <Link
+                  href='/listings'
+                  className='inline-flex items-center rounded-md border border-transparent bg-primaryDark px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primaryLight'
+                >
+                  Browse more listings
                 </Link>
-                <Link href='/account/dashboard'>
-                  <a
-                    href='#'
-                    className='inline-flex items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-primaryDark hover:bg-gray-300'
-                  >
-                    Go to your dashboard
-                  </a>
+                <Link
+                  href='/account/dashboard'
+                  className='inline-flex items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-primaryDark hover:bg-gray-300'
+                >
+                  Go to your dashboard
                 </Link>
               </div>
             </div>
