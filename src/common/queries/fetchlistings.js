@@ -5,11 +5,16 @@ export const fetchListings = async (url, params) => {
   return data
 }
 
-export const usersListingsFetcher = (url) =>
-  axios
-    .get(url, {
-      headers: {
-        Inquiries: 'true',
-      },
-    })
-    .then((res) => res.data)
+export const usersListingsFetcher = async (url) => {
+  const { data } = await axios.get(url, {
+    headers: {
+      Inquiries: 'true',
+    },
+  })
+  return data
+}
+
+export const isInquiryMade = async (url) => {
+  const { data } = await axios.get(url)
+  return data
+}

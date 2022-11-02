@@ -13,12 +13,11 @@ import ListingsContext from '@context/ListingsContext'
 export const InquiryForm = ({ user, listing }) => {
   const { handleInquirySubmit } = useContext(ListingsContext)
   const [formState, setFormState] = useState({
-    listing: '',
-    listing_id: '',
     name: user.full_name,
     email: user.email,
-    phone: '',
     message: '',
+    listing: '',
+    phone: '',
   })
 
   const handleChange = (e) => {
@@ -33,9 +32,8 @@ export const InquiryForm = ({ user, listing }) => {
   useEffect(() => {
     setFormState({
       ...formState,
-      listing_id: listing.id,
-      listing: listing.title,
-      message: `I'm interested in ${listing.title}.`,
+      listing: listing.id,
+      message: `I'm interested in ${listing.title}`,
     })
   }, [listing])
 
@@ -80,8 +78,8 @@ export const InquiryForm = ({ user, listing }) => {
                   required
                   disabled={listing.title}
                   placeholder='Listing title'
-                  value={formState.listing}
-                  onChange={handleChange}
+                  value={listing.title}
+                  // onChange={handleChange}
                 />
                 <FormInput
                   name='email'

@@ -11,7 +11,7 @@ const ListingPage = dynamic(() => import('@modules/listingpage/ListingPage'), {
 const ListingById = ({ slug, currentListing }) => {
   return (
     <Layout title={currentListing.title}>
-      {currentListing.heating && (
+      {currentListing && (
         <div className='bg-white'>
           <ListingPage slug={slug} currentListing={currentListing} />
         </div>

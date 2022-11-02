@@ -56,21 +56,27 @@ export const ListingsProvider = ({ children }) => {
       const { data } = await axios.post(`/api/inquiries`, {
         ...formData,
       })
-
       data.success && toast.success(data.message)
       setFormState({
         listing: '',
-        listing_id: '',
         name: '',
         email: '',
-        phone: '',
         message: '',
+        phone: '',
       })
     } catch (err) {
-      // toast.info("If you haven't, please try again later.")
       toast.error(
         'Opps! Something went wrong. Maybe you already made an inquiry?'
       )
+    }
+  }
+
+  const checkInquiryMade = async (listingId) => {
+    try {
+      const { data } = await axios.get(`/api/inquiries?listing=${listingId}`)
+      return data.resData
+    } catch (err) {
+      toast.error('Error fetching inquiry')
     }
   }
 
@@ -85,6 +91,7 @@ export const ListingsProvider = ({ children }) => {
     listing: listing,
     fetchListingBySlug: fetchListingBySlug,
     handleInquirySubmit: handleInquirySubmit,
+    checkInquiryMade: checkInquiryMade,
   }
 
   return (
