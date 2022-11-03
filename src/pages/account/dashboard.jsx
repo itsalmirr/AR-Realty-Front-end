@@ -36,7 +36,7 @@ const DashboardPage = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const { data, error } = useSWR('/api/auth/dashboard', usersListingsFetcher)
+  const { data } = useSWR('/api/auth/dashboard', usersListingsFetcher)
 
   const updateAccount = useCallback(() => {
     user.full_name = full_name
@@ -91,7 +91,7 @@ const DashboardPage = () => {
           <RequestedInquiriesCard listings={listings} />
         )}
 
-        {listings.length === 0 && (
+        {listings.length === 0 && !isLoading && (
           <div className='flex flex-col items-center justify-center mt-12'>
             <p className='text-center text-gray-500 text-sm'>
               You have no inquiries.
