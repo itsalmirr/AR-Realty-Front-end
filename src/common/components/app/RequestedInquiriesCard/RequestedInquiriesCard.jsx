@@ -5,6 +5,7 @@ import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
 export const RequestedInquiriesCard = ({ listings }) => {
+  console.log(listings)
   return (
     <ul
       role='list'
@@ -39,11 +40,13 @@ export const RequestedInquiriesCard = ({ listings }) => {
                 {formatPrice(listing.price)}
               </p>
             </div>
-            <img
-              className='w-10 h-10 bg-gray-300 rounded-full flex-shrink-0'
-              src={listing.realtor.photo}
-              alt=''
-            />
+            <Link href={`/listings/${listing.slug}`} className='cursor-pointer'>
+              <img
+                className='w-10 h-10 bg-gray-300 rounded-full flex-shrink-0'
+                src={listing.photo_main}
+                alt=''
+              />
+            </Link>
           </div>
           <div>
             <div className='-mt-px flex divide-x divide-gray-200'>

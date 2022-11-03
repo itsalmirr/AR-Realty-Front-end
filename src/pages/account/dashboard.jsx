@@ -48,9 +48,6 @@ const DashboardPage = () => {
     setFullName(user?.full_name)
     setUsername(user?.username)
     data && setListings(data.resData)
-    if (error !== undefined) {
-      setIsLoading(false)
-    }
     setIsLoading(false)
   }, [data, user])
 
@@ -88,12 +85,18 @@ const DashboardPage = () => {
       )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
-        {listings.length > 0 ? (
-          <RequestedInquiriesCard listings={listings} />
+        {isLoading ? (
+          <Spinner />
         ) : (
-          <p className='text-center text-gray-500 text-sm'>
-            You have no inquiries.
-          </p>
+          <RequestedInquiriesCard listings={listings} />
+        )}
+
+        {listings.length === 0 && (
+          <div className='flex flex-col items-center justify-center mt-12'>
+            <p className='text-center text-gray-500 text-sm'>
+              You have no inquiries.
+            </p>
+          </div>
         )}
       </div>
     </Layout>

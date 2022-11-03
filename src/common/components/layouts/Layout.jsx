@@ -19,15 +19,15 @@ const Layout = ({ title, children }) => {
     'home',
   ]
   const description = 'Realty company selling homes in the United States'
-
+  const titleMessage = `${title} | AR Realty`
   return (
     <Fragment>
       <Head>
-        <title>{title} | AR Realty</title>
         <meta name='keywords' content={keywords} />
         <meta name='description' content={description} />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
+        <title>{titleMessage}</title>
       </Head>
       <Navbar />
       <section className='container mx-auto max-w-7xl sm:px-6 lg:px-8'>

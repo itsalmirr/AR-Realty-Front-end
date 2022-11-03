@@ -21,6 +21,7 @@ const AccountSettings = ({
   setSettings,
   updateAccount,
 }) => {
+  console.log('runs account settings')
   const onSubmit = async (e) => {
     e.preventDefault()
     if (newPassword !== confirmPassword) {
