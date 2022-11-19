@@ -12,7 +12,11 @@
 
 > Please make sure to create your own .env file with all necessary credentials before you continue. [^1] [^2]
 
-> To install packages run: `yarn` or `npm i`
+> To install packages run:
+
+```bash
+pnpm i # or yarn install
+```
 
 <!-- General description -->
 
