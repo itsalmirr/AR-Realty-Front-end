@@ -1,11 +1,9 @@
 import { Fragment } from 'react'
-import { Montserrat } from '@next/font/google'
 import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 const Navbar = dynamic(() => import('@components/app/Navbar/Navbar'))
 const Footer = dynamic(() => import('@components/marketing/Footer/Footer'))
-const montserrat = Montserrat()
 
 const Layout = ({ title, children }) => {
   const keywords = [

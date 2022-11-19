@@ -26,6 +26,10 @@ const ListingPage = ({ slug, currentListing }) => {
     isInquiryMade
   )
 
+  if (error) {
+    console.error(error)
+  }
+
   useEffect(() => {
     setListing(currentListing)
     data && setInquiryMade(data.resData === 'true' && true)

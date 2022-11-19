@@ -51,7 +51,7 @@ export const AuthProvider = ({ children }) => {
       const res = await axios.post('/api/auth/login', body)
       if (res.data.success) {
         setUser(res.data.resData)
-        setIsLoggedIn(res.data.success ? true : false)
+        setIsLoggedIn(true)
         toast.success(res.data.message)
         router.push('/account/dashboard')
       }

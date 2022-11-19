@@ -9,6 +9,10 @@ const ListingPage = dynamic(() => import('@modules/listingpage/ListingPage'), {
 })
 
 const ListingById = ({ slug, currentListing }) => {
+  if (!currentListing) {
+    return <Spinner />
+  }
+
   return (
     <Layout title={currentListing.title}>
       {currentListing && (

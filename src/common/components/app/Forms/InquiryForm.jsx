@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from 'react'
-import { toast } from 'react-toastify'
 
 import {
   FormInput,

@@ -23,17 +23,13 @@ const ImageSwiper = ({ listing }) => {
       }}
       navigation={true}
       modules={[Pagination, Navigation]}
-      className='select-none w-full rounded-lg aspect-sq'>
+      className='select-none w-full rounded-lg aspect-sq'
+    >
       {photos.map(
         (photo, index) =>
           photo && (
             <SwiperSlide key={index}>
-              <Image
-                width={568}
-                height={378.66}
-                src={photo !== null && photo}
-                alt=''
-              />
+              <Image width={568} height={378.66} src={photo} alt='' />
             </SwiperSlide>
           )
       )}
