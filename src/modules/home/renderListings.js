@@ -12,7 +12,7 @@ export const renderListings = (listings) => {
   if (listings === null || listings === undefined) {
     return noListings
   }
-  if (listings === null || listings === undefined) {
+  if (listings.length === 0) {
     return noListings
   }
   return (

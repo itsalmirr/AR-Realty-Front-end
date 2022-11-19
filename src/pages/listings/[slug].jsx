@@ -15,11 +15,9 @@ const ListingById = ({ slug, currentListing }) => {
 
   return (
     <Layout title={currentListing.title}>
-      {currentListing && (
-        <div className='bg-white'>
-          <ListingPage slug={slug} currentListing={currentListing} />
-        </div>
-      )}
+      <div className='bg-white'>
+        <ListingPage slug={slug} currentListing={currentListing} />
+      </div>
     </Layout>
   )
 }
