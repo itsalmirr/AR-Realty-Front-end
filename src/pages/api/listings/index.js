@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 import { API_URL } from '@lib/constants'
 import { response } from '@lib/helpers'
 
@@ -12,14 +10,12 @@ const listings = async (req, res) => {
     }`
 
     try {
-      const axiosResponse = await axios.get(url)
-      response(
-        res,
-        200,
-        true,
-        'Listings retrieved successfully',
-        axiosResponse.data
-      )
+      const fetchRes = await fetch(url, {
+        method: 'GET',
+        redirect: 'follow',
+      })
+      const data = await fetchRes.json()
+      response(res, 200, true, 'Listings retrieved successfully', data)
     } catch (err) {
       response(res, 500, false, 'Server error')
     }

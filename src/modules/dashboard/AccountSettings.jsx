@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { Fragment, memo } from 'react'
 import { toast } from 'react-toastify'
 
@@ -21,7 +21,6 @@ const AccountSettings = ({
   setSettings,
   updateAccount,
 }) => {
-  console.log('runs account settings')
   const onSubmit = async (e) => {
     e.preventDefault()
     if (newPassword !== confirmPassword) {
@@ -29,12 +28,18 @@ const AccountSettings = ({
       return
     }
     try {
-      const { data } = await axios.put('/api/auth/updateuser/', {
-        full_name,
-        email,
-        username: username ? username.toLowerCase() : null,
-        // password: newPassword ? newPassword : currentPassword,
+      const res = await fetch('/api/auth/updateuser/', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          full_name,
+          email,
+          username: username ? username.toLowerCase() : null,
+        }),
       })
+      const data = await res.json()
       toast.success(data.message)
     } catch (err) {
       toast.error(err.response.data.message)

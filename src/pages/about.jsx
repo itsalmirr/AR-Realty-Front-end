@@ -1,12 +1,10 @@
 import Image from 'next/image'
-import axios from 'axios'
 
 import { Layout } from '@components/layouts'
 import { OurTeam } from '@components/app/OurTeam'
 
 const AboutPage = ({ realtors }) => {
   const realtorsList = realtors.results
-  // deeded
 
   return (
     <Layout title='About'>
@@ -90,10 +88,8 @@ const AboutPage = ({ realtors }) => {
 }
 
 export const getStaticProps = async () => {
-  const res = await axios.get(
-    `${process.env.NEXT_BACKEND_API_URL}/api/realtors/`
-  )
-  const realtors = res.data
+  const res = await fetch(`${process.env.NEXT_BACKEND_API_URL}/api/realtors/`)
+  const realtors = await res.json()
 
   return {
     props: {

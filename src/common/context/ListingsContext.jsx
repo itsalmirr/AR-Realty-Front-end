@@ -1,7 +1,9 @@
-import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
+
+import { fetchListings } from '@common/queries/fetchlistings'
+import { submitListingInquiry, inquiryExists } from '@common/queries/inquiries'
 
 const ListingsContext = createContext()
 
@@ -26,7 +28,7 @@ export const ListingsProvider = ({ children }) => {
   const getListings = async (currentPage) => {
     try {
       setLoading(true)
-      const { data } = await axios.get(
+      const data = await fetchListings(
         `/api/listings/?page_size=6&page=${currentPage}`
       )
       const { results, count, next: nextPage, previous } = data.resData
@@ -43,7 +45,7 @@ export const ListingsProvider = ({ children }) => {
   const fetchListingBySlug = async (slug) => {
     try {
       setLoading(true)
-      const { data } = await axios.get(`/api/listing?slug=${slug}`)
+      const data = await fetchListings(`/api/listings/${slug}`)
       setListing(data.resData)
     } catch (err) {
       toast.error('Error fetching listing')
@@ -53,10 +55,8 @@ export const ListingsProvider = ({ children }) => {
 
   const handleInquirySubmit = async (formData, setFormState) => {
     try {
-      const { data } = await axios.post(`/api/inquiries`, {
-        ...formData,
-      })
-      data.success && toast.success(data.message)
+      const inquiry = await submitListingInquiry(formData)
+      inquiry.success && toast.success(inquiry.message)
       setFormState({
         listing: '',
         name: '',
@@ -73,8 +73,8 @@ export const ListingsProvider = ({ children }) => {
 
   const checkInquiryMade = async (listingId) => {
     try {
-      const { data } = await axios.get(`/api/inquiries?listing=${listingId}`)
-      return data.resData
+      const inquiryMade = await inquiryExists(listingId)
+      return inquiryMade.resData
     } catch (err) {
       toast.error('Error fetching inquiry')
     }

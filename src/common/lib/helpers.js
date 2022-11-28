@@ -1,8 +1,7 @@
-import axios from 'axios'
 import cookie from 'cookie'
 import { API_URL } from '@lib/constants'
 
-export const fetcher = async (url) => axios.get(url).then((res) => res.data)
+export const fetcher = (url) => fetch(url).then((r) => r.json())
 
 export const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
@@ -10,7 +9,11 @@ export const classNames = (...classes) => {
 
 export const fetchListings = async (slug) => {
   const url = `${API_URL}/api/listings/${slug}`
-  const { data } = await axios.get(url)
+  const res = await fetch(url, {
+    method: 'GET',
+    redirect: 'follow',
+  })
+  const data = await res.json()
   return data
 }
 
@@ -103,6 +106,10 @@ export const formatDate = (date) => {
 
 export const quickSearch = async (q) => {
   const url = `/api/qucksearch?q=${q}`
-  const { data } = await axios.get(url)
+  const res = await fetch(url, {
+    method: 'GET',
+    redirect: 'follow',
+  })
+  const data = await res.json()
   return data.resData
 }

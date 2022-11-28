@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 import { API_URL } from '@lib/constants'
 import { response } from '@lib/helpers'
 
@@ -8,11 +6,14 @@ const realtorslisting = async (req, res) => {
     const { realtor } = req.headers
     const url = `${API_URL}/api/listings/realtor/`
     try {
-      const { data } = await axios.get(url, {
+      const fetchRes = await fetch(url, {
         headers: {
           realtor: realtor,
         },
+        method: 'GET',
+        redirect: 'follow',
       })
+      const data = await fetchRes.json()
       response(res, 200, true, 'Listings retrieved successfully', data.results)
     } catch (err) {
       response(res, 500, false, 'Server error')

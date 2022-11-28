@@ -1,7 +1,8 @@
-import axios from 'axios'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
+
+import { registerMe, logMeIn, logMeOut, getMe } from '@common/queries/auth'
 
 const AuthContext = createContext()
 
@@ -28,8 +29,8 @@ export const AuthProvider = ({ children }) => {
 
     try {
       setIsLoading(true)
-      const res = await axios.post('/api/auth/register', body)
-      if (res.data.success) {
+      const data = await registerMe(body)
+      if (data.success) {
         toast.success(res.data.message)
         router.push('/auth/login')
       }
@@ -48,11 +49,11 @@ export const AuthProvider = ({ children }) => {
 
     try {
       setIsLoading(true)
-      const res = await axios.post('/api/auth/login', body)
-      if (res.data.success) {
-        setUser(res.data.resData)
+      const data = await logMeIn(body)
+      if (data.success) {
+        setUser(data.resData)
         setIsLoggedIn(true)
-        toast.success(res.data.message)
+        toast.success(data.message)
         router.push('/account/dashboard')
       }
     } catch (err) {
@@ -65,7 +66,7 @@ export const AuthProvider = ({ children }) => {
     e.preventDefault()
     try {
       setIsLoading(true)
-      await axios.get('/api/auth/logout')
+      await logMeOut()
       setUser(null)
       setIsLoggedIn(false)
       router.pathname === '/account/dashboard' && router.push('/')
@@ -79,9 +80,9 @@ export const AuthProvider = ({ children }) => {
   const checkUserLoggedIn = async () => {
     try {
       setIsLoading(true)
-      const res = await axios.get('/api/auth/user')
-      if (res.data.resData.id) {
-        setUser(res.data.resData)
+      const data = await getMe()
+      if (data.resData.id) {
+        setUser(data.resData)
         setIsLoggedIn(true)
       }
     } catch (err) {

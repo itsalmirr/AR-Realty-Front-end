@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 import { API_URL } from '@lib/constants'
 import { response, parseCookie } from '@lib/helpers'
 
@@ -9,12 +9,15 @@ const dashboard = async (req, res) => {
     const url = `${API_URL}/api/user/me/`
 
     try {
-      const { data } = await axios.get(url, {
+      const fetchRes = await fetch(url, {
         headers: {
           Dashboard: req.headers.inquiries === 'true' ? 'true' : 'false',
           Authorization: `Bearer ${access}`,
         },
+        method: 'GET',
+        redirect: 'follow',
       })
+      const data = await fetchRes.json()
       response(res, 200, true, '', data)
     } catch (err) {
       response(res, 500, false, 'Server error')

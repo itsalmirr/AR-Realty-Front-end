@@ -5,7 +5,6 @@ import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
 export const RequestedInquiriesCard = ({ listings }) => {
-  console.log(listings)
   return (
     <ul
       role='list'

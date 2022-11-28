@@ -1,4 +1,4 @@
-import axios from 'axios'
+// import axios from 'axios'
 
 import { API_URL } from '@lib/constants'
 import { response, parseCookie } from '@lib/helpers'
@@ -19,7 +19,6 @@ const updateuser = async (req, res) => {
       const { full_name, email, username } = req.body
       const config = {
         method: 'put',
-        url: `${API_URL}/api/user/me/`,
         headers: {
           Authorization: `Bearer ${access}`,
           'Content-Type': 'application/json',
@@ -32,7 +31,7 @@ const updateuser = async (req, res) => {
         },
       }
 
-      const { data } = await axios(config)
+      const res = await fetch(`${API_URL}/api/user/me/`, config)
 
       // Return the user's data to the client if  the request was successful
       response(res, 200, true, data.message, data)
