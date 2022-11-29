@@ -1,9 +1,10 @@
-export const submitListingInquiry = async (data) => {
-  const res = await fetch('/api/inquiries/', {
+export const submitInquiry = async (data, url, token) => {
+  const res = await fetch(url ? url : '/api/inquiries/', {
     method: 'POST',
     redirect: 'follow',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${token ? token : ''}`,
     },
     body: JSON.stringify(data),
   })
@@ -18,7 +19,6 @@ export const inquiryExists = async (listingId) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(data),
   })
   const resData = await res.json()
   return resData

@@ -1,5 +1,3 @@
-// import axios from 'axios'
-
 export const realtorslisting = async (url, slug) => {
   const res = await fetch(url, {
     headers: {

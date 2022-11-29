@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
 import { fetchListings } from '@common/queries/fetchlistings'
-import { submitListingInquiry, inquiryExists } from '@common/queries/inquiries'
+import { submitInquiry, inquiryExists } from '@common/queries/inquiries'
 
 const ListingsContext = createContext()
 
@@ -55,7 +55,7 @@ export const ListingsProvider = ({ children }) => {
 
   const handleInquirySubmit = async (formData, setFormState) => {
     try {
-      const inquiry = await submitListingInquiry(formData)
+      const inquiry = await submitInquiry(formData)
       inquiry.success && toast.success(inquiry.message)
       setFormState({
         listing: '',
@@ -74,6 +74,7 @@ export const ListingsProvider = ({ children }) => {
   const checkInquiryMade = async (listingId) => {
     try {
       const inquiryMade = await inquiryExists(listingId)
+      console.log(inquiryMade)
       return inquiryMade.resData
     } catch (err) {
       toast.error('Error fetching inquiry')

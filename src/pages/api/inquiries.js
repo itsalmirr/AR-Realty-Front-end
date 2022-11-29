@@ -1,23 +1,18 @@
-import axios from 'axios'
-
+import { submitInquiry } from '@common/queries/inquiries'
 import { response, parseCookie } from '@lib/helpers'
 import { API_URL } from '@lib/constants'
 
 const inquiries = async (req, res) => {
   if (req.method === 'POST') {
     try {
-      const { name, email, listing, phone, message } = req.body
       const cookie = parseCookie(req)
       const { access } = cookie
+      const data = await submitInquiry(
+        req.body,
+        `${API_URL}/api/inquiries/`,
+        access
+      )
 
-      axios.defaults.headers.common['Authorization'] = `Bearer ${access}`
-      const { data } = await axios.post(`${API_URL}/api/inquiries/`, {
-        name,
-        email,
-        message,
-        listing,
-        phone,
-      })
       response(res, 200, true, 'Inquiry sent successfully', data)
     } catch (err) {
       response(res, 500, false, { message: 'Something went wrong.' })

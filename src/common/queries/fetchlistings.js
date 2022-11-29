@@ -1,5 +1,4 @@
 export const fetchListings = async (url, params) => {
-  // const { data } = await axios.get(url, { params })
   const res = await fetch(url, {
     method: 'GET',
     redirect: 'follow',
@@ -21,7 +20,6 @@ export const usersListingsFetcher = async (url) => {
 }
 
 export const isInquiryMade = async (url) => {
-  // const { data } = await axios.get(url)
   const res = await fetch(url, {
     method: 'GET',
     redirect: 'follow',
