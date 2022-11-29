@@ -1,5 +1,5 @@
 import { API_URL } from '@lib/constants'
-import { fetchListings } from '@common/queries/fetchlistings'
+import { fetchListings } from '@common/queries/listings'
 import { Layout } from '@components/layouts'
 import { Home } from '@modules/home/index'
 

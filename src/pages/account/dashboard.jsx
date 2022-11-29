@@ -7,7 +7,7 @@ import { links } from '@lib/constants'
 import { Spinner } from '@components/app/Spinner'
 import { Divider } from '@components/app/Divider'
 import { DashboardHeader } from '@components/app/Dashboard'
-import { usersListingsFetcher } from '@queries/fetchlistings'
+import { usersListingsFetcher } from '@common/queries/listings'
 const Layout = dynamic(() => import('@components/layouts/Layout'), {
   loading: () => <Spinner />,
 })

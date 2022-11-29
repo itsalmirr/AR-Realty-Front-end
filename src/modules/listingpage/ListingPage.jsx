@@ -8,7 +8,7 @@ import { useEffect, useContext, useState, Fragment } from 'react'
 
 import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
-import { isInquiryMade } from '@common/queries/fetchlistings'
+import { isInquiryMade } from '@common/queries/listings'
 import { Divider } from '@components/app/Divider'
 import { InquiryForm } from '@components/app/Forms'
 import { formatPrice, classNames } from '@lib/helpers'

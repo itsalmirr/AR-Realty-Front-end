@@ -2,7 +2,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
-import { fetchListings } from '@common/queries/fetchlistings'
+import { fetchListings } from '@common/queries/listings'
 import { submitInquiry, inquiryExists } from '@common/queries/inquiries'
 
 const ListingsContext = createContext()

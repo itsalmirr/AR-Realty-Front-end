@@ -27,15 +27,15 @@ export const AuthProvider = ({ children }) => {
       password: e.target.password.value,
     }
 
+    setIsLoading(true)
     try {
-      setIsLoading(true)
-      const data = await registerMe(body)
+      const data = await registerMe(body, '/api/auth/register/')
       if (data.success) {
-        toast.success(res.data.message)
+        toast.success(data.message)
         router.push('/auth/login')
       }
     } catch (err) {
-      toast.error(err.response.data.message)
+      toast.error(err.message)
     }
     setIsLoading(false)
   }

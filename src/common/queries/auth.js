@@ -1,8 +1,9 @@
-export const registerMe = async (body) => {
-  const res = await fetch('/api/auth/register', {
+export const registerMe = async (body, url, token) => {
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: token ? `Bearer ${token}` : '',
     },
     body: JSON.stringify(body),
   })
@@ -40,6 +41,20 @@ export const getMe = async () => {
       'Content-Type': 'application/json',
     },
   })
+  const data = await res.json()
+  return data
+}
+
+export const updateMe = async (body, url, token) => {
+  const res = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token ? `Bearer ${token}` : '',
+    },
+    body: JSON.stringify(body),
+  })
+
   const data = await res.json()
   return data
 }

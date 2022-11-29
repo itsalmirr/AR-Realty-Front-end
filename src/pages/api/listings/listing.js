@@ -1,5 +1,3 @@
-// import axios from 'axios'
-
 import { response } from '@lib/helpers'
 import { API_URL } from '@lib/constants'
 

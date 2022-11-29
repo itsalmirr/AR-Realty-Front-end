@@ -1,12 +1,28 @@
-export const pagination_url = `/api/listings/?page_size=6&page=${currentPage}`
-
 export const fetchListings = async (url) => {
   const res = await fetch(url, {
     method: 'GET',
     redirect: 'follow',
+  })
+  const listings = await res.json()
+  return listings
+}
+
+export const usersListingsFetcher = async (url) => {
+  const res = await fetch(url, {
     headers: {
-      'Content-Type': 'application/json',
+      Inquiries: 'true',
     },
+    method: 'GET',
+    redirect: 'follow',
+  })
+  const listings = await res.json()
+  return listings
+}
+
+export const isInquiryMade = async (url) => {
+  const res = await fetch(url, {
+    method: 'GET',
+    redirect: 'follow',
   })
   const data = await res.json()
   return data

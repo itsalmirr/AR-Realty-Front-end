@@ -1,5 +1,3 @@
-// import axios from 'axios'
-
 import { API_URL } from '@lib/constants'
 import { response, parseCookie, setCookies } from '@lib/helpers'
 

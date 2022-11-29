@@ -1,11 +1,9 @@
-// import axios from 'axios'
-
 import { API_URL } from '@lib/constants'
+import { updateMe } from '@common/queries/auth'
 import { response, parseCookie } from '@lib/helpers'
 
 const updateuser = async (req, res) => {
   if (req.method === 'PUT') {
-    // If there is no cookie, end the request
     if (!req.headers.cookie) {
       return res.end()
     }
@@ -16,24 +14,7 @@ const updateuser = async (req, res) => {
     }
     try {
       const { access } = cookie
-      const { full_name, email, username } = req.body
-      const config = {
-        method: 'put',
-        headers: {
-          Authorization: `Bearer ${access}`,
-          'Content-Type': 'application/json',
-        },
-        data: {
-          full_name: full_name,
-          email: email,
-          username: username,
-          // password: password,
-        },
-      }
-
-      const res = await fetch(`${API_URL}/api/user/me/`, config)
-
-      // Return the user's data to the client if  the request was successful
+      const data = await updateMe(req.body, `${API_URL}/api/user/me/`, access)
       response(res, 200, true, data.message, data)
     } catch (err) {
       response(res, 401, false, err.response.data.message)

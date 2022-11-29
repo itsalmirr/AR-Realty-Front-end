@@ -1,22 +1,14 @@
-import axios from 'axios'
-
 import { API_URL } from '@lib/constants'
+import { registerMe } from '@common/queries/auth'
 import { response } from '@lib/helpers'
 
 const register = async (req, res) => {
   if (req.method == 'POST') {
-    const { email, username, full_name, password } = req.body
-
     try {
-      const axiosResponse = await axios.post(`${API_URL}/api/user/register/`, {
-        email,
-        username,
-        full_name,
-        password,
-      })
-      response(res, 200, true, axiosResponse.data.message, axiosResponse.data)
+      const data = await registerMe(req.body, `${API_URL}/api/user/register/`)
+      response(res, 200, true, data.message, data)
     } catch (err) {
-      response(res, 500, false, err.response.data.message)
+      response(res, 500, false, 'Server error')
     }
   }
 }
