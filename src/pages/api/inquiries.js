@@ -1,4 +1,4 @@
-import { submitInquiry } from '@common/queries/inquiries'
+import { submitInquiry, inquiryExists } from '@common/queries/inquiries'
 import { response, parseCookie } from '@lib/helpers'
 import { API_URL } from '@lib/constants'
 
@@ -24,13 +24,13 @@ const inquiries = async (req, res) => {
       const cookie = parseCookie(req)
       const { access } = cookie
       const { id } = req.query
-      const { data } = await axios.get(`${API_URL}/api/user/me/`, {
-        headers: {
-          Authorization: `Bearer ${access}`,
-          CheckInquiry: 'check',
-          ListingId: id,
-        },
-      })
+      const data = await inquiryExists(
+        id,
+        `${API_URL}/api/user/me/`,
+        access,
+        'check'
+      )
+
       response(res, 200, true, '', data.inquiry_made)
     } catch (error) {
       response(res, 500, false, { message: 'Something went wrong.' })

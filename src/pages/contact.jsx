@@ -1,4 +1,4 @@
-import axios from 'axios'
+import { submitInquiry } from '@common/queries/inquiries'
 import { useState } from 'react'
 
 import { Layout } from '@components/layouts'
@@ -39,14 +39,12 @@ const ContactPage = () => {
       return
     }
     try {
-      const { data } = await axios.post('/api/businessinquiries/', {
-        ...formState,
-      })
-      data.success && toast.success('Successfully submited request!')
+      const inquiry = await submitInquiry(formState, '/api/businessinquiries/')
+      inquiry.success && toast.success('Successfully submited request!')
       clearForm(setFormState)
     } catch (err) {
-      // toast.error('Oops! Something went wrong!')
-      toast.warning("You can't make two inquiries.")
+      toast.error('Oops! Something went wrong!')
+      toast.info("Have you already made an inquiry? If so, we'll be in touch!")
       clearForm(setFormState)
     }
   }

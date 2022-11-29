@@ -1,23 +1,27 @@
-export const submitInquiry = async (data, url, token) => {
+export const submitInquiry = async (body, url, token) => {
   const res = await fetch(url ? url : '/api/inquiries/', {
     method: 'POST',
     redirect: 'follow',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `Bearer ${token ? token : ''}`,
+      Authorization: token ? `Bearer ${token}` : '',
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(body),
   })
-  const resData = await res.json()
-  return resData
+  const data = await res.json()
+  return data
 }
 
-export const inquiryExists = async (listingId) => {
-  const res = await fetch(`/api/inquiries?listing=${listingId}`, {
+export const inquiryExists = async (listingId, url, access, check) => {
+  const default_url = `/api/inquiries?listing=${listingId}`
+  const res = await fetch(url ? url : default_url, {
     method: 'GET',
     redirect: 'follow',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: `Bearer ${access}`,
+      CheckInquiry: check ? check : '',
+      ListingId: listingId,
     },
   })
   const resData = await res.json()

@@ -74,7 +74,6 @@ export const ListingsProvider = ({ children }) => {
   const checkInquiryMade = async (listingId) => {
     try {
       const inquiryMade = await inquiryExists(listingId)
-      console.log(inquiryMade)
       return inquiryMade.resData
     } catch (err) {
       toast.error('Error fetching inquiry')

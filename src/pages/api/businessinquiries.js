@@ -6,8 +6,8 @@ const inquiries = async (req, res) => {
   if (req.method === 'POST') {
     try {
       const data = await submitInquiry(
-        `${API_URL}/api/contact/business-inquiries/`,
-        req.body
+        req.body,
+        `${API_URL}/api/contact/business-inquiries/`
       )
       response(res, 200, true, 'Inquiry sent successfully', data)
     } catch (err) {
