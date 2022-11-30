@@ -22,5 +22,6 @@ export const getStaticProps = async () => {
     props: {
       listings: listings.results,
     },
+    revalidate: 60,
   }
 }
