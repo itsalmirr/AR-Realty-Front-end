@@ -58,3 +58,42 @@ export const updateMe = async (body, url, token) => {
   const data = await res.json()
   return data
 }
+
+//  `${API_URL}/api/user/me/`
+export const rotateToken = async (url, access, refresh) => {
+  let fetchRes = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${access}`,
+    },
+    method: 'GET',
+    redirect: 'follow',
+  })
+  let data = await fetchRes.json()
+  if (
+    data.code === 'token_not_valid' ||
+    data.code === 'bad_authorization_header'
+  ) {
+    const refreshToken = await fetch(`${API_URL}/api/token/refresh/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        refresh,
+      }),
+    })
+
+    const refreshedToken = await refreshToken.json()
+    setCookies(res, refreshedToken.access, refresh)
+    fetchRes = await fetch(`${API_URL}/api/user/me/`, {
+      headers: {
+        Authorization: `Bearer ${refreshToken.access}`,
+      },
+      method: 'GET',
+      redirect: 'follow',
+    })
+    data = await refreshedToken.json()
+  }
+
+  return data
+}
