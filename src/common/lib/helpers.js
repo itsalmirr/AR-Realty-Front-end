@@ -36,7 +36,6 @@ export const setCookies = (res, access, refresh) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 120 * 60 * 1000,
-      expires: new Date(Date.now() + 120 * 60 * 1000),
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
@@ -44,7 +43,6 @@ export const setCookies = (res, access, refresh) => {
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       path: '/',
     }),
   ])

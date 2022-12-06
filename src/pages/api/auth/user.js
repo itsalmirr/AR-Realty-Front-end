@@ -7,6 +7,7 @@ const user = async (req, res) => {
     // If there is no cookie, end the request
     let access
     const url = `${API_URL}/api/user/me/`
+    const refreshUrl = `${API_URL}/api/token/refresh/`
     if (!req.headers.cookie) {
       return res.end()
     }
