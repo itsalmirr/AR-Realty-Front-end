@@ -28,6 +28,7 @@ export const links = {
   contact: '/contact',
   register: '/auth/register',
   login: '/auth/login',
+  dashboard: '/account/dashboard',
 }
 
 export const navigation = [

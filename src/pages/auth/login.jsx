@@ -43,8 +43,7 @@ export default LoginPage
 export const getServerSideProps = (ctx) => {
   try {
     const { access, refresh } = ctx.req.cookies
-
-    if (access || refresh) {
+    if (access && refresh) {
       ctx.res.writeHead(302, {
         Location: links.dashboard,
       })
