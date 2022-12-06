@@ -1,8 +1,7 @@
-import dynamic from 'next/dynamic'
-import cookie from 'cookie'
-import { useContext, useState, useEffect, useCallback } from 'react'
 import useSWR from 'swr'
-import { tokenExpired } from '@common/lib/helpers'
+import dynamic from 'next/dynamic'
+import { useContext, useState, useEffect, useCallback } from 'react'
+
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
 import { Spinner } from '@components/app/Spinner'

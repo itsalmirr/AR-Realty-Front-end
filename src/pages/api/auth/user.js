@@ -21,10 +21,9 @@ const user = async (req, res) => {
         setCookies(res, '', '')
         response(res, 401, false, 'Token expired')
       }
-      const { access: refreshedAccess } = await postRequest(
-        `${API_URL}/api/token/refresh/`,
-        { refresh: cookie.refresh }
-      )
+      const { access: refreshedAccess } = await postRequest(url, {
+        refresh: cookie.refresh,
+      })
       setCookies(res, refreshedAccess, cookie.refresh)
       access = refreshedAccess
     }
