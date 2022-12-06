@@ -1,13 +1,14 @@
-import useSWR from 'swr'
 import dynamic from 'next/dynamic'
+import cookie from 'cookie'
 import { useContext, useState, useEffect, useCallback } from 'react'
-
+import useSWR from 'swr'
+import { tokenExpired } from '@common/lib/helpers'
 import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
 import { Spinner } from '@components/app/Spinner'
 import { Divider } from '@components/app/Divider'
+import { fetchUserListings } from '@common/queries/listings'
 import { DashboardHeader } from '@components/app/Dashboard'
-import { usersListingsFetcher } from '@common/queries/listings'
 const Layout = dynamic(() => import('@components/layouts/Layout'), {
   loading: () => <Spinner />,
 })
@@ -35,7 +36,7 @@ const DashboardPage = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const { data } = useSWR('/api/auth/dashboard', usersListingsFetcher)
+  const { data } = useSWR('/api/auth/dashboard', fetchUserListings)
 
   const updateAccount = useCallback(() => {
     user.full_name = full_name
@@ -46,7 +47,9 @@ const DashboardPage = () => {
     setEmail(user?.email)
     setFullName(user?.full_name)
     setUsername(user?.username)
-    data && setListings(data.resData)
+    if (data) {
+      setListings(data.resData)
+    }
     setIsLoading(false)
   }, [data, user])
 

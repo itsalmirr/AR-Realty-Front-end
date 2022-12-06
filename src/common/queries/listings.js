@@ -7,7 +7,7 @@ export const fetchListings = async (url) => {
   return listings
 }
 
-export const usersListingsFetcher = async (url) => {
+export const fetchUserListings = async (url) => {
   const res = await fetch(url, {
     headers: {
       Inquiries: 'true',

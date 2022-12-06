@@ -34,13 +34,17 @@ export const setCookies = (res, access, refresh) => {
     cookie.serialize('access', access, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
       maxAge: 120 * 60 * 1000,
+      expires: new Date(Date.now() + 120 * 60 * 1000),
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
       path: '/',
     }),
   ])
@@ -62,6 +66,11 @@ export const removeCookies = (res) => {
       path: '/',
     }),
   ])
+}
+
+export const tokenExpired = (token) => {
+  const expiry = JSON.parse(atob(token.split('.')[1])).exp
+  return Math.floor(new Date().getTime() / 1000) >= expiry
 }
 
 export const formatPhoneNumber = (phoneNumberString) => {

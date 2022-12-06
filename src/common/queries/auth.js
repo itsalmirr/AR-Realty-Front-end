@@ -1,4 +1,4 @@
-export const registerMe = async (body, url, token) => {
+export const logMeIn = async (body, url, token) => {
   const res = await fetch(url, {
     method: 'POST',
     headers: {
@@ -12,15 +12,32 @@ export const registerMe = async (body, url, token) => {
   return data
 }
 
-export const logMeIn = async (body) => {
-  const res = await fetch('/api/auth/login', {
+export const getRequest = async (url, token) => {
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: token && `Bearer ${token}`,
+    },
+  })
+
+  if (res.status !== 200) {
+    return res
+  }
+
+  const data = await res.json()
+  return data
+}
+
+export const postRequest = async (url, body, token) => {
+  const res = await fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
+      Authorization: token && `Bearer ${token}`,
     },
     body: JSON.stringify(body),
   })
-
   const data = await res.json()
   return data
 }

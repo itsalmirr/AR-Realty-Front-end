@@ -2,7 +2,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
-import { registerMe, logMeIn, logMeOut, getMe } from '@common/queries/auth'
+import { getRequest, postRequest, logMeOut, getMe } from '@common/queries/auth'
 
 const AuthContext = createContext()
 
@@ -29,7 +29,8 @@ export const AuthProvider = ({ children }) => {
 
     setIsLoading(true)
     try {
-      const data = await registerMe(body, '/api/auth/register/')
+      const data = await postRequest('/api/auth/register/', body)
+
       if (data.success) {
         toast.success(data.message)
         router.push('/auth/login')
@@ -49,7 +50,7 @@ export const AuthProvider = ({ children }) => {
 
     try {
       setIsLoading(true)
-      const data = await logMeIn(body)
+      const data = await postRequest('/api/auth/login', body)
       if (data.success) {
         setUser(data.resData)
         setIsLoggedIn(true)

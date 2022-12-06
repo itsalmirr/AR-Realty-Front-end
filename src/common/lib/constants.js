@@ -1,5 +1,4 @@
 import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa'
-
 export const API_URL = process.env.NEXT_BACKEND_API_URL
 
 export const PER_PAGE = 6
