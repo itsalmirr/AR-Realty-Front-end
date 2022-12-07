@@ -35,7 +35,6 @@ const dashboard = async (req, res) => {
       const data = await fetchRes.json()
       response(res, 200, true, '', data)
     } catch (err) {
-      console.log(err, 'ERRR')
       response(res, 500, false, 'Server error')
     }
   }
