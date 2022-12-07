@@ -13,7 +13,6 @@ const user = async (req, res) => {
     }
 
     const cookie = parseCookie(req)
-    console.log(cookie)
     if (!cookie.access && !cookie.refresh) {
       return res.end()
     }
