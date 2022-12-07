@@ -13,6 +13,7 @@ const user = async (req, res) => {
     }
 
     const cookie = parseCookie(req)
+    console.log(cookie)
     if (!cookie.access && !cookie.refresh) {
       return res.end()
     }
@@ -22,7 +23,7 @@ const user = async (req, res) => {
         setCookies(res, '', '')
         response(res, 401, false, 'Token expired')
       }
-      const { access: refreshedAccess } = await postRequest(url, {
+      const { access: refreshedAccess } = await postRequest(refreshUrl, {
         refresh: cookie.refresh,
       })
       setCookies(res, refreshedAccess, cookie.refresh)
@@ -33,7 +34,7 @@ const user = async (req, res) => {
       if (!access) {
         access = cookie.access
       }
-      const data = await getRequest(`${API_URL}/api/user/me/`, access)
+      const data = await getRequest(url, access)
       // Return the user's data to the client if  the request was successful
       response(res, 200, true, 'User is logged in.', data)
     } catch (err) {
