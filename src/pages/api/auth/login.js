@@ -1,34 +1,22 @@
-import { API_URL } from '@lib/constants'
+import { API_URL } from '@common/lib/constants'
+import { postRequest, getRequest } from '@common/queries/auth'
 import { response, setCookies } from '@lib/helpers'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {
-    const { username, password } = req.body
-
     try {
-      const fetchRes = await fetch(`${API_URL}/api/token/`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username,
-          password,
-        }),
+      const { username, password } = req.body
+      const loginRes = await postRequest(`${API_URL}/api/token/`, {
+        username,
+        password,
       })
-      const resData = await fetchRes.json()
-
-      setCookies(res, resData.access, resData.refresh)
-      const userData = await fetch(`${API_URL}/api/user/me`, {
-        headers: {
-          Authorization: `Bearer ${resData.access}`,
-        },
-
-        method: 'GET',
-        redirect: 'follow',
-      })
-      const data = await userData.json()
-      response(res, 200, true, 'Login Successful', data)
+      if (loginRes.status === 401) {
+        res.end()
+      }
+      const { access, refresh } = loginRes
+      setCookies(res, access, refresh)
+      const userData = await getRequest(`${API_URL}/api/user/me`, access)
+      response(res, 200, true, 'Login Successful', userData)
     } catch (err) {
       response(res, 500, false, 'Server error')
     }

@@ -31,22 +31,20 @@ const UserMenu = ({
       >
         <Menu.Items className='origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 focus:outline-none'>
           {userNavigation.map((item) => (
-            <Link key={item.name} href={item.href}>
-              <Menu.Item>
-                {({ active }) => (
-                  <a
-                    href='#'
-                    onClick={item.name === 'Sign out' ? logoutUser : null}
-                    className={classNames(
-                      active ? 'bg-gray-100' : '',
-                      'block py-2 px-4 text-sm text-gray-700'
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                )}
-              </Menu.Item>
-            </Link>
+            <Menu.Item key={item.name}>
+              {({ active }) => (
+                <Link
+                  href={item.href}
+                  onClick={item.name === 'Sign out' ? logoutUser : null}
+                  className={classNames(
+                    active ? 'bg-gray-100' : '',
+                    'block py-2 px-4 text-sm text-gray-700'
+                  )}
+                >
+                  {item.name}
+                </Link>
+              )}
+            </Menu.Item>
           ))}
         </Menu.Items>
       </Transition>

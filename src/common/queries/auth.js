@@ -38,6 +38,11 @@ export const postRequest = async (url, body, token) => {
     },
     body: JSON.stringify(body),
   })
+
+  if (res.status !== 200) {
+    return res
+  }
+
   const data = await res.json()
   return data
 }

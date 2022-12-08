@@ -26,6 +26,10 @@ export const response = (res, code, status, message, resData) => {
 }
 
 export const parseCookie = (req) => {
+  if (!req.headers.cookie) {
+    return cookie.parse(req.cookies)
+  }
+
   return cookie.parse(req.headers.cookie)
 }
 

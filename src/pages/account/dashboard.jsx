@@ -109,7 +109,11 @@ export default DashboardPage
 export const getServerSideProps = async (ctx) => {
   try {
     const { access, refresh } = ctx.req.cookies
-    if (!access || !refresh) {
+    if (
+      access === 'undefined' ||
+      refresh === 'undefined' ||
+      (!access && !refresh)
+    ) {
       ctx.res.writeHead(302, {
         Location: links.login,
       })
@@ -117,7 +121,7 @@ export const getServerSideProps = async (ctx) => {
     }
   } catch (err) {
     ctx.res.writeHead(302, {
-      Location: links.listings,
+      Location: links.login,
     })
     ctx.res.end()
   }

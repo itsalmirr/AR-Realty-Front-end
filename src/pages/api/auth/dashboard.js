@@ -7,15 +7,15 @@ const dashboard = async (req, res) => {
     let cookie = parseCookie(req)
     let access
     const url = `${API_URL}/api/user/me/`
+    const urlRefresh = `${API_URL}/api/token/refresh/`
+
     if (tokenExpired(cookie.access)) {
       if (tokenExpired(cookie.refresh)) {
         setCookies(res, '', '')
-        response(res, 401, false, 'Token expired')
       }
-      const { access: refreshedAccess } = await postRequest(
-        `${API_URL}/api/token/refresh/`,
-        { refresh: cookie.refresh }
-      )
+      const { access: refreshedAccess } = await postRequest(urlRefresh, {
+        refresh: cookie.refresh,
+      })
       setCookies(res, refreshedAccess, cookie.refresh)
       access = refreshedAccess
     }
