@@ -25,11 +25,6 @@ const user = async (req, res) => {
       const { access: refreshedAccess } = await postRequest(refreshUrl, {
         refresh: cookie.refresh,
       })
-
-      if (refreshedAccess.status === 401) {
-        setCookies(res, '', '')
-      }
-
       setCookies(res, refreshedAccess, cookie.refresh)
       access = refreshedAccess
     }
