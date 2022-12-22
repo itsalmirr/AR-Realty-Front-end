@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useContext, useState, useEffect, useCallback } from 'react'
 
@@ -26,7 +27,7 @@ const AccountSettings = dynamic(
 
 const DashboardPage = () => {
   const { isLoading, user, setIsLoading } = useContext(AuthContext)
-  const [listings, setListings] = useState([])
+  const [userInquiries, setUserInquiries] = useState([])
   const [settings, setSettings] = useState(false)
   const [full_name, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -42,15 +43,19 @@ const DashboardPage = () => {
     user.email = email
   }, [full_name, email])
 
+  const updateInquiries = useCallback(() => {
+    setUserInquiries(data.resData)
+  }, [data])
+
   useEffect(() => {
     setEmail(user?.email)
     setFullName(user?.full_name)
     setUsername(user?.username)
     if (data) {
-      setListings(data.resData)
+      setUserInquiries(data.resData)
     }
     setIsLoading(false)
-  }, [data, user])
+  }, [data, user, userInquiries])
 
   return (
     <Layout title='Dashboard'>
@@ -89,14 +94,26 @@ const DashboardPage = () => {
         {isLoading ? (
           <Spinner />
         ) : (
-          <RequestedInquiriesCard listings={listings} />
+          <RequestedInquiriesCard
+            inquiries={userInquiries}
+            refreshInquiries={updateInquiries}
+          />
         )}
 
-        {listings.length === 0 && !isLoading && (
+        {userInquiries.length === 0 && !isLoading && (
           <div className='flex flex-col items-center justify-center mt-12'>
             <p className='text-center text-gray-500 text-sm'>
               You have no inquiries.
             </p>
+            <p className='text-center text-gray-500 text-sm'>
+              You can browse our listings and request an inquiry.
+            </p>
+
+            <Link href={links.listings}>
+              <button className='mt-4 bg-primaryDark hover:bg-accentDark text-white font-bold py-2 px-4 rounded'>
+                Browse Listings
+              </button>
+            </Link>
           </div>
         )}
       </div>

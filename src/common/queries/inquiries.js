@@ -1,22 +1,22 @@
+import { getRequest, postRequest, deleteRequest } from '@common/lib/requests'
+
 export const submitInquiry = async (body, url, token) => {
-  const res = await fetch(url ? url : '/api/inquiries/', {
-    method: 'POST',
-    redirect: 'follow',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: token ? `Bearer ${token}` : '',
-    },
-    body: JSON.stringify(body),
-  })
-  const data = await res.json()
+  const defaultUrl = '/api/inquiries/'
+  const data = await postRequest(url ? url : defaultUrl, body, token)
+
+  if (data.status !== 200) {
+    return data
+  }
+
   return data
 }
 
 export const inquiryExists = async (listingId, url, access, check) => {
-  const default_url = `/api/inquiries?listing=${listingId}`
-  const res = await fetch(url ? url : default_url, {
+  const defaultUrl = `/api/inquiries?listing=${listingId}`
+
+  // TODO: Replace fetch with getRequest @iamalmiir
+  const res = await fetch(url ? url : defaultUrl, {
     method: 'GET',
-    redirect: 'follow',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${access}`,
@@ -24,6 +24,22 @@ export const inquiryExists = async (listingId, url, access, check) => {
       ListingId: listingId,
     },
   })
-  const resData = await res.json()
-  return resData
+
+  if (res.status !== 200) {
+    return res
+  }
+
+  const data = await res.json()
+  return data
+}
+
+export const deleteInquiry = async (inquiryId, token, url) => {
+  const defaultUrl = `/api/inquiries?inquiry=${inquiryId}`
+  const data = await deleteRequest(url ? url : defaultUrl, token && token)
+
+  if (data.status !== 200) {
+    return data
+  }
+
+  return data
 }

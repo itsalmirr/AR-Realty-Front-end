@@ -3,7 +3,11 @@ import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
 import { fetchListings } from '@common/queries/listings'
-import { submitInquiry, inquiryExists } from '@common/queries/inquiries'
+import {
+  submitInquiry,
+  inquiryExists,
+  deleteInquiry,
+} from '@common/queries/inquiries'
 
 const ListingsContext = createContext()
 
@@ -80,6 +84,17 @@ export const ListingsProvider = ({ children }) => {
     }
   }
 
+  const delInquiry = async (id) => {
+    try {
+      const performDelete = await deleteInquiry(id)
+      console.log(performDelete)
+      toast.info(performDelete.message)
+      return performDelete
+    } catch (err) {
+      toast.warning('Error deleting inquiry')
+    }
+  }
+
   const contextData = {
     loading: loading,
     listings: listings,
@@ -92,6 +107,7 @@ export const ListingsProvider = ({ children }) => {
     fetchListingBySlug: fetchListingBySlug,
     handleInquirySubmit: handleInquirySubmit,
     checkInquiryMade: checkInquiryMade,
+    delInquiry: delInquiry,
   }
 
   return (

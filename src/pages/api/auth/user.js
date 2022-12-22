@@ -1,6 +1,6 @@
 import { API_URL } from '@lib/constants'
 import { response, parseCookie, setCookies, tokenExpired } from '@lib/helpers'
-import { getRequest, postRequest } from '@common/queries/auth'
+import { getRequest, postRequest } from '@lib/requests'
 
 const user = async (req, res) => {
   if (req.method === 'GET') {

@@ -12,41 +12,6 @@ export const logMeIn = async (body, url, token) => {
   return data
 }
 
-export const getRequest = async (url, token) => {
-  const res = await fetch(url, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: token && `Bearer ${token}`,
-    },
-  })
-
-  if (res.status !== 200) {
-    return res
-  }
-
-  const data = await res.json()
-  return data
-}
-
-export const postRequest = async (url, body, token) => {
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: token && `Bearer ${token}`,
-    },
-    body: JSON.stringify(body),
-  })
-
-  if (res.status !== 200) {
-    return res
-  }
-
-  const data = await res.json()
-  return data
-}
-
 export const logMeOut = async () => {
   await fetch('/api/auth/logout', {
     method: 'GET',

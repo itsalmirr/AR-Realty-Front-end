@@ -1,6 +1,6 @@
 import { API_URL } from '@common/lib/constants'
-import { postRequest, getRequest } from '@common/queries/auth'
 import { response, setCookies } from '@lib/helpers'
+import { postRequest, getRequest } from '@lib/requests'
 
 const login = async (req, res) => {
   if (req.method == 'POST') {

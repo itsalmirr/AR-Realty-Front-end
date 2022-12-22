@@ -1,5 +1,5 @@
 import { API_URL } from '@lib/constants'
-import { postRequest } from '@common/queries/auth'
+import { postRequest } from '@lib/requests'
 import { response, parseCookie, tokenExpired, setCookies } from '@lib/helpers'
 
 const dashboard = async (req, res) => {

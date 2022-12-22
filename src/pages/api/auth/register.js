@@ -1,5 +1,5 @@
 import { API_URL } from '@lib/constants'
-import { postRequest } from '@common/queries/auth'
+import { postRequest } from '@lib/requests'
 import { response } from '@lib/helpers'
 
 const register = async (req, res) => {
