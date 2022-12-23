@@ -1,10 +1,10 @@
-export const getRequest = async (url, token, ...rest) => {
+export const getRequest = async (url, token, ...args) => {
   const res = await fetch(url, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
       Authorization: token && `Bearer ${token}`,
-      ...rest,
+      Dashboard: args[0],
     },
   })
 

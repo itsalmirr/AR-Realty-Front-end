@@ -1,4 +1,5 @@
 import { API_URL } from '@lib/constants'
+import { getRequest } from '@lib/requests'
 import { response } from '@lib/helpers'
 
 const quicksearch = async (req, res) => {
@@ -6,11 +7,7 @@ const quicksearch = async (req, res) => {
     const { q } = req.query
     const url = `${API_URL}/api/listings/quicksearch?q=${q}`
     try {
-      const fetchRes = await fetch(url, {
-        method: 'GET',
-        redirect: 'follow',
-      })
-      const data = await fetchRes.json()
+      const data = await getRequest(url)
       response(res, 200, true, 'Listings retrieved successfully', data)
     } catch (err) {
       response(res, 500, false, 'Server error')

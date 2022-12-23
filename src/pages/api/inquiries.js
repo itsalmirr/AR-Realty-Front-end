@@ -1,8 +1,4 @@
-import {
-  submitInquiry,
-  inquiryExists,
-  deleteInquiry,
-} from '@common/queries/inquiries'
+import { submitInquiry, inquiryExists } from '@common/queries/inquiries'
 import { response, parseCookie } from '@lib/helpers'
 import { API_URL } from '@lib/constants'
 

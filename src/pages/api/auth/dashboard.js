@@ -1,5 +1,5 @@
 import { API_URL } from '@lib/constants'
-import { postRequest } from '@lib/requests'
+import { postRequest, getRequest } from '@lib/requests'
 import { response, parseCookie, tokenExpired, setCookies } from '@lib/helpers'
 
 const dashboard = async (req, res) => {
@@ -24,15 +24,11 @@ const dashboard = async (req, res) => {
       if (!access) {
         access = cookie.access
       }
-      const fetchRes = await fetch(url, {
-        headers: {
-          Dashboard: req.headers.inquiries === 'true' ? 'true' : 'false',
-          Authorization: `Bearer ${access}`,
-        },
-        method: 'GET',
-        redirect: 'follow',
-      })
-      const data = await fetchRes.json()
+      const data = await getRequest(
+        url,
+        access,
+        `${req.headers.inquiries === 'true' ? 'true' : 'false'}`
+      )
       response(res, 200, true, '', data)
     } catch (err) {
       response(res, 500, false, 'Server error')
