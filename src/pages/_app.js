@@ -1,4 +1,4 @@
-import '../common/styles/globals.css'
+import '../styles/dist.css'
 import '@fontsource/montserrat'
 import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
