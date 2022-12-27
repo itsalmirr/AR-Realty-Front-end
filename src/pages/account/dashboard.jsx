@@ -57,20 +57,18 @@ const DashboardPage = () => {
     setIsLoading(false)
   }, [data, user, userInquiries])
 
+  if (!user || !userInquiries || isLoading) return <Spinner />
+
   return (
     <Layout title='Dashboard'>
       <header>
-        {!isLoading && user ? (
-          <DashboardHeader
-            setSettings={setSettings}
-            settings={settings}
-            user={user}
-          />
-        ) : (
-          <Spinner />
-        )}
+        <DashboardHeader
+          setSettings={setSettings}
+          settings={settings}
+          user={user}
+        />
       </header>
-      {settings && user && (
+      {settings && (
         <AccountSettings
           email={email}
           full_name={full_name}
@@ -91,15 +89,10 @@ const DashboardPage = () => {
       )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
-        {isLoading ? (
-          <Spinner />
-        ) : (
-          <RequestedInquiriesCard
-            inquiries={userInquiries}
-            refreshInquiries={updateInquiries}
-          />
-        )}
-
+        <RequestedInquiriesCard
+          inquiries={userInquiries}
+          refreshInquiries={updateInquiries}
+        />
         {userInquiries.length === 0 && !isLoading && (
           <div className='flex flex-col items-center justify-center mt-12'>
             <p className='text-center text-gray-500 text-sm'>

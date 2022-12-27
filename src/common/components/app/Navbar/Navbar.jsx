@@ -100,7 +100,7 @@ const Navbar = () => {
               </div>
               {!isLoading && (
                 <div className='hidden lg:relative lg:z-10 lg:ml-4 lg:flex lg:items-center'>
-                  {isLoggedIn && user && (
+                  {user && (
                     <UserMenu
                       Link={Link}
                       Fragment={Fragment}

@@ -11,6 +11,8 @@ const ListingPage = () => {
   const { loading, listings, next, prev, total, page, setPage } =
     useContext(ListingsContext)
 
+  if (!listings || listings.length === 0) return <Spinner />
+
   return (
     <Layout title='Listings For Sale'>
       <header className='listing-page-cover'>
