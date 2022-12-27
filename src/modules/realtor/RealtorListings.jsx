@@ -1,6 +1,7 @@
 import useSWR from 'swr'
 import { useEffect, useState } from 'react'
 
+import { Spinner } from '@components/app/Spinner'
 import { realtorslisting } from '@queries/realtorListings'
 import { renderListings } from '@modules/home/renderListings'
 
@@ -15,7 +16,7 @@ const RealtorListings = ({ slug }) => {
   }, [data])
 
   if (error || !data) {
-    return <div>loading...</div>
+    return <Spinner />
   }
 
   return (

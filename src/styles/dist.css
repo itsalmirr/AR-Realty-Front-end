@@ -2325,11 +2325,6 @@ body {
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-primaryDark:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 119 182 / var(--tw-bg-opacity));
-}
-
 .hover\:text-accentDark:hover {
   --tw-text-opacity: 1;
   color: rgb(222 137 113 / var(--tw-text-opacity));
@@ -2448,11 +2443,6 @@ body {
 .focus\:ring-green-400:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(74 222 128 / var(--tw-ring-opacity));
-}
-
-.focus\:ring-indigo-500:focus {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(99 102 241 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-offset-2:focus {

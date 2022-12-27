@@ -1,4 +1,4 @@
-import { MdMail, MdLocalPhone } from 'react-icons/md'
+import { MdMail, MdLocalPhone, MdStar } from 'react-icons/md'
 
 const coverPicture = {
   url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1662968994/towfiqu-barbhuiya-05XcCfTOzN4-unsplash_1_kddkly.jpg',
@@ -24,9 +24,12 @@ const RealtorsDashboard = ({ realtor }) => {
             />
           </div>
           <div className='mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1'>
-            <div className='mt-6 min-w-0 flex-1 sm:hidden md:block'>
-              <h1 className='truncate text-2xl font-bold text-gray-900'>
+            <div className='mt-5 min-w-0 flex-1 sm:hidden md:block'>
+              <h1 className='truncate flex items-center text-2xl font-bold text-gray-900'>
                 {realtor.full_name}
+                {realtor.is_mvp && (
+                  <MdStar title='MVP' className='ml-2 text-primaryDark' />
+                )}
               </h1>
             </div>
             <div className='justify-stretch mt-6 flex flex-col space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4'>

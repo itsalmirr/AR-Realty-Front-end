@@ -2,11 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
-import { MdSquareFoot } from 'react-icons/md'
+import { MdSquareFoot, MdStar } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 
 const ListingCard = ({ listing }) => {
+  const realtor = listing.realtor
+
   return (
     <ul role='list'>
       <li
@@ -76,7 +78,7 @@ const ListingCard = ({ listing }) => {
             </ul>
           </div>
 
-          <p className='text-gray-500 font-light text-sm p-2 break-normal justify text-justify'>
+          <p className='text-gray-500 text-sm p-2 break-normal justify text-justify'>
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
@@ -84,24 +86,27 @@ const ListingCard = ({ listing }) => {
           <div className='ml-2 flex items-center'>
             <div className='flex-shrink-0'>
               <a href='#'>
-                <span className='sr-only'>{listing.realtor.full_name}</span>
+                <span className='sr-only'>{realtor.full_name}</span>
                 <Image
                   width={40}
                   height={40}
                   className='h-10 w-10 rounded-full'
-                  src={listing.realtor.photo}
+                  src={realtor.photo}
                   alt=''
                 />
               </a>
             </div>
             <div className='ml-3'>
-              <p className='flex space-x-1 text-sm font-medium text-primaryDark'>
+              <p className='flex space-x-1 text-sm items-center font-medium text-primaryDark'>
                 <Link
-                  href={`/realtors/${listing.realtor.slug}`}
+                  href={`/realtors/${realtor.slug}`}
                   className='hover:underline'
                 >
-                  {listing.realtor.full_name}
+                  {realtor.full_name}
                 </Link>
+                {realtor.is_mvp && (
+                  <MdStar title='MVP' className='w-4 h-4 text-primaryDark' />
+                )}
               </p>
               <div className='flex space-x-1 text-sm text-gray-500'>
                 <time dateTime={listing.pub_date}>{listing.publishedAt}</time>
