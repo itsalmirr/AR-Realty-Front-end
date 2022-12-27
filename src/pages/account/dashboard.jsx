@@ -93,7 +93,7 @@ const DashboardPage = () => {
           inquiries={userInquiries}
           refreshInquiries={updateInquiries}
         />
-        {userInquiries.length === 0 && !isLoading && (
+        {userInquiries.length === 0 && (
           <div className='flex flex-col items-center justify-center mt-12'>
             <p className='text-center text-gray-500 text-sm'>
               You have no inquiries.
