@@ -2,7 +2,8 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
-import { MdSquareFoot, MdStar, MdVerified } from 'react-icons/md'
+import { MvpStar, Verified } from '@common/components/app/Marks'
+import { MdSquareFoot } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 
@@ -104,13 +105,8 @@ const ListingCard = ({ listing }) => {
                 >
                   {realtor.full_name}
                 </Link>
-                <MdVerified
-                  title='Verified'
-                  className='w-4 h-4 text-primaryDark'
-                />
-                {realtor.is_mvp && (
-                  <MdStar title='MVP' className='w-4 h-4 text-primaryDark' />
-                )}
+                <Verified />
+                {realtor.is_mvp && <MvpStar />}
               </p>
               <div className='flex space-x-1 text-sm text-gray-500'>
                 <time dateTime={listing.pub_date}>{listing.publishedAt}</time>

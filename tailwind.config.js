@@ -7,6 +7,7 @@ module.exports = {
         primaryLight: '#457b9d',
         accentDark: '#DE8971',
         accentLight: '#0A0A0A',
+        mvpColor: '#FFB100',
       },
       animation: {
         shine: 'shine 1s',
