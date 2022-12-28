@@ -18,7 +18,7 @@ export const RequestedInquiriesCard = ({ inquiries }) => {
         >
           <div className='w-full flex items-center justify-between p-6 space-x-6'>
             <div className='flex-1 truncate'>
-              <div className='flex items-center space-x-3'>
+              <div className='flex items-center space-x-1'>
                 <h3 className='text-gray-900 text-sm font-medium truncate'>
                   {inquiry.realtor.full_name}
                 </h3>
