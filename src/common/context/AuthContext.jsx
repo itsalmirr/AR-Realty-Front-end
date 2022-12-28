@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
       const data = await postRequest('/api/auth/register/', body)
 
       if (data.success) {
-        toast.success(data.message)
+        toast.success("You're registered! Please login to continue")
         router.push('/auth/login')
       }
     } catch (err) {

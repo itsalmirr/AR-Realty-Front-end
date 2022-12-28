@@ -87,7 +87,6 @@ export const ListingsProvider = ({ children }) => {
   const delInquiry = async (id) => {
     try {
       const performDelete = await deleteInquiry(id)
-      console.log(performDelete)
       toast.info(performDelete.message)
       return performDelete
     } catch (err) {

@@ -10,7 +10,6 @@ const ListingPage = dynamic(() => import('@modules/listingpage/ListingPage'), {
 })
 
 const ListingById = ({ slug, currentListing, featuredListings }) => {
-  console.log(featuredListings)
   if (!currentListing) {
     return <Spinner />
   }
