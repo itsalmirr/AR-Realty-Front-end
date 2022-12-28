@@ -2,8 +2,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
+import { AiTwotoneCalendar } from 'react-icons/ai'
+// import { CgInsights } from 'react-icons/cg'
 import { MvpStar, Verified } from '@common/components/app/Marks'
-import { MdSquareFoot } from 'react-icons/md'
+import { MdSquareFoot, MdLocationOn } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 
@@ -84,8 +86,8 @@ const ListingCard = ({ listing }) => {
           </p>
         </div>
         <div className='flex-1 bg-white p-2 flex flex-col justify-between'>
-          <div className='ml-2 flex items-center'>
-            <div className='flex-shrink-0'>
+          <div className='ml-2 flex items-center justify-between'>
+            <div className='flex-shrink-0 flex items-center'>
               <a href='#'>
                 <span className='sr-only'>{realtor.full_name}</span>
                 <Image
@@ -96,22 +98,41 @@ const ListingCard = ({ listing }) => {
                   alt=''
                 />
               </a>
-            </div>
-            <div className='ml-3'>
-              <p className='flex space-x-1 text-sm items-center font-medium text-primaryDark'>
-                <Link
-                  href={`/realtors/${realtor.slug}`}
-                  className='hover:underline'
-                >
-                  {realtor.full_name}
-                </Link>
-                <Verified />
-                {realtor.is_mvp && <MvpStar />}
-              </p>
-              <div className='flex space-x-1 text-sm text-gray-500'>
-                <time dateTime={listing.pub_date}>{listing.publishedAt}</time>
-                <span aria-hidden='true'>&middot;</span>
+              <div className='ml-3'>
+                <p className='flex space-x-1 text-sm items-center font-medium text-primaryDark'>
+                  <Link
+                    href={`/realtors/${realtor.slug}`}
+                    title='Realtor'
+                    className='hover:underline'
+                  >
+                    {realtor.full_name}
+                  </Link>
+                  <Verified />
+                  {realtor.is_mvp && <MvpStar />}
+                </p>
+                <div className='flex space-x-1 items-center text-xs text-gray-400'>
+                  <AiTwotoneCalendar className='w-4 h-4 text-gray-300' />
+                  <time title='Published date' dateTime={listing.pub_date}>
+                    {listing.publishedAt}
+                  </time>
+                  <span aria-hidden='true'>&middot;</span>
+                </div>
               </div>
+            </div>
+            <div title='Location' className='flex items-center'>
+              <MdLocationOn className='w-4 h-4 text-gray-300' />
+              <span className='text-gray-400 text-xs font-light mr-2'>
+                {listing.city}, {listing.state}
+              </span>
+              {/* <div className='flex items-center'>
+                <CgInsights
+                  title='Inquiries made'
+                  className='w-4 h-4 text-gray-300'
+                />
+                <span className='text-gray-400 text-xs font-light mr-2'>
+                  {0}
+                </span>
+              </div> */}
             </div>
           </div>
         </div>
