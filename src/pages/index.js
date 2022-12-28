@@ -14,12 +14,8 @@ const HomePage = ({ listings }) => {
   )
 }
 
-export default HomePage
-
 export const getStaticProps = async () => {
-  const listings = await fetchListings(
-    `${API_URL}/api/listings/?page_size=3&page=1`
-  )
+  const listings = await fetchListings(`${API_URL}/api/listings/random/`)
 
   return {
     props: {
@@ -28,3 +24,5 @@ export const getStaticProps = async () => {
     revalidate: 60,
   }
 }
+
+export default HomePage

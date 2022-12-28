@@ -40,10 +40,6 @@ const headers = [
   },
 ]
 
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
-
 const nextConfig = {
   async headers() {
     return [
@@ -53,7 +49,6 @@ const nextConfig = {
       },
     ]
   },
-
   reactStrictMode: true,
   swcMinify: true,
   images: {
@@ -61,4 +56,4 @@ const nextConfig = {
   },
 }
 
-module.exports = withBundleAnalyzer(nextConfig)
+module.exports = nextConfig

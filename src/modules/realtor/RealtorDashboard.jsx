@@ -1,4 +1,4 @@
-import { MdMail, MdLocalPhone, MdStar } from 'react-icons/md'
+import { MdMail, MdLocalPhone, MdStar, MdVerified } from 'react-icons/md'
 
 const coverPicture = {
   url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1662968994/towfiqu-barbhuiya-05XcCfTOzN4-unsplash_1_kddkly.jpg',
@@ -27,6 +27,10 @@ const RealtorsDashboard = ({ realtor }) => {
             <div className='mt-5 min-w-0 flex-1 sm:hidden md:block'>
               <h1 className='truncate flex items-center text-2xl font-bold text-gray-900'>
                 {realtor.full_name}
+                <MdVerified
+                  title='Verified'
+                  className='ml-2 text-primaryDark'
+                />
                 {realtor.is_mvp && (
                   <MdStar title='MVP' className='ml-2 text-primaryDark' />
                 )}

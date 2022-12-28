@@ -2,7 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
-import { MdSquareFoot, MdStar } from 'react-icons/md'
+import { MdSquareFoot, MdStar, MdVerified } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 
@@ -10,7 +10,7 @@ const ListingCard = ({ listing }) => {
   const realtor = listing.realtor
 
   return (
-    <ul role='list'>
+    <ul role='list' className='group'>
       <li
         key={listing.id}
         data-aos='fade-up'
@@ -104,6 +104,10 @@ const ListingCard = ({ listing }) => {
                 >
                   {realtor.full_name}
                 </Link>
+                <MdVerified
+                  title='Verified'
+                  className='w-4 h-4 text-primaryDark'
+                />
                 {realtor.is_mvp && (
                   <MdStar title='MVP' className='w-4 h-4 text-primaryDark' />
                 )}

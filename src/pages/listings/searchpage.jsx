@@ -6,10 +6,14 @@ import { GiFamilyHouse } from 'react-icons/gi'
 import { quickSearch } from '@lib/helpers'
 import { Layout } from '@components/layouts'
 import { ListingsList } from '@components/app/ListingsList'
+import { FeaturedListings } from '@components/app/FeaturedListings'
+import { API_URL } from '@lib/constants'
+import { fetchListings } from '@common/queries/listings'
+import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
 import { NoResults } from '@components/app/NoResults'
 
-const SearchPage = () => {
+const SearchPage = ({ listings }) => {
   const router = useRouter()
   const [results, setResults] = useState([])
   const [loading, setLoading] = useState(results.length === 0)
@@ -28,7 +32,9 @@ const SearchPage = () => {
     return (
       <div>
         {results.length === 0 ? (
-          <NoResults />
+          <div>
+            <NoResults />
+          </div>
         ) : (
           <ListingsList listings={results} />
         )}
@@ -52,9 +58,26 @@ const SearchPage = () => {
       </header>
       <main className='container mx-auto mt-12 w-full'>
         {loading ? <Spinner /> : renderResults()}
+        <Divider text={'You may also like'} />
+        {listings ? (
+          <FeaturedListings featuredListings={listings} />
+        ) : (
+          <Spinner />
+        )}
       </main>
     </Layout>
   )
+}
+
+export const getStaticProps = async () => {
+  const listings = await fetchListings(`${API_URL}/api/listings/random/`)
+
+  return {
+    props: {
+      listings: listings.results,
+    },
+    revalidate: 60,
+  }
 }
 
 export default SearchPage

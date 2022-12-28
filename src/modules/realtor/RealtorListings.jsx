@@ -21,7 +21,6 @@ const RealtorListings = ({ slug }) => {
 
   return (
     <div>
-      <header></header>
       <main>{listings.length > 0 && renderListings(listings)}</main>
     </div>
   )

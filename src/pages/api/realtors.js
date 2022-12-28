@@ -13,6 +13,7 @@ const realtorslisting = async (req, res) => {
         method: 'GET',
         redirect: 'follow',
       })
+
       const data = await fetchRes.json()
       response(res, 200, true, 'Listings retrieved successfully', data.results)
     } catch (err) {

@@ -9,6 +9,7 @@ import { useEffect, useContext, useState, Fragment } from 'react'
 import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
 import { isInquiryMade } from '@common/queries/listings'
+import { FeaturedListings } from '@components/app/FeaturedListings'
 import { Divider } from '@components/app/Divider'
 import { InquiryForm } from '@components/app/Forms'
 import { formatPrice, classNames } from '@lib/helpers'
@@ -16,7 +17,7 @@ import { links } from '@lib/constants'
 import { ListingPageDetails } from '@components/app/ListingPageDetails'
 import { RealtorDescription } from '@components/app/RealtorDescription'
 
-const ListingPage = ({ slug, currentListing }) => {
+const ListingPage = ({ slug, currentListing, featuredListings }) => {
   const [fullDescription, setFullDescription] = useState(false)
   const [listing, setListing] = useState(currentListing)
   const [inquiryMade, setInquiryMade] = useState(false)
@@ -145,38 +146,41 @@ const ListingPage = ({ slug, currentListing }) => {
         </Fragment>
       )}
       {!authUser && (
-        <div className='bg-white my-12'>
-          <main className='sm:flex'>
-            <img
-              src='https://res.cloudinary.com/iamalmiir/image/upload/v1672178839/undraw_reminder_re_fe15_d8yuav.svg'
-              className='h-1/5 w-1/5'
-            />
-            <div className='sm:ml-6 lg:mt-18'>
-              <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
-                <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
-                  Sign in to make an inquiry
-                </h1>
-                <p className='mt-1 text-base text-gray-500'>
-                  You need to be signed in to make an inquiry.
-                </p>
+        <Fragment>
+          <Divider text={'Get in touch with us'} />
+          <div className='bg-white my-12'>
+            <main className='sm:flex'>
+              <img
+                src='https://res.cloudinary.com/iamalmiir/image/upload/v1672178839/undraw_reminder_re_fe15_d8yuav.svg'
+                className='h-1/5 w-1/5'
+              />
+              <div className='sm:ml-6 lg:mt-18'>
+                <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
+                  <h1 className='text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl'>
+                    Sign in to make an inquiry
+                  </h1>
+                  <p className='mt-1 text-base text-gray-500'>
+                    You need to be signed in to make an inquiry.
+                  </p>
+                </div>
+                <div className='mt-6 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6'>
+                  <Link
+                    href={links.login}
+                    className='inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primaryDark hover:bg-accentDark'
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    href={links.register}
+                    className='inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-primaryDark bg-white hover:bg-gray-50'
+                  >
+                    Sign up
+                  </Link>
+                </div>
               </div>
-              <div className='mt-6 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6'>
-                <Link
-                  href={links.login}
-                  className='inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primaryDark hover:bg-accentDark'
-                >
-                  Sign in
-                </Link>
-                <Link
-                  href={links.register}
-                  className='inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-primaryDark bg-white hover:bg-gray-50'
-                >
-                  Sign up
-                </Link>
-              </div>
-            </div>
-          </main>
-        </div>
+            </main>
+          </div>
+        </Fragment>
       )}
 
       {inquiryMade && (
@@ -212,6 +216,13 @@ const ListingPage = ({ slug, currentListing }) => {
             </div>
           </main>
         </div>
+      )}
+
+      {featuredListings && featuredListings.length > 0 && (
+        <Fragment>
+          <Divider text={'Featured Listings'} />
+          <FeaturedListings featuredListings={featuredListings} />
+        </Fragment>
       )}
     </div>
   )

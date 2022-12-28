@@ -1,7 +1,7 @@
 import MainSection from './MainSection'
+import { Divider } from '@components/app/Divider'
 import { renderListings } from './renderListings'
 import { NewsLetter } from '@components/marketing/NewsLetter'
-import { Divider } from '@components/app/Divider'
 
 const Home = ({ listings }) => {
   return (

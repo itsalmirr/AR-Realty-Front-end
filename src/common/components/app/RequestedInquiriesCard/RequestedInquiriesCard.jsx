@@ -1,13 +1,10 @@
-import { useContext, memo } from 'react'
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail, MdDelete } from 'react-icons/md'
 
-import ListingsContext from '@common/context/ListingsContext'
 import { formatPrice } from '@lib/helpers'
 import Link from 'next/link'
 
-export const RequestedInquiriesCard = ({ inquiries, refreshInquiries }) => {
-  const { delInquiry } = useContext(ListingsContext)
+export const RequestedInquiriesCard = ({ inquiries }) => {
   return (
     <ul
       role='list'
@@ -28,7 +25,7 @@ export const RequestedInquiriesCard = ({ inquiries, refreshInquiries }) => {
                   {'Realtor'}
                 </span>
               </div>
-              <Link href={`/inquirys/${inquiry.slug}`}>
+              <Link href={`/listings/${inquiry.slug}`}>
                 <div className='flex items-center space-x-3'>
                   <p className='mt-1 text-gray-500 text-sm truncate underline underline-offset-1 cursor-pointer hover:text-accentDark'>
                     {inquiry.address} - {inquiry.city}, {inquiry.state}
@@ -42,7 +39,7 @@ export const RequestedInquiriesCard = ({ inquiries, refreshInquiries }) => {
                 {formatPrice(inquiry.price)}
               </p>
             </div>
-            <Link href={`/inquirys/${inquiry.slug}`} className='cursor-pointer'>
+            <Link href={`/listings/${inquiry.slug}`} className='cursor-pointer'>
               <img
                 className='w-10 h-10 bg-gray-300 rounded-full flex-shrink-0'
                 src={inquiry.photo_main}
@@ -76,11 +73,8 @@ export const RequestedInquiriesCard = ({ inquiries, refreshInquiries }) => {
                   <span className='ml-3'>Call</span>
                 </a>
               </div>
-              <div className='w-0 flex-1 flex' onClick={refreshInquiries()}>
-                <button
-                  onClick={() => delInquiry(inquiry.id)}
-                  className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-red-400'
-                >
+              <div className='w-0 flex-1 flex'>
+                <button className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-red-400'>
                   <MdDelete
                     className='w-5 h-5 text-red-400'
                     aria-hidden='true'
@@ -96,4 +90,4 @@ export const RequestedInquiriesCard = ({ inquiries, refreshInquiries }) => {
   )
 }
 
-export default memo(RequestedInquiriesCard)
+export default RequestedInquiriesCard
