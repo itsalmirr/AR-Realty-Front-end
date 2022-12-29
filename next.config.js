@@ -54,6 +54,11 @@ const nextConfig = {
   images: {
     domains: ['tailwindui.com', 'images.unsplash.com', 'res.cloudinary.com'],
   },
+  env: {
+    GOOGLE_MAP_API: process.env.GOOGLE_MAP_API,
+    MAPBOX_API_TOKEN: process.env.MAPBOX_API_TOKEN,
+    NEXT_BACKEND_API_URL: process.env.NEXT_BACKEND_API_URL,
+  },
 }
 
 module.exports = nextConfig

@@ -7,6 +7,8 @@ import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { useEffect, useContext, useState, Fragment } from 'react'
 
 import ImageSwiper from '@hooks/ImageSwiper'
+import { MapBox } from '@components/app/MapBox'
+
 import AuthContext from '@context/AuthContext'
 import { isInquiryMade } from '@common/queries/listings'
 import { FeaturedListings } from '@components/app/FeaturedListings'
@@ -119,22 +121,29 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
       <Divider text={'About the Listing'} />
       {/* Details such as cooling, heating, built year etc...  */}
       <ListingPageDetails listing={listing} classNames={classNames} />
-      <div>
-        <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
-          DESCRIPTION
-        </span>
-        <p className='mt-6 text-sm font-medium text-gray-600 max-w-lg'>
-          {fullDescription
-            ? listing.description
-            : `${listing.description.slice(0, 200)}...`}
-        </p>
-        <br />
-        <button
-          onClick={() => setFullDescription(!fullDescription)}
-          className='text-sm border p-1 font-semibold text-primaryDark hover:bg-gray-200'
-        >
-          {fullDescription ? 'HIDE FULL DESCRIPTION' : 'READ FULL DESCRIPTION'}
-        </button>
+      <div className='relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8'>
+        <div className='relative'>
+          <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
+            DESCRIPTION
+          </span>
+          <p className='mt-6 text-sm font-medium text-gray-600 max-w-lg'>
+            {fullDescription
+              ? listing.description
+              : `${listing.description.slice(0, 200)}...`}
+          </p>
+          <br />
+          <button
+            onClick={() => setFullDescription(!fullDescription)}
+            className='text-sm border p-1 mb-8 lg:mb-0 font-semibold text-primaryDark hover:bg-gray-200'
+          >
+            {fullDescription
+              ? 'HIDE FULL DESCRIPTION'
+              : 'READ FULL DESCRIPTION'}
+          </button>
+        </div>
+        <div className='relative'>
+          <MapBox listing={listing} />
+        </div>
       </div>
       <div className='bg-white lg:py-24 my-12'>
         <RealtorDescription listing={listing} />
@@ -182,7 +191,6 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
           </div>
         </Fragment>
       )}
-
       {inquiryMade && (
         <div className='bg-white my-12'>
           <main className='sm:flex'>
