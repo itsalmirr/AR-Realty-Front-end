@@ -15,7 +15,7 @@ export default function EventMap({ listing }) {
     longitude: -73.935242,
     width: '100%',
     height: '500px',
-    zoom: 12,
+    zoom: 14,
   })
 
   useEffect(() => {
