@@ -2,6 +2,7 @@ import { FaPhone } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
 
 import { formatPhoneNumber } from '@lib/helpers'
+import Link from 'next/link'
 
 const RealtorDescription = ({ listing }) => {
   return (
@@ -108,10 +109,12 @@ const RealtorDescription = ({ listing }) => {
                     alt={listing.realtor.name}
                   />
                 </div>
-                <p className='text-base font-medium text-gray-500'>
-                  {listing.realtor.full_name} |{' '}
-                  <strong className='text-primaryDark'>Realtor</strong>
-                </p>
+                <Link href={`/realtor/${listing.realtor.slug}`}>
+                  <p className='text-base font-medium text-gray-500'>
+                    {listing.realtor.full_name} |{' '}
+                    <strong className='text-primaryDark'>Realtor</strong>
+                  </p>
+                </Link>
                 <br />
                 <div className='flex'>
                   <div className='flex-shrink-0'>

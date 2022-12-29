@@ -38,6 +38,7 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
     setListing(currentListing)
     data && setInquiryMade(data.resData === 'true' && true)
   }, [slug, authUser, data])
+
   return (
     <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
       <div className=' lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'>
