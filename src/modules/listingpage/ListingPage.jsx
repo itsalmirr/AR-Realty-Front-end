@@ -127,7 +127,7 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
           <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
             DESCRIPTION
           </span>
-          <p className='mt-6 text-sm font-medium text-gray-600 max-w-lg'>
+          <p className='mt-6 text-lg font-medium text-gray-600 max-w-lg'>
             {fullDescription
               ? listing.description
               : `${listing.description.slice(0, 200)}...`}

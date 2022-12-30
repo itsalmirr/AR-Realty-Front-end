@@ -9,15 +9,16 @@ const getLatLong = async (
   setLoading
 ) => {
   // Get latitude & longitude from address.
-  let response = await Geocode.fromAddress(
+  let address =
     listing.address +
-      ' ' +
-      listing.city +
-      ', ' +
-      listing.state +
-      ' ' +
-      listing.zipcode
-  )
+    ' ' +
+    listing.city +
+    ', ' +
+    listing.state +
+    ' ' +
+    listing.zipcode
+
+  const response = await Geocode.fromAddress(address)
 
   if (response.status !== 'OK') {
     console.error(response)
