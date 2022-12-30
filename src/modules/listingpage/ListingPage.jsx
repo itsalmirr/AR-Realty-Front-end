@@ -1,5 +1,6 @@
 import useSWR from 'swr'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GrLocationPin } from 'react-icons/gr'
@@ -160,9 +161,13 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
           <Divider text={'Get in touch with us'} />
           <div className='bg-white my-12'>
             <main className='sm:flex'>
-              <img
-                src='https://res.cloudinary.com/iamalmiir/image/upload/v1672178839/undraw_reminder_re_fe15_d8yuav.svg'
+              <Image
                 className='h-1/5 w-1/5'
+                src={notSignedInImg}
+                width={500}
+                height={500}
+                placeholder='blur'
+                blurDataURL={notSignedInImg}
               />
               <div className='sm:ml-6 lg:mt-18'>
                 <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
@@ -195,9 +200,13 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
       {inquiryMade && (
         <div className='bg-white my-12'>
           <main className='sm:flex'>
-            <img
-              src='https://res.cloudinary.com/iamalmiir/image/upload/v1667350951/undraw_awesome_rlvy_hfbadt.svg'
-              className='h-1/5 w-1/5'
+            <Image
+              src={inquiryMadeImg}
+              className='h-1/5 w-1/3 lg:w-1/4'
+              width={500}
+              height={500}
+              placeholder='blur'
+              blurDataURL={inquiryMadeImg}
             />
             <div className='sm:ml-6 lg:mt-18'>
               <div className='sm:border-l sm:border-gray-200 sm:pl-6'>
@@ -236,5 +245,11 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
     </div>
   )
 }
+
+const notSignedInImg =
+  'https://res.cloudinary.com/iamalmiir/image/upload/v1672178839/undraw_reminder_re_fe15_d8yuav.svg'
+
+const inquiryMadeImg =
+  'https://res.cloudinary.com/iamalmiir/image/upload/v1667350951/undraw_awesome_rlvy_hfbadt.svg'
 
 export default ListingPage

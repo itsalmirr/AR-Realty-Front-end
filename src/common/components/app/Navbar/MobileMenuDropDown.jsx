@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const MobileMenuDropDown = ({
   Disclosure,
   navigation,
@@ -15,7 +17,7 @@ const MobileMenuDropDown = ({
         {navigation.map((path) => (
           <Link key={path.name} href={path.href}>
             <Disclosure.Button
-              as='a'
+              as='p'
               href='#'
               className={classNames(
                 path.current
@@ -34,12 +36,14 @@ const MobileMenuDropDown = ({
         <div className='border-t border-gray-700 pt-4 pb-3'>
           <div className='px-4 flex items-center'>
             <div className='flex-shrink-0'>
-              <img
+              <Image
                 className='h-10 w-10 rounded-full'
                 width={40}
                 height={40}
                 src={user.avatar || user.default_avatar}
                 alt={user.full_name}
+                placeholder='blur'
+                blurDataURL={user.default_avatar}
               />
             </div>
             <div className='ml-3'>
@@ -57,7 +61,7 @@ const MobileMenuDropDown = ({
                 <Disclosure.Button
                   key={path.name}
                   onClick={path.name === 'Sign out' ? logoutUser : null}
-                  as='a'
+                  as='p'
                   href={path.href}
                   className='block rounded-md py-2 px-3 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white'
                 >
@@ -71,7 +75,7 @@ const MobileMenuDropDown = ({
         <div className='border-t border-gray-700 pt-4 ml-3 pb-3'>
           <Link href={links.login}>
             <Disclosure.Button
-              as='a'
+              as='p'
               href='#'
               className='block rounded-md py-2 px-3 text-base font-medium text-accentDark hover:bg-gray-700 hover:text-white'
             >

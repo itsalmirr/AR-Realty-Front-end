@@ -21,8 +21,10 @@ const ListingCard = ({ listing }) => {
       >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
-            <img
+            <Image
               className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
+              width={400}
+              height={300}
               src={listing.photo_main}
               alt={listing.title + ' photo'}
             />
@@ -49,11 +51,11 @@ const ListingCard = ({ listing }) => {
               </span>
             </h3>
           </div>
-          <div className='border-b'>
+          <div className='border-b mt-2'>
             {/* <ListingFeatures listing={listing} /> */}
-            <ul className='flex space-x-3 lg:mt-2 lg:mb-2'>
+            <ul className='flex items-center justify-between'>
               <li>
-                <p className='border-r flex text-gray-900 font-light text-sm items-center p-3 group'>
+                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
                   <MdSquareFoot className='w-4 h-4 text-gray-300' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.sqft} ft<sup>2</sup>
@@ -61,7 +63,7 @@ const ListingCard = ({ listing }) => {
                 </p>
               </li>
               <li>
-                <p className='border-r flex text-gray-900 font-light text-sm items-center p-3 group'>
+                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
                   <FaBed className='w-4 h-4 text-gray-300' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.bedrooms}
@@ -70,7 +72,7 @@ const ListingCard = ({ listing }) => {
                 </p>
               </li>
               <li>
-                <p className='flex text-gray-900 font-light text-sm items-center p-3 group'>
+                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
                   <FaBath className='w-4 h-4 text-gray-300' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.bathrooms}
@@ -95,7 +97,8 @@ const ListingCard = ({ listing }) => {
                   height={40}
                   className='h-10 w-10 rounded-full'
                   src={realtor.photo}
-                  alt=''
+                  quality={100}
+                  alt={realtor.full_name + ' photo'}
                 />
               </a>
               <div className='ml-3'>

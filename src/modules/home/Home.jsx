@@ -7,7 +7,7 @@ const Home = ({ listings }) => {
   return (
     <section className='container mx-auto sm:px-6 lg:px-8'>
       <MainSection />
-      <div className='my-8'>
+      <div>
         <Divider text={'Featured Listings'} />
       </div>
       {renderListings(listings)}

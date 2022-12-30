@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { toast } from 'react-toastify'
 
 import { links } from '@lib/constants'
@@ -6,14 +7,19 @@ import { Layout } from '@components/layouts'
 import { LoginForm } from '@components/app/Forms/LoginForm'
 
 const LoginPage = () => {
+  const logoImg =
+    'https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
+
   return (
     <Layout title='Login'>
       <div className='min-h-full flex flex-col justify-center py-4 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
-          <img
+          <Image
             className='mx-auto h-12 w-15 rounded-lg bg-primaryDark'
-            src='https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
-            alt='Workflow'
+            src={logoImg}
+            width={120}
+            height={150}
+            alt={'AR Realty Logo'}
           />
           <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
             Log in to your account

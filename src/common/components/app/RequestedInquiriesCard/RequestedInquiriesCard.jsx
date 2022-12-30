@@ -1,9 +1,10 @@
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail, MdDelete } from 'react-icons/md'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import { formatPrice } from '@lib/helpers'
 import { MvpStar, Verified } from '@common/components/app/Marks'
-import Link from 'next/link'
 
 export const RequestedInquiriesCard = ({ inquiries }) => {
   return (
@@ -40,10 +41,12 @@ export const RequestedInquiriesCard = ({ inquiries }) => {
               </p>
             </div>
             <Link href={`/listings/${inquiry.slug}`} className='cursor-pointer'>
-              <img
+              <Image
                 className='w-10 h-10 bg-gray-300 rounded-full flex-shrink-0'
+                width={40}
+                height={40}
                 src={inquiry.photo_main}
-                alt=''
+                alt={inquiry.address + ' photo'}
               />
             </Link>
           </div>
