@@ -1,12 +1,13 @@
+import Geocode from 'react-geocode'
 import { useState, useEffect } from 'react'
 import { MdLocationPin } from 'react-icons/md'
 import ReactMapGl, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import Geocode from 'react-geocode'
 
+import getLatLong from './getLatLong'
 import { MAPBOX_API_TOKEN, GOOGLE_MAP_API } from '@lib/constants'
 
-export default function EventMap({ listing }) {
+const MapBox = ({ listing }) => {
   const [lat, setLat] = useState(null)
   const [lng, setLng] = useState(null)
   const [loading, setLoading] = useState(true)
@@ -20,26 +21,8 @@ export default function EventMap({ listing }) {
 
   useEffect(() => {
     // Get latitude & longitude from address.
-    Geocode.fromAddress(
-      listing.address +
-        ' ' +
-        listing.city +
-        ', ' +
-        listing.state +
-        ' ' +
-        listing.zipcode
-    ).then(
-      (response) => {
-        const { lat, lng } = response.results[0].geometry.location
-        setLat(lat)
-        setLng(lng)
-        setViewport({ ...viewport, latitude: lat, longitude: lng })
-        setLoading(false)
-      },
-      (error) => {
-        console.error(error)
-      }
-    )
+    // Path: src/common/components/app/MapBox/getLatLong.js
+    getLatLong(listing, setLat, setLng, viewport, setViewport, setLoading)
   }, [listing])
   Geocode.setApiKey(GOOGLE_MAP_API)
 
@@ -59,3 +42,5 @@ export default function EventMap({ listing }) {
     </ReactMapGl>
   )
 }
+
+export default MapBox
