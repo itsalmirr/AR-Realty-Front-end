@@ -23,7 +23,7 @@ const ListingCard = ({ listing }) => {
           <Link href={`/listings/${listing.slug}`}>
             <Image
               className='flex-shrink-0 cursor-pointer mx-auto rounded-t-lg'
-              width={400}
+              width={1200}
               height={300}
               src={listing.photo_main}
               alt={listing.title + ' photo'}
