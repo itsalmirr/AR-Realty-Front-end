@@ -5,6 +5,7 @@ import { formatPhoneNumber } from '@lib/helpers'
 import Link from 'next/link'
 
 const RealtorDescription = ({ listing }) => {
+  const { realtor } = listing
   return (
     <section className='bg-white overflow-hidden'>
       <div className='relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20'>
@@ -79,7 +80,7 @@ const RealtorDescription = ({ listing }) => {
           <div className='hidden lg:block lg:flex-shrink-0'>
             <img
               className='h-64 w-64 rounded-full xl:h-80 xl:w-80'
-              src={listing.realtor.photo}
+              src={realtor.photo}
               alt=''
             />
           </div>
@@ -99,19 +100,19 @@ const RealtorDescription = ({ listing }) => {
             </svg>
             <blockquote className='relative'>
               <div className='text-md leading-9 font-medium text-gray-900'>
-                <p>{listing.description}</p>
+                <p>{realtor.description}</p>
               </div>
               <footer className='mt-8'>
                 <div className='flex-shrink-0 lg:hidden'>
                   <img
                     className='h-12 w-12 rounded-full'
-                    src={listing.realtor.photo}
-                    alt={listing.realtor.name}
+                    src={realtor.photo}
+                    alt={realtor.name}
                   />
                 </div>
-                <Link href={`/realtor/${listing.realtor.slug}`}>
+                <Link href={`/realtors/${realtor.slug}`}>
                   <p className='text-base font-medium text-gray-500'>
-                    {listing.realtor.full_name} |{' '}
+                    {realtor.full_name} |{' '}
                     <strong className='text-primaryDark'>Realtor</strong>
                   </p>
                 </Link>
@@ -124,7 +125,7 @@ const RealtorDescription = ({ listing }) => {
                     />
                   </div>
                   <div className='ml-3 text-base text-gray-500'>
-                    <p>+1 {formatPhoneNumber(listing.realtor.phone)}</p>
+                    <p>+1 {formatPhoneNumber(realtor.phone)}</p>
                     <p className='mt-1'>Mon-Fri 8am to 6pm EST</p>
                   </div>
                 </div>
@@ -137,7 +138,7 @@ const RealtorDescription = ({ listing }) => {
                     />
                   </div>
                   <div className='ml-3 text-base text-gray-500'>
-                    <p>{listing.realtor.email}</p>
+                    <p>{realtor.email}</p>
                   </div>
                 </div>
               </footer>
