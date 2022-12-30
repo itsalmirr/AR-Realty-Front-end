@@ -1,4 +1,5 @@
 import { memo } from 'react'
+import Image from 'next/image'
 import { AiTwotoneSetting } from 'react-icons/ai'
 
 const cover = {
@@ -12,18 +13,26 @@ const UserHeader = ({ user, settings, setSettings }) => {
       <div>
         <div>
           <div>
-            <img
+            <Image
               className='h-32 bg-primaryDark w-full object-cover lg:h-48'
+              width={400}
+              height={300}
               src={cover.backgroundImage}
+              placeholder='blur'
+              blurDataURL={cover.backgroundImage}
               alt=''
             />
           </div>
           <div className='max-w-5xl mx-auto px-4 sm:px-6 lg:px-8'>
             <div className='-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5'>
               <div className='flex'>
-                <img
+                <Image
+                  width={100}
+                  height={100}
                   className='h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32'
                   src={user.avatar ? user.avatar : user.default_avatar}
+                  placeholder='blur'
+                  blurDataURL={user.avatar ? user.avatar : user.default_avatar}
                   alt=''
                 />
               </div>

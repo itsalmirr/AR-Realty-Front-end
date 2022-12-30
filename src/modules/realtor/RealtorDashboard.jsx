@@ -1,4 +1,6 @@
 import { MdMail, MdLocalPhone } from 'react-icons/md'
+import Image from 'next/image'
+
 import { MvpStar, Verified } from '@components/app/Marks'
 
 const coverPicture = {
@@ -9,19 +11,27 @@ const RealtorsDashboard = ({ realtor }) => {
   return (
     <div>
       <div>
-        <img
+        <Image
           className='h-32 w-full object-cover lg:h-80'
+          width={1920}
+          height={1080}
           src={coverPicture.url}
-          alt=''
+          placeholder='blur'
+          blurDataURL={coverPicture.url}
+          alt={realtor.full_name + ' cover photo'}
         />
       </div>
       <div className='mx-auto max-w-5xl px-4 sm:px-6 lg:px-8'>
         <div className='-mt-12 sm:-mt-16 sm:flex sm:items-end sm:space-x-5'>
           <div className='flex'>
-            <img
+            <Image
               className='h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32'
+              width={192}
+              height={192}
               src={realtor.photo}
-              alt=''
+              placeholder='blur'
+              blurDataURL={realtor.photo}
+              alt={realtor.full_name + ' profile photo'}
             />
           </div>
           <div className='mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1'>

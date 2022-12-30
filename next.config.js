@@ -53,6 +53,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['tailwindui.com', 'images.unsplash.com', 'res.cloudinary.com'],
+    formats: ['image/avif', 'image/webp'],
   },
   env: {
     GOOGLE_MAP_API: process.env.GOOGLE_MAP_API,

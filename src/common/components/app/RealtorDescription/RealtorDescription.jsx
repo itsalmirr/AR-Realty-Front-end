@@ -1,8 +1,9 @@
 import { FaPhone } from 'react-icons/fa'
 import { FiMail } from 'react-icons/fi'
+import Link from 'next/link'
+import Image from 'next/image'
 
 import { formatPhoneNumber } from '@lib/helpers'
-import Link from 'next/link'
 
 const RealtorDescription = ({ listing }) => {
   const { realtor } = listing
@@ -78,10 +79,14 @@ const RealtorDescription = ({ listing }) => {
         </svg>
         <div className='relative lg:flex lg:items-center'>
           <div className='hidden lg:block lg:flex-shrink-0'>
-            <img
+            <Image
               className='h-64 w-64 rounded-full xl:h-80 xl:w-80'
+              width={320}
+              height={320}
+              placeholder='blur'
+              blurDataURL={realtor.photo}
               src={realtor.photo}
-              alt=''
+              alt={realtor.full_name + ' photo'}
             />
           </div>
 
@@ -104,10 +109,14 @@ const RealtorDescription = ({ listing }) => {
               </div>
               <footer className='mt-8'>
                 <div className='flex-shrink-0 lg:hidden'>
-                  <img
+                  <Image
                     className='h-12 w-12 rounded-full'
+                    width={64}
+                    height={64}
+                    placeholder='blur'
+                    blurDataURL={realtor.photo}
                     src={realtor.photo}
-                    alt={realtor.name}
+                    alt={realtor.full_name + ' photo'}
                   />
                 </div>
                 <Link href={`/realtors/${realtor.slug}`}>
