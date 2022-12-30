@@ -1492,10 +1492,6 @@ select {
   border-top-width: 2px;
 }
 
-.border-r {
-  border-right-width: 1px;
-}
-
 .border-dashed {
   border-style: dashed;
 }
@@ -2461,10 +2457,6 @@ body {
   --tw-ring-offset-color: #0e7490;
 }
 
-.focus\:ring-offset-gray-800:focus {
-  --tw-ring-offset-color: #1f2937;
-}
-
 @media (prefers-color-scheme: dark) {
   .dark\:text-gray-600 {
     --tw-text-opacity: 1;
@@ -2971,14 +2963,6 @@ body {
     margin-left: 2rem;
   }
 
-  .lg\:mt-2 {
-    margin-top: 0.5rem;
-  }
-
-  .lg\:mb-2 {
-    margin-bottom: 0.5rem;
-  }
-
   .lg\:block {
     display: block;
   }
@@ -3117,11 +3101,6 @@ body {
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }
-
-  .lg\:py-48 {
-    padding-top: 12rem;
-    padding-bottom: 12rem;
   }
 
   .lg\:text-left {
