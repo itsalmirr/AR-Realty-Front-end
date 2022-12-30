@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { Fragment, useContext, useState } from 'react'
 import { Disclosure } from '@headlessui/react'
@@ -43,7 +44,11 @@ const Navbar = () => {
               <div className='relative z-10 px-2 flex lg:px-0'>
                 <div className='flex-shrink-0 flex items-center'>
                   <Link href='/'>
-                    <img
+                    <Image
+                      width={100}
+                      height={100}
+                      placeholder='blur'
+                      blurDataURL={companyLogo}
                       className='block h-8 w-auto cursor-pointer'
                       src={companyLogo}
                       alt='AR Realty Logo'
