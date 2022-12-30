@@ -1,11 +1,12 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 import { metrics } from '@lib/constants'
 
 const MainSection = () => {
   return (
     <main className='lg:relative'>
-      <div className='w-full pt-16 pb-20 text-center lg:py-48 lg:text-left'>
+      <div className='w-full pt-16 pb-20 text-center lg:py-20 lg:text-left'>
         <div className='px-4 lg:w-1/2 sm:px-8 xl:pr-16'>
           <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl'>
             <span className='block xl:inline'>Discover a place</span>{' '}
@@ -56,8 +57,12 @@ const MainSection = () => {
         data-aos='fade-left'
         className='relative w-full h-64 mt-8 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full'
       >
-        <img
+        <Image
           className='absolute inset-0 w-full h-4/5 object-cover'
+          width={500}
+          height={500}
+          placeholder='blur'
+          blurDataURL={imgUrls[0].url}
           src={imgUrls[0].url}
           alt={imgUrls[0].alt}
         />

@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 const OurTeam = ({ realtors }) => {
   return (
@@ -18,10 +19,13 @@ const OurTeam = ({ realtors }) => {
               {realtors.map((realtor) => (
                 <li key={realtor.full_name}>
                   <div className='space-y-4'>
-                    <img
+                    <Image
                       className='mx-auto h-20 w-20 rounded-full lg:h-24 lg:w-24'
                       src={realtor.photo}
-                      alt=''
+                      alt={realtor.full_name}
+                      width={80}
+                      height={80}
+                      quality={100}
                     />
                     <div className='space-y-2'>
                       <div className='text-xs font-medium lg:text-sm'>
