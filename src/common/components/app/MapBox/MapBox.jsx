@@ -32,7 +32,7 @@ const MapBox = ({ listing }) => {
     <ReactMapGl
       {...viewport}
       mapboxAccessToken={MAPBOX_API_TOKEN}
-      style={{ width: '100%', height: '400px' }}
+      style={{ width: '100%', height: '400px', borderRadius: '10px' }}
       mapStyle='mapbox://styles/iamalmiir/cku1m1arj14zp17pkfa7mzz62'
       onMouseOver={(viewport) => setViewport(viewport)}
     >
