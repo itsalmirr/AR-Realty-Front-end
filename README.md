@@ -15,7 +15,9 @@
 > To install packages run:
 
 ```bash
-yarn # pnpm i || npm i
+yarn
+# or
+npm i
 ```
 
 <!-- General description -->
