@@ -49,9 +49,8 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
 
   useEffect(() => {
     setListing(currentListing)
-    data && setInquiryMade(data.resData)
-    console.log(data)
-  }, [slug, authUser])
+    data && setInquiryMade(data.resData === 'true' ? true : false)
+  }, [slug, authUser, data])
 
   return (
     <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
