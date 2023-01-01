@@ -14,20 +14,21 @@ import { Spinner } from '@components/app/Spinner'
 import { formatPrice, classNames } from '@lib/helpers'
 import { FeaturedListings } from '@components/app/FeaturedListings'
 import { ListingPageDetails } from '@components/app/ListingPageDetails'
+import { isInquiryMade } from '@common/queries/listings'
 import { RealtorDescription } from '@components/app/RealtorDescription'
 
-const InquiryForm = dynamic(() => import('@components/app/Forms'), {
+const InquiryForm = dynamic(() => import('@components/app/Forms/InquiryForm'), {
   ssr: false,
   loading: () => <Spinner />,
 })
-const isInquiryMade = dynamic(() => import('@common/queries/listings'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
-const InquiryMade = dynamic(() => import('@components/app/InquiryMade'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
+
+const InquiryMade = dynamic(
+  () => import('@components/app/InquiryMade/InquiryMade'),
+  {
+    ssr: false,
+    loading: () => <Spinner />,
+  }
+)
 const UserNotSigned = dynamic(
   () => import('@components/app/InquiryMade/UserNotSigned'),
   {
@@ -41,18 +42,16 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
   const [listing, setListing] = useState(currentListing)
   const [inquiryMade, setInquiryMade] = useState(false)
   const { user: authUser } = useContext(AuthContext)
-  const { data, error } = authUser
-    ? useSWR(`/api/inquiries?id=${currentListing.id}`, isInquiryMade)
-    : { data: null, error: null }
-
-  if (error) {
-    console.error(error)
-  }
+  const { data } = useSWR(
+    authUser ? `/api/inquiries?id=${currentListing.id}` : null,
+    isInquiryMade
+  )
 
   useEffect(() => {
     setListing(currentListing)
-    data !== null && setInquiryMade(data.resData === 'true' && true)
-  }, [slug, authUser, data])
+    data && setInquiryMade(data.resData)
+    console.log(data)
+  }, [slug, authUser])
 
   return (
     <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
