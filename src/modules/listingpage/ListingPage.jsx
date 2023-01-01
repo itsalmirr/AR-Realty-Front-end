@@ -159,7 +159,7 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
           <MapBox listing={listing} />
         </div>
       </div>
-      <div className='bg-white lg:py-24 my-12'>
+      <div>
         <RealtorDescription listing={listing} />
       </div>
       {authUser && !inquiryMade && (
@@ -169,7 +169,10 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
       {inquiryMade && <InquiryMade />}
 
       {featuredListings && featuredListings.length > 0 && (
-        <FeaturedListings featuredListings={featuredListings} />
+        <div>
+          <Divider text={'Similar Listings'} />
+          <FeaturedListings featuredListings={featuredListings} />
+        </div>
       )}
     </div>
   )
