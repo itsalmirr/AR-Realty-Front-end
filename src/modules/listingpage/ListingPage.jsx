@@ -3,7 +3,7 @@ import dynamic from 'next/dynamic'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GrLocationPin } from 'react-icons/gr'
-import { useEffect, useContext, useState, memo } from 'react'
+import { useEffect, useContext, useState } from 'react'
 import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
 import ImageSwiper from '@hooks/ImageSwiper'
