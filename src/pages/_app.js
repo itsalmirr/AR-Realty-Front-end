@@ -3,6 +3,7 @@ import 'mapbox-gl/dist/mapbox-gl.css'
 import '@fontsource/montserrat'
 import dynamic from 'next/dynamic'
 import { Fragment } from 'react'
+import { Analytics } from '@vercel/analytics/react'
 
 import { AuthProvider } from '@context/AuthContext'
 import { ListingsProvider } from '@context/ListingsContext'
@@ -15,6 +16,7 @@ const MyApp = ({ Component, pageProps }) => {
       <AuthProvider>
         <ListingsProvider>
           <Component {...pageProps} />
+          <Analytics />
         </ListingsProvider>
       </AuthProvider>
     </Fragment>
