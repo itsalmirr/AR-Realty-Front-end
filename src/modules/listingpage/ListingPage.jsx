@@ -1,10 +1,10 @@
-import dynamic from 'next/dynamic'
 import useSWR from 'swr'
+import dynamic from 'next/dynamic'
 import { Tab } from '@headlessui/react'
 import { MdPool } from 'react-icons/md'
 import { GrLocationPin } from 'react-icons/gr'
-import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 import { useEffect, useContext, useState } from 'react'
+import { GiTennisCourt, GiGardeningShears } from 'react-icons/gi'
 
 import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
@@ -41,7 +41,6 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
   const [listing, setListing] = useState(currentListing)
   const [inquiryMade, setInquiryMade] = useState(false)
   const { user: authUser } = useContext(AuthContext)
-
   const { data, error } = authUser
     ? useSWR(`/api/inquiries?id=${currentListing.id}`, isInquiryMade)
     : { data: null, error: null }

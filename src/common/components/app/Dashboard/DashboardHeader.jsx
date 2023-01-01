@@ -4,7 +4,7 @@ import { AiTwotoneSetting } from 'react-icons/ai'
 
 const cover = {
   backgroundImage:
-    'https://res.cloudinary.com/iamalmiir/image/upload/v1656028617/sean-pollock-PhYq704ffdA-unsplash_1_hfzoyk.jpg',
+    'https://res.cloudinary.com/iamalmiir/image/upload/v1672591240/sean-pollock-PhYq704ffdA-unsplash_1_hfzoyk_oifngg.webp',
 }
 
 const UserHeader = ({ user, settings, setSettings }) => {
