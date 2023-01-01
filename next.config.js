@@ -60,6 +60,7 @@ const nextConfig = {
     MAPBOX_API_TOKEN: process.env.MAPBOX_API_TOKEN,
     NEXT_BACKEND_API_URL: process.env.NEXT_BACKEND_API_URL,
     API_URL: process.env.API_URL,
+    NODE_ENV: process.env.NODE_ENV,
   },
 }
 
