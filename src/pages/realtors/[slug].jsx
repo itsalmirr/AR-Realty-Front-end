@@ -24,6 +24,8 @@ export const getServerSideProps = async (context) => {
   )
   const realtor = await res.json()
 
+  console.log(realtor)
+
   return {
     props: {
       realtor,

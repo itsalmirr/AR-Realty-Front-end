@@ -4,6 +4,13 @@ import Image from 'next/image'
 import { metrics } from '@lib/constants'
 
 const MainSection = () => {
+  const imgUrls = [
+    {
+      url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
+      alt: 'Searching for houses',
+    },
+  ]
+
   return (
     <main className='lg:relative'>
       <div className='w-full pt-16 pb-20 text-center lg:py-20 lg:text-left'>
@@ -72,10 +79,3 @@ const MainSection = () => {
 }
 
 export default MainSection
-
-const imgUrls = [
-  {
-    url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
-    alt: 'Searching for houses',
-  },
-]
