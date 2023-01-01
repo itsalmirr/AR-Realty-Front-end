@@ -15,7 +15,7 @@ const UserNotSigned = () => {
       <div className='bg-white my-12'>
         <main className='sm:flex'>
           <Image
-            className='h-1/5 w-1/5'
+            className='h-1/3 w-1/3 lg:h-1/5 lg:w-1/5'
             src={notSignedInImg}
             width={500}
             height={500}
