@@ -29,7 +29,12 @@ const ImageSwiper = ({ listing }) => {
         (photo, index) =>
           photo && (
             <SwiperSlide key={index}>
-              <Image width={568} height={378.66} src={photo} alt='' />
+              <Image
+                width={568}
+                height={378.66}
+                src={photo}
+                alt={listing.title}
+              />
             </SwiperSlide>
           )
       )}
