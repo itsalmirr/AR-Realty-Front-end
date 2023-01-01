@@ -10,7 +10,7 @@ import {
 import { Divider } from '@components/app/Divider'
 import ListingsContext from '@context/ListingsContext'
 
-export const InquiryForm = ({ user, listing }) => {
+const InquiryForm = ({ user, listing }) => {
   const { handleInquirySubmit } = useContext(ListingsContext)
   const [formState, setFormState] = useState({
     name: user.full_name,
@@ -128,3 +128,5 @@ export const InquiryForm = ({ user, listing }) => {
     </Fragment>
   )
 }
+
+export default InquiryForm
