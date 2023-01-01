@@ -11,7 +11,6 @@
 ## Instalation
 
 > Please make sure to create your own .env file with all necessary credentials before you continue. [^1] [^2]
-
 > To install packages run:
 
 ```bash

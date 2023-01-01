@@ -1,4 +1,4 @@
-import { getRequest, postRequest, deleteRequest } from '@common/lib/requests'
+import { postRequest, deleteRequest } from '@common/lib/requests'
 
 export const submitInquiry = async (body, url, token) => {
   const defaultUrl = '/api/inquiries/'
