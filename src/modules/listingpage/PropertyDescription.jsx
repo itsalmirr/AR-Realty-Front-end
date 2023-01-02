@@ -1,6 +1,6 @@
-import { useState, memo } from 'react'
+import { useState } from 'react'
 
-const ListingDescription = ({ listing }) => {
+const PropertyDescription = ({ listing }) => {
   const [fullDescription, setFullDescription] = useState(false)
 
   return (
@@ -24,4 +24,4 @@ const ListingDescription = ({ listing }) => {
   )
 }
 
-export default memo(ListingDescription)
+export default PropertyDescription
