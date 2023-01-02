@@ -1,9 +1,8 @@
 import useSWR from 'swr'
 import dynamic from 'next/dynamic'
-import { Tab } from '@headlessui/react'
-import { useEffect, useContext, useState } from 'react'
+import { useRouter } from 'next/router'
+import { useEffect, useContext, useState, Fragment } from 'react'
 
-import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
 import { MapBox } from '@components/app/MapBox'
 import { Divider } from '@components/app/Divider'
@@ -12,7 +11,12 @@ import { FeaturedListings } from '@components/app/FeaturedListings'
 import { PropertyDetails } from '@components/app/PropertyDetails'
 import { isInquiryMade } from '@common/queries/listings'
 import { RealtorDescription } from '@components/app/RealtorDescription'
-import { BasicInfo, PropertyDescription } from '@modules/listingpage'
+import { fetchListings } from '@common/queries/listings'
+import {
+  BasicInfo,
+  PropertyDescription,
+  ImageGallery,
+} from '@modules/listingpage'
 
 const InquiryForm = dynamic(() => import('@components/app/Forms/InquiryForm'), {
   ssr: false,
@@ -34,59 +38,71 @@ const UserNotSigned = dynamic(
   }
 )
 
-const ListingPage = ({ slug, currentListing, featuredListings }) => {
-  const [listing, setListing] = useState(currentListing)
+const ListingPage = () => {
+  const router = useRouter()
+  const { slug } = router.query
+  const [listing, setListing] = useState(null)
   const [inquiryMade, setInquiryMade] = useState(false)
   const { user: authUser } = useContext(AuthContext)
-  const { data } = useSWR(
-    authUser ? `/api/inquiries?id=${currentListing.id}` : null,
+
+  const { data: listingData } = useSWR(
+    `/api/listings/listing?slug=${slug}`,
+    fetchListings
+  )
+
+  const { data: inquiryStatus } = useSWR(
+    authUser && listing ? `/api/inquiries?id=${listing.id}` : null,
     isInquiryMade
   )
 
   useEffect(() => {
-    setListing(currentListing)
-    data && setInquiryMade(data.resData === 'true' ? true : false)
-  }, [slug, authUser, data])
-  console.log('first')
+    console.log('useEffect level')
+    if (listingData) {
+      setListing(listingData.resData)
+    }
+
+    inquiryStatus &&
+      setInquiryMade(inquiryStatus.resData === 'true' ? true : false)
+  }, [slug, inquiryStatus, listingData])
+
+  console.log('components level')
 
   return (
-    <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
-      <div className=' lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'>
-        {/* Image gallery */}
-        <Tab.Group as='div' className='flex flex-col-reverse'>
-          <Tab.Panels className='w-full aspect-w-1 aspect-h-1'>
-            <ImageSwiper listing={listing} />
-          </Tab.Panels>
-        </Tab.Group>
+    <Fragment>
+      <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
+        {listing && (
+          <Fragment>
+            <div className=' lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'>
+              <ImageGallery listing={listing} />
+              <BasicInfo listing={listing} />
+            </div>
+            <Divider text={'About the Listing'} />
+            {/* Details such as cooling, heating, built year etc...  */}
+            <PropertyDetails listing={listing} />
+            <div className='relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8'>
+              <PropertyDescription listing={listing} />
+              <div className='relative'>
+                <MapBox listing={listing} />
+              </div>
+            </div>
+            <div>
+              <RealtorDescription listing={listing} />
+            </div>
+          </Fragment>
+        )}
 
-        {/* Listing info */}
-        <BasicInfo listing={listing} />
-      </div>
-      <Divider text={'About the Listing'} />
-      {/* Details such as cooling, heating, built year etc...  */}
-      <PropertyDetails listing={listing} />
-      <div className='relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8'>
-        <PropertyDescription listing={listing} />
-        <div className='relative'>
-          <MapBox listing={listing} />
-        </div>
-      </div>
-      <div>
-        <RealtorDescription listing={listing} />
-      </div>
-      {authUser && !inquiryMade && (
-        <InquiryForm listing={listing} user={authUser} />
-      )}
-      {!authUser && <UserNotSigned />}
-      {inquiryMade && <InquiryMade />}
+        {!authUser && <UserNotSigned />}
+        {authUser && !inquiryMade && (
+          <InquiryForm listing={listing} user={authUser} />
+        )}
+        {inquiryMade && <InquiryMade />}
 
-      {featuredListings && featuredListings.length > 0 && (
         <div>
           <Divider text={'Similar Listings'} />
-          <FeaturedListings featuredListings={featuredListings} />
+          <FeaturedListings />
         </div>
-      )}
-    </div>
+      </div>
+    </Fragment>
   )
 }
 
