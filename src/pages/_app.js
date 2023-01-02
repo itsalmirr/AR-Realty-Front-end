@@ -6,7 +6,6 @@ import { Fragment } from 'react'
 import { Analytics } from '@vercel/analytics/react'
 
 import { AuthProvider } from '@context/AuthContext'
-import { ListingsProvider } from '@context/ListingsContext'
 const AOS = dynamic(() => import('@components/app/CustomAOS/CustomAOS'))
 
 const MyApp = ({ Component, pageProps }) => {
@@ -14,10 +13,8 @@ const MyApp = ({ Component, pageProps }) => {
     <Fragment>
       <AOS />
       <AuthProvider>
-        <ListingsProvider>
-          <Component {...pageProps} />
-          <Analytics />
-        </ListingsProvider>
+        <Component {...pageProps} />
+        <Analytics />
       </AuthProvider>
     </Fragment>
   )

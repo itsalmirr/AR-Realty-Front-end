@@ -3,18 +3,16 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa'
 
 import { PER_PAGE } from '@lib/constants'
 
-const Pagination = ({ currentPage, nextPage, prevPage, total }) => {
+const Pagination = ({ currentPage, nextPage, prevPage, total, setPage }) => {
   const lastPage = Math.ceil(total / PER_PAGE)
 
   return (
-    <nav
-      data-aos='fade-up'
-      className='border-t mx-8 my-32 border-gray-200 px-4 flex items-center justify-between sm:px-0'
-    >
-      <div className='-mt-px w-0 flex-1 flex'>
+    <nav className='border-t mx-8 my-32 border-gray-200 px-4 flex items-center justify-between sm:px-0'>
+      <div data-aos='fade-up' className='-mt-px w-0 flex-1 flex'>
         {prevPage && (
           <Link
             href={`?page=${currentPage - 1}`}
+            onClick={() => setPage(currentPage - 1)}
             className='border-t-2 border-transparent pt-4 pr-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300'
           >
             <FaArrowLeft
@@ -30,6 +28,7 @@ const Pagination = ({ currentPage, nextPage, prevPage, total }) => {
           <Link
             href={`?page=${i + 1}`}
             key={i}
+            onClick={() => setPage(i + 1)}
             className={`${
               currentPage === i + 1
                 ? 'border-primaryDark text-primaryDark '
@@ -44,6 +43,7 @@ const Pagination = ({ currentPage, nextPage, prevPage, total }) => {
         {nextPage && (
           <Link
             href={`?page=${currentPage + 1}`}
+            onClick={() => setPage(currentPage + 1)}
             className='border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300'
           >
             Next

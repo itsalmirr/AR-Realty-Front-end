@@ -1,4 +1,5 @@
-import { useState, useEffect, useContext, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
+import { handleInquirySubmit } from './lib'
 
 import {
   FormInput,
@@ -8,10 +9,8 @@ import {
 } from '@components/app/Forms/FormComponents'
 
 import { Divider } from '@components/app/Divider'
-import ListingsContext from '@context/ListingsContext'
 
-const InquiryForm = ({ user, listing }) => {
-  const { handleInquirySubmit } = useContext(ListingsContext)
+const InquiryForm = ({ user, listing, setInquiryMade }) => {
   const [formState, setFormState] = useState({
     name: user.full_name,
     email: user.email,
@@ -26,7 +25,7 @@ const InquiryForm = ({ user, listing }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleInquirySubmit(formState, setFormState)
+    handleInquirySubmit(formState, setFormState, setInquiryMade)
   }
 
   useEffect(() => {

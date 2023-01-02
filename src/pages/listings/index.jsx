@@ -1,20 +1,20 @@
-import { useContext } from 'react'
+import dynamic from 'next/dynamic'
 import { GiFamilyHouse } from 'react-icons/gi'
 
 import { Layout } from '@components/layouts'
 import { Spinner } from '@components/app/Spinner'
-import { Pagination } from '@components/app/Pagination'
-import { ListingsList } from '@components/app/ListingsList'
-import ListingsContext from '@context/ListingsContext'
 
-const ListingPage = () => {
-  const { loading, listings, next, prev, total, page, setPage } =
-    useContext(ListingsContext)
+const SalesListings = dynamic(
+  () => import('@modules/SalesListings/SalesListings'),
+  {
+    loading: () => <Spinner />,
+    ssr: false,
+  }
+)
 
-  if (!listings || listings.length === 0) return <Spinner />
-
+const PublishedListings = () => {
   return (
-    <Layout title='Listings For Sale'>
+    <Layout title='Listings For Sal'>
       <header className='listing-page-cover'>
         <div className='bg-slate-600/80 p-12 text-center md:flex md:items-center md:justify-center'>
           <h2 className='flex justify-center items-center text-2xl font-bold leading-7 text-white sm:text-3xl sm:truncate'>
@@ -24,17 +24,10 @@ const ListingPage = () => {
         </div>
       </header>
       <main className='container mx-auto mt-12 w-full'>
-        {loading ? <Spinner /> : <ListingsList listings={listings} />}
-        <Pagination
-          currentPage={page}
-          nextPage={next}
-          prevPage={prev}
-          total={total}
-          setPage={setPage}
-        />
+        <SalesListings />
       </main>
     </Layout>
   )
 }
 
-export default ListingPage
+export default PublishedListings

@@ -1,22 +1,18 @@
 import useSWR from 'swr'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { useEffect, useContext, useState, Fragment } from 'react'
+import { useEffect, useContext, useState, Fragment, memo } from 'react'
 
 import AuthContext from '@context/AuthContext'
 import { MapBox } from '@components/app/MapBox'
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
-import { FeaturedListings } from '@components/app/FeaturedListings'
-import { PropertyDetails } from '@components/app/PropertyDetails'
 import { isInquiryMade } from '@common/queries/listings'
-import { RealtorDescription } from '@components/app/RealtorDescription'
 import { fetchListings } from '@common/queries/listings'
-import {
-  BasicInfo,
-  PropertyDescription,
-  ImageGallery,
-} from '@modules/listingpage'
+import { PropertyDetails } from '@components/app/PropertyDetails'
+import { FeaturedListings } from '@components/app/FeaturedListings'
+import { RealtorDescription } from '@components/app/RealtorDescription'
+import { BasicInfo, PropertyDescription, ImageGallery } from '@modules/listing'
 
 const InquiryForm = dynamic(() => import('@components/app/Forms/InquiryForm'), {
   ssr: false,
@@ -38,7 +34,7 @@ const UserNotSigned = dynamic(
   }
 )
 
-const ListingPage = () => {
+const ListingPage = ({ setTitle }) => {
   const router = useRouter()
   const { slug } = router.query
   const [listing, setListing] = useState(null)
@@ -56,7 +52,6 @@ const ListingPage = () => {
   )
 
   useEffect(() => {
-    console.log('useEffect level')
     if (listingData) {
       setListing(listingData.resData)
     }
@@ -65,14 +60,16 @@ const ListingPage = () => {
       setInquiryMade(inquiryStatus.resData === 'true' ? true : false)
   }, [slug, inquiryStatus, listingData])
 
-  console.log('components level')
-
   return (
     <Fragment>
       <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>
-        {listing && (
+        {listing === null && <Spinner />}
+        {listing !== null && (
           <Fragment>
-            <div className=' lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'>
+            <div
+              onLoad={() => setTitle(listing.title)}
+              className='lg:grid lg:grid-cols-2 lg:gap-x-8 lg:items-start'
+            >
               <ImageGallery listing={listing} />
               <BasicInfo listing={listing} />
             </div>
@@ -92,8 +89,12 @@ const ListingPage = () => {
         )}
 
         {!authUser && <UserNotSigned />}
-        {authUser && !inquiryMade && (
-          <InquiryForm listing={listing} user={authUser} />
+        {authUser && !inquiryMade && listing !== null && (
+          <InquiryForm
+            listing={listing}
+            user={authUser}
+            setInquiryMade={setInquiryMade}
+          />
         )}
         {inquiryMade && <InquiryMade />}
 
@@ -106,4 +107,4 @@ const ListingPage = () => {
   )
 }
 
-export default ListingPage
+export default memo(ListingPage)

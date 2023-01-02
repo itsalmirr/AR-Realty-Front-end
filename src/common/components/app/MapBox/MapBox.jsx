@@ -1,11 +1,11 @@
 import Geocode from 'react-geocode'
-import { useState, useEffect } from 'react'
+import 'mapbox-gl/dist/mapbox-gl.css'
 import { MdLocationPin } from 'react-icons/md'
 import ReactMapGl, { Marker } from 'react-map-gl'
-import 'mapbox-gl/dist/mapbox-gl.css'
+import { useState, useEffect, Fragment } from 'react'
 
 import getLatLong from './getLatLong'
-import { MAPBOX_API_TOKEN, GOOGLE_MAP_API } from '@lib/constants'
+import { MAPBOX_API_TOKEN, GOOGLE_MAP_API, MAPBOX_STYLE } from '@lib/constants'
 
 const MapBox = ({ listing }) => {
   const [lat, setLat] = useState(null)
@@ -25,21 +25,22 @@ const MapBox = ({ listing }) => {
     getLatLong(listing, setLat, setLng, viewport, setViewport, setLoading)
   }, [listing])
   Geocode.setApiKey(GOOGLE_MAP_API)
-
-  if (loading) return false
+  if (loading || !listing) return false
 
   return (
-    <ReactMapGl
-      {...viewport}
-      mapboxAccessToken={MAPBOX_API_TOKEN}
-      style={{ width: '100%', height: '400px', borderRadius: '10px' }}
-      mapStyle='mapbox://styles/iamalmiir/cku1m1arj14zp17pkfa7mzz62'
-      onMouseOver={(viewport) => setViewport(viewport)}
-    >
-      <Marker key={listing.id} latitude={lat} longitude={lng}>
-        <MdLocationPin className='h-6 w-6 text-red-500' aria-hidden='true' />
-      </Marker>
-    </ReactMapGl>
+    <Fragment>
+      <ReactMapGl
+        {...viewport}
+        mapboxAccessToken={MAPBOX_API_TOKEN}
+        style={{ width: '100%', height: '400px', borderRadius: '10px' }}
+        mapStyle={MAPBOX_STYLE}
+        onMouseOver={(viewport) => setViewport(viewport)}
+      >
+        <Marker key={listing.id} latitude={lat} longitude={lng}>
+          <MdLocationPin className='h-6 w-6 text-red-500' aria-hidden='true' />
+        </Marker>
+      </ReactMapGl>
+    </Fragment>
   )
 }
 

@@ -3,6 +3,7 @@ import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa'
 export const API_URL = process.env.NEXT_BACKEND_API_URL
 export const GOOGLE_MAP_API = process.env.GOOGLE_MAP_API
 export const MAPBOX_API_TOKEN = process.env.MAPBOX_API_TOKEN
+export const MAPBOX_STYLE = process.env.MAPBOX_STYLE
 
 export const PER_PAGE = 6
 

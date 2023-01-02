@@ -7,16 +7,6 @@ export const classNames = (...classes) => {
   return classes.filter(Boolean).join(' ')
 }
 
-export const fetchListings = async (slug) => {
-  const url = `${API_URL}/api/listings/${slug}`
-  const res = await fetch(url, {
-    method: 'GET',
-    redirect: 'follow',
-  })
-  const data = await res.json()
-  return data
-}
-
 export const response = (res, code, status, message, resData) => {
   return res.status(code).json({
     success: status,
