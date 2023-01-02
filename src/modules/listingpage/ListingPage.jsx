@@ -3,25 +3,16 @@ import dynamic from 'next/dynamic'
 import { Tab } from '@headlessui/react'
 import { useEffect, useContext, useState } from 'react'
 
+import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
+import { MapBox } from '@components/app/MapBox'
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
-import { classNames } from '@lib/helpers'
-// import { FeaturedListings } from '@components/app/FeaturedListings'
-import { PropertyDetails } from '@components/app/ListingPageDetails'
+import { FeaturedListings } from '@components/app/FeaturedListings'
+import { PropertyDetails } from '@components/app/PropertyDetails'
 import { isInquiryMade } from '@common/queries/listings'
 import { RealtorDescription } from '@components/app/RealtorDescription'
-import BasicInfo from './BasicInfo'
-
-const ImageSwiper = dynamic(() => import('@hooks/ImageSwiper'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
-
-const MapBox = dynamic(() => import('@components/app/MapBox/MapBox'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
+import { BasicInfo, PropertyDescription } from '@modules/listingpage'
 
 const InquiryForm = dynamic(() => import('@components/app/Forms/InquiryForm'), {
   ssr: false,
@@ -37,19 +28,6 @@ const InquiryMade = dynamic(
 )
 const UserNotSigned = dynamic(
   () => import('@components/app/InquiryMade/UserNotSigned'),
-  {
-    ssr: false,
-    loading: () => <Spinner />,
-  }
-)
-
-const PropertyDescription = dynamic(() => import('./PropertyDescription'), {
-  ssr: false,
-  loading: () => <Spinner />,
-})
-
-const FeaturedListings = dynamic(
-  () => import('@components/app/FeaturedListings/FeaturedListings'),
   {
     ssr: false,
     loading: () => <Spinner />,
@@ -86,7 +64,7 @@ const ListingPage = ({ slug, currentListing, featuredListings }) => {
       </div>
       <Divider text={'About the Listing'} />
       {/* Details such as cooling, heating, built year etc...  */}
-      <PropertyDetails listing={listing} classNames={classNames} />
+      <PropertyDetails listing={listing} />
       <div className='relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8'>
         <PropertyDescription listing={listing} />
         <div className='relative'>

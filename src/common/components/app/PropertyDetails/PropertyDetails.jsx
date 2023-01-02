@@ -7,7 +7,9 @@ import {
 import { MdGarage } from 'react-icons/md'
 import { RiLandscapeFill } from 'react-icons/ri'
 
-const PropertyDetails = ({ listing, classNames }) => {
+import { classNames } from '@lib/helpers'
+
+const PropertyDetails = ({ listing }) => {
   const listingOverview = [
     {
       title: 'Property Type',
