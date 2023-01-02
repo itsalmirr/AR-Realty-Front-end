@@ -7,7 +7,7 @@ import {
 import { MdGarage } from 'react-icons/md'
 import { RiLandscapeFill } from 'react-icons/ri'
 
-const ListingPageDetails = ({ listing, classNames }) => {
+const PropertyDetails = ({ listing, classNames }) => {
   const listingOverview = [
     {
       title: 'Property Type',
@@ -87,4 +87,4 @@ const ListingPageDetails = ({ listing, classNames }) => {
   )
 }
 
-export default ListingPageDetails
+export default PropertyDetails

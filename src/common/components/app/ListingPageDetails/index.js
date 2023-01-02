@@ -1,1 +1,1 @@
-export { default as ListingPageDetails } from './ListingPageDetails'
+export { default as PropertyDetails } from './PropertyDetails'
