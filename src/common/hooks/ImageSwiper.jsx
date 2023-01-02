@@ -33,7 +33,7 @@ const ImageSwiper = ({ listing }) => {
                 width={568}
                 height={378.66}
                 src={photo}
-                alt={listing.title}
+                alt={listing.title + ' photo ' + index}
               />
             </SwiperSlide>
           )
