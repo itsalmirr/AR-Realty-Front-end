@@ -3,17 +3,25 @@ import dynamic from 'next/dynamic'
 import { Tab } from '@headlessui/react'
 import { useEffect, useContext, useState } from 'react'
 
-import ImageSwiper from '@hooks/ImageSwiper'
 import AuthContext from '@context/AuthContext'
-import { MapBox } from '@components/app/MapBox'
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
 import { classNames } from '@lib/helpers'
-import { FeaturedListings } from '@components/app/FeaturedListings'
+// import { FeaturedListings } from '@components/app/FeaturedListings'
 import { PropertyDetails } from '@components/app/ListingPageDetails'
 import { isInquiryMade } from '@common/queries/listings'
 import { RealtorDescription } from '@components/app/RealtorDescription'
 import BasicInfo from './BasicInfo'
+
+const ImageSwiper = dynamic(() => import('@hooks/ImageSwiper'), {
+  ssr: false,
+  loading: () => <Spinner />,
+})
+
+const MapBox = dynamic(() => import('@components/app/MapBox/MapBox'), {
+  ssr: false,
+  loading: () => <Spinner />,
+})
 
 const InquiryForm = dynamic(() => import('@components/app/Forms/InquiryForm'), {
   ssr: false,
@@ -39,6 +47,14 @@ const PropertyDescription = dynamic(() => import('./PropertyDescription'), {
   ssr: false,
   loading: () => <Spinner />,
 })
+
+const FeaturedListings = dynamic(
+  () => import('@components/app/FeaturedListings/FeaturedListings'),
+  {
+    ssr: false,
+    loading: () => <Spinner />,
+  }
+)
 
 const ListingPage = ({ slug, currentListing, featuredListings }) => {
   const [listing, setListing] = useState(currentListing)
