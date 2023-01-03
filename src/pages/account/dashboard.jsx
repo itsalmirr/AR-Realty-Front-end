@@ -1,5 +1,3 @@
-import useSWR from 'swr'
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import { useContext, useState, useEffect, useCallback } from 'react'
 
@@ -7,13 +5,12 @@ import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
 import { Spinner } from '@components/app/Spinner'
 import { Divider } from '@components/app/Divider'
-import { fetchUserListings } from '@common/queries/listings'
 import { DashboardHeader } from '@components/app/Dashboard'
 const Layout = dynamic(() => import('@components/layouts/Layout'), {
   loading: () => <Spinner />,
 })
-const RequestedInquiriesCard = dynamic(
-  () => import('@components/app/RequestedInquiriesCard/RequestedInquiriesCard'),
+const RequestedInquiries = dynamic(
+  () => import('@components/app/Forms/RequestedInquiries'),
   {
     loading: () => <Spinner />,
   }
@@ -27,7 +24,6 @@ const AccountSettings = dynamic(
 
 const DashboardPage = () => {
   const { isLoading, user, setIsLoading } = useContext(AuthContext)
-  const [userInquiries, setUserInquiries] = useState([])
   const [settings, setSettings] = useState(false)
   const [full_name, setFullName] = useState('')
   const [email, setEmail] = useState('')
@@ -36,28 +32,19 @@ const DashboardPage = () => {
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const { data } = useSWR('/api/auth/dashboard', fetchUserListings)
-
   const updateAccount = useCallback(() => {
     user.full_name = full_name
     user.email = email
   }, [full_name, email])
 
-  const updateInquiries = useCallback(() => {
-    setUserInquiries(data.resData)
-  }, [data])
-
   useEffect(() => {
     setEmail(user?.email)
     setFullName(user?.full_name)
     setUsername(user?.username)
-    if (data) {
-      setUserInquiries(data.resData)
-    }
     setIsLoading(false)
-  }, [data, user, userInquiries])
+  }, [user])
 
-  if (!user || !userInquiries || isLoading) return <Spinner />
+  if (!user || isLoading) return <Spinner />
 
   return (
     <Layout title='Dashboard'>
@@ -89,26 +76,7 @@ const DashboardPage = () => {
       )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
-        <RequestedInquiriesCard
-          inquiries={userInquiries}
-          refreshInquiries={updateInquiries}
-        />
-        {userInquiries.length === 0 && (
-          <div className='flex flex-col items-center justify-center mt-12'>
-            <p className='text-center text-gray-500 text-sm'>
-              You have no inquiries.
-            </p>
-            <p className='text-center text-gray-500 text-sm'>
-              You can browse our listings and request an inquiry.
-            </p>
-
-            <Link href={links.listings}>
-              <button className='mt-4 bg-primaryDark hover:bg-accentDark text-white font-bold py-2 px-4 rounded'>
-                Browse Listings
-              </button>
-            </Link>
-          </div>
-        )}
+        <RequestedInquiries links={links} />
       </div>
     </Layout>
   )
