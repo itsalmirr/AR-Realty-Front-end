@@ -29,7 +29,7 @@ const RealtorsListing = () => {
     return <Spinner />
   }
   return (
-    <Layout title={realtor.full_name}>
+    <Layout>
       {realtor && (
         <Fragment>
           <header>
