@@ -4,16 +4,17 @@ import { response } from '@lib/helpers'
 const realtorslisting = async (req, res) => {
   if (req.method === 'GET' && req.headers.realtor) {
     const { realtor } = req.headers
-    const url = `${API_URL}/api/listings/realtor/`
+
+    const listingsUrl = `${API_URL}/api/listings/realtor/`
+
     try {
-      const fetchRes = await fetch(url, {
+      const fetchRes = await fetch(listingsUrl, {
         headers: {
           realtor: realtor,
         },
         method: 'GET',
         redirect: 'follow',
       })
-
       const data = await fetchRes.json()
       response(res, 200, true, 'Listings retrieved successfully', data.results)
     } catch (err) {

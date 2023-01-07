@@ -1,4 +1,4 @@
-export const realtorslisting = async (url, slug) => {
+export const getRealtorData = async (url, slug) => {
   const res = await fetch(url, {
     headers: {
       realtor: slug,
