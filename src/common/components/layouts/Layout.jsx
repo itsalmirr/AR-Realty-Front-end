@@ -1,5 +1,5 @@
-import { Fragment } from 'react'
 import Head from 'next/head'
+import { Fragment } from 'react'
 import dynamic from 'next/dynamic'
 
 const Navbar = dynamic(() => import('@components/app/Navbar/Navbar'))

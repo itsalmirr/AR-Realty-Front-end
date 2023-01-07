@@ -21,7 +21,6 @@ const getLatLong = async (
   const response = await Geocode.fromAddress(address)
 
   if (response.status !== 'OK') {
-    console.error(response)
     return
   }
 

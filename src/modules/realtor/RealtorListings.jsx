@@ -1,28 +1,27 @@
 import useSWR from 'swr'
+import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import { Spinner } from '@components/app/Spinner'
 import { ListingCard } from '@components/app/ListingCard'
-import { realtorslisting } from '@queries/realtorListings'
+import { getRealtorData } from '@common/queries/realtor'
 
-const RealtorListings = ({ slug }) => {
+const RealtorListings = () => {
+  const router = useRouter()
   const [listings, setListings] = useState([])
+  const [loading, setLoading] = useState(true)
+  const { slug } = router.query
 
-  const { data, error } = useSWR(
-    '/api/realtors',
-    (url) => realtorslisting(url, slug),
-    {
-      revalidateIfStale: false,
-      revalidateOnFocus: false,
-      revalidateOnReconnect: false,
-    }
+  const { data, error } = useSWR('/api/realtor', (url) =>
+    getRealtorData(url, slug)
   )
 
   useEffect(() => {
     data && setListings(data.resData)
-  }, [data])
+    setLoading(false)
+  }, [data, slug])
 
-  if (error || !data) {
+  if (error || !data || loading) {
     return <Spinner />
   }
 

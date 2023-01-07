@@ -1,6 +1,6 @@
-import { MdMail, MdLocalPhone } from 'react-icons/md'
 import Image from 'next/image'
-
+import { Fragment } from 'react'
+import { MdMail, MdLocalPhone } from 'react-icons/md'
 import { MvpStar, Verified } from '@components/app/Marks'
 
 const coverPicture = {
@@ -9,7 +9,7 @@ const coverPicture = {
 
 const RealtorsDashboard = ({ realtor }) => {
   return (
-    <div>
+    <Fragment>
       <div>
         <Image
           className='h-32 w-full object-cover lg:h-80'
@@ -72,7 +72,7 @@ const RealtorsDashboard = ({ realtor }) => {
           </h1>
         </div>
       </div>
-    </div>
+    </Fragment>
   )
 }
 
