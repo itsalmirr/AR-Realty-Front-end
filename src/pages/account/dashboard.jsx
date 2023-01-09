@@ -1,7 +1,5 @@
 import dynamic from 'next/dynamic'
-import { useContext, useState } from 'react'
 
-import AuthContext from '@context/AuthContext'
 import { links } from '@lib/constants'
 import { Spinner } from '@components/app/Spinner'
 import { Divider } from '@components/app/Divider'
@@ -16,29 +14,13 @@ const RequestedInquiries = dynamic(
     loading: () => <Spinner />,
   }
 )
-const AccountSettings = dynamic(
-  () => import('@modules/dashboard/AccountSettings'),
-  {
-    loading: () => <Spinner />,
-  }
-)
 
 const DashboardPage = () => {
-  const { user } = useContext(AuthContext)
-  const [settings, setSettings] = useState(false)
-
   return (
     <Layout title='Dashboard'>
       <header>
-        <DashboardHeader
-          setSettings={setSettings}
-          settings={settings}
-          user={user}
-        />
+        <DashboardHeader />
       </header>
-      {settings && (
-        <AccountSettings settings={settings} setSettings={setSettings} />
-      )}
       <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
         <Divider text='Your Inquiries' />
         <RequestedInquiries links={links} />
@@ -49,22 +31,14 @@ const DashboardPage = () => {
 
 export default DashboardPage
 
-export const getServerSideProps = async (ctx) => {
-  try {
-    const { access, refresh } = ctx.req.cookies
-    if (access === 'undefined' || refresh === 'undefined') {
-      if (!access || !refresh) {
-        ctx.res.writeHead(302, {
-          Location: links.login,
-        })
-        ctx.res.end()
-      }
-    }
-  } catch (err) {
-    ctx.res.writeHead(302, {
+export const getServerSideProps = async ({ req, res }) => {
+  const { access, refresh } = req.cookies
+
+  if (!access || !refresh) {
+    res.writeHead(302, {
       Location: links.login,
     })
-    ctx.res.end()
+    res.end()
   }
 
   return {
