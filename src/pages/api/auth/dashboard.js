@@ -4,7 +4,19 @@ import { response, parseCookie, tokenExpired, setCookies } from '@lib/helpers'
 
 const dashboard = async (req, res) => {
   if (req.method == 'GET') {
+    if (!req.headers.cookie) {
+      return res.end()
+    }
+
     let cookie = parseCookie(req)
+
+    if (
+      (!cookie.access && !cookie.refresh) ||
+      (cookie.access === '' && cookie.refresh === '')
+    ) {
+      return res.end()
+    }
+
     let access
     const url = `${API_URL}/api/user/me/`
     const urlRefresh = `${API_URL}/api/token/refresh/`
