@@ -1,5 +1,11 @@
 import { API_URL } from '@lib/constants'
-import { response, parseCookie, setCookies, tokenExpired } from '@lib/helpers'
+import {
+  response,
+  parseCookie,
+  setCookies,
+  tokenExpired,
+  removeCookies,
+} from '@lib/helpers'
 import { getRequest, postRequest } from '@lib/requests'
 
 const user = async (req, res) => {
