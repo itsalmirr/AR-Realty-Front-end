@@ -1,6 +1,16 @@
 import Image from 'next/image'
 import { Menu, Transition } from '@headlessui/react'
 
+const NoAvatar = ({ letter }) => {
+  return (
+    <span className='inline-flex h-8 w-8 items-center justify-center rounded-md bg-gray-500'>
+      <span className='text-xl font-medium leading-none text-white'>
+        {letter}
+      </span>
+    </span>
+  )
+}
+
 const UserMenu = ({
   userNavigation,
   user,
@@ -9,18 +19,24 @@ const UserMenu = ({
   Link,
   Fragment,
 }) => {
+  let userAvatar = `https://res.cloudinary.com/iamalmiir/image/upload/v1/${user.avatar}`
+
   return (
     <Menu as='div' className='flex-shrink-0 relative ml-4'>
       <div>
-        <Menu.Button className='bg-gray-800 rounded-full flex text-sm text-white'>
+        <Menu.Button className='bg-gray-800 rounded-md flex text-sm text-white'>
           <span className='sr-only'>Open user menu</span>
-          <Image
-            className='h-8 w-8 rounded-full'
-            src={user.avatar || user.default_avatar}
-            alt={user.full_name}
-            width={32}
-            height={32}
-          />
+          {user.avatar ? (
+            <Image
+              className='h-8 w-8 rounded-md'
+              src={userAvatar}
+              alt={user.full_name}
+              width={32}
+              height={32}
+            />
+          ) : (
+            <NoAvatar letter={user.full_name[0]} />
+          )}
         </Menu.Button>
       </div>
       <Transition
