@@ -1,29 +1,26 @@
-import { Fragment, memo } from 'react'
+import {
+  Fragment,
+  useState,
+  useEffect,
+  useCallback,
+  useContext,
+  memo,
+} from 'react'
+
+import AuthContext from '@context/AuthContext'
 import { toast } from 'react-toastify'
 
 import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
 
-const AccountSettings = ({
-  email,
-  full_name,
-  username,
-  newPassword,
-  confirmPassword,
-  setEmail,
-  profileImage,
-  setFullName,
-  setUsername,
-  setProfileImage,
-  settings,
-  setSettings,
-  updateAccount,
-}) => {
+const AccountSettings = ({ settings, setSettings }) => {
+  const { user, setIsLoading } = useContext(AuthContext)
+  const [full_name, setFullName] = useState('')
+  const [email, setEmail] = useState('')
+  const [username, setUsername] = useState('')
+  const [userAvatar, setUserAvatar] = useState(null)
+
   const onSubmit = async (e) => {
     e.preventDefault()
-    if (newPassword !== confirmPassword) {
-      toast.error('Passwords do not match')
-      return
-    }
     try {
       const res = await fetch('/api/auth/updateuser/', {
         method: 'PUT',
@@ -34,6 +31,7 @@ const AccountSettings = ({
           full_name,
           email,
           username: username ? username.toLowerCase() : null,
+          avatar: userAvatar,
         }),
       })
       const data = await res.json()
@@ -43,6 +41,18 @@ const AccountSettings = ({
     }
     setSettings(!settings)
   }
+  useEffect(() => {
+    setEmail(user?.email)
+    setFullName(user?.full_name)
+    setUsername(user?.username)
+    setIsLoading(false)
+  }, [user])
+
+  const updateAccount = useCallback(() => {
+    user.full_name = full_name
+    user.email = email
+  }, [full_name, email])
+
   return (
     <Fragment>
       <form
@@ -163,7 +173,7 @@ const AccountSettings = ({
 
         <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
           <label
-            htmlFor='profileImage'
+            htmlFor='userAvatar'
             className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
           >
             Profile photo
@@ -187,17 +197,24 @@ const AccountSettings = ({
                 </svg>
                 <div className='flex text-sm text-gray-600'>
                   <label
-                    htmlFor='profileImage'
+                    htmlFor='userAvatar'
                     className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'
                   >
                     <span>Upload a file</span>
                     <input
-                      id='profileImage'
-                      name='profileImage'
+                      id='userAvatar'
+                      name='userAvatar'
                       type='file'
-                      onChange={(e) => setProfileImage(e.target.value)}
-                      value={profileImage}
+                      accept='image/*'
                       className='sr-only'
+                      onChange={(e) => {
+                        const file = e.target.files[0]
+                        const data = new FormData()
+                        data.append('file', file)
+                        data.append('upload_preset', 'nextjs')
+                        setUserAvatar(data)
+                        console.log(data, 'dwddw')
+                      }}
                     />
                   </label>
                   <p className='pl-1'>or drag and drop</p>
