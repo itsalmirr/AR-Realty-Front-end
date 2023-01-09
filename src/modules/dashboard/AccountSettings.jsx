@@ -10,8 +10,10 @@ const AccountSettings = ({
   newPassword,
   confirmPassword,
   setEmail,
+  profileImage,
   setFullName,
   setUsername,
+  setProfileImage,
   settings,
   setSettings,
   updateAccount,
@@ -161,7 +163,7 @@ const AccountSettings = ({
 
         <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
           <label
-            htmlFor='profilePhoto-upload'
+            htmlFor='profileImage'
             className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
           >
             Profile photo
@@ -185,14 +187,16 @@ const AccountSettings = ({
                 </svg>
                 <div className='flex text-sm text-gray-600'>
                   <label
-                    htmlFor='profilePhoto-upload'
+                    htmlFor='profileImage'
                     className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'
                   >
                     <span>Upload a file</span>
                     <input
-                      id='profilePhoto-upload'
-                      name='profilePhoto-upload'
+                      id='profileImage'
+                      name='profileImage'
                       type='file'
+                      onChange={(e) => setProfileImage(e.target.value)}
+                      value={profileImage}
                       className='sr-only'
                     />
                   </label>

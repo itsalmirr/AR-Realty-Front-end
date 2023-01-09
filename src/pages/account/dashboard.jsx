@@ -31,16 +31,19 @@ const DashboardPage = () => {
   const [currentPassword, setCurrentPassword] = useState('')
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const [profileImage, setProfileImage] = useState(null)
 
   const updateAccount = useCallback(() => {
     user.full_name = full_name
     user.email = email
+    user.avatar = profileImage
   }, [full_name, email])
 
   useEffect(() => {
     setEmail(user?.email)
     setFullName(user?.full_name)
     setUsername(user?.username)
+    setProfileImage(user?.avatar)
     setIsLoading(false)
   }, [user])
 
@@ -60,6 +63,7 @@ const DashboardPage = () => {
           email={email}
           full_name={full_name}
           username={username}
+          profileImage={profileImage}
           settings={settings}
           currentPassword={currentPassword}
           newPassword={newPassword}
@@ -68,6 +72,7 @@ const DashboardPage = () => {
           setEmail={setEmail}
           setFullName={setFullName}
           setUsername={setUsername}
+          setProfileImage={setProfileImage}
           setCurrentPassword={setCurrentPassword}
           setNewPassword={setNewPassword}
           setConfirmPassword={setConfirmPassword}
