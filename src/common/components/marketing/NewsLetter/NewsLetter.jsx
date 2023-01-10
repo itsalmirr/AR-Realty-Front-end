@@ -13,7 +13,7 @@ const NewsLetter = () => {
         aria-hidden='true'
       />
       <div className='relative max-w-md mx-auto px-4 sm:max-w-3xl sm:px-6 lg:max-w-7xl lg:px-8'>
-        <div className='py-10 px-6 bg-gradient-to-l from-primaryDark to-primaryLight rounded-3xl sm:py-16 sm:px-12 lg:py-20 lg:px-20 lg:flex lg:items-center'>
+        <div className='py-10 px-6 bg-gradient-to-l from-accent-light to-primary-light dark:from-accent-dark dark:to-primary-dark rounded-3xl sm:py-16 sm:px-12 lg:py-20 lg:px-20 lg:flex lg:items-center'>
           <div className='lg:w-0 lg:flex-1'>
             <h2 className='text-3xl font-extrabold tracking-tight text-white'>
               Sign up for our newsletter
@@ -39,7 +39,8 @@ const NewsLetter = () => {
               />
               <button
                 type='submit'
-                className='mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0'>
+                className='mt-3 w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-400 hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-cyan-700 focus:ring-green-400 sm:mt-0 sm:ml-3 sm:w-auto sm:flex-shrink-0'
+              >
                 Notify me
               </button>
             </form>

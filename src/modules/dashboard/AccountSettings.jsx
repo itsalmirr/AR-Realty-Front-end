@@ -1,13 +1,5 @@
-import {
-  Fragment,
-  useState,
-  useEffect,
-  useCallback,
-  useContext,
-  memo,
-} from 'react'
+import { Fragment, useState, useEffect, useCallback, memo } from 'react'
 
-import AuthContext from '@context/AuthContext'
 import { toast } from 'react-toastify'
 
 import { FormBtn, FormInput } from '@components/app/Forms/FormComponents'
@@ -198,7 +190,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
                   <div className='flex text-sm text-gray-600'>
                     <label
                       htmlFor='userAvatar'
-                      className='relative cursor-pointer rounded-md bg-white font-medium text-accentDark focus-within:outline-none focus-within:ring-2 focus-within:ring-accentDark focus-within:ring-offset-2 hover:text-accentDark'
+                      className='relative cursor-pointer rounded-md bg-white font-medium text-accent-light focus-within:outline-none focus-within:ring-2 focus-within:ring-accent-light focus-within:ring-offset-2 hover:text-accent-light'
                     >
                       <span>Upload a file</span>
                       <input

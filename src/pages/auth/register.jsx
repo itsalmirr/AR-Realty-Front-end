@@ -14,7 +14,7 @@ const Register = () => {
       <div className='min-h-full flex flex-col justify-center py-4 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <Image
-            className='mx-auto h-12 w-15 rounded-lg bg-primaryDark'
+            className='mx-auto h-12 w-15 rounded-lg bg-primary-light'
             width={120}
             height={150}
             src={logoImg}
@@ -27,7 +27,7 @@ const Register = () => {
             Already have an account?{' '}
             <Link
               href={links.login}
-              className='font-medium text-primaryLight hover:text-accentDark'
+              className='font-medium text-primaryLight hover:text-accent-light'
             >
               Log in
             </Link>

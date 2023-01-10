@@ -13,7 +13,7 @@ const ListingById = () => {
 
   return (
     <Layout title={title ? title : ' '}>
-      <div className='bg-white'>
+      <div>
         <ListingPage setTitle={setTitle} />
       </div>
     </Layout>

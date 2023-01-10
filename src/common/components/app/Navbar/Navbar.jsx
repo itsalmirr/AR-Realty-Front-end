@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 import { useRouter } from 'next/router'
 import { Fragment, useContext } from 'react'
 import { Disclosure } from '@headlessui/react'
-import { MdOutlineClose } from 'react-icons/md'
+import { MdOutlineClose, MdDarkMode, MdOutlineLightMode } from 'react-icons/md'
 import { HiOutlineMenuAlt4 } from 'react-icons/hi'
 
 import Search from './Search'
@@ -16,6 +17,7 @@ import { navigation, userNavigation, links, companyLogo } from '@lib/constants'
 const Navbar = () => {
   const router = useRouter()
   const currentRoute = router.pathname
+  const { theme, setTheme } = useTheme()
   const { isLoading, isLoggedIn, logoutUser, user } = useContext(AuthContext)
 
   const handlePageChange = (path) => {
@@ -29,7 +31,11 @@ const Navbar = () => {
   }
 
   return (
-    <Disclosure as='header' className='bg-primaryDark' id='navbar'>
+    <Disclosure
+      as='header'
+      className='bg-primary-light dark:bg-background-dark'
+      id='navbar'
+    >
       {({ open }) => (
         <Fragment>
           <div className='max-w-7xl mx-auto px-2 sm:px-4 lg:divide-y lg:divide-gray-700 lg:px-8'>
@@ -80,6 +86,18 @@ const Navbar = () => {
                     />
                   )}
                   {!isLoggedIn && <LoginButton path={currentRoute} />}
+                  <button
+                    onClick={() =>
+                      setTheme(theme === 'dark' ? 'light' : 'dark')
+                    }
+                    className='flex justify-center items-center'
+                  >
+                    {theme === 'dark' ? (
+                      <MdOutlineLightMode className='text-2xl text-yellow-500' />
+                    ) : (
+                      <MdDarkMode className='text-2xl' />
+                    )}
+                  </button>
                 </div>
               )}
             </div>
@@ -94,8 +112,8 @@ const Navbar = () => {
                   onClick={handlePageChange(path)}
                   className={classNames(
                     path.current
-                      ? 'bg-gray-200'
-                      : 'text-gray-300 hover:bg-accentDark hover:text-white',
+                      ? 'bg-gray-200 dark:text-gray-800'
+                      : 'text-gray-300 hover:bg-accent-light hover:text-white',
                     'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                   )}
                   aria-current={path.current ? 'page' : undefined}
@@ -131,7 +149,7 @@ const LoginButton = ({ path }) => {
         <Link href={links.login} className='mr-4'>
           <button
             id='login'
-            className='bg-accentDark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
+            className='bg-accent-light dark:bg-primary-dark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
           >
             Log in
           </button>

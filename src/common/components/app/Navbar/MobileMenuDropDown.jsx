@@ -1,4 +1,6 @@
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
+import { MdDarkMode, MdOutlineLightMode } from 'react-icons/md'
 
 const MobileMenuDropDown = ({
   Disclosure,
@@ -11,6 +13,8 @@ const MobileMenuDropDown = ({
   logoutUser,
   classNames,
 }) => {
+  const { theme, setTheme } = useTheme()
+
   return (
     <Disclosure.Panel as='nav' className='lg:hidden' aria-label='Global'>
       <div className='pt-2 pb-3 px-2 space-y-1'>
@@ -77,13 +81,23 @@ const MobileMenuDropDown = ({
             <Disclosure.Button
               as='p'
               href='#'
-              className='block rounded-md py-2 px-3 text-base font-medium text-accentDark hover:bg-gray-700 hover:text-white'
+              className='block rounded-md py-2 px-3 text-base font-medium text-accent-light hover:bg-gray-700 hover:text-white'
             >
               Login
             </Disclosure.Button>
           </Link>
         </div>
       )}
+      <button
+        onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+        className='flex justify-center items-center pl-6'
+      >
+        {theme === 'dark' ? (
+          <MdOutlineLightMode className='text-2xl text-yellow-500' />
+        ) : (
+          <MdDarkMode className='text-2xl' />
+        )}
+      </button>
     </Disclosure.Panel>
   )
 }

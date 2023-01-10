@@ -55,33 +55,25 @@ const PropertyDetails = ({ listing }) => {
     },
   ]
   return (
-    <div className='rounded-lg mb-12 bg-gray-200 overflow-hidden shadow divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
-      {listingOverview.map((action, actionIdx) => (
+    <div className='rounded-lg mb-12 bg-gray-200 dark:bg-textColor-100 overflow-hidden shadow divide-y sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
+      {listingOverview.map((item) => (
         <div
-          key={action.title}
-          className={classNames(
-            actionIdx === 0
-              ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
-              : '',
-            actionIdx === 1 ? 'sm:rounded-tr-lg' : '',
-            actionIdx === listingOverview.length - 2 ? 'sm:rounded-bl-lg' : '',
-            actionIdx === listingOverview.length - 1
-              ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
-              : '',
-            'relative group bg-white p-6 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500'
-          )}
+          key={item.title}
+          className='relative bg-white dark:bg-background-darkLight group p-6'
         >
           <div className='flex items-center'>
             <span
               className={classNames(
-                action.iconBackground,
-                action.iconForeground,
-                'rounded-lg inline-flex p-3 ring-4 ring-white'
+                item.iconBackground,
+                item.iconForeground,
+                'rounded-lg inline-flex p-3'
               )}
             >
-              <action.icon className='h-6 w-6' aria-hidden='true' />
+              <item.icon className='h-6 w-6' aria-hidden='true' />
             </span>
-            <span className='ml-4 text-gray-900 font-bold'>{action.value}</span>
+            <span className='ml-4 text-gray-900 dark:text-textColor-100 font-bold'>
+              {item.value}
+            </span>
           </div>
         </div>
       ))}

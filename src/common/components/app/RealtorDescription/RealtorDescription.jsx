@@ -8,8 +8,8 @@ import { formatPhoneNumber } from '@lib/helpers'
 const RealtorDescription = ({ listing }) => {
   const { realtor } = listing
   return (
-    <section className='bg-white overflow-hidden'>
-      <div className='relative max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20'>
+    <section className='overflow-hidden'>
+      <div className='relative m-12 lg:m-0 max-w-7xl mx-auto pt-20 pb-12 px-4 sm:px-6 lg:px-8 lg:py-20'>
         <svg
           className='absolute top-full left-0 transform translate-x-80 -translate-y-24 lg:hidden'
           width={784}
@@ -32,7 +32,7 @@ const RealtorDescription = ({ listing }) => {
                 y={0}
                 width={4}
                 height={4}
-                className='text-primaryDark'
+                className='text-primary-light dark:text-primary-dark'
                 fill='currentColor'
               />
             </pattern>
@@ -66,7 +66,7 @@ const RealtorDescription = ({ listing }) => {
                 y={0}
                 width={4}
                 height={4}
-                className='text-primaryDark'
+                className='text-primary-light dark:text-primary-dark'
                 fill='currentColor'
               />
             </pattern>
@@ -104,7 +104,7 @@ const RealtorDescription = ({ listing }) => {
               />
             </svg>
             <blockquote className='relative'>
-              <div className='text-md leading-9 font-medium text-gray-900'>
+              <div className='text-md leading-9 font-medium dark:text-textColor-100 text-gray-900'>
                 <p>{realtor.description}</p>
               </div>
               <footer className='mt-8'>
@@ -120,20 +120,22 @@ const RealtorDescription = ({ listing }) => {
                   />
                 </div>
                 <Link href={`/realtors/${realtor.slug}`}>
-                  <p className='text-base font-medium text-gray-500'>
+                  <p className='text-base font-medium dark:text-textColor-100 text-gray-500'>
                     {realtor.full_name} |{' '}
-                    <strong className='text-primaryDark'>Realtor</strong>
+                    <strong className='text-primary-light dark:text-primary-dark'>
+                      Realtor
+                    </strong>
                   </p>
                 </Link>
                 <br />
                 <div className='flex'>
                   <div className='flex-shrink-0'>
                     <FaPhone
-                      className='h-6 w-6 text-primaryDark'
+                      className='h-6 w-6 text-primary-light dark:text-primary-dark'
                       aria-hidden='true'
                     />
                   </div>
-                  <div className='ml-3 text-base text-gray-500'>
+                  <div className='ml-3 text-base dark:text-textColor-100 text-gray-500'>
                     <p>+1 {formatPhoneNumber(realtor.phone)}</p>
                     <p className='mt-1'>Mon-Fri 8am to 6pm EST</p>
                   </div>
@@ -142,11 +144,11 @@ const RealtorDescription = ({ listing }) => {
                 <div className='flex'>
                   <div className='flex-shrink-0'>
                     <FiMail
-                      className='h-6 w-6 text-primaryDark'
+                      className='h-6 w-6 text-primary-light dark:text-primary-dark'
                       aria-hidden='true'
                     />
                   </div>
-                  <div className='ml-3 text-base text-gray-500'>
+                  <div className='ml-3 text-base dark:text-textColor-100 text-gray-500'>
                     <p>{realtor.email}</p>
                   </div>
                 </div>

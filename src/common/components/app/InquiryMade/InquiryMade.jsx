@@ -30,13 +30,13 @@ const InquiryMade = () => {
           <div className='mt-10 flex space-x-3 sm:border-l sm:border-transparent sm:pl-6'>
             <Link
               href={links.listings}
-              className='inline-flex items-center rounded-md border border-transparent bg-primaryDark px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primaryLight'
+              className='inline-flex items-center rounded-md border border-transparent bg-primary-light px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-primaryLight'
             >
               Browse more listings
             </Link>
             <Link
               href={links.dashboard}
-              className='inline-flex items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-primaryDark hover:bg-gray-300'
+              className='inline-flex items-center rounded-md border border-transparent bg-gray-100 px-4 py-2 text-sm font-medium text-primary-light hover:bg-gray-300'
             >
               Go to your dashboard
             </Link>

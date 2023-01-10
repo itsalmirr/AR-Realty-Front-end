@@ -1,5 +1,4 @@
 import cookie from 'cookie'
-import { API_URL } from '@lib/constants'
 
 export const fetcher = (url) => fetch(url).then((r) => r.json())
 

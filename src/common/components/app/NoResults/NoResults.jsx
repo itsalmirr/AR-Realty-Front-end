@@ -10,7 +10,7 @@ const NoResults = () => {
         Try a different search term or visit the{' '}
         <Link
           href='/listings'
-          className='text-accentDark hover:text-accentDark'
+          className='text-accent-light hover:text-accent-light'
         >
           listings page
         </Link>

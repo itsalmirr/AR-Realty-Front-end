@@ -7,7 +7,10 @@ const Footer = () => {
   const siteTitle = 'AR Realty'
 
   return (
-    <footer className='bg-primaryDark mt-20' aria-labelledby='footer-heading'>
+    <footer
+      className='bg-primary-light dark:bg-primary-dark mt-20'
+      aria-labelledby='footer-heading'
+    >
       <div className='mx-auto py-5 px-4 sm:px-6 lg:px-8'>
         <div className='pt-5 pb-5 md:flex md:items-center md:justify-between'>
           <div className='flex space-x-6 md:order-2'>
@@ -17,7 +20,7 @@ const Footer = () => {
                 key={item.name}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-gray-200 my-4 hover:text-accentDark'
+                className='text-gray-200 my-4 hover:text-accent-dark'
               >
                 <span className='sr-only'>{item.name}</span>
                 {item.icon}

@@ -2,28 +2,28 @@ import { Fragment } from 'react'
 import { Switch } from '@headlessui/react'
 
 import {
+  FormBtn,
   FormInput,
   PhoneInput,
   LongFormInput,
-  FormBtn,
 } from '@components/app/Forms/FormComponents'
 import { classNames } from '@lib/helpers'
 
 const ContactForm = ({
-  handleSubmit,
-  handleChange,
-  formState,
   agreed,
+  formState,
   setAgreed,
+  handleChange,
+  handleSubmit,
 }) => {
   return (
     <div className='relative max-w-xl mx-auto'>
       <SvgDecorator />
       <div className='text-center'>
-        <h2 className='text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
+        <h2 className='text-3xl font-extrabold tracking-tight dark:text-primary-dark text-gray-900 sm:text-4xl'>
           Contact sales
         </h2>
-        <p className='mt-4 text-lg leading-6 text-gray-500'>
+        <p className='mt-4 text-lg leading-6 dark:text-textColor-100 text-gray-500'>
           Nullam risus blandit ac aliquam justo ipsum. Quam mauris volutpat
           massa dictumst amet. Sapien tortor lacus arcu.
         </p>
@@ -31,7 +31,8 @@ const ContactForm = ({
       <div className='mt-12'>
         <form
           onSubmit={handleSubmit}
-          className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'>
+          className='grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8'
+        >
           <FormInput
             name={'first_name'}
             label={'First name'}
@@ -96,9 +97,12 @@ const ContactForm = ({
                   checked={agreed}
                   onChange={setAgreed}
                   className={classNames(
-                    agreed ? 'bg-primaryDark' : 'bg-gray-200',
+                    agreed
+                      ? 'bg-primary-light dark:bg-primary-dark'
+                      : 'bg-gray-200',
                     'relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none'
-                  )}>
+                  )}
+                >
                   <span className='sr-only'>Agree to policies</span>
                   <span
                     aria-hidden='true'
@@ -148,7 +152,8 @@ export const SvgDecorator = () => {
         height={404}
         fill='none'
         viewBox='0 0 404 404'
-        aria-hidden='true'>
+        aria-hidden='true'
+      >
         <defs>
           <pattern
             id='85737c0e-0916-41d7-917f-596dc7edfa27'
@@ -156,13 +161,14 @@ export const SvgDecorator = () => {
             y={0}
             width={20}
             height={20}
-            patternUnits='userSpaceOnUse'>
+            patternUnits='userSpaceOnUse'
+          >
             <rect
               x={0}
               y={0}
               width={4}
               height={4}
-              className='text-primaryDark'
+              className='text-primary-light dark:text-primary-dark'
               fill='currentColor'
             />
           </pattern>
@@ -179,7 +185,8 @@ export const SvgDecorator = () => {
         height={404}
         fill='none'
         viewBox='0 0 404 404'
-        aria-hidden='true'>
+        aria-hidden='true'
+      >
         <defs>
           <pattern
             id='85737c0e-0916-41d7-917f-596dc7edfa27'
@@ -187,13 +194,14 @@ export const SvgDecorator = () => {
             y={0}
             width={20}
             height={20}
-            patternUnits='userSpaceOnUse'>
+            patternUnits='userSpaceOnUse'
+          >
             <rect
               x={0}
               y={0}
               width={4}
               height={4}
-              className='text-primaryDark'
+              className='text-primary-light dark:text-primary-dark'
               fill='currentColor'
             />
           </pattern>
