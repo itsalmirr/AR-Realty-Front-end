@@ -15,27 +15,27 @@ const LoginPage = () => {
       <div className='min-h-full flex flex-col justify-center py-4 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <Image
-            className='mx-auto h-12 w-15 rounded-lg bg-primaryDark'
+            className='mx-auto h-12 w-15 rounded-lg dark:bg-primary-dark bg-primary-light'
             src={logoImg}
             width={120}
             height={150}
             alt={'AR Realty Logo'}
           />
-          <h2 className='mt-6 text-center text-3xl font-extrabold text-gray-900'>
+          <h2 className='mt-6 text-center text-3xl font-extrabold dark:text-textColor-200 text-gray-900'>
             Log in to your account
           </h2>
-          <p className='mt-2 text-center text-sm text-gray-600'>
+          <p className='mt-2 text-center text-sm dark:text-textColor-100 text-gray-600'>
             Or{' '}
             <Link
               href={links.register}
-              className='font-medium text-primaryLight hover:text-accentDark'
+              className='font-medium dark:text-primary-dark dark:hover:text-accent-dark text-primary-light hover:text-accent-light'
             >
               register here
             </Link>
           </p>
         </div>
         <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-          <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+          <div className='bg-white dark:bg-background-darkLight py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <LoginForm />
           </div>
         </div>

@@ -28,9 +28,9 @@ const Pagination = ({ currentPage, nextPage, prevPage, total, setPage }) => {
             onClick={() => setPage(i + 1)}
             className={`${
               currentPage === i + 1
-                ? 'border-primaryDark text-primaryDark '
+                ? 'border-primary-light dark:border-accent-dark dark:text-accent-dark text-primary-light '
                 : ''
-            } border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium`}
+            } border-transparent dark:hover:text-gray-200 dark:hover:border-gray-200 text-gray-500 hover:text-gray-700 hover:border-gray-300 border-t-2 pt-4 px-4 inline-flex items-center text-sm font-medium`}
           >
             {i + 1}
           </button>
@@ -40,13 +40,10 @@ const Pagination = ({ currentPage, nextPage, prevPage, total, setPage }) => {
         {nextPage && (
           <button
             onClick={() => setPage(currentPage + 1)}
-            className='border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            className='border-t-2 border-transparent pt-4 pl-1 inline-flex items-center text-sm font-medium dark:text-gray-400 dark:hover:text-gray-200 dark:hover:border-gray-200 text-gray-500 hover:text-gray-700 hover:border-gray-300'
           >
             Next
-            <FaArrowRight
-              className='ml-3 h-5 w-5 text-gray-400'
-              aria-hidden='true'
-            />
+            <FaArrowRight className='ml-3 h-5 w-5' aria-hidden='true' />
           </button>
         )}
       </div>

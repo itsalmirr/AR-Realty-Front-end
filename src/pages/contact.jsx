@@ -51,7 +51,7 @@ const ContactPage = () => {
 
   return (
     <Layout title='Contact Page'>
-      <div className='bg-white py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24'>
+      <div className='py-16 px-4 overflow-hidden sm:px-6 lg:px-8 lg:py-24'>
         <ContactForm
           handleSubmit={handleSubmit}
           handleChange={handleChange}

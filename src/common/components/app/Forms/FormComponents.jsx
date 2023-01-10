@@ -21,7 +21,9 @@ export const FormInput = ({
     <div>
       <label
         htmlFor={name}
-        className={'block text-sm font-medium text-gray-700'}
+        className={
+          'block text-sm font-medium dark:text-textColor-200 text-gray-700'
+        }
       >
         {label}{' '}
         {!rest.passwordMatch &&
@@ -42,9 +44,7 @@ export const FormInput = ({
           placeholder={placeholder}
           onKeyUp={rest.handlePasswordMatch}
           value={value}
-          className={
-            'appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-accentDark focus:border-accentDark sm:text-sm'
-          }
+          className='block w-full border-0 border-b border-transparent dark:bg-background-dark bg-gray-50 dark:focus:border-accent-dark rounded-lg focus:border-accent-light focus:ring-0 sm:text-sm'
         />
       </div>
     </div>
@@ -61,7 +61,10 @@ export const PhoneInput = ({
 }) => {
   return (
     <div>
-      <label htmlFor={name} className='block text-sm font-medium text-gray-700'>
+      <label
+        htmlFor={name}
+        className='block text-sm font-medium dark:text-textColor-200 text-gray-700'
+      >
         {label}{' '}
       </label>
       <div className='mt-1 relative rounded-md shadow-sm'>
@@ -72,7 +75,7 @@ export const PhoneInput = ({
           <select
             id='country'
             name='country'
-            className='h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-gray-500 focus:ring-accentDark focus:border-accentDark rounded-md'
+            className='h-full py-0 pl-4 pr-8 border-transparent bg-transparent text-gray-500 focus:ring-accent-light focus:border-accent-light dark:focus:ring-accent-dark dark:focus:border-accent-dark rounded-md'
           >
             <option>US</option>
             <option>CA</option>
@@ -87,7 +90,7 @@ export const PhoneInput = ({
           id={name}
           autoComplete='tel'
           required={required}
-          className='py-2 px-4 block w-full pl-20 focus:ring-accentDark focus:border-accentDark border-gray-300 rounded-md'
+          className='py-2 dark:bg-background-darkLight px-4 block w-full pl-20 focus:ring-accent-light focus:border-accent-light dark:focus:ring-accent-dark dark:focus:border-accent-dark border-gray-300 rounded-md'
           placeholder='+1 (555) 987-6543'
         />
       </div>
@@ -104,7 +107,7 @@ export const FormBtn = ({ label, type, classes, onClick }) => {
       className={
         classes
           ? classes
-          : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primaryDark hover:bg-primaryLight'
+          : 'w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white dark:bg-primary-dark dark:hover:bg-accent-dark bg-primary-light hover:bg-accent-light'
       }
     >
       {label}
@@ -141,7 +144,7 @@ export const LongFormInput = ({
           value={value}
           onChange={onChange}
           required={required}
-          className='py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-accentDark focus:border-accentDark border border-warm-gray-300 rounded-md'
+          className='py-3 px-4 block w-full shadow-sm text-warm-gray-900 focus:ring-accent-light focus:border-accent-light dark:focus:ring-accent-dark dark:focus:border-accent-dark border border-warm-gray-300 rounded-md'
           aria-describedby='message-max'
         />
       </div>
@@ -198,7 +201,7 @@ export const ContinueWithProvider = () => {
 
 export const ContactFormInfo = () => {
   return (
-    <div className='relative overflow-hidden py-10 px-6 bg-gradient-to-b from-primaryLight to-primaryDark sm:px-10 xl:p-12'>
+    <div className='relative overflow-hidden py-10 px-6 bg-gradient-to-b from-primaryLight to-primary-light sm:px-10 xl:p-12'>
       {/* Decorative angle backgrounds */}
       <div
         className='absolute inset-0 pointer-events-none sm:hidden'

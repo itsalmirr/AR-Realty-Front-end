@@ -3,9 +3,9 @@ import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
 import { AiTwotoneCalendar } from 'react-icons/ai'
-// import { CgInsights } from 'react-icons/cg'
+import { BsHouseDoorFill } from 'react-icons/bs'
 import { MvpStar, Verified } from '@common/components/app/Marks'
-import { MdSquareFoot, MdLocationOn } from 'react-icons/md'
+import { MdLocationOn } from 'react-icons/md'
 
 import { formatPrice } from '@lib/helpers'
 
@@ -17,7 +17,7 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white rounded-lg shadow divide-y divide-gray-200'
+        className='col-span-1 flex my-8 flex-col text-center bg-white dark:bg-background-darkLight rounded-lg shadow divide-y divide-gray-200'
       >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
@@ -31,7 +31,7 @@ const ListingCard = ({ listing }) => {
           </Link>
           <Link
             href={`/listings/${listing.slug}`}
-            className='mt-2 mb-2 text-gray-900 text-lg cursor-pointer font-bold hover:underline hover:text-accentDark'
+            className='mt-2 mb-2 text-gray-900 dark:text-textColor-100 text-lg cursor-pointer font-bold hover:underline hover:text-accent-light'
           >
             {listing.title}
           </Link>
@@ -45,8 +45,8 @@ const ListingCard = ({ listing }) => {
           </div>
           <div className='flex justify-between'>
             <h3 className='flex justify-start items-center mx-2 mt-3'>
-              <IoMdPricetag className='w-4 h-4 mr-2 text-gray-300' />
-              <span className='text-gray-900 font-bold'>
+              <IoMdPricetag className='w-4 h-4 mr-2 dark:text-textColor-icons text-gray-300' />
+              <span className='text-gray-900 dark:text-textColor-100 font-bold'>
                 {formatPrice(listing.price)}
               </span>
             </h3>
@@ -55,16 +55,16 @@ const ListingCard = ({ listing }) => {
             {/* <ListingFeatures listing={listing} /> */}
             <ul className='flex items-center justify-between'>
               <li>
-                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
-                  <MdSquareFoot className='w-4 h-4 text-gray-300' />
+                <p className='flex text-gray-900 dark:text-textColor-100 font-light text-sm items-center p-2'>
+                  <BsHouseDoorFill className='w-4 h-4 text-gray-300 dark:text-textColor-icons' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.sqft} ft<sup>2</sup>
                   </span>
                 </p>
               </li>
               <li>
-                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
-                  <FaBed className='w-4 h-4 text-gray-300' />
+                <p className='flex text-gray-900 dark:text-textColor-100 font-light text-sm items-center p-2'>
+                  <FaBed className='w-4 h-4 text-gray-300 dark:text-textColor-icons ' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.bedrooms}
                   </span>
@@ -72,8 +72,8 @@ const ListingCard = ({ listing }) => {
                 </p>
               </li>
               <li>
-                <p className='flex text-gray-900 font-light text-sm items-center p-2'>
-                  <FaBath className='w-4 h-4 text-gray-300' />
+                <p className='flex text-gray-900 dark:text-textColor-100 font-light text-sm items-center p-2'>
+                  <FaBath className='w-4 h-4 text-gray-300 dark:text-textColor-icons ' />
                   <span className='ml-2 mr-1 whitespace-nowrap'>
                     {listing.bathrooms}
                   </span>
@@ -83,11 +83,11 @@ const ListingCard = ({ listing }) => {
             </ul>
           </div>
 
-          <p className='text-gray-500 text-sm p-2 break-normal justify text-justify'>
+          <p className='text-gray-500 dark:text-textColor-100 text-sm p-2 break-normal justify text-justify'>
             {`${listing.description.slice(0, 100)}...`}
           </p>
         </div>
-        <div className='flex-1 bg-white p-2 flex flex-col justify-between'>
+        <div className='flex-1 rounded-lg p-2 flex flex-col justify-between'>
           <div className='ml-2 flex items-center justify-between'>
             <div className='flex-shrink-0 flex items-center'>
               <a href='#'>
@@ -102,7 +102,7 @@ const ListingCard = ({ listing }) => {
                 />
               </a>
               <div className='ml-3'>
-                <p className='flex space-x-1 text-sm items-center font-medium text-primaryDark'>
+                <p className='flex space-x-1 text-sm items-center font-medium text-primary-light dark:text-accent-dark'>
                   <Link
                     href={`/realtors/${realtor.slug}`}
                     title='Realtor'
@@ -114,7 +114,7 @@ const ListingCard = ({ listing }) => {
                   {realtor.is_mvp && <MvpStar />}
                 </p>
                 <div className='flex space-x-1 items-center text-xs text-gray-400'>
-                  <AiTwotoneCalendar className='w-4 h-4 text-gray-300' />
+                  <AiTwotoneCalendar className='w-4 h-4 text-gray-300 dark:text-textColor-icons' />
                   <time title='Published date' dateTime={listing.pub_date}>
                     {listing.publishedAt}
                   </time>
@@ -123,7 +123,7 @@ const ListingCard = ({ listing }) => {
               </div>
             </div>
             <div title='Location' className='flex items-center'>
-              <MdLocationOn className='w-4 h-4 text-gray-300' />
+              <MdLocationOn className='w-4 h-4 text -gray-300 dark:text-textColor-icons' />
               <span className='text-gray-400 text-xs font-light mr-2'>
                 {listing.city}, {listing.state}
               </span>

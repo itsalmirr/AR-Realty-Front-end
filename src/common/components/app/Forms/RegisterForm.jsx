@@ -80,7 +80,7 @@ const RegisterForm = () => {
             id='remember-me'
             name='remember-me'
             type='checkbox'
-            className='h-4 w-4 text-primaryLight focus:ring-accentDark border-gray-300 rounded'
+            className='h-4 w-4 text-primaryLight focus:ring-accent-light border-gray-300 rounded'
           />
           <label
             htmlFor='remember-me'
@@ -93,7 +93,7 @@ const RegisterForm = () => {
         <div className='text-sm'>
           <a
             href='#'
-            className='font-medium text-primaryLight hover:text-accentDark'
+            className='font-medium text-primaryLight hover:text-accent-light'
           >
             Forgot your password?
           </a>

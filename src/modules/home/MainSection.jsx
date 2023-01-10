@@ -1,9 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useTheme } from 'next-themes'
 
 import { metrics } from '@lib/constants'
 
 const MainSection = () => {
+  const { theme } = useTheme()
   const imgUrls = [
     {
       url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
@@ -11,28 +13,33 @@ const MainSection = () => {
     },
   ]
 
+  const darkModeImg =
+    'https://res.cloudinary.com/iamalmiir/image/upload/v1673304496/ar/undraw_house_searching_re_stk8_jkhjiu.svg'
+
   return (
     <main className='lg:relative'>
       <div className='w-full pt-16 pb-20 text-center lg:py-20 lg:text-left'>
         <div className='px-4 lg:w-1/2 sm:px-8 xl:pr-16'>
           <h1 className='text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl'>
-            <span className='block xl:inline'>Discover a place</span>{' '}
-            <span className='block text-primaryDark xl:inline'>
+            <span className='block dark:text-gray-100 xl:inline'>
+              Discover a place
+            </span>{' '}
+            <span className='block text-primary-light dark:text-primary-dark xl:inline'>
               you&apos;ll love to live
             </span>
           </h1>
-          <p className='mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl'>
+          <p className='mt-3 max-w-md mx-auto text-lg text-gray-500 dark:text-textColor-100 sm:text-xl md:mt-5 md:max-w-3xl'>
             Find your place with an immersive photo experience and the most
             listings, including things you won&apos;t find anywhere else.
           </p>
-          <div className='mt-4 grid grid-cols-1 gap-y-12 gap-x-6 border-t border-gray-200 sm:grid-cols-2'>
+          <div className='mt-4 grid grid-cols-1 gap-y-12 gap-x-6 border-t dark:border-primary-dark border-gray-200 sm:grid-cols-2'>
             {metrics.map((item) => (
               <p key={item.id}>
-                <span className='block mt-4 text-2xl font-bold text-primaryDark'>
+                <span className='block mt-4 text-2xl font-bold dark:text-primary-dark text-primary-light'>
                   {item.stat}
                 </span>
-                <span className='mt-2 block text-base text-gray-500'>
-                  <span className='font-medium text-accentDark'>
+                <span className='mt-2 block text-base text-gray-500 dark:text-textColor-100'>
+                  <span className='font-medium text-accent-light dark:text-accent-dark'>
                     {item.emphasis}
                   </span>{' '}
                   {item.rest}
@@ -44,7 +51,7 @@ const MainSection = () => {
             <div className='rounded-md shadow'>
               <Link
                 href='/listings'
-                className='w-full flex items-center justify-center px-2 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primaryDark hover:bg-accentDark md:py-4 md:text-lg md:px-10'
+                className='w-full flex items-center justify-center px-2 py-3 border border-transparent text-base font-medium rounded-md text-white dark:bg-primary-dark bg-primary-light hover:bg-accent-light md:py-4 md:text-lg md:px-10'
               >
                 Explore
               </Link>
@@ -52,7 +59,7 @@ const MainSection = () => {
             <div className='mt-3 rounded-md shadow sm:mt-0 sm:ml-3'>
               <Link
                 href='/about'
-                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primaryDark bg-white hover:bg-gray-50 hover:text-accentDark md:py-4 md:text-lg md:px-10'
+                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md dark:text-primary-dark text-primary-light bg-white hover:bg-gray-50 hover:text-accent-light md:py-4 md:text-lg md:px-10'
               >
                 Learn More
               </Link>
@@ -70,7 +77,7 @@ const MainSection = () => {
           height={500}
           placeholder='blur'
           blurDataURL={imgUrls[0].url}
-          src={imgUrls[0].url}
+          src={theme === 'dark' ? darkModeImg : imgUrls[0].url}
           alt={imgUrls[0].alt}
         />
       </div>

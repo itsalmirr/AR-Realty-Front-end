@@ -41,11 +41,11 @@ export const LoginForm = () => {
             id='remember-me'
             name='remember-me'
             type='checkbox'
-            className='h-4 w-4 text-primaryLight focus:ring-accentDark border-gray-300 rounded'
+            className='h-4 w-4 dark:text-primary-dark text-primary-light without-ring border-gray-300 rounded'
           />
           <label
             htmlFor='remember-me'
-            className='ml-2 block text-sm text-gray-900'
+            className='ml-2 block text-sm dark:text-textColor-100 text-gray-900'
           >
             Remember me
           </label>
@@ -54,7 +54,7 @@ export const LoginForm = () => {
         <div className='text-sm'>
           <a
             href='#'
-            className='font-medium text-primaryLight hover:text-accentDark'
+            className='font-medium dark:text-primary-dark dark:hover:text-accent-dark text-primary-light hover:text-accent-light'
           >
             Forgot your password?
           </a>

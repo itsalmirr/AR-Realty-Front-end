@@ -5,10 +5,10 @@ const PropertyDescription = ({ listing }) => {
 
   return (
     <div className='relative'>
-      <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs bg-gray-300 text-black font-bold'>
+      <span className='inline-flex items-center px-2.5 py-2.5 rounded-md text-xs dark:bg-primary-dark dark:text-textColor-100 bg-gray-300 text-black font-bold'>
         DESCRIPTION
       </span>
-      <p className='mt-6 text-lg font-medium text-gray-600 max-w-lg'>
+      <p className='mt-6 text-lg font-medium dark:text-textColor-100 text-gray-600 max-w-lg'>
         {fullDescription
           ? listing.description
           : `${listing.description.slice(0, 200)}...`}
@@ -16,9 +16,9 @@ const PropertyDescription = ({ listing }) => {
       <br />
       <button
         onClick={() => setFullDescription(!fullDescription)}
-        className='text-sm border p-1 mb-8 lg:mb-0 font-semibold text-primaryDark hover:bg-gray-200'
+        className='text-sm p-1 mb-8 lg:mb-0 font-semibold dark:text-primary-dark text-primary-light'
       >
-        {fullDescription ? 'HIDE FULL DESCRIPTION' : 'READ FULL DESCRIPTION'}
+        {fullDescription ? 'Less' : `More`}
       </button>
     </div>
   )

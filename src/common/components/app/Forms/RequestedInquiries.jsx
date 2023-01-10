@@ -45,7 +45,7 @@ export const RequestedInquiriesCard = ({ links }) => {
                   </div>
                   <Link href={`/listings/${inquiry.slug}`}>
                     <div className='flex items-center space-x-3'>
-                      <p className='mt-1 text-gray-500 text-sm truncate underline underline-offset-1 cursor-pointer hover:text-accentDark'>
+                      <p className='mt-1 text-gray-500 text-sm truncate underline underline-offset-1 cursor-pointer hover:text-accent-light'>
                         {inquiry.address} - {inquiry.city}, {inquiry.state}
                       </p>
                       <span className='flex-shrink-0 inline-block px-2 py-0.5 text-purple-800 text-xs font-medium bg-purple-100 rounded-full'>
@@ -53,7 +53,7 @@ export const RequestedInquiriesCard = ({ links }) => {
                       </span>
                     </div>
                   </Link>
-                  <p className='mt-1 text-primaryDark text-sm truncate'>
+                  <p className='mt-1 text-primary-light text-sm truncate'>
                     {formatPrice(inquiry.price)}
                   </p>
                 </div>
@@ -75,10 +75,10 @@ export const RequestedInquiriesCard = ({ links }) => {
                   <div className='w-0 flex-1 flex'>
                     <a
                       href={`mailto:${inquiry.realtor.email}`}
-                      className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-primaryDark'
+                      className='relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-primary-light'
                     >
                       <MdEmail
-                        className='w-5 h-5 text-primaryDark'
+                        className='w-5 h-5 text-primary-light'
                         aria-hidden='true'
                       />
                       <span className='ml-3'>Email</span>
@@ -126,7 +126,7 @@ export const RequestedInquiriesCard = ({ links }) => {
           </p>
 
           <Link href={links.listings}>
-            <button className='mt-4 bg-primaryDark hover:bg-accentDark text-white font-bold py-2 px-4 rounded'>
+            <button className='mt-4 bg-primary-light hover:bg-accent-light text-white font-bold py-2 px-4 rounded'>
               Browse Listings
             </button>
           </Link>
