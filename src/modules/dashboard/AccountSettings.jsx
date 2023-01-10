@@ -48,14 +48,14 @@ const AccountSettings = ({ settings, setSettings, user }) => {
     <Fragment>
       {settings && (
         <form
-          className='space-y-6 pt-8 sm:space-y-5 sm:pt-10 px-4'
+          className='space-y-6 p-8 shadow-lg sm:space-y-5 sm:pt-10 px-4'
           onSubmit={onSubmit}
         >
           <div>
-            <h3 className='text-lg font-medium leading-6 text-gray-900'>
+            <h3 className='text-lg font-medium leading-6 dark:text-textColor-100 text-gray-900'>
               Account Settings
             </h3>
-            <p className='mt-1 max-w-2xl text-sm text-gray-500'>
+            <p className='mt-1 max-w-2xl text-sm dark:text-gray-400 text-gray-500'>
               Manage your account settings and set your preferences.
             </p>
           </div>
@@ -63,7 +63,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
             <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
               <label
                 htmlFor='full_name'
-                className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+                className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
               >
                 Full name
               </label>
@@ -80,7 +80,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
             <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
               <label
                 htmlFor='email'
-                className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+                className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
               >
                 Email address
               </label>
@@ -97,7 +97,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
             <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
               <label
                 htmlFor='username'
-                className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+                className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
               >
                 Username
               </label>
@@ -114,7 +114,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
             {/* <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
              <label
                htmlFor='current_password'
-               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+               className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
              >
                Current Password
              </label>
@@ -131,7 +131,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
             {/* <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
              <label
                htmlFor='newPassword'
-               className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+               className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
              >
                New Password
              </label>
@@ -166,7 +166,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
           <div className='sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5'>
             <label
               htmlFor='userAvatar'
-              className='block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2'
+              className='block text-sm font-medium text-gray-700 dark:text-gray-500 sm:mt-px sm:pt-2'
             >
               Profile photo
             </label>
@@ -190,7 +190,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
                   <div className='flex text-sm text-gray-600'>
                     <label
                       htmlFor='userAvatar'
-                      className='relative cursor-pointer rounded-md bg-white font-medium text-accent-light focus-within:outline-none focus-within:ring-2 focus-within:ring-accent-light focus-within:ring-offset-2 hover:text-accent-light'
+                      className='relative cursor-pointer rounded-md font-medium text-accent-light dark:text-primary-dark focus-within:outline-none focus-within:ring-0 focus-within:ring-offset-0 hover:text-accent-light'
                     >
                       <span>Upload a file</span>
                       <input
@@ -205,7 +205,6 @@ const AccountSettings = ({ settings, setSettings, user }) => {
                           data.append('file', file)
                           data.append('upload_preset', 'nextjs')
                           setUserAvatar(data)
-                          console.log(data, 'dwddw')
                         }}
                       />
                     </label>

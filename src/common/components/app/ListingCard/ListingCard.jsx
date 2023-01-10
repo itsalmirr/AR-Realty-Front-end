@@ -4,8 +4,8 @@ import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
 import { AiTwotoneCalendar } from 'react-icons/ai'
 import { BsHouseDoorFill } from 'react-icons/bs'
-import { MvpStar, Verified } from '@common/components/app/Marks'
 import { MdLocationOn } from 'react-icons/md'
+import { MvpStar, Verified } from '@common/components/app/Marks'
 
 import { formatPrice } from '@lib/helpers'
 
@@ -17,7 +17,7 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 flex-col text-center bg-white dark:bg-background-darkLight rounded-lg shadow divide-y divide-gray-200'
+        className='col-span-1 flex my-8 lg:my-4 flex-col text-center bg-white dark:bg-background-dark rounded-lg shadow-lg dark:shadow-black divide-y divide-gray-200'
       >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>
@@ -95,14 +95,14 @@ const ListingCard = ({ listing }) => {
                 <Image
                   width={40}
                   height={40}
-                  className='h-10 w-10 rounded-full'
+                  className='h-10 w-10 rounded-md'
                   src={realtor.photo}
                   quality={100}
                   alt={realtor.full_name + ' photo'}
                 />
               </a>
               <div className='ml-3'>
-                <p className='flex space-x-1 text-sm items-center font-medium text-primary-light dark:text-accent-dark'>
+                <p className='flex space-x-1 text-sm items-center font-extrabold text-primary-light dark:text-textColor-100'>
                   <Link
                     href={`/realtors/${realtor.slug}`}
                     title='Realtor'
@@ -123,7 +123,7 @@ const ListingCard = ({ listing }) => {
               </div>
             </div>
             <div title='Location' className='flex items-center'>
-              <MdLocationOn className='w-4 h-4 text -gray-300 dark:text-textColor-icons' />
+              <MdLocationOn className='w-4 h-4 text-gray-300 dark:text-textColor-icons' />
               <span className='text-gray-400 text-xs font-light mr-2'>
                 {listing.city}, {listing.state}
               </span>

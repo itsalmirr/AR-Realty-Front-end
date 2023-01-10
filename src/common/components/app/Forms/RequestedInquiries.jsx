@@ -118,15 +118,15 @@ export const RequestedInquiriesCard = ({ links }) => {
       )}
       {userInquiries.length === 0 && !isLoading && (
         <div className='flex flex-col items-center justify-center mt-12'>
-          <p className='text-center text-gray-500 text-sm'>
+          <p className='text-center dark:text-gray-400 text-gray-500 text-sm'>
             You have no inquiries.
           </p>
-          <p className='text-center text-gray-500 text-sm'>
+          <p className='text-center dark:text-gray-400 text-gray-500 text-sm'>
             You can browse our listings and request an inquiry.
           </p>
 
           <Link href={links.listings}>
-            <button className='mt-4 bg-primary-light hover:bg-accent-light text-white font-bold py-2 px-4 rounded'>
+            <button className='mt-4 dark:bg-primary-dark bg-primary-light dark:hover:bg-accent-darker hover:bg-accent-light text-white font-bold py-2 px-4 rounded'>
               Browse Listings
             </button>
           </Link>

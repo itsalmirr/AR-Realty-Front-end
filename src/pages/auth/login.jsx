@@ -35,7 +35,7 @@ const LoginPage = () => {
           </p>
         </div>
         <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-          <div className='bg-white dark:bg-background-darkLight py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+          <div className='bg-white dark:bg-background-dark py-8 px-4 shadow-lg dark:shadow-black sm:rounded-lg sm:px-10'>
             <LoginForm />
           </div>
         </div>
