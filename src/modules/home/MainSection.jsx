@@ -1,20 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useTheme } from 'next-themes'
 
 import { metrics } from '@lib/constants'
 
 const MainSection = () => {
-  const { theme } = useTheme()
   const imgUrls = [
     {
       url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1655751319/undraw_house_searching_re_stk8_ddkm2k.svg',
       alt: 'Searching for houses',
     },
   ]
-
-  const darkModeImg =
-    'https://res.cloudinary.com/iamalmiir/image/upload/v1673304496/ar/undraw_house_searching_re_stk8_jkhjiu.svg'
 
   return (
     <main className='lg:relative'>
@@ -51,7 +46,7 @@ const MainSection = () => {
             <div className='rounded-md shadow'>
               <Link
                 href='/listings'
-                className='w-full flex items-center justify-center px-2 py-3 border border-transparent text-base font-medium rounded-md text-white dark:bg-primary-dark bg-primary-light hover:bg-accent-light md:py-4 md:text-lg md:px-10'
+                className='w-full flex items-center justify-center px-2 py-3 border border-transparent text-base font-medium rounded-md text-white dark:bg-primary-dark dark:hover:bg-accent-darker bg-primary-light hover:bg-accent-light md:py-4 md:text-lg md:px-10'
               >
                 Explore
               </Link>
@@ -59,7 +54,7 @@ const MainSection = () => {
             <div className='mt-3 rounded-md shadow sm:mt-0 sm:ml-3'>
               <Link
                 href='/about'
-                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md dark:text-primary-dark text-primary-light bg-white hover:bg-gray-50 hover:text-accent-light md:py-4 md:text-lg md:px-10'
+                className='w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md dark:text-primary-dark text-primary-light bg-white hover:bg-gray-100 hover:text-accent-light md:py-4 md:text-lg md:px-10'
               >
                 Learn More
               </Link>
@@ -77,7 +72,7 @@ const MainSection = () => {
           height={500}
           placeholder='blur'
           blurDataURL={imgUrls[0].url}
-          src={theme === 'dark' ? darkModeImg : imgUrls[0].url}
+          src={imgUrls[0].url}
           alt={imgUrls[0].alt}
         />
       </div>

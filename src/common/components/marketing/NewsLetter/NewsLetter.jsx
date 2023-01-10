@@ -7,7 +7,7 @@ const NewsLetter = () => {
   }
 
   return (
-    <div className='relative' data-aos='fade-up'>
+    <div className='relative mt-12' data-aos='fade-up'>
       <div
         className='absolute left-0 right-0 h-1/2 bg-warm-gray-50'
         aria-hidden='true'

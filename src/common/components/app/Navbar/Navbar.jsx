@@ -90,7 +90,7 @@ const Navbar = () => {
                     onClick={() =>
                       setTheme(theme === 'dark' ? 'light' : 'dark')
                     }
-                    className='flex justify-center items-center'
+                    className='flex justify-center items-center p-3'
                   >
                     {theme === 'dark' ? (
                       <MdOutlineLightMode className='text-2xl text-yellow-500' />
@@ -113,7 +113,7 @@ const Navbar = () => {
                   className={classNames(
                     path.current
                       ? 'bg-gray-200 dark:text-gray-800'
-                      : 'text-gray-300 hover:bg-accent-light hover:text-white',
+                      : 'text-gray-300 dark:hover:bg-accent-darker hover:bg-accent-light hover:text-white',
                     'rounded-md py-2 px-2 inline-flex items-center text-sm font-medium'
                   )}
                   aria-current={path.current ? 'page' : undefined}
@@ -149,7 +149,7 @@ const LoginButton = ({ path }) => {
         <Link href={links.login} className='mr-4'>
           <button
             id='login'
-            className='bg-accent-light dark:bg-primary-dark hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
+            className='bg-accent-light dark:bg-primary-dark dark:hover:bg-accent-darker hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
           >
             Log in
           </button>

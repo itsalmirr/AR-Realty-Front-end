@@ -5,6 +5,7 @@ import { memo, useState, useContext, Fragment } from 'react'
 
 import AuthContext from '@context/AuthContext'
 import { Spinner } from '@components/app/Spinner'
+import { NoAvatar } from '@components/app/Avatar'
 
 const AccountSettings = dynamic(
   () => import('@modules/dashboard/AccountSettings'),
@@ -16,16 +17,6 @@ const AccountSettings = dynamic(
 const cover = {
   backgroundImage:
     'https://res.cloudinary.com/iamalmiir/image/upload/v1672591240/sean-pollock-PhYq704ffdA-unsplash_1_hfzoyk_oifngg.webp',
-}
-
-const NoAvatar = ({ letter }) => {
-  return (
-    <div className='inline-flex items-center justify-center h-24 w-24 rounded-md ring-1 ring-white sm:h-32 sm:w-32 bg-slate-500'>
-      <span className='text-6xl font-bold leading-none text-white'>
-        {letter}
-      </span>
-    </div>
-  )
 }
 
 const DashboardHeader = () => {
@@ -41,7 +32,7 @@ const DashboardHeader = () => {
             <div>
               <div>
                 <Image
-                  className='h-32 bg-primary-light w-full object-cover lg:h-48'
+                  className='h-32 dark:bg-background-dark bg-white w-full object-cover lg:h-48'
                   width={400}
                   height={300}
                   src={cover.backgroundImage}
@@ -71,7 +62,7 @@ const DashboardHeader = () => {
                     <div className='sm:hidden md:block mt-0 min-w-0 flex-1'>
                       <h1
                         id='userFullname'
-                        className='text-2xl font-bold text-gray-900 truncate'
+                        className='text-2xl font-bold dark:text-textColor-100 text-gray-900 truncate'
                       >
                         {user.full_name}
                       </h1>
@@ -81,13 +72,13 @@ const DashboardHeader = () => {
                         id='settingsBtn'
                         type='button'
                         onClick={() => setSettings(!settings)}
-                        className='inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 hover:text-accent-light'
+                        className='dark:hover:bg-white hover:text-accent-light inline-flex justify-center px-4 py-2 border dark:border-primary-dark border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 dark:text-primary-dark dark:bg-transparent'
                       >
                         <AiTwotoneSetting
-                          className='ml-1 mr-2 h-5 w-5 text-gray-400'
+                          className='ml-1 mr-2 h-5 w-5 dark:text-primary-dark text-gray-400'
                           aria-hidden='true'
                         />
-                        <span className='hover:text-gray-00'>Settings</span>
+                        <span className=''>Settings</span>
                       </button>
                     </div>
                   </div>
