@@ -1,5 +1,5 @@
 import cookie from 'cookie'
-import { domain } from './constants'
+import { NODE_ENV } from './constants'
 
 export const fetcher = (url) => fetch(url).then((r) => r.json())
 
@@ -27,14 +27,14 @@ export const setCookies = (res, access, refresh) => {
   res.setHeader('Set-Cookie', [
     cookie.serialize('access', access, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 120 * 60 * 1000,
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/',
@@ -44,21 +44,21 @@ export const setCookies = (res, access, refresh) => {
 
 export const removeCookies = (res) => {
   res.setHeader('Set-Cookie', [
-    cookie.serialize('access', '-', {
+    cookie.serialize('access', '', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: 'strict',
+      maxAge: 0,
       expires: new Date(0),
       path: '/',
-      domain: domain,
     }),
-    cookie.serialize('refresh', '-', {
+    cookie.serialize('refresh', '', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: NODE_ENV === 'production',
       sameSite: 'strict',
+      maxAge: 0,
       expires: new Date(0),
       path: '/',
-      domain: domain,
     }),
   ])
 }
