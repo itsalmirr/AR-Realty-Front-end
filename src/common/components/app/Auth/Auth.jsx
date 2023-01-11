@@ -12,6 +12,8 @@ const Auth = ({ Form, type }) => {
   const title =
     type === 'login' ? 'Log in to your account' : 'Register for an account'
   const link = type === 'login' ? 'register here' : 'log in here'
+  const logoImg =
+    'https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
 
   return (
     <Fragment>
