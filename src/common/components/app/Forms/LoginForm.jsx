@@ -35,8 +35,8 @@ export const LoginForm = () => {
         onChange={handleChange}
         value={password}
       />
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center'>
+      <div className='flex flex-col justify-between'>
+        <div className='flex items-center mb-4'>
           <input
             id='remember-me'
             name='remember-me'

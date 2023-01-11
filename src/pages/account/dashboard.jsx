@@ -9,7 +9,7 @@ const Layout = dynamic(() => import('@components/layouts/Layout'), {
   loading: () => <Spinner />,
 })
 const RequestedInquiries = dynamic(
-  () => import('@components/app/Forms/RequestedInquiries'),
+  () => import('@components/app/RequestedInquiriesCard/RequestedInquiriesCard'),
   {
     loading: () => <Spinner />,
   }
