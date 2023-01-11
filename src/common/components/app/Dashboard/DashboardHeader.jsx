@@ -91,13 +91,15 @@ const DashboardHeader = () => {
               </div>
             </div>
           </div>
-          {settings && (
-            <AccountSettings
-              settings={settings}
-              setSettings={setSettings}
-              user={user}
-            />
-          )}
+          <div className='shadow-lg dark:shadow-gray-900'>
+            {settings && (
+              <AccountSettings
+                settings={settings}
+                setSettings={setSettings}
+                user={user}
+              />
+            )}
+          </div>
         </div>
       )}
     </Fragment>
