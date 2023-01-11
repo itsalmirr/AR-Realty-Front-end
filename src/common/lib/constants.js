@@ -1,7 +1,6 @@
 import { FaTwitterSquare, FaInstagramSquare } from 'react-icons/fa'
 
 export const NODE_ENV = process.env.NODE_ENV
-export const domain = process.env.NEXT_PUBLIC_DOMAIN
 export const API_URL = process.env.NEXT_BACKEND_API_URL
 export const GOOGLE_MAP_API = process.env.GOOGLE_MAP_API
 export const MAPBOX_API_TOKEN = process.env.MAPBOX_API_TOKEN

@@ -149,7 +149,7 @@ const LoginButton = ({ path }) => {
         <Link href={links.login} className='mr-4'>
           <button
             id='login'
-            className='bg-accent-light dark:bg-primary-dark dark:hover:bg-accent-darker hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
+            className='bg-accent-light shadow-md shadow-gray-500 dark:shadow-black dark:bg-primary-dark dark:hover:bg-accent-darker hover:text-gray-100 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded-md focus:outline-none focus:shadow-outline'
           >
             Log in
           </button>

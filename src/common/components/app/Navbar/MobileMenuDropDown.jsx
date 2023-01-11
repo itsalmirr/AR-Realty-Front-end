@@ -18,7 +18,11 @@ const MobileMenuDropDown = ({
   const { theme, setTheme, resolvedTheme } = useTheme()
 
   return (
-    <Disclosure.Panel as='nav' className='lg:hidden' aria-label='Global'>
+    <Disclosure.Panel
+      as='nav'
+      className='dark:shadow-lg dark:shadow-black lg:hidden'
+      aria-label='Global'
+    >
       <div className='pt-2 pb-3 px-2 space-y-1'>
         {navigation.map((path) => (
           <Link key={path.name} href={path.href}>
@@ -102,7 +106,7 @@ const MobileMenuDropDown = ({
       )}
       <button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className='flex justify-center items-center pl-6 pb-6'
+        className='block rounded-md py-2 px-3 ml-3 text-base font-medium text-accent-light hover:bg-gray-700 hover:text-white'
       >
         {resolvedTheme === 'dark' ? (
           <MdOutlineLightMode className='text-2xl text-yellow-500' />
