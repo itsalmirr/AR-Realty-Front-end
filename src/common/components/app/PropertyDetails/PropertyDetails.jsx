@@ -55,11 +55,11 @@ const PropertyDetails = ({ listing }) => {
     },
   ]
   return (
-    <div className='rounded-lg mb-12 bg-gray-200 dark:bg-textColor-100 overflow-hidden shadow divide-y sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
+    <div className='rounded-lg mb-12 bg-gray-200 dark:shadow-xl dark:shadow-black dark:bg-textColor-100 overflow-hidden shadow divide-y sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px'>
       {listingOverview.map((item) => (
         <div
           key={item.title}
-          className='relative bg-white dark:bg-background-darkLight group p-6'
+          className='relative bg-white dark:bg-background-dark group p-6'
         >
           <div className='flex items-center'>
             <span
