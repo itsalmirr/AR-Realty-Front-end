@@ -48,7 +48,7 @@ const AccountSettings = ({ settings, setSettings, user }) => {
     <Fragment>
       {settings && (
         <form
-          className='space-y-6 p-8 shadow-lg sm:space-y-5 sm:pt-10 px-4'
+          className='space-y-6 p-8 sm:space-y-5 sm:pt-10 px-4'
           onSubmit={onSubmit}
         >
           <div>
@@ -217,8 +217,15 @@ const AccountSettings = ({ settings, setSettings, user }) => {
               </div>
             </div>
           </div>
-          <div className='flex max-w-xs m-auto md:float-right md:m-8'>
-            <FormBtn type='submit' onClick={updateAccount} label='Save' />
+          <div className='flex justify-end'>
+            <FormBtn
+              type='submit'
+              classes={
+                'w-1/6 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white dark:bg-primary-dark dark:hover:bg-accent-darker bg-primary-light hover:bg-accent-light'
+              }
+              onClick={updateAccount}
+              label='Save'
+            />
           </div>
         </form>
       )}
