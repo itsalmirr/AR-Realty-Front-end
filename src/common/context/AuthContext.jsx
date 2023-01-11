@@ -2,8 +2,8 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { createContext, useEffect, useState } from 'react'
 
-import { logMeOut, getMe } from '@common/queries/auth'
 import { postRequest } from '@lib/requests'
+import { logMeOut, getMe } from '@common/queries/auth'
 
 const AuthContext = createContext()
 

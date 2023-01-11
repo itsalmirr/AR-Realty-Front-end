@@ -42,7 +42,6 @@ export const setCookies = (res, access, refresh) => {
 }
 
 export const removeCookies = (res) => {
-  // Remove cookies
   res.setHeader('Set-Cookie', [
     cookie.serialize('access', '', {
       httpOnly: true,
