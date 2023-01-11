@@ -12,7 +12,7 @@ const AOS = dynamic(() => import('@components/app/CustomAOS/CustomAOS'))
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Fragment>
-      <ThemeProvider attribute='class'>
+      <ThemeProvider attribute='class' enableSystem={true}>
         <AOS />
         <AuthProvider>
           <Component {...pageProps} />
