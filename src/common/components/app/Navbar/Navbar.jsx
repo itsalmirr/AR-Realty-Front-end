@@ -17,7 +17,7 @@ import { navigation, userNavigation, links, companyLogo } from '@lib/constants'
 const Navbar = () => {
   const router = useRouter()
   const currentRoute = router.pathname
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { setTheme, resolvedTheme } = useTheme()
   const { isLoading, isLoggedIn, logoutUser, user } = useContext(AuthContext)
 
   const handlePageChange = (path) => {
@@ -88,7 +88,7 @@ const Navbar = () => {
                   {!isLoggedIn && <LoginButton path={currentRoute} />}
                   <button
                     onClick={() =>
-                      setTheme(theme === 'dark' ? 'light' : 'dark')
+                      setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
                     }
                     className='flex justify-center items-center p-3'
                   >
