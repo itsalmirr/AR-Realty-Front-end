@@ -1,4 +1,5 @@
 import cookie from 'cookie'
+import { domain } from './constants'
 
 export const fetcher = (url) => fetch(url).then((r) => r.json())
 
@@ -49,6 +50,7 @@ export const removeCookies = (res) => {
       sameSite: 'strict',
       expires: new Date(0),
       path: '/',
+      domain: domain,
     }),
     cookie.serialize('refresh', '-', {
       httpOnly: true,
@@ -56,6 +58,7 @@ export const removeCookies = (res) => {
       sameSite: 'strict',
       expires: new Date(0),
       path: '/',
+      domain: domain,
     }),
   ])
 }
