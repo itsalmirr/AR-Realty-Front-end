@@ -78,7 +78,7 @@ const ListingPage = ({ setTitle }) => {
             <PropertyDetails listing={listing} />
             <div className='relative mt-12 lg:mt-24 lg:grid lg:grid-cols-2 lg:items-center lg:gap-8'>
               <PropertyDescription listing={listing} />
-              <div className='relative'>
+              <div className='relative dark:shadow-xl dark:shadow-black'>
                 <MapBox listing={listing} />
               </div>
             </div>

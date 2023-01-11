@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { MdOutlineSearch } from 'react-icons/md'
 
 const Search = () => {
+  const router = useRouter()
   const [search, setSearch] = useState('')
 
   const handleSearch = (e) => {
