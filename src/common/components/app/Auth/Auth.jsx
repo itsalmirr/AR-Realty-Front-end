@@ -19,7 +19,7 @@ const Auth = ({ Form, type }) => {
     <Fragment>
       <div className='flex justify-center items-center h-screen py-4 sm:px-6 lg:px-8'>
         <div className='lg:w-1/2'>
-          <div className='sm:mx-auto sm:w-full sm:max-w-md'>
+          <div className='sm:mx-auto  sm:w-full sm:max-w-md'>
             <Link href={links.home}>
               <Image
                 className='mx-auto h-16 w-18 rounded-lg dark:bg-background-dark bg-primary-light'
@@ -42,14 +42,14 @@ const Auth = ({ Form, type }) => {
               </Link>
             </p>
           </div>
-          <div className='mt-8 mb-44 sm:mx-auto sm:w-full sm:max-w-md'>
+          <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
             <div className='bg-white rounded-lg dark:bg-background-dark py-8 px-4 shadow-lg dark:shadow-black sm:rounded-lg sm:px-10'>
               {Form}
             </div>
           </div>
-          <Footer />
         </div>
       </div>
+      <Footer />
     </Fragment>
   )
 }
