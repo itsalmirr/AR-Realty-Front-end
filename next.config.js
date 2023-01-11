@@ -61,6 +61,7 @@ const nextConfig = {
     NEXT_BACKEND_API_URL: process.env.NEXT_BACKEND_API_URL,
     API_URL: process.env.API_URL,
     MAPBOX_STYLE: process.env.MAPBOX_STYLE,
+    NEXT_PUBLIC_DOMAIN: process.env.NEXT_PUBLIC_DOMAIN,
   },
 }
 
