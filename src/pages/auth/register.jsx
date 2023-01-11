@@ -14,7 +14,7 @@ const Register = () => {
       <div className='min-h-full flex flex-col justify-center py-4 sm:px-6 lg:px-8'>
         <div className='sm:mx-auto sm:w-full sm:max-w-md'>
           <Image
-            className='mx-auto h-12 w-15 rounded-lg bg-primary-light'
+            className='mx-auto h-12 w-15 rounded-lg dark:bg-background-dark bg-primary-light'
             width={120}
             height={150}
             src={logoImg}

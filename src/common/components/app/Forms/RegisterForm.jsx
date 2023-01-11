@@ -73,32 +73,7 @@ const RegisterForm = () => {
         passwordMatch={passwordMatch}
         {...{ passwordMatch, handlePasswordMatch }}
       />
-
-      <div className='flex items-center justify-between'>
-        <div className='flex items-center'>
-          <input
-            id='remember-me'
-            name='remember-me'
-            type='checkbox'
-            className='h-4 w-4 text-primary-light focus:ring-accent-light border-gray-300 rounded'
-          />
-          <label
-            htmlFor='remember-me'
-            className='ml-2 block text-sm dark:text-textColor-100 text-gray-900'
-          >
-            Remember me
-          </label>
-        </div>
-
-        <div className='text-sm'>
-          <a
-            href='#'
-            className='font-medium text-primary-light dark:text-primary-dark dark:hover:text-accent-dark hover:text-accent-light'
-          >
-            Forgot your password?
-          </a>
-        </div>
-      </div>
+      <br />
       <FormBtn type={'submit'} label='Register' />
     </form>
   )
