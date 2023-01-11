@@ -14,7 +14,7 @@ export const logMeIn = async (body, url, token) => {
 
 export const logMeOut = async () => {
   await fetch('/api/auth/logout', {
-    method: 'GET',
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },

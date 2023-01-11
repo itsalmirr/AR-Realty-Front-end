@@ -28,14 +28,14 @@ export const setCookies = (res, access, refresh) => {
     cookie.serialize('access', access, {
       httpOnly: true,
       secure: NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'strict',
       maxAge: 120 * 60 * 1000,
       path: '/',
     }),
     cookie.serialize('refresh', refresh, {
       httpOnly: true,
       secure: NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'strict',
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/',
     }),
@@ -47,7 +47,7 @@ export const removeCookies = (res) => {
     cookie.serialize('access', '', {
       httpOnly: true,
       secure: NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'strict',
       maxAge: 0,
       expires: new Date(0),
       path: '/',
@@ -55,7 +55,7 @@ export const removeCookies = (res) => {
     cookie.serialize('refresh', '', {
       httpOnly: true,
       secure: NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: 'strict',
       maxAge: 0,
       expires: new Date(0),
       path: '/',
