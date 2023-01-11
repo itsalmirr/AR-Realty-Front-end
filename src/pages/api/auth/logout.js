@@ -4,6 +4,7 @@ const logout = async (req, res) => {
   if (req.method === 'GET') {
     const cookies = parseCookie(req)
     if (!cookies.access || !cookies.refresh) {
+      console.log('YES!!')
       response(res, 403, false, 'User not logged in')
     }
 
