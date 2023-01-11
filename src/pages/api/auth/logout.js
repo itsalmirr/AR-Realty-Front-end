@@ -1,7 +1,7 @@
 import { removeCookies, parseCookie, response } from '@lib/helpers'
 
 const logout = async (req, res) => {
-  if (req.method === 'GET') {
+  if (req.method === 'POST') {
     const cookies = parseCookie(req)
     if (!cookies.access || !cookies.refresh) {
       console.log('YES!!')
