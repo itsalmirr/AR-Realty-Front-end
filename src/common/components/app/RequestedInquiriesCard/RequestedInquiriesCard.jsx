@@ -10,7 +10,7 @@ import { delInquiry } from '@components/app/Forms/lib'
 import { fetchUserInquiries } from '@common/queries/listings'
 import { MvpStar, Verified } from '@common/components/app/Marks'
 
-export const RequestedInquiriesCard = ({ links }) => {
+const RequestedInquiriesCard = ({ links }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [userInquiries, setUserInquiries] = useState([])
   const { data } = useSWR('/api/auth/dashboard', fetchUserInquiries)
