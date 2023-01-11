@@ -39,7 +39,10 @@ const InquiryForm = ({ user, listing, setInquiryMade }) => {
   return (
     <Fragment>
       <Divider text={'Make an inquiry'} />
-      <section className='relative' aria-labelledby='contact-heading'>
+      <section
+        className='relative dark:shadow-xl dark:shadow-black'
+        aria-labelledby='contact-heading'
+      >
         <div
           className='absolute w-full h-1/2 bg-warm-gray-50'
           aria-hidden='true'
