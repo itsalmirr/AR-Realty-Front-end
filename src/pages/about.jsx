@@ -28,7 +28,7 @@ const AboutPage = ({ realtors }) => {
           <Image
             width={588}
             height={392}
-            className='mx-auto rounded-lg w-full md:w-2/4 md:h-2/4'
+            className='mx-auto shadow-lg dark:shadow-black  rounded-lg w-full md:w-2/4 md:h-2/4'
             src='https://images.unsplash.com/photo-1515516089376-88db1e26e9c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
             alt='Construction Site'
           />

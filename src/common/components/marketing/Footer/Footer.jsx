@@ -8,7 +8,7 @@ const Footer = () => {
 
   return (
     <footer
-      className='bg-primary-light dark:bg-primary-dark mt-20'
+      className='bg-primary-light max-w-7xl mx-auto border-t dark:border-white/10 dark:bg-background-dark  mt-20'
       aria-labelledby='footer-heading'
     >
       <div className='mx-auto py-5 px-4 sm:px-6 lg:px-8'>
@@ -20,14 +20,14 @@ const Footer = () => {
                 key={item.name}
                 target='_blank'
                 rel='noopener noreferrer'
-                className='text-gray-200 my-4 hover:text-accent-dark'
+                className='text-gray-200 my-4 dark:text-textColor-icons hover:text-accent-light dark:hover:text-accent-dark'
               >
                 <span className='sr-only'>{item.name}</span>
                 {item.icon}
               </Link>
             ))}
           </div>
-          <p className='text-base text-gray-200 md:mt-0 md:order-1'>
+          <p className='text-base text-gray-200 dark:text-textColor-icons md:mt-0 md:order-1'>
             &copy; {currentYear} {siteTitle} - All rights reserved.
           </p>
         </div>

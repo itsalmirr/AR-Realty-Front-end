@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IoMdPricetag } from 'react-icons/io'
 import { FaBed, FaBath } from 'react-icons/fa'
-import { AiTwotoneCalendar } from 'react-icons/ai'
-import { BsHouseDoorFill } from 'react-icons/bs'
 import { MdLocationOn } from 'react-icons/md'
+import { BsHouseDoorFill } from 'react-icons/bs'
+import { AiTwotoneCalendar } from 'react-icons/ai'
 import { MvpStar, Verified } from '@common/components/app/Marks'
 
 import { formatPrice } from '@lib/helpers'
@@ -17,7 +17,7 @@ const ListingCard = ({ listing }) => {
       <li
         key={listing.id}
         data-aos='fade-up'
-        className='col-span-1 flex my-8 lg:my-4 flex-col text-center bg-white dark:bg-background-dark rounded-lg shadow-lg dark:shadow-black divide-y divide-gray-200'
+        className='col-span-1 flex my-6 lg:my-2 flex-col text-center bg-white dark:bg-background-dark rounded-lg shadow-lg dark:shadow-black divide-y divide-gray-200'
       >
         <div className='flex-1 flex flex-col'>
           <Link href={`/listings/${listing.slug}`}>

@@ -811,9 +811,9 @@ select {
   margin-bottom: 3rem;
 }
 
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .mx-2 {
@@ -1667,6 +1667,10 @@ select {
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-8 {
   padding: 2rem;
 }
@@ -1824,10 +1828,6 @@ select {
 
 .pt-4 {
   padding-top: 1rem;
-}
-
-.pl-6 {
-  padding-left: 1.5rem;
 }
 
 .pl-3 {
@@ -2140,6 +2140,12 @@ select {
   opacity: 0.5;
 }
 
+.shadow-lg {
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -2152,9 +2158,9 @@ select {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-lg {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+.shadow-md {
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
@@ -2162,6 +2168,11 @@ select {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.shadow-gray-500 {
+  --tw-shadow-color: #6b7280;
+  --tw-shadow: var(--tw-shadow-colored);
 }
 
 .ring-0 {
@@ -2314,11 +2325,6 @@ body {
   background-color: rgb(222 137 113 / var(--tw-bg-opacity));
 }
 
-.hover\:bg-gray-100:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
-}
-
 .hover\:bg-gray-50:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
@@ -2402,11 +2408,6 @@ body {
 .hover\:text-gray-700:hover {
   --tw-text-opacity: 1;
   color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.hover\:text-accent-dark:hover {
-  --tw-text-opacity: 1;
-  color: rgb(109 103 228 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
@@ -2502,6 +2503,10 @@ body {
   border-color: rgb(109 103 228 / var(--tw-border-opacity));
 }
 
+.dark .dark\:border-white\/10 {
+  border-color: rgb(255 255 255 / 0.1);
+}
+
 .dark .dark\:bg-background-dark {
   --tw-bg-opacity: 1;
   background-color: rgb(23 32 42 / var(--tw-bg-opacity));
@@ -2593,7 +2598,7 @@ body {
 
 .dark .dark\:text-textColor-icons {
   --tw-text-opacity: 1;
-  color: rgb(48 71 94 / var(--tw-text-opacity));
+  color: rgb(47 72 97 / var(--tw-text-opacity));
 }
 
 .dark .dark\:text-gray-800 {
@@ -2630,7 +2635,12 @@ body {
 
 .dark .dark\:hover\:bg-accent-darker:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(26 129 232 / var(--tw-bg-opacity));
+  background-color: rgb(23 88 153 / var(--tw-bg-opacity));
+}
+
+.dark .dark\:hover\:bg-gray-200:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .dark .dark\:hover\:bg-white:hover {
@@ -3161,9 +3171,9 @@ body {
     margin: 0px;
   }
 
-  .lg\:my-4 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+  .lg\:my-2 {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 
   .lg\:mt-0 {

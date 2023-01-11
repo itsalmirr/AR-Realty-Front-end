@@ -17,7 +17,7 @@ const ContactForm = ({
   handleSubmit,
 }) => {
   return (
-    <div className='relative max-w-xl mx-auto'>
+    <div className='relative max-w-xl shadow-lg p-4 dark:shadow-black rounded-lg mx-auto'>
       <SvgDecorator />
       <div className='text-center'>
         <h2 className='text-3xl font-extrabold tracking-tight dark:text-primary-dark text-gray-900 sm:text-4xl'>
