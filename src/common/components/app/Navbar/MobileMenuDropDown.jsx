@@ -15,7 +15,7 @@ const MobileMenuDropDown = ({
   logoutUser,
   classNames,
 }) => {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme()
 
   return (
     <Disclosure.Panel as='nav' className='lg:hidden' aria-label='Global'>
@@ -104,7 +104,7 @@ const MobileMenuDropDown = ({
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
         className='flex justify-center items-center pl-6 pb-6'
       >
-        {theme === 'dark' ? (
+        {resolvedTheme === 'dark' ? (
           <MdOutlineLightMode className='text-2xl text-yellow-500' />
         ) : (
           <MdDarkMode className='text-2xl' />

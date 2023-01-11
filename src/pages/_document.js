@@ -9,7 +9,7 @@ class MyDocument extends Document {
           <meta charSet='utf-8' />
           <link rel='icon' href='/favicon.ico' />
         </Head>
-        <body className='dark:bg-background-dark'>
+        <body className='dark:bg-background-dark bg-background-light'>
           <Main />
           <NextScript />
         </body>
