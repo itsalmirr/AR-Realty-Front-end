@@ -20,14 +20,14 @@ const Register = () => {
             src={logoImg}
             alt={'AR Realty Logo'}
           />
-          <h2 className='text-center text-3xl font-extrabold text-gray-900'>
+          <h2 className='text-center text-3xl mt-8 font-extrabold dark:text-textColor-100 text-gray-900'>
             Register for an account
           </h2>
-          <p className='mt-2 text-center text-sm text-gray-600'>
+          <p className='mt-2 text-center text-sm dark:text-gray-400 text-gray-600'>
             Already have an account?{' '}
             <Link
               href={links.login}
-              className='font-medium text-primaryLight hover:text-accent-light'
+              className='font-medium text-primary-light dark:text-primary-dark dark:hover:text-accent-dark hover:text-accent-light'
             >
               Log in
             </Link>
@@ -35,7 +35,7 @@ const Register = () => {
         </div>
 
         <div className='mt-2 mb-12 sm:mx-auto sm:w-full sm:max-w-md'>
-          <div className='bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10'>
+          <div className='bg-white dark:bg-background-dark dark:shadow-lg dark:shadow-black py-8 px-4 shadow sm:rounded-lg sm:px-10'>
             <RegisterForm />
           </div>
         </div>
