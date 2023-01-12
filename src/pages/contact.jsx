@@ -1,9 +1,9 @@
-import { submitInquiry } from '@common/queries/inquiries'
+import { toast } from 'react-toastify'
 import { useState } from 'react'
 
 import { Layout } from '@components/layouts'
+import { submitInquiry } from '@common/queries/inquiries'
 import { ContactInfo, ContactForm } from '@modules/contact'
-import { toast } from 'react-toastify'
 
 const clearForm = (setFormState) => {
   setFormState({
@@ -16,7 +16,7 @@ const clearForm = (setFormState) => {
   })
 }
 
-const ContactPage = () => {
+function ContactPage() {
   const [formState, setFormState] = useState({
     first_name: '',
     last_name: '',
