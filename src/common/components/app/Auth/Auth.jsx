@@ -1,22 +1,15 @@
-import { Fragment } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from 'next/link';
+import Image from 'next/image';
 
-import { links } from '@lib/constants'
-import { Footer } from '@components/marketing/Footer'
-
-const logoImg =
-  'https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
+import { links, logoImg } from '@lib/constants';
+import { Footer } from '@components/marketing/Footer';
 
 const Auth = ({ Form, type }) => {
-  const title =
-    type === 'login' ? 'Log in to your account' : 'Register for an account'
-  const link = type === 'login' ? 'register here' : 'log in here'
-  const logoImg =
-    'https://res.cloudinary.com/iamalmiir/image/upload/v1654999279/logoLarge_v9hemr.png'
+  const title = type === 'login' ? 'Log in to your account' : 'Register for an account';
+  const link = type === 'login' ? 'register here' : 'log in here';
 
   return (
-    <Fragment>
+    <>
       <div className='flex justify-center items-center h-screen py-4 sm:px-6 lg:px-8'>
         <div className='lg:w-1/2'>
           <div className='sm:mx-auto  sm:w-full sm:max-w-md'>
@@ -26,14 +19,15 @@ const Auth = ({ Form, type }) => {
                 src={logoImg}
                 width={90}
                 height={180}
-                alt={'AR Realty Logo'}
+                alt='AR Realty Logo'
               />
             </Link>
             <h2 className='mt-6 text-center text-2xl lg:text-3xl font-extrabold dark:text-textColor-200 text-gray-900'>
               {title}
             </h2>
             <p className='mt-2 text-center text-sm dark:text-textColor-100 text-gray-600'>
-              Or{' '}
+              Or
+              {'  '}
               <Link
                 href={type === 'login' ? links.register : links.login}
                 className='font-medium dark:text-primary-dark dark:hover:text-accent-dark text-primary-light hover:text-accent-light'
@@ -50,8 +44,8 @@ const Auth = ({ Form, type }) => {
         </div>
       </div>
       <Footer />
-    </Fragment>
-  )
-}
+    </>
+  );
+};
 
-export default Auth
+export default Auth;
