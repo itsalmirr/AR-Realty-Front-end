@@ -267,11 +267,6 @@
   dependencies:
     glob "7.1.7"
 
-"@next/font@^13.0.1":
-  version "13.0.5"
-  resolved "https://registry.yarnpkg.com/@next/font/-/font-13.0.5.tgz#db0ef389d926d3a8b649db8aa76e67f9502a478f"
-  integrity sha512-NrP4B8pxwerrkkuG/m7MQv0ks89Kk4Lc0kzbiRaYX+Xb0coDaw+I9T+g42aOHf8j8ta1vtKqb5XE1+troZ4CoQ==
-
 "@next/swc-android-arm-eabi@13.1.2":
   version "13.1.2"
   resolved "https://registry.yarnpkg.com/@next/swc-android-arm-eabi/-/swc-android-arm-eabi-13.1.2.tgz#eacc7757b480a8150c1aea748bf7892a4fc62f64"
@@ -1745,11 +1740,6 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-flow-bin@^0.196.3:
-  version "0.196.3"
-  resolved "https://registry.yarnpkg.com/flow-bin/-/flow-bin-0.196.3.tgz#b6df48986a2629f2c6a26fb79d73fc07c8056af0"
-  integrity sha512-pmvjlksi1CvkSnDHpcfhDFj/KC3hwSgE2OpzvugW57dfgqfHzqX1UfZIcScGWM5AmP/IeOsQCW383k3zIbEnrA==
-
 for-each@^0.3.3:
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/for-each/-/for-each-0.3.3.tgz#69b447e88a0a5d32c3e7084f3f1710034b21376e"
@@ -2008,11 +1998,6 @@ human-signals@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/human-signals/-/human-signals-3.0.1.tgz#c740920859dafa50e5a3222da9d3bf4bb0e5eef5"
   integrity sha512-rQLskxnM/5OCldHo+wNXbpVgDn5A17CUoKX+7Sokwaknlq7CdSnphy0W39GU8dw59XiCXmFXDg4fRuckQRKewQ==
-
-husky@^8.0.3:
-  version "8.0.3"
-  resolved "https://registry.yarnpkg.com/husky/-/husky-8.0.3.tgz#4936d7212e46d1dea28fef29bb3a108872cd9184"
-  integrity sha512-+dQSyqPh4x1hlO1swXBiNb2HzTDN1I2IGLQx1GrBuiqFJfoMrnZWwVmatvSiO+Iz8fBUnf+lekwNo4c2LlXItg==
 
 ieee754@^1.1.12, ieee754@^1.1.13:
   version "1.2.1"
