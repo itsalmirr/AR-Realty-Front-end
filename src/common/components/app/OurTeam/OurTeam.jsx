@@ -30,8 +30,8 @@ const OurTeam = () => {
           <p className='text-xl dark:text-textColor-100 text-gray-500'>
             Our team of realtors are here to help you find your dream home.
           </p>
-          {data && data.success === false && <ServerError />}
           {loading && <Spinner />}
+          {data && data.success === false && <ServerError />}
         </div>
         <ul className='mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3'>
           {realtors.map((realtor) => (
