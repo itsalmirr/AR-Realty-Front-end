@@ -12,10 +12,8 @@ const ListingById = () => {
   const [title, setTitle] = useState('')
 
   return (
-    <Layout title={title ? title : ' '}>
-      <div>
-        <ListingPage setTitle={setTitle} />
-      </div>
+    <Layout title={title || ' '}>
+      <ListingPage setTitle={setTitle} />
     </Layout>
   )
 }
