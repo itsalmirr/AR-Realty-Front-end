@@ -10,7 +10,7 @@ const realtorslisting = async (req, res) => {
     try {
       const fetchRes = await fetch(listingsUrl, {
         headers: {
-          realtor: realtor,
+          realtor,
         },
         method: 'GET',
         redirect: 'follow',
