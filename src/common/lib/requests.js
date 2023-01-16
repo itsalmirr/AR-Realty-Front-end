@@ -4,7 +4,7 @@ export const getRequest = async (url, token, ...args) => {
     headers: {
       'Content-Type': 'application/json',
       Authorization: token && `Bearer ${token}`,
-      Dashboard: args[0],
+      Dashboard: args[0] && args[0],
     },
   })
 

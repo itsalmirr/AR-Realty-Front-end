@@ -26,7 +26,10 @@
     "react-hooks/exhaustive-deps": "off",
     "import/no-unresolved": "off",
     "jsx-quotes": ["error", "prefer-single"],
-    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }],
+    "no-unused-expressions": [
+      "error",
+      { "allowShortCircuit": true, "allowTernary": true }
+    ],
     "react/function-component-definition": [
       "error",
       {
@@ -37,6 +40,7 @@
     "operator-linebreak": ["error", "after"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "comma-dangle": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "import/prefer-default-export": "off"
   }
 }

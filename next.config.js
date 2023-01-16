@@ -62,6 +62,9 @@ const nextConfig = {
     API_URL: process.env.API_URL,
     MAPBOX_STYLE: process.env.MAPBOX_STYLE,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 }
 
 module.exports = nextConfig

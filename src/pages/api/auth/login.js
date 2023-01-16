@@ -3,7 +3,7 @@ import { response, setCookies } from '@lib/helpers'
 import { postRequest, getRequest } from '@lib/requests'
 
 const login = async (req, res) => {
-  if (req.method == 'POST') {
+  if (req.method === 'POST') {
     try {
       const { username, password } = req.body
       const loginRes = await postRequest(`${API_URL}/api/token/`, {

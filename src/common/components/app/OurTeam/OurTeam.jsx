@@ -1,7 +1,25 @@
+import useSWR from 'swr'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
 
-const OurTeam = ({ realtors }) => {
+import { fetchRealtors } from '@common/queries/realtor'
+import { Spinner } from '@common/components/app/Spinner'
+import { ServerError } from '@common/components/app/Error'
+
+const OurTeam = () => {
+  const [loading, setLoading] = useState(true)
+  const [realtors, setRealtors] = useState([])
+  const { data } = useSWR('/api/realtor/realtors', fetchRealtors)
+
+  useEffect(() => {
+    if (data && data.success === true) {
+      const { results } = data.resData || []
+      setRealtors(results)
+    }
+    setLoading(false)
+  }, [data])
+
   return (
     <div className='mx-auto shadow-lg dark:shadow-black mb-12 max-w-7xl px-4 text-center sm:px-6 lg:px-8 lg:py-12'>
       <div className='space-y-8 sm:space-y-12'>
@@ -12,6 +30,8 @@ const OurTeam = ({ realtors }) => {
           <p className='text-xl dark:text-textColor-100 text-gray-500'>
             Our team of realtors are here to help you find your dream home.
           </p>
+          {data && data.success === false && <ServerError />}
+          {loading && <Spinner />}
         </div>
         <ul className='mx-auto space-y-16 sm:grid sm:grid-cols-2 sm:gap-16 sm:space-y-0 lg:max-w-5xl lg:grid-cols-3'>
           {realtors.map((realtor) => (

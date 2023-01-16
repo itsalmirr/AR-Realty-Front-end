@@ -3,7 +3,7 @@ import { postRequest } from '@lib/requests'
 import { response } from '@lib/helpers'
 
 const register = async (req, res) => {
-  if (req.method == 'POST') {
+  if (req.method === 'POST') {
     try {
       const data = await postRequest(`${API_URL}/api/user/register/`, req.body)
       response(res, 200, true, data.message, data)
