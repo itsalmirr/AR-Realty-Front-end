@@ -15,19 +15,17 @@ const RequestedInquiries = dynamic(
   }
 )
 
-const DashboardPage = () => {
-  return (
-    <Layout title='Dashboard'>
-      <header>
-        <DashboardHeader />
-      </header>
-      <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
-        <Divider text='Your Inquiries' />
-        <RequestedInquiries links={links} />
-      </div>
-    </Layout>
-  )
-}
+const DashboardPage = () => (
+  <Layout title='Dashboard'>
+    <header>
+      <DashboardHeader />
+    </header>
+    <div className='container mx-auto sm:px-6 lg:px-8 mt-12'>
+      <Divider text='Your Inquiries' />
+      <RequestedInquiries links={links} />
+    </div>
+  </Layout>
+)
 
 export default DashboardPage
 
