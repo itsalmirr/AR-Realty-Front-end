@@ -30,7 +30,7 @@ const MainSection = () => {
           <div className='mt-4 grid grid-cols-1 gap-y-12 gap-x-6 border-t dark:border-primary-dark border-gray-200 sm:grid-cols-2'>
             {metrics.map((item) => (
               <p key={item.id}>
-                <span className='block mt-4 text-2xl font-bold dark:text-primary-dark text-primary-light'>
+                <span className='block mt-4 text-2xl font-bold font-serif dark:text-primary-dark text-primary-light'>
                   {item.stat}
                 </span>
                 <span className='mt-2 block text-base text-gray-500 dark:text-textColor-100'>

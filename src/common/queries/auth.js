@@ -41,7 +41,6 @@ export const updateMe = async (body, url, token) => {
     },
     body: JSON.stringify(body),
   })
-
   const data = await res.json()
   return data
 }
