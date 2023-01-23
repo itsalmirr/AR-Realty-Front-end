@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 import AuthContext from '@context/AuthContext'
 import { FormBtn, FormInput } from './FormComponents'
 
-export const LoginForm = () => {
+const LoginForm = () => {
   const { loginUser } = useContext(AuthContext)
   const [userName, setUserName] = useState('')
   const [password, setPassword] = useState('')
@@ -63,3 +63,5 @@ export const LoginForm = () => {
     </form>
   )
 }
+
+export default LoginForm

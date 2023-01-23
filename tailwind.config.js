@@ -16,6 +16,10 @@ module.exports = {
         accentLight: '#0A0A0A',
         mvpColor: '#FFB100',
       },
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif'],
+        serif: ['Alica', 'serif'],
+      },
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

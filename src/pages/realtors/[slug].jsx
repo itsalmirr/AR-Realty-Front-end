@@ -1,30 +1,32 @@
-import useSWR from 'swr';
-import { Layout } from '@components/layouts';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr'
+import { Layout } from '@components/layouts'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
-import { Divider } from '@components/app/Divider';
-import { Spinner } from '@components/app/Spinner';
-import { getRealtorData } from '@common/queries/realtor';
-import { RealtorListings, RealtorDashboard } from '@modules/realtor';
+import { Divider } from '@components/app/Divider'
+import { Spinner } from '@components/app/Spinner'
+import { getRealtorData } from '@common/queries/realtor'
+import { RealtorListings, RealtorDashboard } from '@modules/realtor'
 
 const RealtorsListing = () => {
-  const router = useRouter();
-  const [realtor, setRealtorData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const { slug } = router.query;
+  const router = useRouter()
+  const [realtor, setRealtorData] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const { slug } = router.query
 
-  const { data, error } = useSWR(slug ? '/api/realtor/info' : null, (url) => getRealtorData(url, slug));
+  const { data, error } = useSWR(slug ? '/api/realtor/info' : null, (url) =>
+    getRealtorData(url, slug)
+  )
 
   useEffect(() => {
     if (data) {
-      setRealtorData(data.resData);
+      setRealtorData(data.resData)
     }
-    setLoading(false);
-  }, [data, slug]);
+    setLoading(false)
+  }, [data, slug])
 
   if (error || !data || loading) {
-    return <Spinner />;
+    return <Spinner />
   }
   return (
     <Layout>
@@ -41,7 +43,7 @@ const RealtorsListing = () => {
         </>
       )}
     </Layout>
-  );
-};
+  )
+}
 
-export default RealtorsListing;
+export default RealtorsListing

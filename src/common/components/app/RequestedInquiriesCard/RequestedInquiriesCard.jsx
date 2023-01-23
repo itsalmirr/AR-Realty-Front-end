@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { FaPhone } from 'react-icons/fa'
 import { MdEmail, MdDelete } from 'react-icons/md'
-import { useState, useEffect, Fragment } from 'react'
+import { useState, useEffect } from 'react'
 
 import { formatPrice } from '@lib/helpers'
 import { delInquiry } from '@components/app/Forms/lib'
@@ -23,12 +23,9 @@ const RequestedInquiriesCard = ({ links }) => {
   }, [data])
 
   return (
-    <Fragment>
+    <>
       {userInquiries.length > 0 && !isLoading && (
-        <ul
-          role='list'
-          className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'
-        >
+        <ul className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3'>
           {userInquiries.map((inquiry) => (
             <li
               key={inquiry.id}
@@ -49,7 +46,7 @@ const RequestedInquiriesCard = ({ links }) => {
                         {inquiry.address} - {inquiry.city}, {inquiry.state}
                       </p>
                       <span className='flex-shrink-0 inline-block px-2 py-0.5 text-purple-800 text-xs font-medium bg-purple-100 rounded-full'>
-                        {'Listing'}
+                        Listing
                       </span>
                     </div>
                   </Link>
@@ -66,7 +63,7 @@ const RequestedInquiriesCard = ({ links }) => {
                     width={40}
                     height={40}
                     src={inquiry.photo_main}
-                    alt={inquiry.address + ' photo'}
+                    alt={`${inquiry.address} - ${inquiry.city}, ${inquiry.state}`}
                   />
                 </Link>
               </div>
@@ -98,6 +95,7 @@ const RequestedInquiriesCard = ({ links }) => {
                   </div>
                   <div className='w-0 flex-1 flex'>
                     <button
+                      type='button'
                       onClick={() =>
                         delInquiry(inquiry.id, setUserInquiries, userInquiries)
                       }
@@ -126,13 +124,16 @@ const RequestedInquiriesCard = ({ links }) => {
           </p>
 
           <Link href={links.listings}>
-            <button className='mt-4 dark:bg-primary-dark bg-primary-light dark:hover:bg-accent-darker hover:bg-accent-light text-white font-bold py-2 px-4 rounded'>
+            <button
+              className='mt-4 dark:bg-primary-dark bg-primary-light dark:hover:bg-accent-darker hover:bg-accent-light text-white font-bold py-2 px-4 rounded'
+              type='button'
+            >
               Browse Listings
             </button>
           </Link>
         </div>
       )}
-    </Fragment>
+    </>
   )
 }
 

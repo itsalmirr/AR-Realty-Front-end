@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/alice": "^4.5.10",
+    "@fontsource/aref-ruqaa": "^4.5.11",
     "@fontsource/montserrat": "^4.5.13",
     "@headlessui/react": "^1.7.3",
     "@next/bundle-analyzer": "^13.0.1",
