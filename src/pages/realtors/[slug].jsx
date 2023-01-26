@@ -1,7 +1,7 @@
 import useSWR from 'swr'
 import { Layout } from '@components/layouts'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
@@ -12,13 +12,17 @@ const RealtorsListing = () => {
   const router = useRouter()
   const [realtor, setRealtorData] = useState(null)
   const [loading, setLoading] = useState(true)
-  const { slug } = router.query
+  let slug = useRef(null)
 
   const { data, error } = useSWR(slug ? '/api/realtor/info' : null, (url) =>
     getRealtorData(url, slug)
   )
 
   useEffect(() => {
+    if (router.query.slug) {
+      slug.current = router.query.slug
+    }
+
     if (data) {
       setRealtorData(data.resData)
     }
