@@ -19,7 +19,6 @@ const RealtorsListing = () => {
   )
 
   useEffect(() => {
-    slug = router.query.slug
     if (data) {
       setRealtorData(data.resData)
     }

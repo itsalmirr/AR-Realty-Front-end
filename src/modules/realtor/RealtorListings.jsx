@@ -12,7 +12,7 @@ const RealtorListings = () => {
   const [loading, setLoading] = useState(true)
   const { slug } = router.query
 
-  const { data, error } = useSWR('/api/realtor', (url) =>
+  const { data, error } = useSWR(slug ? '/api/realtor' : null, (url) =>
     getRealtorData(url, slug)
   )
 
