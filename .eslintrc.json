@@ -2,7 +2,6 @@
   "extends": [
     "next",
     "airbnb",
-    "airbnb/hooks",
     "eslint:recommended",
     "plugin:import/errors",
     "next/core-web-vitals",
@@ -11,7 +10,7 @@
     "plugin:import/recommended",
     "plugin:react-hooks/recommended"
   ],
-  "plugins": ["react", "import", "react-hooks"],
+  "plugins": ["react", "react-hooks", "airbnb"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true,
