@@ -1,2 +1,2 @@
-export { default as RealtorListings } from './RealtorListings'
-export { default as RealtorDashboard } from './RealtorDashboard'
+// export { default as RealtorListings } from './Realtor'
+// export { default as RealtorDashboard } from './RealtorDashboard'

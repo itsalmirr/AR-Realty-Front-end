@@ -1,13 +1,11 @@
 import Image from 'next/image'
-import { Fragment } from 'react'
 import { MdMail, MdLocalPhone } from 'react-icons/md'
 import { MvpStar, Verified } from '@components/app/Marks'
 
 const coverPicture = {
   url: 'https://res.cloudinary.com/iamalmiir/image/upload/v1672591034/towfiqu-barbhuiya-05XcCfTOzN4-unsplash_1_kddkly_haluk4.webp',
 }
-
-const RealtorsDashboard = ({ realtor }) => (
+const RealtorDashboard = ({ realtor }) => (
   <>
     <div>
       <Image
@@ -76,4 +74,4 @@ const RealtorsDashboard = ({ realtor }) => (
   </>
 )
 
-export default RealtorsDashboard
+export default RealtorDashboard
