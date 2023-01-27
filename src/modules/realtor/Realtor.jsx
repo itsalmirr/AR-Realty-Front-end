@@ -2,7 +2,7 @@ import useSWR from 'swr'
 
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-
+import { Layout } from '@components/layouts'
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
 import { getRealtorData } from '@common/queries/realtor'
@@ -46,7 +46,7 @@ export const RealtorListings = () => {
   )
 }
 
-export const RealtorsDashboard = () => {
+const RealtorProfile = () => {
   const router = useRouter()
   const [loading, setLoading] = useState(true)
   const [realtor, setRealtorData] = useState(null)
@@ -70,13 +70,18 @@ export const RealtorsDashboard = () => {
   }
 
   return (
-    <>
+    <Layout title={realtor ? realtor.full_name : ''}>
       {realtor ? (
         <>
           <RealtorDashboard realtor={realtor} />
           <Divider text={`Properties listed by ${realtor.full_name}`} />
         </>
       ) : null}
-    </>
+      <main>
+        <RealtorListings />
+      </main>
+    </Layout>
   )
 }
+
+export default RealtorProfile
