@@ -10,10 +10,10 @@ const RealtorListings = () => {
   const router = useRouter()
   const [listings, setListings] = useState(null)
   const [loading, setLoading] = useState(true)
-  const { slug } = router.query
 
-  const { data, error } = useSWR(slug ? '/api/realtor' : null, (url) =>
-    getRealtorData(url, slug)
+  const { data, error } = useSWR(
+    router.query.slug ? '/api/realtor' : null,
+    (url) => getRealtorData(url, router.query.slug)
   )
 
   useEffect(() => {
