@@ -12,7 +12,7 @@ const RealtorsListing = () => {
   const router = useRouter()
   const [realtor, setRealtorData] = useState(null)
   const [loading, setLoading] = useState(true)
-  const { slug } = router.query
+  let { slug } = router.query
 
   const { data, error } = useSWR(slug ? '/api/realtor/info' : null, (url) =>
     getRealtorData(url, slug)
@@ -28,8 +28,9 @@ const RealtorsListing = () => {
   if (error || !data || loading) {
     return <Spinner />
   }
+
   return (
-    <Layout>
+    <Layout title={realtor ? realtor.full_name : ''}>
       {realtor && (
         <>
           <header>
