@@ -2,9 +2,9 @@ import { API_URL } from '@lib/constants'
 import { response } from '@lib/helpers'
 
 const realtorslisting = async (req, res) => {
-  if (req.method === 'GET' && req.headers.realtor) {
-    const { realtor } = req.headers
-    const realtorUrl = `${API_URL}/api/realtors/${realtor}`
+  if (req.method === 'GET') {
+    const { slug } = req.query
+    const realtorUrl = `${API_URL}/api/realtor/info/${slug}`
 
     try {
       const fetchRes = await fetch(realtorUrl, {

@@ -1,8 +1,5 @@
-export const getRealtorData = async (url, slug) => {
+export const getRealtorData = async (url) => {
   const res = await fetch(url, {
-    headers: {
-      realtor: slug,
-    },
     method: 'GET',
     redirect: 'follow',
   })
