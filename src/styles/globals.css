@@ -10,10 +10,6 @@ body {
   scroll-behavior: smooth;
 }
 
-.without-ring {
-  @apply focus:ring-0 focus:ring-offset-0;
-}
-
 .listing-page-cover {
   background-image: url('https://res.cloudinary.com/iamalmiir/image/upload/v1672590955/verne-ho-0LAJfSNa-xQ-unsplash_qfkws7_ukfef5.webp');
   background-size: cover;
@@ -33,4 +29,11 @@ body {
   background-color: rgba(0, 0, 0, 0.8);
   /* Round the corners */
   border-radius: 1rem;
+}
+
+.item {
+  stroke: #fff;
+  stroke-width: 0.1;
+  stroke-linejoin: round;
+  stroke-linecap: square;
 }
