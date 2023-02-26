@@ -93,9 +93,9 @@ const Navbar = () => {
                     className='flex justify-center items-center p-3'
                   >
                     {resolvedTheme === 'dark' ? (
-                      <MdOutlineLightMode className='text-2xl text-yellow-500' />
+                      <MdOutlineLightMode className='text-2xl text-gray-300' />
                     ) : (
-                      <MdDarkMode className='text-2xl text-slate-800' />
+                      <MdDarkMode className='text-2xl text-white' />
                     )}
                   </button>
                 </div>
