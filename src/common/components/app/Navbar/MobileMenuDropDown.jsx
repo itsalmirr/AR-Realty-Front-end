@@ -109,9 +109,9 @@ const MobileMenuDropDown = ({
         className='block rounded-md py-2 px-3 ml-3 text-base font-medium text-accent-light hover:bg-gray-700 hover:text-white'
       >
         {resolvedTheme === 'dark' ? (
-          <MdOutlineLightMode className='text-2xl text-yellow-500' />
+          <MdOutlineLightMode className='text-2xl text-gray-300' />
         ) : (
-          <MdDarkMode className='text-2xl' />
+          <MdDarkMode className='text-2xl text-white' />
         )}
       </button>
     </Disclosure.Panel>
