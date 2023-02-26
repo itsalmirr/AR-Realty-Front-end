@@ -12,7 +12,7 @@ const Auth = ({ Form, type }) => {
   return (
     <>
       <div className='flex justify-center mt-20 h-screen py-4 sm:px-6 lg:px-8'>
-        <div className='lg:w-1/4'>
+        <div className='w-80 lg:w-1/4'>
           <div className='sm:mx-auto  sm:w-full sm:max-w-md'>
             <Link href={links.home}>
               <Image
