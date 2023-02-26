@@ -97,7 +97,7 @@ const MobileMenuDropDown = ({
             <Disclosure.Button
               as='p'
               href='#'
-              className='block rounded-md py-2 px-3 text-base font-medium text-accent-light hover:bg-gray-700 hover:text-white'
+              className='block rounded-md py-2 px-3 text-base font-medium text-accent-light dark:text-primary-light hover:bg-gray-700 hover:text-white'
             >
               Login
             </Disclosure.Button>
@@ -106,7 +106,7 @@ const MobileMenuDropDown = ({
       )}
       <button
         onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-        className='block rounded-md py-2 px-3 ml-3 text-base font-medium text-accent-light hover:bg-gray-700 hover:text-white'
+        className='block rounded-md py-2 px-3 ml-3 text-base font-medium bg-transparent'
       >
         {resolvedTheme === 'dark' ? (
           <MdOutlineLightMode className='text-2xl text-gray-300' />
