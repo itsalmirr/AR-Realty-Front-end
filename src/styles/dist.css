@@ -1072,10 +1072,6 @@ select {
   height: 9rem;
 }
 
-.h-11 {
-  height: 2.75rem;
-}
-
 .min-h-full {
   min-height: 100%;
 }
