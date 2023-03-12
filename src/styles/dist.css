@@ -1096,6 +1096,10 @@ select {
   width: 2rem;
 }
 
+.w-80 {
+  width: 20rem;
+}
+
 .w-24 {
   width: 6rem;
 }
@@ -1150,10 +1154,6 @@ select {
 
 .w-36 {
   width: 9rem;
-}
-
-.w-80 {
-  width: 20rem;
 }
 
 .min-w-0 {
@@ -2470,6 +2470,11 @@ body {
 .focus\:text-gray-900:focus {
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
+}
+
+.focus\:text-primary-dark:focus {
+  --tw-text-opacity: 1;
+  color: rgb(54 134 214 / var(--tw-text-opacity));
 }
 
 .focus\:placeholder-gray-500:focus::-moz-placeholder {

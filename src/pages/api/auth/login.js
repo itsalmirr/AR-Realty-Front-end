@@ -11,6 +11,7 @@ const login = async (req, res) => {
         password,
       })
       if (loginRes.status === 401) {
+        response(res, 401, false, 'Invalid credentials')
         res.end()
       }
       const { access, refresh } = loginRes
