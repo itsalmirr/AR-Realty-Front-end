@@ -55,9 +55,7 @@ export const AuthProvider = ({ children }) => {
 
       if (!data.ok) {
         throw 'Log in failed'
-      }
-
-      if (data.success) {
+      } else {
         setUser(data.resData)
         setIsLoggedIn(true)
         toast.success(data.message)
