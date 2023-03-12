@@ -52,6 +52,11 @@ export const AuthProvider = ({ children }) => {
     try {
       setIsLoading(true)
       const data = await postRequest('/api/auth/login', body)
+
+      if (!data.ok) {
+        throw 'Log in failed'
+      }
+
       if (data.success) {
         setUser(data.resData)
         setIsLoggedIn(true)
@@ -59,7 +64,8 @@ export const AuthProvider = ({ children }) => {
         router.push('/account/dashboard')
       }
     } catch (err) {
-      toast.error('Login failed - check your credentials')
+      toast.info("If you don't have an account, please register")
+      toast.error(err)
     }
     setIsLoading(false)
   }

@@ -1,7 +1,5 @@
 import { HiMail } from 'react-icons/hi'
-import {
-  FaPhone, FaGithub, FaInstagram, FaTwitter
-} from 'react-icons/fa'
+import { FaPhone, FaGithub, FaInstagram, FaTwitter } from 'react-icons/fa'
 
 import { links } from '@common/lib/constants'
 
@@ -24,7 +22,8 @@ export const FormInput = ({
       {!rest.passwordMatch &&
         name === 'passwordConfirmation' &&
         value.length !== 0 && (
-          <span className='text-red-500'>Passwords do not match</span>)}
+          <span className='text-red-500'>Passwords do not match</span>
+        )}
     </label>
     <div className='mt-1'>
       <input
@@ -38,7 +37,7 @@ export const FormInput = ({
         placeholder={placeholder}
         onKeyUp={rest.handlePasswordMatch}
         value={value}
-        className='block w-full border-0 border-b border-transparent dark:bg-background-darkLight bg-gray-50 dark:focus:border-primary-dark rounded-lg focus:border-accent-light focus:ring-0 sm:text-sm'
+        className='block w-full border-0 border-b border-transparent dark:bg-background-darkLight bg-gray-50 dark:focus:border-primary-dark rounded-lg focus:border-accent-light focus:text-primary-dark focus:ring-0 sm:text-sm'
       />
     </div>
   </div>
