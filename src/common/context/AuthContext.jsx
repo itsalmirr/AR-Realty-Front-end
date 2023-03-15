@@ -53,8 +53,8 @@ export const AuthProvider = ({ children }) => {
       setIsLoading(true)
       const data = await postRequest('/api/auth/login', body)
 
-      if (!data.ok) {
-        throw 'Log in failed'
+      if (data.ok === false) {
+        throw 'Invalid username or password'
       } else {
         setUser(data.resData)
         setIsLoggedIn(true)
