@@ -2467,14 +2467,14 @@ body {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.focus\:text-gray-900:focus {
-  --tw-text-opacity: 1;
-  color: rgb(17 24 39 / var(--tw-text-opacity));
-}
-
 .focus\:text-primary-dark:focus {
   --tw-text-opacity: 1;
   color: rgb(54 134 214 / var(--tw-text-opacity));
+}
+
+.focus\:text-gray-900:focus {
+  --tw-text-opacity: 1;
+  color: rgb(17 24 39 / var(--tw-text-opacity));
 }
 
 .focus\:placeholder-gray-500:focus::-moz-placeholder {
