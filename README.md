@@ -23,7 +23,7 @@ npm i
 
 ## Description
 
-<image src='https://res.cloudinary.com/iamalmiir/image/upload/v1679950665/ar-realty-large_zhdobd.gif' width='100%' height='auto' />
+<image src='https://res.cloudinary.com/iamalmiir/image/upload/v1679960441/overview_AdobeExpress_li859n.gif' width='100%' height='auto' />
 
 <br />
 This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors for specific listings.
