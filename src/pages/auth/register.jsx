@@ -1,5 +1,4 @@
-import { Auth } from '@components/app/Auth'
-import { RegisterForm } from '@components/app/Forms'
+import { RegisterForm, Auth } from '@components/app/Forms'
 
 const Register = () => {
   return <Auth Form={<RegisterForm />} type='register' />

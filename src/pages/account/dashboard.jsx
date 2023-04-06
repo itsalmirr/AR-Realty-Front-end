@@ -1,18 +1,7 @@
-import dynamic from 'next/dynamic'
-
 import { links } from '@lib/constants'
-import { Spinner } from '@components/app/Spinner'
 import { Dashboard } from '@modules/dashboard'
 
-const Layout = dynamic(() => import('@components/layouts/Layout'), {
-  loading: () => <Spinner />,
-})
-
-const DashboardPage = () => (
-  <Layout title='Dashboard'>
-    <Dashboard />
-  </Layout>
-)
+const DashboardPage = () => <Dashboard />
 
 export default DashboardPage
 
