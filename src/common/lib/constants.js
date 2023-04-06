@@ -40,12 +40,24 @@ export const links = {
   github: 'https://github.com/iamalmiir',
 }
 
+export const pageTitles = [
+  { name: 'Home', href: '/' },
+  { name: 'Buy', href: '/listings' },
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Sign out', href: '/signout' },
+  { name: 'Dashboard', href: '/account/dashboard' },
+  { name: 'Log in', href: '/auth/login' },
+  { name: 'Register', href: '/auth/register' },
+]
+
 export const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'Buy', href: '/listings', current: false },
   { name: 'About', href: '/about', current: false },
   { name: 'Contact', href: '/contact', current: false },
 ]
+
 export const userNavigation = [
   { name: 'Dashboard', href: '/account/dashboard' },
   { name: 'Sign out', href: '/signout' },

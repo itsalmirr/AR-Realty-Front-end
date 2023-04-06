@@ -908,10 +908,6 @@ select {
   margin-bottom: 2rem;
 }
 
-.mt-20 {
-  margin-top: 5rem;
-}
-
 .-mt-12 {
   margin-top: -3rem;
 }
@@ -926,6 +922,10 @@ select {
 
 .-ml-1 {
   margin-left: -0.25rem;
+}
+
+.mt-20 {
+  margin-top: 5rem;
 }
 
 .mb-4 {
@@ -1016,20 +1016,20 @@ select {
   height: 2rem;
 }
 
-.h-screen {
-  height: 100vh;
-}
-
-.h-12 {
-  height: 3rem;
-}
-
 .h-24 {
   height: 6rem;
 }
 
 .h-32 {
   height: 8rem;
+}
+
+.h-12 {
+  height: 3rem;
+}
+
+.h-screen {
+  height: 100vh;
 }
 
 .h-full {
@@ -1096,10 +1096,6 @@ select {
   width: 2rem;
 }
 
-.w-80 {
-  width: 20rem;
-}
-
 .w-24 {
   width: 6rem;
 }
@@ -1114,6 +1110,10 @@ select {
 
 .w-1\/6 {
   width: 16.666667%;
+}
+
+.w-80 {
+  width: 20rem;
 }
 
 .w-1\/2 {
@@ -1820,6 +1820,11 @@ select {
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.px-12 {
+  padding-left: 3rem;
+  padding-right: 3rem;
 }
 
 .pb-5 {
@@ -2712,14 +2717,14 @@ body {
   background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
-.dark .dark\:hover\:text-accent-dark:hover {
-  --tw-text-opacity: 1;
-  color: rgb(109 103 228 / var(--tw-text-opacity));
-}
-
 .dark .dark\:hover\:text-primary-dark:hover {
   --tw-text-opacity: 1;
   color: rgb(54 134 214 / var(--tw-text-opacity));
+}
+
+.dark .dark\:hover\:text-accent-dark:hover {
+  --tw-text-opacity: 1;
+  color: rgb(109 103 228 / var(--tw-text-opacity));
 }
 
 .dark .dark\:hover\:text-background-dark:hover {
@@ -2825,12 +2830,12 @@ body {
     height: 8rem;
   }
 
-  .sm\:w-full {
-    width: 100%;
-  }
-
   .sm\:w-32 {
     width: 8rem;
+  }
+
+  .sm\:w-full {
+    width: 100%;
   }
 
   .sm\:w-auto {
@@ -3310,12 +3315,20 @@ body {
     width: 0px;
   }
 
+  .lg\:w-full {
+    width: 100%;
+  }
+
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
 
   .lg\:max-w-5xl {
     max-width: 64rem;
+  }
+
+  .lg\:max-w-full {
+    max-width: 100%;
   }
 
   .lg\:flex-1 {
@@ -3421,14 +3434,14 @@ body {
     line-height: 1;
   }
 
-  .lg\:text-2xl {
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
   .lg\:text-4xl {
     font-size: 2.25rem;
     line-height: 2.5rem;
+  }
+
+  .lg\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .lg\:text-sm {
