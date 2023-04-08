@@ -18,10 +18,12 @@ const MyApp = ({ Component, pageProps }) => {
     return path.href === router.pathname
   }
 
-  const titleMessage = `${pageTitles.find(currentPath).name} | AR Realty`
+  const titleMessage = `${
+    pageTitles.find(currentPath) ? pageTitles.find(currentPath).name : ''
+  } | AR Realty`
 
   return (
-    <ThemeProvider attribute='class' enableSystem>
+    <ThemeProvider attribute='class' enableSystem={true}>
       <AOS />
       <AuthProvider>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
