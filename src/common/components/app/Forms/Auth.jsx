@@ -11,7 +11,7 @@ const Auth = ({ Form, type }) => {
 
   return (
     <>
-      <div className='flex justify-center mt-20 h-screen py-4 sm:px-6 lg:px-8'>
+      <div className='flex justify-center mt-20 h-screen py-4'>
         <div className='w-80 lg:w-1/4'>
           <div className='sm:mx-auto  sm:w-full sm:max-w-md'>
             <Link href={links.home}>
@@ -37,8 +37,8 @@ const Auth = ({ Form, type }) => {
               </Link>
             </p>
           </div>
-          <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-            <div className='bg-white rounded-lg dark:bg-background-dark py-8 px-4 shadow-lg dark:shadow-black sm:rounded-lg sm:px-10'>
+          <div className='mt-8'>
+            <div className='bg-white rounded-lg dark:bg-background-dark py-8 shadow-lg dark:shadow-black sm:rounded-lg px-6'>
               {Form}
             </div>
           </div>
