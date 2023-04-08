@@ -1,6 +1,5 @@
 import { links } from '@lib/constants'
-import { Auth } from '@components/app/Auth'
-import { LoginForm } from '@components/app/Forms'
+import { LoginForm, Auth } from '@components/app/Forms'
 
 const LoginPage = () => <Auth Form={<LoginForm />} type='login' />
 

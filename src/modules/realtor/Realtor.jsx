@@ -2,7 +2,6 @@ import useSWR from 'swr'
 
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { Layout } from '@components/layouts'
 import { Divider } from '@components/app/Divider'
 import { Spinner } from '@components/app/Spinner'
 import { getRealtorData } from '@common/queries/realtor'
@@ -70,7 +69,7 @@ const RealtorProfile = () => {
   }
 
   return (
-    <Layout title={realtor ? realtor.full_name : ''}>
+    <>
       {realtor ? (
         <>
           <RealtorDashboard realtor={realtor} />
@@ -80,7 +79,7 @@ const RealtorProfile = () => {
       <main>
         <RealtorListings />
       </main>
-    </Layout>
+    </>
   )
 }
 

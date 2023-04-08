@@ -23,7 +23,11 @@ npm i
 
 ## Description
 
+<<<<<<< HEAD
 <image src='https://res.cloudinary.com/iamalmiir/image/upload/v1679960441/overview_AdobeExpress_li859n.gif' width='100%' height='auto' />
+=======
+<video src="https://res.cloudinary.com/iamalmiir/video/upload/v1679952569/overview_llnqcx.mp4" width="100%" height="auto" controls preload></video>
+>>>>>>> main
 
 <br />
 This is the frontend part of the AR Realty project. Where users can browse listings safely and fast. Users can create an account and after that add favorite listings and send inqueries to realtors for specific listings.
@@ -35,7 +39,11 @@ This is the frontend part of the AR Realty project. Where users can browse listi
 - Users can send an inquery to realtor about specific listing. Realtor will get an email with all information about listing and user.
 - Users can see all their inqueries and realtors on their profile page
 
+<<<<<<< HEAD
 <image src='https://res.cloudinary.com/iamalmiir/image/upload/v1679956385/login1_l6mqwg.gif' width='100%' height='auto' />
+=======
+<video src="https://res.cloudinary.com/iamalmiir/video/upload/v1679953046/login_lyme6p.mp4" width="100%" height="auto" controls preload></video>
+>>>>>>> main
 
 ## Technologies
 
