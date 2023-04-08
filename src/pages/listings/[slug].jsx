@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import dynamic from 'next/dynamic'
 
 import { Spinner } from '@components/app/Spinner'
