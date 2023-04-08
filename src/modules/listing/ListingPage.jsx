@@ -33,7 +33,7 @@ const UserNotSigned = dynamic(
   }
 )
 
-const ListingPage = ({ setTitle }) => {
+const ListingPage = () => {
   const router = useRouter()
   const { slug } = router.query
   const [listing, setListing] = useState(null)
@@ -59,10 +59,6 @@ const ListingPage = ({ setTitle }) => {
       inquiryStatus.success === true &&
       setInquiryMade(inquiryStatus.resData === 'true')
   }, [slug, inquiryStatus, listingData])
-
-  if (listing && listing.title) {
-    setTitle(listing.title)
-  }
 
   return (
     <div className='max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl'>

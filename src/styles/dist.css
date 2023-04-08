@@ -1822,11 +1822,6 @@ select {
   padding-right: 1.25rem;
 }
 
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
-
 .pb-5 {
   padding-bottom: 1.25rem;
 }
@@ -3315,20 +3310,12 @@ body {
     width: 0px;
   }
 
-  .lg\:w-full {
-    width: 100%;
-  }
-
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
 
   .lg\:max-w-5xl {
     max-width: 64rem;
-  }
-
-  .lg\:max-w-full {
-    max-width: 100%;
   }
 
   .lg\:flex-1 {

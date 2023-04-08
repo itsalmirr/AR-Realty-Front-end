@@ -27,7 +27,7 @@ const inquiries = async (req, res) => {
       const { access } = cookie
       const data = await submitInquiry(
         req.body,
-        `${API_URL}/api/inquiries/`,
+        `${API_URL}/api/inquiries/create`,
         access
       )
 
