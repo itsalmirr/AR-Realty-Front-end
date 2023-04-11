@@ -34,7 +34,7 @@ const NewsLetter = () => {
                 type='email'
                 autoComplete='email'
                 required
-                className='w-full border-white px-5 py-3 placeholder-warm-gray-500 rounded-md focus:outline-none'
+                className='w-full border-white dark:text-black px-5 py-3 placeholder-warm-gray-500 rounded-md focus:outline-none'
                 placeholder='Enter your email'
               />
               <button

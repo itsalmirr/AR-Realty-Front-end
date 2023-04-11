@@ -1,25 +1,28 @@
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
-import { AiTwotoneSetting } from 'react-icons/ai';
-import { memo, useState, useContext } from 'react';
+import Image from 'next/image'
+import dynamic from 'next/dynamic'
+import { AiTwotoneSetting } from 'react-icons/ai'
+import { memo, useState, useContext } from 'react'
 
-import AuthContext from '@context/AuthContext';
-import { Spinner } from '@components/app/Spinner';
-import { NoAvatar } from '@components/app/Avatar';
+import AuthContext from '@context/AuthContext'
+import { Spinner } from '@components/app/Spinner'
+import { NoAvatar } from '@components/app/Avatar'
 
-const AccountSettings = dynamic(() => import('@modules/dashboard/AccountSettings'), {
-  loading: () => <Spinner />,
-});
+const AccountSettings = dynamic(
+  () => import('@modules/dashboard/AccountSettings'),
+  {
+    loading: () => <Spinner />,
+  }
+)
 
 const cover = {
   backgroundImage:
     'https://res.cloudinary.com/iamalmiir/image/upload/v1672591240/sean-pollock-PhYq704ffdA-unsplash_1_hfzoyk_oifngg.webp',
-};
+}
 
 const DashboardHeader = () => {
-  const { user } = useContext(AuthContext);
-  const [settings, setSettings] = useState(false);
-  const userAvatar = `https://res.cloudinary.com/iamalmiir/image/upload/v1/${user?.avatar}`;
+  const { user } = useContext(AuthContext)
+  const [settings, setSettings] = useState(false)
+  const userAvatar = `https://res.cloudinary.com/iamalmiir/image/upload/v1/${user?.avatar}`
 
   return (
     <div>
@@ -81,20 +84,26 @@ const DashboardHeader = () => {
                   </div>
                 </div>
                 <div className='hidden sm:block md:hidden mt-6 min-w-0 flex-1'>
-                  <h1 className='text-2xl font-bold text-gray-900 truncate'>{user.full_name}</h1>
+                  <h1 className='text-2xl font-bold text-gray-900 truncate'>
+                    {user.full_name}
+                  </h1>
                 </div>
               </div>
             </div>
           </div>
           <div className='shadow-lg dark:shadow-gray-900'>
             {settings && (
-              <AccountSettings settings={settings} setSettings={setSettings} user={user} />
+              <AccountSettings
+                settings={settings}
+                setSettings={setSettings}
+                user={user}
+              />
             )}
           </div>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default memo(DashboardHeader);
+export default memo(DashboardHeader)
