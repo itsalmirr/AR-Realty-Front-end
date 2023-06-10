@@ -40,7 +40,7 @@ const FeaturedListings = () => {
   return (
     <>
       {error ? ifError() : null}
-      {!error && !featuredListings.length ? (
+      {!featuredListings ? (
         <div className='flex flex-col items-center justify-center'>
           <Spinner />
         </div>
