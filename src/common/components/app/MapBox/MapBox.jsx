@@ -19,11 +19,13 @@ const MapBox = ({ listing }) => {
     zoom: 14,
   })
 
+
   useEffect(() => {
     // Get latitude & longitude from address.
     // Path: src/common/components/app/MapBox/getLatLong.js
-    getLatLong(listing, setLat, setLng, viewport, setViewport, setLoading)
+    getLatLong(listing, setLat, setLng, viewport, setViewport, setLoading).then(() => setLoading(false))
   }, [listing])
+
   Geocode.setApiKey(GOOGLE_MAP_API)
   if (loading || !listing) return false
 
