@@ -1,16 +1,16 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
-import { toast } from 'react-toastify'
-import { GiFamilyHouse } from 'react-icons/gi'
+// import { useState, useEffect } from 'react'
+// import { useRouter } from 'next/router'
+// import { toast } from 'react-toastify'
+// import { GiFamilyHouse } from 'react-icons/gi'
 
-import { quickSearch } from '@lib/helpers'
-import { ListingsList } from '@components/app/ListingsList'
-import { FeaturedListings } from '@components/app/FeaturedListings'
-import { API_URL } from '@lib/constants'
-import { fetchListings } from '@common/queries/listings'
-import { Divider } from '@components/app/Divider'
-import { Spinner } from '@components/app/Spinner'
-import { NoResults } from '@components/app/NoResults'
+// import { quickSearch } from '@lib/helpers'
+// import { ListingsList } from '@components/app/ListingsList'
+// import { FeaturedListings } from '@components/app/FeaturedListings'
+// import { API_URL } from '@lib/constants'
+// import { fetchListings } from '@common/queries/listings'
+// import { Divider } from '@components/app/Divider'
+// import { Spinner } from '@components/app/Spinner'
+// import { NoResults } from '@components/app/NoResults'
 import { ServerError } from '@components/app/Error'
 
 const SearchPage = ({ listings }) => {
@@ -20,8 +20,8 @@ const SearchPage = ({ listings }) => {
 
   // const handleListingChange = async (query) => {
   //   try {
-  //     // const { results: data } = await quickSearch(query)
-  //     // setResults(data)
+  // const { results: data } = await quickSearch(query)
+  // setResults(data)
   //     console.log('Server is down.')
   //   } catch (err) {
   //     toast.error(err.message)
