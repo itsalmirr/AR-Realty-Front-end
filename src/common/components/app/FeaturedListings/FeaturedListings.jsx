@@ -3,13 +3,10 @@ import { useState, useEffect } from 'react'
 import { fetchListings } from '@common/queries/listings'
 
 import { Spinner } from '@components/app/Spinner'
+import { ServerError } from '../Error'
 import { ListingCard } from '@components/app/ListingCard'
 
-const ifError = () => (
-  <div className='flex flex-col items-center justify-center'>
-    <p className='text-2xl text-gray-500'>Error loading listings</p>
-  </div>
-)
+const ifError = () => <ServerError />
 
 const renderListings = (fl) => (
   <section className='space-y-4 px-2 sm:grid sm:grid-cols-2 sm:gap-6 sm:space-y-0 lg:grid-cols-3 lg:gap-8'>

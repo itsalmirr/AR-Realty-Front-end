@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const serverDownSvg =
-  'https://res.cloudinary.com/iamalmiir/image/upload/v1673904015/ar/undraw_server_down_s-4-lk_fqhv44.svg'
+  'https://res.cloudinary.com/iamalmiir/image/upload/v1693347016/undraw_server_down_s-4-lk_asbf6l.svg'
 
 const ServerError = () => (
   <div className='flex min-h-full flex-col pt-16 pb-12'>
