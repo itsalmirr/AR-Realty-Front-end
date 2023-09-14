@@ -41,7 +41,16 @@ const FeaturedListings = () => {
         <div className='flex flex-col items-center justify-center'>
           <Spinner />
         </div>
-      ) : null}
+      ) : (
+        <div>
+          <div className='flex justify-center text-2xl'>
+            <p>No listings to display.</p>
+          </div>
+          <div className='flex justify-center text-xl mt-8'>
+            Please check back later.
+          </div>
+        </div>
+      )}
       {featuredListings && renderListings(featuredListings)}
     </>
   )

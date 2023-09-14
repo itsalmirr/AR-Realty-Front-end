@@ -37,7 +37,7 @@ const SalesListings = () => {
   }
   return (
     <div>
-      {listings.length > 0 && (
+      {listings.length > 0 ? (
         <>
           <ListingsList listings={listings} />
           <Pagination
@@ -48,6 +48,11 @@ const SalesListings = () => {
             setPage={setPage}
           />
         </>
+      ) : (
+        // Center div using
+        <div className='flex justify-center text-2xl'>
+          <p>No listings found</p>
+        </div>
       )}
     </div>
   )
